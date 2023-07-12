@@ -424,7 +424,7 @@ public class VentanaPrincipal extends JFrame {
 			            	}
 			            	
 			            	break;
-			                
+			            	
 			            case "JOINNATURAL":
 			            	
 			            	if (!(logica.validaCantidadArgumentos(arregloLinea, 0, 0, 1))) { 
