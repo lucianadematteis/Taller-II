@@ -5,10 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.table.DefaultTableModel;
 
-import javax.swing.JOptionPane;
+import gui.VentanaPrincipal;
 
 public class Fachada {
+	
+	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.getDepuracion().getModel();
 	
 	public List<String> comandosNivel1 = Arrays.asList("SHOW", "CREATE", "USE", "INSERT", "DELETE", "UPDATE", "NOTNULL", "SELECT",
 			"COUNT", "AVG", "PRIMARYKEY", "DESCRIBE", "HELP", "JOINNATURAL", "MAX", "MIN");
@@ -115,21 +118,22 @@ public class Fachada {
 			
 		}
 		
-		
 	}
 	
 	public boolean validaSentenciasUnaLinea(ArrayList<String[]> sentencia) {
 		
     	if(!(validaCantidadLineas(sentencia, 1, 1))){
         	
-    		JOptionPane.showMessageDialog(null, "La cantidad de lineas ingresada es incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
-    		
+    		Object[] nuevaFila = {"Error #02", "La cantidad de lineas ingresada es incorrecta"};
+        	model.insertRow(0, nuevaFila);
+        	
     	}else {
     		
     		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
     			
-    			JOptionPane.showMessageDialog(null, "Cantidad de argumentos no valida", "ERROR", JOptionPane.ERROR_MESSAGE);
-        		
+    			Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida"};
+            	model.insertRow(0, nuevaFila);
+            	
     		}else {
     		
             	return true;
@@ -146,20 +150,23 @@ public class Fachada {
 		
     	if(!(validaCantidadLineas(sentencia, 2, 2))){
         	
-    		JOptionPane.showMessageDialog(null, "La cantidad de lineas ingresada es incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
+    		Object[] nuevaFila = {"Error #02", "La cantidad de lineas ingresada es incorrecta"};
+        	model.insertRow(0, nuevaFila);
     		
     	}else {
     		
     		if (!(validaCantidadArgumentos(sentencia, 0, sentencia.size(), 2))) {
     			
-    			JOptionPane.showMessageDialog(null, "Cantidad de argumentos no valida", "ERROR", JOptionPane.ERROR_MESSAGE);
-        		
+    			Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida"};
+            	model.insertRow(0, nuevaFila);
+            	
     		}else {
     			
     			if(!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
     				
-    				JOptionPane.showMessageDialog(null, "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido", "ERROR", JOptionPane.ERROR_MESSAGE);
-            		
+    				Object[] nuevaFila = {"Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido"};
+    	        	model.insertRow(0, nuevaFila);
+    	        	
     			}else {
     				
     				return true;
@@ -178,20 +185,22 @@ public class Fachada {
 		
 		if(!(validaCantidadArgumentos(sentencia, 2, 2, 4))) {
 			
-			JOptionPane.showMessageDialog(null, "Cantidad de argumentos no valida en la linea 3", "ERROR", JOptionPane.ERROR_MESSAGE);
-    		
+			Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida en linea 3"};
+        	model.insertRow(0, nuevaFila);
 		}else {
 		
 			if(!(sentencia.get(2)[0].toUpperCase().equals("WHERE"))) {
 				
-				JOptionPane.showMessageDialog(null, "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es valido", "ERROR", JOptionPane.ERROR_MESSAGE);
+				Object[] nuevaFila = {"Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es valido"};
+            	model.insertRow(0, nuevaFila);
 	    		
 			}else {
 				
 				if(!(sentencia.get(2)[2].toUpperCase().equals("="))) {
 					
-					JOptionPane.showMessageDialog(null, "El operador: " + sentencia.get(2)[2] + " no es valido", "ERROR", JOptionPane.ERROR_MESSAGE);
-	        		
+					Object[] nuevaFila = {"Error #05", "El operador: " + sentencia.get(2)[2] + " no es valido"};
+	            	model.insertRow(0, nuevaFila);
+		    		
 				}else {
 					
 					return true;
@@ -209,14 +218,16 @@ public class Fachada {
 		
 		if (!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 			
-			JOptionPane.showMessageDialog(null, "Cantidad de argumentos no valida en las linea 2", "ERROR", JOptionPane.ERROR_MESSAGE);
+			Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida en las linea 2"};
+        	model.insertRow(0, nuevaFila);
     		
 		}else {
 			
 			if(!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
 				
-				JOptionPane.showMessageDialog(null, "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido", "ERROR", JOptionPane.ERROR_MESSAGE);
-        		
+				Object[] nuevaFila = {"Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido"};
+	        	model.insertRow(0, nuevaFila);
+	        	
 			}else {
 				
 				return true;
@@ -232,8 +243,8 @@ public class Fachada {
 		
 		if(!(validaCantidadLineas(sentencia, 3, 3))){
         	
-    		JOptionPane.showMessageDialog(null, "La cantidad de lineas ingresada es incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
-    		
+    		Object[] nuevaFila = {"Error #02", "La cantidad de lineas ingresada es incorrecta"};
+        	model.insertRow(0, nuevaFila);
     	}else {
     		
     		if (validaSentenciasFrom(sentencia)) {
@@ -256,14 +267,16 @@ public class Fachada {
 		
 		if(!(validaCantidadArgumentos(sentencia, 2, 2, 8))) {
 			
-			JOptionPane.showMessageDialog(null, "Cantidad de argumentos no valida en la linea 3", "ERROR", JOptionPane.ERROR_MESSAGE);
-    		
+			Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida en la linea 3"};
+        	model.insertRow(0, nuevaFila);
+			
 		}else {
 			
 			if(!(sentencia.get(2)[2].toUpperCase().equals("=")) || !(sentencia.get(2)[6].toUpperCase().equals("="))) {
 				
-				JOptionPane.showMessageDialog(null, "El operador de igualdad no valido en linea 3", "ERROR", JOptionPane.ERROR_MESSAGE);
-        		
+				Object[] nuevaFila = {"Error #05", "El operador de igualdad no valido en linea 3"};
+	        	model.insertRow(0, nuevaFila);
+	        	
 			}else {
 				
 				return true;
