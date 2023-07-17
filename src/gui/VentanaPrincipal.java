@@ -92,7 +92,7 @@ public class VentanaPrincipal extends JFrame {
 		JTextArea entrada = new JTextArea();
 		entrada.setForeground(escritura);
 		entrada.setBackground(fondoVentana);
-		entrada.setFont(new Font("SansSerif", Font.PLAIN, 13));
+		entrada.setFont(new Font("SansSerif", Font.PLAIN, 17));
 		entrada.setToolTipText("Inserte sentencias aqu\u00ED");
 		scrollPane.setViewportView(entrada);
 		contentPane.setLayout(null);
@@ -100,6 +100,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(bdActual);
 		
 		JButton ejecutar = new JButton("EJECUTAR");
+		ejecutar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		ejecutar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -510,18 +511,20 @@ public class VentanaPrincipal extends JFrame {
 		        }
 			}
 		});
-		ejecutar.setBounds(887, 144, 99, 23);
+		ejecutar.setBounds(887, 117, 99, 23);
 		ejecutar.setBackground(botones);
 		ejecutar.setForeground(Color.WHITE);
         ejecutar.setFocusPainted(false); 
 		
 		JButton limpiar = new JButton("LIMPIAR");
-		limpiar.setBounds(887, 115, 99, 23);
+		limpiar.setFont(new Font("Tahoma", Font.BOLD, 13));
+		limpiar.setBounds(887, 151, 99, 23);
 		limpiar.setBackground(botones);
 		limpiar.setForeground(Color.WHITE);
         limpiar.setFocusPainted(false); 
         
 		JButton cerrarSesion = new JButton("CERRAR SESI\u00D3N");
+		cerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 13));
 		cerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
