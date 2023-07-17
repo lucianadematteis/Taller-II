@@ -44,6 +44,8 @@ public class VentanaPrincipal extends JFrame {
 	private JTable depuracion;
 	
 	Fachada logica = new Fachada();
+	
+	int aciertos=0;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -182,9 +184,6 @@ public class VentanaPrincipal extends JFrame {
 		ejecutar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int errores=0;
-				int aciertos=0;
-				
 				DefaultTableModel model = (DefaultTableModel) depuracion.getModel();
 				
 				ArrayList<String[]> arregloLinea = logica.administraSentencia(entrada.getText());
@@ -194,7 +193,7 @@ public class VentanaPrincipal extends JFrame {
 		        if(!(logica.comandosNivel1.contains(comando1))) { //Si el primer comando ingresado no es valido
 		        	
 		        	Object[] nuevaFila = {"Error #01", "El comando " + comando1 + " no es valido"};
-		        	model.addRow(nuevaFila);
+		        	model.insertRow(0, nuevaFila);
 		        	
 		        }else {
 		        
@@ -205,14 +204,14 @@ public class VentanaPrincipal extends JFrame {
 			            	if(!(arregloLinea.size()>1)){
 			
 					        	Object[] nuevaFila = {"Error #02" , "La cantidad de lineas ingresada es incorrecta"};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 					        	
 			        		}else {
 			        			
 				            	if (!(logica.validaCantidadArgumentos(arregloLinea, 0, 0, 1))) { //no tiene mas nada alado del create
 				            		
 						        	Object[] nuevaFila = {"Error #03", "Demasiados argumentos en linea 1"};
-						        	model.addRow(nuevaFila);
+						        	model.insertRow(0, nuevaFila);
 						        	
 				            	}else {
 			            			
@@ -225,27 +224,27 @@ public class VentanaPrincipal extends JFrame {
 				            				if(!(logica.validaCantidadLineas(arregloLinea, 3, 5))) {
 				            					
 									        	Object[] nuevaFila = {"Error #02", "La cantidad de lineas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla"};
-									        	model.addRow(nuevaFila);
+									        	model.insertRow(0, nuevaFila);
 				            					
 				            				}else {
 				            					
 			            					    if(!(logica.validaCantidadArgumentos(arregloLinea, 1, arregloLinea.size(), 2))) {
 			            							
 			            							Object[] nuevaFila = {"Error #03", "Cantidad de argumentos incorrecta entre las lineas 2 y " + arregloLinea.size()};
-										        	model.addRow(nuevaFila);
+			            							model.insertRow(0, nuevaFila);
 										        	
 			            						}else {
 			            							
 			            							if(!(logica.validaTiposAtributos(arregloLinea, 2, arregloLinea.size()))) {
 			            								
 			            								Object[] nuevaFila = {"Error #04", "Tipos de datos incorrectos, recuerde que solo se admiten datos de tipo entero o cadena"};
-											        	model.addRow(nuevaFila);
+			            								model.insertRow(0, nuevaFila);
 			            								
 			            							}else {
 			            								
 			            								aciertos++;
 			            								Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere crear una tabla llamada: " +  arregloLinea.get(1)[1]};
-											        	model.addRow(nuevaFila);
+			            								model.insertRow(0, nuevaFila);
 											        	
 			            							}
 			            						}		
@@ -258,20 +257,20 @@ public class VentanaPrincipal extends JFrame {
 				            				if(!(logica.validaCantidadLineas(arregloLinea, 2, 2))) {
 				            					
 				            					Object[] nuevaFila = {"Error #02", "La cantidad de lineas ingresada es incorrecta"};
-									        	model.addRow(nuevaFila);
+									        	model.insertRow(0, nuevaFila);
 									        	
 				            				}else {
 				            				
 					            				if(!(logica.validaCantidadArgumentos(arregloLinea, 1, 1, 2))) {
 					            					
 					            					Object[] nuevaFila = {"Error #03", "Cantidad de argumentos incorrecta en la linea 2"};
-										        	model.addRow(nuevaFila);
+										        	model.insertRow(0, nuevaFila);
 										        	
 					            				}else {
 					            					
 					            					aciertos++;
 					            					Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere crear una base de datos llamada: " + arregloLinea.get(1)[1]};
-										        	model.addRow(nuevaFila);
+										        	model.insertRow(0, nuevaFila);
 					            					
 					            				}
 					            				
@@ -282,7 +281,7 @@ public class VentanaPrincipal extends JFrame {
 				            			default:
 				            				
 				            				Object[] nuevaFila = {"Error #01", "El comando: " + arregloLinea.get(1)[0].toUpperCase() + " no es valido"};
-								        	model.addRow(nuevaFila);
+								        	model.insertRow(0, nuevaFila);
 								        	
 				            				break;
 					            			
@@ -297,27 +296,27 @@ public class VentanaPrincipal extends JFrame {
 			            	if (!(logica.validaCantidadLineas(arregloLinea, 2, 2))){
 		            			
 			            		Object[] nuevaFila = {"Error #02", "Cantidad de lineas no valida"};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 			            		
 			            	}else {
 			            		
 			            		if ((!(arregloLinea.get(1).length>1)) || (!(logica.validaCantidadArgumentos(arregloLinea, 0, 0, 2)))) {
 				            		
 				            		Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida"};
-						        	model.addRow(nuevaFila);
+						        	model.insertRow(0, nuevaFila);
 						        	
 				            	}else { 
 				            		
 				            		if(!(arregloLinea.get(1)[0].toUpperCase().equals("VALUES"))) {
 					            			
 					            		Object[] nuevaFila = {"Error #01", "El comando: " + arregloLinea.get(1)[0].toUpperCase() + " no es valido"};
-							        	model.addRow(nuevaFila);
+							        	model.insertRow(0, nuevaFila);
 							        	
 					            	}else {
 					            			
 					            		aciertos++;
 					            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere insertar datos en la tabla: " + arregloLinea.get(0)[1]};
-							        	model.addRow(nuevaFila);
+							        	model.insertRow(0, nuevaFila);
 							        	
 					            	}
 				            	}
@@ -332,13 +331,13 @@ public class VentanaPrincipal extends JFrame {
 			            		if(!(arregloLinea.get(0)[1].toUpperCase().equals("TABLES"))) {
 					            			
 					            	Object[] nuevaFila = {"Error #01", "El comando: " + arregloLinea.get(0)[1].toUpperCase() + " no es valido"};
-						        	model.addRow(nuevaFila);
+						        	model.insertRow(0, nuevaFila);
 						        	
 					            }else {
 					            			
 					            	aciertos++;
 				            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere ver las tablas"};
-						        	model.addRow(nuevaFila);		
+						        	model.insertRow(0, nuevaFila);		
 					            }
 				            	
 			            	}
@@ -351,7 +350,7 @@ public class VentanaPrincipal extends JFrame {
 				            	
 			            		aciertos++;
 			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere seleccionar la base de datos: " + arregloLinea.get(0)[1]};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 			            	}
 			            	
 			                break; 
@@ -362,7 +361,7 @@ public class VentanaPrincipal extends JFrame {
 				            	
 			            		aciertos++;
 			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere obtener ayuda sobre el comando: " + arregloLinea.get(0)[1]};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 			            	}
 			            	
 			                break;
@@ -373,7 +372,7 @@ public class VentanaPrincipal extends JFrame {
 				            	
 			            		aciertos++;
 			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere obtener una descripcion sobre la tabla: " + arregloLinea.get(0)[1]};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 			            	}
 			            	
 			                break;
@@ -383,14 +382,14 @@ public class VentanaPrincipal extends JFrame {
 			            	if(!(logica.validaCantidadArgumentos(arregloLinea, 0, 0, 2))) {
 			            		
 			            		Object[] nuevaFila = {"Error #03", "Cantidad de argumentos incorrecta en linea 1"};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 					        	
 			            	}else {
 			            		
 			            		if(!(logica.validaCantidadLineas(arregloLinea, 3, 3))) {
 			            			
 			            			Object[] nuevaFila = {"Error #02", "Cantidad de lineas incorrecta"};
-						        	model.addRow(nuevaFila);
+						        	model.insertRow(0, nuevaFila);
 						        	
 			            		}else {
 			            		
@@ -402,7 +401,7 @@ public class VentanaPrincipal extends JFrame {
 							            		
 							            		aciertos++;
 							            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + arregloLinea.get(1)[1] + " donde el atributo: " + arregloLinea.get(2)[1] + " vale " + arregloLinea.get(2)[3]};
-									        	model.addRow(nuevaFila);
+									        	model.insertRow(0, nuevaFila);
 							            	}	
 							            	
 							            }else {
@@ -419,7 +418,7 @@ public class VentanaPrincipal extends JFrame {
 									            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + arregloLinea.get(1)[1] + 
 																" \n donde el atributo: " + arregloLinea.get(2)[1] + " valga " + arregloLinea.get(2)[3] +
 																" \n y el atributo: " + arregloLinea.get(2)[5] + " valga " + arregloLinea.get(2)[7]};
-											        	model.addRow(nuevaFila);
+											        	model.insertRow(0, nuevaFila);
 											        	
 														break;	
 													
@@ -446,28 +445,28 @@ public class VentanaPrincipal extends JFrame {
 			            	if(!(logica.validaCantidadLineas(arregloLinea, 3, 3))) {
 			            		
 			            		Object[] nuevaFila = {"Error #02", "La cantidad de lineas ingresada es incorrecta"};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 					        	
 			            	}else {
 			            	
 				            	if (!(logica.validaCantidadArgumentos(arregloLinea, 0, 0, 2))) { 
 				            		
 				            		Object[] nuevaFila = {"Error #03", "Cantidad de argumentos incorrecta en linea 1"};
-						        	model.addRow(nuevaFila);
+						        	model.insertRow(0, nuevaFila);
 						        	
 				            	}else {
 				            	
 					            	if(!(logica.validaCantidadArgumentos(arregloLinea, 1, arregloLinea.size(), 4))) {
 					            		
 					            		Object[] nuevaFila = {"Error #03", "Cantidad de argumentos incorrecta entre las lineas 2 y 3"};
-							        	model.addRow(nuevaFila);
+							        	model.insertRow(0, nuevaFila);
 							        	
 					            	}else {
 					            		
 					            		if(!(arregloLinea.get(1)[0].toUpperCase().equals("SET"))) {
 					            			
 					            			Object[] nuevaFila = {"Error #01", "El comando: " + arregloLinea.get(1)[0].toUpperCase() + " no es valido"};
-								        	model.addRow(nuevaFila);
+								        	model.insertRow(0, nuevaFila);
 								        	
 					            		}else {
 					            			
@@ -476,13 +475,13 @@ public class VentanaPrincipal extends JFrame {
 						            			if(!(arregloLinea.get(1)[2].equals("="))){
 						            				
 						            				Object[] nuevaFila = {"Error #05", "El operador: " + arregloLinea.get(1)[2] + " no es valido"};
-										        	model.addRow(nuevaFila);
+										        	model.insertRow(0, nuevaFila);
 										        	
 						            			}else {
 						            		
 						            				aciertos++;
 								            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere actualizar el dato identificado por: " + arregloLinea.get(2)[1] + " = " + arregloLinea.get(2)[3] + " de la tabla: " + arregloLinea.get(0)[1] + " \n que actualmente es: " + arregloLinea.get(1)[1] + " por " + arregloLinea.get(1)[3]};
-										        	model.addRow(nuevaFila);
+										        	model.insertRow(0, nuevaFila);
 						            			}
 						            		}
 					            		}
@@ -497,7 +496,7 @@ public class VentanaPrincipal extends JFrame {
 			            	if (!(logica.validaCantidadArgumentos(arregloLinea, 0, 0, 1))) { 
 			            		
 			            		Object[] nuevaFila = {"Error #03", "Demasiados argumentos en linea 1"};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 					        	
 			            	}else {
 			            	
@@ -505,7 +504,7 @@ public class VentanaPrincipal extends JFrame {
 				            		
 				            		aciertos++;
 				            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere borrar el dato de la tabla: " + arregloLinea.get(1)[1] + " que cumple la condicion que el atributo " + arregloLinea.get(2)[1] + " es igual a: " + arregloLinea.get(2)[3]};
-						        	model.addRow(nuevaFila);
+						        	model.insertRow(0, nuevaFila);
 				            	}
 			            	}
 			            	
@@ -516,34 +515,34 @@ public class VentanaPrincipal extends JFrame {
 			            	if (!(logica.validaCantidadArgumentos(arregloLinea, 0, 0, 1))) { 
 			            		
 			            		Object[] nuevaFila = {"Error #03", "Demasiados argumentos en linea 1"};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 					        	
 			            	}else {
 			            		
 			            		if(!(logica.validaCantidadLineas(arregloLinea, 2, 2))) {
 			            			
 			            			Object[] nuevaFila = {"Error #02", "Cantidad de lineas no valida"};
-						        	model.addRow(nuevaFila);
+						        	model.insertRow(0, nuevaFila);
 						        	
 			            		}else {
 			            			
 			            			if(!(arregloLinea.get(1)[0].toUpperCase().equals("FROM"))) {
 			            				
 			            				Object[] nuevaFila = {"Error #01", "El comando: " + arregloLinea.get(1)[0].toUpperCase() + " no es valido"};
-							        	model.addRow(nuevaFila);
+							        	model.insertRow(0, nuevaFila);
 							        	
 			            			}else {
 			            			
 				            			if(!(logica.validaCantidadArgumentos(arregloLinea, 1, arregloLinea.size(), 3))) {
 				            				
 				            				Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida en linea 2, recuerde que el join natural se realiza entre dos tablas"};
-								        	model.addRow(nuevaFila);
+								        	model.insertRow(0, nuevaFila);
 								        	
 				            			}else {
 				            				
 				            				aciertos++;
 						            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere hacer un join natural entre las tablas: " + arregloLinea.get(1)[1] + " y " + arregloLinea.get(1)[2]};
-								        	model.addRow(nuevaFila);
+								        	model.insertRow(0, nuevaFila);
 				            			}
 			            			}
 			            		}
@@ -557,7 +556,7 @@ public class VentanaPrincipal extends JFrame {
 			            		
 			            		aciertos++;
 			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere hacer no nulo el atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1]};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 			            	}
 			            	
 			            	break;
@@ -567,7 +566,7 @@ public class VentanaPrincipal extends JFrame {
 			            	if (!(logica.validaCantidadArgumentos(arregloLinea, 0, 0, 2))) { 
 			            		
 			            		Object[] nuevaFila = {"Error #03", "Cantidad de argumentos incorrecta en linea 1"};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 					        	
 			            	}else {
 			            	
@@ -575,7 +574,7 @@ public class VentanaPrincipal extends JFrame {
 				            		
 				            		aciertos++;
 				            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere contar la cantidad de datos de la tabla: " + arregloLinea.get(1)[1] + " que cumple la condicion que el atributo " + arregloLinea.get(2)[1] + " es igual a: " + arregloLinea.get(2)[3]};
-						        	model.addRow(nuevaFila);
+						        	model.insertRow(0, nuevaFila);
 				            	}
 				            	
 			            	}
@@ -588,7 +587,7 @@ public class VentanaPrincipal extends JFrame {
 			            		
 			            		aciertos++;
 			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere hacer clave primaria el atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1]};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 			            	}
 			            	
 			            	break;
@@ -599,7 +598,7 @@ public class VentanaPrincipal extends JFrame {
 				            		
 				            	aciertos++;
 			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere obtener el valor minimo del atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1]};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 				            }
 			            	
 			            	break;
@@ -610,7 +609,7 @@ public class VentanaPrincipal extends JFrame {
 			            		
 				            	aciertos++;
 			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere obtener el valor maximo del atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1]};
-					        	model.addRow(nuevaFila);   
+					        	model.insertRow(0, nuevaFila);   
 				            }
 			            	
 			            	break;
@@ -620,7 +619,7 @@ public class VentanaPrincipal extends JFrame {
 			            	if (!(logica.validaCantidadArgumentos(arregloLinea, 0, 0, 2))) { 
 			            		
 			            		Object[] nuevaFila = {"Error #03", "Cantidad de argumentos incorrecta en linea 1"};
-					        	model.addRow(nuevaFila);
+					        	model.insertRow(0, nuevaFila);
 					        	
 			            	}else {
 			            	
@@ -628,7 +627,7 @@ public class VentanaPrincipal extends JFrame {
 				            		
 				            		aciertos++;
 				            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere obtener el promedio de datos de la tabla: " + arregloLinea.get(1)[1] + " que cumple la condicion que el atributo " + arregloLinea.get(2)[1] + " es igual a: " + arregloLinea.get(2)[3]};
-						        	model.addRow(nuevaFila); 
+						        	model.insertRow(0, nuevaFila);
 				            	}
 			            	}
 			            	
@@ -637,7 +636,7 @@ public class VentanaPrincipal extends JFrame {
 			            default:
             				
             				Object[] nuevaFila = {"Error #01", "El comando: " + arregloLinea.get(0)[0].toUpperCase() + " no es valido"};
-				        	model.addRow(nuevaFila);
+				        	model.insertRow(0, nuevaFila);
 				        	
             				break;
 			                    
