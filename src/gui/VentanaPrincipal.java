@@ -145,10 +145,8 @@ public class VentanaPrincipal extends JFrame {
 		depuracion.setBackground(fondoVentana);
 		depuracion.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		depuracion.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null},
-			},
-			new String[] {
+			new Object[][] {	
+			}, new String[] {
 				"NUMERO", "MENSAJE"
 			}
 		));
@@ -186,7 +184,7 @@ public class VentanaPrincipal extends JFrame {
 				int errores=0;
 				int aciertos=0;
 				
-				DefaultTableModel model = (DefaultTableModel) salida.getModel();
+				DefaultTableModel model = (DefaultTableModel) depuracion.getModel();
 				
 				ArrayList<String[]> arregloLinea = logica.administraSentencia(entrada.getText());
 		        
@@ -196,6 +194,10 @@ public class VentanaPrincipal extends JFrame {
 		        	
 		        	JOptionPane.showMessageDialog(null, "El comando " + comando1 + " no es valido", "ERROR", JOptionPane.ERROR_MESSAGE);
         			
+		        	errores++;
+		        	Object[] nuevaFila = {"Error #" + errores, "El comando " + comando1 + " no es valido"};
+		        	model.addRow(nuevaFila);
+		        	
 		        }else {
 		        
 			        switch (comando1) { 
