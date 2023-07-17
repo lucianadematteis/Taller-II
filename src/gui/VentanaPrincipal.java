@@ -99,6 +99,85 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(saludo);
 		contentPane.add(bdActual);
 		
+		JButton limpiar = new JButton("LIMPIAR");
+		limpiar.setFont(new Font("Tahoma", Font.BOLD, 13));
+		limpiar.setBounds(887, 151, 99, 23);
+		limpiar.setBackground(botones);
+		limpiar.setForeground(Color.WHITE);
+        limpiar.setFocusPainted(false); 
+        
+		JButton cerrarSesion = new JButton("CERRAR SESI\u00D3N");
+		cerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 13));
+		cerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		cerrarSesion.setBounds(843, 613, 143, 23);
+		cerrarSesion.setBackground(botones);
+		cerrarSesion.setForeground(Color.WHITE);
+        cerrarSesion.setFocusPainted(false); 
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(25, 71, 135, 524);
+		scrollPane_3.getViewport().setBackground(fondoVentana);
+		contentPane.add(scrollPane_3);
+		
+		tablaBD = new JTable();
+		tablaBD.setForeground(escritura);
+		tablaBD.setBackground(fondoVentana);
+		tablaBD.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null},
+			},
+			new String[] {
+				"BASES DE DATOS"
+			}
+		));
+		scrollPane_3.setViewportView(tablaBD);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(170, 504, 816, 91);
+		scrollPane_2.getViewport().setBackground(fondoVentana);
+		contentPane.add(scrollPane_2);
+		
+		depuracion = new JTable();
+		depuracion.setForeground(escritura);
+		depuracion.setBackground(fondoVentana);
+		depuracion.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		depuracion.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null},
+			},
+			new String[] {
+				"NUMERO", "MENSAJE"
+			}
+		));
+		depuracion.getColumnModel().getColumn(0).setPreferredWidth(89);
+		depuracion.getColumnModel().getColumn(1).setPreferredWidth(725);
+		scrollPane_2.setViewportView(depuracion);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(170, 185, 815, 310);
+		scrollPane_1.getViewport().setBackground(fondoVentana);
+		scrollPane_1.getVerticalScrollBar().setBackground(fondoVentana);
+		scrollPane_1.getHorizontalScrollBar().setBackground(fondoVentana);
+		contentPane.add(scrollPane_1);
+		
+		salida = new JTable();
+		salida.setForeground(escritura);
+		salida.setBackground(fondoVentana);
+		salida.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		salida.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+			}
+		));
+		scrollPane_1.setViewportView(salida);
+		
 		JButton ejecutar = new JButton("EJECUTAR");
 		ejecutar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		ejecutar.addActionListener(new ActionListener() {
@@ -516,84 +595,6 @@ public class VentanaPrincipal extends JFrame {
 		ejecutar.setForeground(Color.WHITE);
         ejecutar.setFocusPainted(false); 
 		
-		JButton limpiar = new JButton("LIMPIAR");
-		limpiar.setFont(new Font("Tahoma", Font.BOLD, 13));
-		limpiar.setBounds(887, 151, 99, 23);
-		limpiar.setBackground(botones);
-		limpiar.setForeground(Color.WHITE);
-        limpiar.setFocusPainted(false); 
-        
-		JButton cerrarSesion = new JButton("CERRAR SESI\u00D3N");
-		cerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 13));
-		cerrarSesion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		cerrarSesion.setBounds(843, 613, 143, 23);
-		cerrarSesion.setBackground(botones);
-		cerrarSesion.setForeground(Color.WHITE);
-        cerrarSesion.setFocusPainted(false); 
-		
-		JScrollPane scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(25, 71, 135, 524);
-		scrollPane_3.getViewport().setBackground(fondoVentana);
-		contentPane.add(scrollPane_3);
-		
-		tablaBD = new JTable();
-		tablaBD.setForeground(escritura);
-		tablaBD.setBackground(fondoVentana);
-		tablaBD.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null},
-			},
-			new String[] {
-				"BASES DE DATOS"
-			}
-		));
-		scrollPane_3.setViewportView(tablaBD);
-		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(170, 504, 816, 91);
-		scrollPane_2.getViewport().setBackground(fondoVentana);
-		contentPane.add(scrollPane_2);
-		
-		depuracion = new JTable();
-		depuracion.setForeground(escritura);
-		depuracion.setBackground(fondoVentana);
-		depuracion.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		depuracion.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null},
-			},
-			new String[] {
-				"NUMERO", "MENSAJE"
-			}
-		));
-		depuracion.getColumnModel().getColumn(0).setPreferredWidth(89);
-		depuracion.getColumnModel().getColumn(1).setPreferredWidth(725);
-		scrollPane_2.setViewportView(depuracion);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(170, 185, 815, 310);
-		scrollPane_1.getViewport().setBackground(fondoVentana);
-		scrollPane_1.getVerticalScrollBar().setBackground(fondoVentana);
-		scrollPane_1.getHorizontalScrollBar().setBackground(fondoVentana);
-		contentPane.add(scrollPane_1);
-		
-		salida = new JTable();
-		salida.setForeground(escritura);
-		salida.setBackground(fondoVentana);
-		salida.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		salida.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
-			}
-		));
-		scrollPane_1.setViewportView(salida);
 		contentPane.add(scrollPane);
 		contentPane.add(ejecutar);
 		contentPane.add(limpiar);
