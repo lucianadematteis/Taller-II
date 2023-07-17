@@ -12,7 +12,6 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.GridBagConstraints;
 import com.jgoodies.forms.layout.FormLayout;
@@ -446,10 +445,9 @@ public class VentanaPrincipal extends JFrame {
 			            	
 			            	if(!(logica.validaCantidadLineas(arregloLinea, 3, 3))) {
 			            		
-			            		JOptionPane.showMessageDialog(null, "La cantidad de lineas ingresada es incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
-			            		Object[] nuevaFila = {"Error #" + errores, "Cantidad de lineas incorrecta"};
-			            		
+			            		Object[] nuevaFila = {"Error #" + errores, "La cantidad de lineas ingresada es incorrecta"};
 					        	model.addRow(nuevaFila);
+					        	
 			            	}else {
 			            	
 				            	if (!(logica.validaCantidadArgumentos(arregloLinea, 0, 0, 2))) { 
@@ -482,8 +480,9 @@ public class VentanaPrincipal extends JFrame {
 										        	
 						            			}else {
 						            		
-						            				JOptionPane.showMessageDialog(null, "El usuario quiere actualizar el dato identificado por: " + arregloLinea.get(2)[1] + " = " + arregloLinea.get(2)[3] + " de la tabla: " + arregloLinea.get(0)[1] + " \n que actualmente es: " + arregloLinea.get(1)[1] + " por " + arregloLinea.get(1)[3], "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-						            		
+						            				aciertos++;
+								            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere actualizar el dato identificado por: " + arregloLinea.get(2)[1] + " = " + arregloLinea.get(2)[3] + " de la tabla: " + arregloLinea.get(0)[1] + " \n que actualmente es: " + arregloLinea.get(1)[1] + " por " + arregloLinea.get(1)[3]};
+										        	model.addRow(nuevaFila);
 						            			}
 						            		}
 					            		}
@@ -504,8 +503,9 @@ public class VentanaPrincipal extends JFrame {
 			            	
 				            	if(logica.validaSentenciasFromWhere(arregloLinea)) {
 				            		
-				            		JOptionPane.showMessageDialog(null, "El usuario quiere borrar el dato de la tabla: " + arregloLinea.get(1)[1] + " que cumple la condicion que el atributo " + arregloLinea.get(2)[1] + " es igual a: " + arregloLinea.get(2)[3], "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-				            		
+				            		aciertos++;
+				            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere borrar el dato de la tabla: " + arregloLinea.get(1)[1] + " que cumple la condicion que el atributo " + arregloLinea.get(2)[1] + " es igual a: " + arregloLinea.get(2)[3]};
+						        	model.addRow(nuevaFila);
 				            	}
 			            	}
 			            	
@@ -541,8 +541,9 @@ public class VentanaPrincipal extends JFrame {
 								        	
 				            			}else {
 				            				
-				            				JOptionPane.showMessageDialog(null, "El usuario quiere hacer un join natural entre las tablas: " + arregloLinea.get(1)[1] + " y " + arregloLinea.get(1)[2], "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-								            
+				            				aciertos++;
+						            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere hacer un join natural entre las tablas: " + arregloLinea.get(1)[1] + " y " + arregloLinea.get(1)[2]};
+								        	model.addRow(nuevaFila);
 				            			}
 			            			}
 			            		}
@@ -554,8 +555,9 @@ public class VentanaPrincipal extends JFrame {
 			            	
 			            	if(logica.validaSentenciasDosLineas(arregloLinea)) {
 			            		
-			            		JOptionPane.showMessageDialog(null, "El usuario quiere hacer no nulo el atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1], "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-					            
+			            		aciertos++;
+			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere hacer no nulo el atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1]};
+					        	model.addRow(nuevaFila);
 			            	}
 			            	
 			            	break;
@@ -571,8 +573,9 @@ public class VentanaPrincipal extends JFrame {
 			            	
 				            	if(logica.validaSentenciasFromWhere(arregloLinea)) {
 				            		
-				            		JOptionPane.showMessageDialog(null, "El usuario quiere contar la cantidad de datos de la tabla: " + arregloLinea.get(1)[1] + " que cumple la condicion que el atributo " + arregloLinea.get(2)[1] + " es igual a: " + arregloLinea.get(2)[3], "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-				            		
+				            		aciertos++;
+				            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere contar la cantidad de datos de la tabla: " + arregloLinea.get(1)[1] + " que cumple la condicion que el atributo " + arregloLinea.get(2)[1] + " es igual a: " + arregloLinea.get(2)[3]};
+						        	model.addRow(nuevaFila);
 				            	}
 				            	
 			            	}
@@ -583,8 +586,9 @@ public class VentanaPrincipal extends JFrame {
 			        	   
 			        	   if(logica.validaSentenciasDosLineas(arregloLinea)) {
 			            		
-			            		JOptionPane.showMessageDialog(null, "El usuario quiere hacer clave primaria el atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1], "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-					            
+			            		aciertos++;
+			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere hacer clave primaria el atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1]};
+					        	model.addRow(nuevaFila);
 			            	}
 			            	
 			            	break;
@@ -593,8 +597,9 @@ public class VentanaPrincipal extends JFrame {
 			            	
 			            	if(logica.validaSentenciasDosLineas(arregloLinea)) {
 				            		
-				            	JOptionPane.showMessageDialog(null, "El usuario quiere obtener el valor minimo del atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1], "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-						            
+				            	aciertos++;
+			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere obtener el valor minimo del atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1]};
+					        	model.addRow(nuevaFila);
 				            }
 			            	
 			            	break;
@@ -603,8 +608,9 @@ public class VentanaPrincipal extends JFrame {
 			            	
 			            	if(logica.validaSentenciasDosLineas(arregloLinea)) {
 			            		
-				            	JOptionPane.showMessageDialog(null, "El usuario quiere obtener el valor maximo del atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1], "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-						            
+				            	aciertos++;
+			            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere obtener el valor maximo del atributo: " + arregloLinea.get(0)[1] + " de la tabla: " + arregloLinea.get(1)[1]};
+					        	model.addRow(nuevaFila);   
 				            }
 			            	
 			            	break;
@@ -620,8 +626,9 @@ public class VentanaPrincipal extends JFrame {
 			            	
 				            	if(logica.validaSentenciasFromWhere(arregloLinea)) {
 				            		
-				            		JOptionPane.showMessageDialog(null, "El usuario quiere obtener el promedio de datos de la tabla: " + arregloLinea.get(1)[1] + " que cumple la condicion que el atributo " + arregloLinea.get(2)[1] + " es igual a: " + arregloLinea.get(2)[3], "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
-				            		
+				            		aciertos++;
+				            		Object[] nuevaFila = {"Acierto #" + aciertos, "El usuario quiere obtener el promedio de datos de la tabla: " + arregloLinea.get(1)[1] + " que cumple la condicion que el atributo " + arregloLinea.get(2)[1] + " es igual a: " + arregloLinea.get(2)[3]};
+						        	model.addRow(nuevaFila); 
 				            	}
 			            	}
 			            	
