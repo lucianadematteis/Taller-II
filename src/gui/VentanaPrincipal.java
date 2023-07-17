@@ -34,7 +34,6 @@ import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 
@@ -104,41 +103,7 @@ public class VentanaPrincipal extends JFrame {
 		ejecutar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//LO QUE QUIERO HACER ES UN ARREGLO DE ARREGLOS
-				//PARA GUARDAR EN CADA POSICION (ARREGLO PRINCIPAL) UNA LINEA Y DENTRO DE CADA LINEA (ARREGLOS SECUNDARIOS) EN CADA POSICION UNA PALABRA
-				
-				//Separa el contenido en lineas
-				String sentencia = entrada.getText();
-		        String[] lineas = sentencia.split("\n");
-		        
-		        //Crea un arreglo para cada linea
-		        ArrayList<String[]> arregloLinea = new ArrayList<>();
-		        
-		        //Recorre cada linea
-		        for (String unaLinea : lineas) {
-		        	
-		            ArrayList<String> palabras = new ArrayList<>();
-		            
-		            Matcher matcher = Pattern.compile("\"([^\"]*)\"|\\S+").matcher(unaLinea);
-
-		            //Encuentra las palabras entre comillas o las palabras separadas por espacios
-		            while (matcher.find()) {
-		            	
-		                String palabra = matcher.group();
-
-		                //Si la palabra tiene comillas, se eliminan las comillas
-		                if (palabra.startsWith("\"") && palabra.endsWith("\"")) {
-		                	
-		                    palabra = palabra.substring(1, palabra.length() - 1);
-		               
-		                }
-
-		                palabras.add(palabra);
-		            
-		            }
-
-		            arregloLinea.add(palabras.toArray(new String[0]));
-		        }
+				ArrayList<String[]> arregloLinea = logica.administraSentencia(entrada.getText());
 		        
 		        String comando1=arregloLinea.get(0)[0].toUpperCase();
 		        
