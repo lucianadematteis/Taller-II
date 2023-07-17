@@ -1,31 +1,14 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.basic.BasicScrollBarUI;
-
-import java.awt.GridBagLayout;
 import javax.swing.JLabel;
-
-import java.awt.GridBagConstraints;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-
 import logica.Fachada;
-import net.miginfocom.swing.MigLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -33,15 +16,15 @@ import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable tablaBD;
 	private JTable salida;
-	private JTable depuracion;
+	private static JTable depuracion;
 	
 	Fachada logica = new Fachada();
 	
@@ -64,7 +47,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		Color fondoPrincipal = new Color (30,30,30);
 		Color fondoVentana = new Color (45,45,45);
-		Color fuentePrincipal = new Color (255,255,255);
+		//Color fuentePrincipal = new Color (255,255,255);
 		Color escritura = new Color (200,200,200 );
 		Color botones = new Color (74,74,74);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,11 +124,11 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane_2.getViewport().setBackground(fondoVentana);
 		contentPane.add(scrollPane_2);
 		
-		depuracion = new JTable();
-		depuracion.setForeground(escritura);
-		depuracion.setBackground(fondoVentana);
-		depuracion.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		depuracion.setModel(new DefaultTableModel(
+		setDepuracion(new JTable());
+		getDepuracion().setForeground(escritura);
+		getDepuracion().setBackground(fondoVentana);
+		getDepuracion().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		getDepuracion().setModel(new DefaultTableModel(
 			new Object[][] {
 		//		{null, null},
 			},
@@ -153,9 +136,9 @@ public class VentanaPrincipal extends JFrame {
 				"NUMERO", "MENSAJE"
 			}
 		));
-		depuracion.getColumnModel().getColumn(0).setPreferredWidth(89);
-		depuracion.getColumnModel().getColumn(1).setPreferredWidth(725);
-		scrollPane_2.setViewportView(depuracion);
+		getDepuracion().getColumnModel().getColumn(0).setPreferredWidth(89);
+		getDepuracion().getColumnModel().getColumn(1).setPreferredWidth(725);
+		scrollPane_2.setViewportView(getDepuracion());
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(170, 185, 815, 310);
@@ -184,7 +167,7 @@ public class VentanaPrincipal extends JFrame {
 		ejecutar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				DefaultTableModel model = (DefaultTableModel) depuracion.getModel();
+				DefaultTableModel model = (DefaultTableModel) getDepuracion().getModel();
 				
 				ArrayList<String[]> arregloLinea = logica.administraSentencia(entrada.getText());
 		        
@@ -655,6 +638,13 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(cerrarSesion);
 		contentPane.add(separator);
 	}
-	
-	
+
+	private void setDepuracion(JTable jTable) {
+		
+	}
+
+	public static JTable getDepuracion() {
+		return depuracion;
+	}
+
 }
