@@ -183,6 +183,11 @@ public class VentanaPrincipal extends JFrame {
 		ejecutar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				int errores=0;
+				int aciertos=0;
+				
+				DefaultTableModel model = (DefaultTableModel) salida.getModel();
+				
 				ArrayList<String[]> arregloLinea = logica.administraSentencia(entrada.getText());
 		        
 		        String comando1=arregloLinea.get(0)[0].toUpperCase();
