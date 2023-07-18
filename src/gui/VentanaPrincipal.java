@@ -613,6 +613,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(limpiar);
 		contentPane.add(cerrarSesion);
 		contentPane.add(separator);
+		
 	}
 
 }
