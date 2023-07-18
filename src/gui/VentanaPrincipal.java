@@ -9,11 +9,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import logica.Fachada;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.JTextComponent;
+
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -87,6 +93,7 @@ public class VentanaPrincipal extends JFrame {
 		entrada.setBackground(fondoVentana);
 		entrada.setFont(new Font("SansSerif", Font.PLAIN, 17));
 		entrada.setToolTipText("Inserte sentencias aqu\u00ED");
+		entrada.setCaretColor(Color.WHITE);
 		scrollPane.setViewportView(entrada);
 		contentPane.setLayout(null);
 		contentPane.add(saludo);
@@ -175,7 +182,6 @@ public class VentanaPrincipal extends JFrame {
 		ejecutar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		ejecutar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				
 				ArrayList<String[]> arregloLinea = logica.administraSentencia(entrada.getText());
 		        
