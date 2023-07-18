@@ -5,13 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.table.DefaultTableModel;
-
 import gui.VentanaPrincipal;
 
 public class Fachada {
-	
-	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.getDepuracion().getModel();
 	
 	public List<String> comandosNivel1 = Arrays.asList("SHOW", "CREATE", "USE", "INSERT", "DELETE", "UPDATE", "NOTNULL", "SELECT",
 			"COUNT", "AVG", "PRIMARYKEY", "DESCRIBE", "HELP", "JOINNATURAL", "MAX", "MIN");
@@ -124,15 +120,13 @@ public class Fachada {
 		
     	if(!(validaCantidadLineas(sentencia, 1, 1))){
         	
-    		Object[] nuevaFila = {"Error #02", "La cantidad de lineas ingresada es incorrecta"};
-        	model.insertRow(0, nuevaFila);
+			VentanaPrincipal.insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
         	
     	}else {
     		
     		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
     			
-    			Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida"};
-            	model.insertRow(0, nuevaFila);
+            	VentanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
             	
     		}else {
     		
@@ -150,23 +144,20 @@ public class Fachada {
 		
     	if(!(validaCantidadLineas(sentencia, 2, 2))){
         	
-    		Object[] nuevaFila = {"Error #02", "La cantidad de lineas ingresada es incorrecta"};
-        	model.insertRow(0, nuevaFila);
-    		
+        	VentanaPrincipal.insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+        	
     	}else {
     		
     		if (!(validaCantidadArgumentos(sentencia, 0, sentencia.size(), 2))) {
     			
-    			Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida"};
-            	model.insertRow(0, nuevaFila);
+            	VentanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
             	
     		}else {
     			
     			if(!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
     				
-    				Object[] nuevaFila = {"Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido"};
-    	        	model.insertRow(0, nuevaFila);
-    	        	
+    	        	VentanaPrincipal.insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+                	
     			}else {
     				
     				return true;
@@ -185,22 +176,20 @@ public class Fachada {
 		
 		if(!(validaCantidadArgumentos(sentencia, 2, 2, 4))) {
 			
-			Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida en linea 3"};
-        	model.insertRow(0, nuevaFila);
+        	VentanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida en linea 3");
+        	
 		}else {
 		
 			if(!(sentencia.get(2)[0].toUpperCase().equals("WHERE"))) {
 				
-				Object[] nuevaFila = {"Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es valido"};
-            	model.insertRow(0, nuevaFila);
-	    		
+            	VentanaPrincipal.insertarDepuracion("Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es valido");
+            	
 			}else {
 				
 				if(!(sentencia.get(2)[2].toUpperCase().equals("="))) {
 					
-					Object[] nuevaFila = {"Error #05", "El operador: " + sentencia.get(2)[2] + " no es valido"};
-	            	model.insertRow(0, nuevaFila);
-		    		
+	            	VentanaPrincipal.insertarDepuracion("Error #05", "El operador: " + sentencia.get(2)[2] + " no es valido");
+	            	
 				}else {
 					
 					return true;
@@ -218,15 +207,13 @@ public class Fachada {
 		
 		if (!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 			
-			Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida en las linea 2"};
-        	model.insertRow(0, nuevaFila);
-    		
+        	VentanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida en la linea 2");
+        	
 		}else {
 			
 			if(!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
 				
-				Object[] nuevaFila = {"Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido"};
-	        	model.insertRow(0, nuevaFila);
+	        	VentanaPrincipal.insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 	        	
 			}else {
 				
@@ -243,8 +230,8 @@ public class Fachada {
 		
 		if(!(validaCantidadLineas(sentencia, 3, 3))){
         	
-    		Object[] nuevaFila = {"Error #02", "La cantidad de lineas ingresada es incorrecta"};
-        	model.insertRow(0, nuevaFila);
+        	VentanaPrincipal.insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+        	
     	}else {
     		
     		if (validaSentenciasFrom(sentencia)) {
@@ -267,15 +254,13 @@ public class Fachada {
 		
 		if(!(validaCantidadArgumentos(sentencia, 2, 2, 8))) {
 			
-			Object[] nuevaFila = {"Error #03", "Cantidad de argumentos no valida en la linea 3"};
-        	model.insertRow(0, nuevaFila);
-			
+        	VentanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida en la linea 3");
+        	
 		}else {
 			
 			if(!(sentencia.get(2)[2].toUpperCase().equals("=")) || !(sentencia.get(2)[6].toUpperCase().equals("="))) {
 				
-				Object[] nuevaFila = {"Error #05", "El operador de igualdad no valido en linea 3"};
-	        	model.insertRow(0, nuevaFila);
+	        	VentanaPrincipal.insertarDepuracion("Error #05", "Operador/es de igualdad no valido en la linea 3");
 	        	
 			}else {
 				
