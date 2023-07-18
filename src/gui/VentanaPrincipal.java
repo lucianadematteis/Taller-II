@@ -94,6 +94,13 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(bdActual);
 		
 		JButton limpiar = new JButton("LIMPIAR");
+		limpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				entrada.setText("");
+
+			}
+		});
 		limpiar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		limpiar.setBounds(887, 151, 99, 23);
 		limpiar.setBackground(botones);
