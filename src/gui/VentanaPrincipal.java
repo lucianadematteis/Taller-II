@@ -323,11 +323,11 @@ public class VentanaPrincipal extends JFrame {
 	
 	public VentanaPrincipal() {
 		
-		Color fondoPrincipal = new Color (30,30,30);
-		Color fondoVentana = new Color (45,45,45);
-		//Color fuentePrincipal = new Color (255,255,255);
-		Color escritura = new Color (200,200,200 );
-		Color botones = new Color (74,74,74);
+		Color fondoPrincipal = new Color (66,141,138);
+		Color fondoVentana = new Color (187,218,219);
+		Color fuentePrincipal = new Color (255,255,255);
+		Color escritura = new Color (0,0,0);
+		Color botones = new Color (3,60,88);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024,700);
 		contentPane = new JPanel();
