@@ -27,7 +27,8 @@ public class login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+					login frame = new login();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -37,12 +38,12 @@ public class login extends JFrame {
 
 	public login() {
 		
-		Color fondoPrincipal = new Color (30,30,30);
-		Color recuadro = new Color (15,15,15);
-		Color fondoVentana = new Color (45,45,45);
+		Color recuadro = new Color (3,90,88);
+		Color fondoPrincipal = new Color (66,141,138);
+		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
-		Color escritura = new Color (200,200,200 );
-		Color botones = new Color (74,74,74);
+		Color escritura = new Color (0,0,0);
+		Color botones = new Color (3,60,88);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 700);
