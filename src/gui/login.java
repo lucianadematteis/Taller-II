@@ -1,8 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,26 +10,19 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-
-import javax.swing.JLayeredPane;
 import javax.swing.border.LineBorder;
 import javax.swing.JSeparator;
 
 public class login extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField user;
 	private JTextField pass;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,17 +35,14 @@ public class login extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public login() {
+		
 		Color fondoPrincipal = new Color (30,30,30);
 		Color recuadro = new Color (15,15,15);
 		Color fondoVentana = new Color (45,45,45);
 		Color fuentePrincipal = new Color (255,255,255);
 		Color escritura = new Color (200,200,200 );
 		Color botones = new Color (74,74,74);
-		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 700);
@@ -124,8 +112,6 @@ public class login extends JFrame {
 		inicioSesion.setBackground(botones);
 		inicioSesion.setForeground(Color.WHITE);
 		inicioSesion.setFocusPainted(false);
-		
-		
 		
 	}
 }
