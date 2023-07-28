@@ -7,13 +7,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import logica.Fachada;
 import java.awt.Font;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+
+import logica.IFachadaLogica;
+
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +32,7 @@ public class VentanaPrincipal extends JFrame {
 	private JTable salida;
 	private static JTable depuracion;
 	
-	Fachada logica = new Fachada();
+	IFachadaLogica logica;
 	
 	int aciertos=0;
 
