@@ -336,12 +336,12 @@ public class VentanaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		
 		JLabel saludo = new JLabel("Bienvenido");
-		saludo.setForeground(Color.WHITE);
+		saludo.setForeground(fuentePrincipal);
 		saludo.setBounds(29, 25, 223, 23);
 		saludo.setFont(new Font("SansSerif", Font.BOLD, 20));
 		
 		JLabel bdActual = new JLabel("Base de datos: ");
-		bdActual.setForeground(Color.WHITE);
+		bdActual.setForeground(fuentePrincipal);
 		bdActual.setBounds(616, 26, 223, 23);
 		bdActual.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		
@@ -372,7 +372,7 @@ public class VentanaPrincipal extends JFrame {
 		limpiar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		limpiar.setBounds(887, 151, 99, 23);
 		limpiar.setBackground(botones);
-		limpiar.setForeground(Color.WHITE);
+		limpiar.setForeground(fuentePrincipal);
         limpiar.setFocusPainted(false); 
         
 		JButton cerrarSesion = new JButton("CERRAR SESI\u00D3N");
@@ -383,7 +383,7 @@ public class VentanaPrincipal extends JFrame {
 		});
 		cerrarSesion.setBounds(843, 613, 143, 23);
 		cerrarSesion.setBackground(botones);
-		cerrarSesion.setForeground(Color.WHITE);
+		cerrarSesion.setForeground(fuentePrincipal);
         cerrarSesion.setFocusPainted(false); 
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
@@ -880,7 +880,7 @@ public class VentanaPrincipal extends JFrame {
 		});
 		ejecutar.setBounds(887, 117, 99, 23);
 		ejecutar.setBackground(botones);
-		ejecutar.setForeground(Color.WHITE);
+		ejecutar.setForeground(fuentePrincipal);
         ejecutar.setFocusPainted(false); 
 		
 		contentPane.add(scrollPane);
