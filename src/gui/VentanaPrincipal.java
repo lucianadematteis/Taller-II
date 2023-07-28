@@ -356,7 +356,6 @@ public class VentanaPrincipal extends JFrame {
 		entrada.setBackground(fondoVentana);
 		entrada.setFont(new Font("SansSerif", Font.PLAIN, 17));
 		entrada.setToolTipText("Inserte sentencias aqu\u00ED");
-		entrada.setCaretColor(Color.WHITE);
 		scrollPane.setViewportView(entrada);
 		contentPane.setLayout(null);
 		contentPane.add(saludo);
