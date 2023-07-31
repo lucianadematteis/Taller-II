@@ -23,7 +23,7 @@ public class login extends JFrame {
 	private JTextField user;
 	private JTextField pass;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { //BORRAR LUEGO
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
