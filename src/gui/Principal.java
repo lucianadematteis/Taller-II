@@ -1,6 +1,4 @@
-package logica;
-
-import gui.login;
+package gui;
 
 public class Principal {
 
