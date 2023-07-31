@@ -13,7 +13,6 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
-import logica.IFachadaLogica;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -26,7 +25,6 @@ public class VentanaPrincipal extends JFrame {
 	private JTable salida;
 	static JTable depuracion;
 	
-	IFachadaLogica logica;
 	Principal principal = new Principal();
 	
 	public static void main(String[] args) { //BORRAR LUEGO
