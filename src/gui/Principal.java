@@ -8,8 +8,14 @@ import java.util.regex.Pattern;
 
 import javax.swing.table.DefaultTableModel;
 
+import logica.IFachadaLogica;
+import persistencia.IFachadaPersistencia;
+
 public class Principal {
 
+	IFachadaLogica logica;
+	IFachadaPersistencia persistencia;
+	
 	int aciertos = 0;
 
 	public List<String> comandosNivel1 = Arrays.asList("SHOW", "CREATE", "USE", "INSERT", "DELETE", "UPDATE", "NOTNULL",
