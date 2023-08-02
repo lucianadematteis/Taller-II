@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 
 import javax.swing.table.DefaultTableModel;
 
-import logica.IFachadaLogica;
-import persistencia.IFachadaPersistencia;
+import comunicacion.IFachadaLogica;
+import comunicacion.IFachadaPersistencia;
 
 public class Principal {
 
