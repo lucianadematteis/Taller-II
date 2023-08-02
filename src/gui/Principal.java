@@ -9,12 +9,11 @@ import java.util.regex.Pattern;
 import javax.swing.table.DefaultTableModel;
 
 import comunicacion.IFachadaLogica;
-import comunicacion.IFachadaPersistencia;
+import logica.FachadaLogica;
 
 public class Principal {
 
-	IFachadaLogica logica;
-	IFachadaPersistencia persistencia;
+	IFachadaLogica logica= new FachadaLogica();
 	
 	int aciertos = 0;
 
@@ -77,8 +76,7 @@ public class Principal {
 
 	}
 
-	public boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal,
-			int cantArgumentos) {
+	public boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
 
 		if (posInicial == posFinal) {
 
@@ -297,6 +295,7 @@ public class Principal {
 	}
 
 	public static void main(String[] args) {
+		
 		login frame = new login();
 		frame.setVisible(true);
 
