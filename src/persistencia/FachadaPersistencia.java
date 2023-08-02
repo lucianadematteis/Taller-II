@@ -1,5 +1,9 @@
 package persistencia;
 
-public class FachadaPersistencia {
+import comunicacion.IFachadaPersistencia;
+
+public class FachadaPersistencia implements IFachadaPersistencia {
+	
+	
 
 }
