@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class registrarUsuario extends JFrame {
 
@@ -100,6 +102,10 @@ public class registrarUsuario extends JFrame {
 		panel.add(lblNewLabel_2);
 		
 		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		aceptar.setBounds(345, 298, 89, 23);
 		panel.add(aceptar);
