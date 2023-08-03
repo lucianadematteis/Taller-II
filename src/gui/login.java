@@ -100,16 +100,17 @@ public class login extends JFrame {
 		panel.setLayout(null);
 		
 		JButton inicioSesion = new JButton("INICIAR SESIÓN");
-		inicioSesion.setBounds(281, 260, 143, 23);
-		panel.add(inicioSesion);
+		inicioSesion.setFont(new Font("Tahoma", Font.BOLD, 13));
 		inicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal vent = new VentanaPrincipal();
-				vent.setVisible(true);
-				dispose();
-				
 			}
 		});
+		inicioSesion.setBounds(843, 613, 143, 23);
+		inicioSesion.setBackground(botones);
+		inicioSesion.setForeground(fuentePrincipal);
+        inicioSesion.setFocusPainted(false); 
+        
+        
 		inicioSesion.setBackground(botones);
 		inicioSesion.setForeground(Color.WHITE);
 		inicioSesion.setFocusPainted(false);
