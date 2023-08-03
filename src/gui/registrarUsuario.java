@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 public class registrarUsuario extends JFrame {
 
@@ -33,7 +34,7 @@ public class registrarUsuario extends JFrame {
 	 */
 	public registrarUsuario() {
 		
-
+		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
@@ -46,12 +47,16 @@ public class registrarUsuario extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(fondoPrincipal);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		
-		
-		
+
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		panel.setBackground(recuadro);
+		panel.setBounds(250, 228, 471, 323);
+		contentPane.add(panel);
+		panel.setLayout(null);
 	}
 
 }
