@@ -98,10 +98,6 @@ public class registrarUsuario extends JFrame {
 		lblNewLabel_2.setBounds(37, 187, 172, 17);
 		panel.add(lblNewLabel_2);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(21, 115, 440, 2);
-		panel.add(separator);
-		
 		JLabel lblNewLabel_3 = new JLabel("REGISTRO DE USUARIO");
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("SansSerif", Font.PLAIN, 36));
