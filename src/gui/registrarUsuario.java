@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JSeparator;
+import javax.swing.JButton;
 
 public class registrarUsuario extends JFrame {
 
@@ -97,6 +98,11 @@ public class registrarUsuario extends JFrame {
 		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel_2.setBounds(27, 221, 199, 17);
 		panel.add(lblNewLabel_2);
+		
+		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
+		aceptar.setBounds(345, 298, 89, 23);
+		panel.add(aceptar);
 		
 		JLabel lblNewLabel_3 = new JLabel("REGISTRO DE USUARIO");
 		lblNewLabel_3.setForeground(Color.WHITE);
