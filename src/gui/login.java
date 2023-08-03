@@ -110,10 +110,7 @@ public class login extends JFrame {
 		inicioSesion.setForeground(fuentePrincipal);
         inicioSesion.setFocusPainted(false); 
         
-        
-		inicioSesion.setBackground(botones);
-		inicioSesion.setForeground(Color.WHITE);
-		inicioSesion.setFocusPainted(false);
+  
 		
 	}
 }
