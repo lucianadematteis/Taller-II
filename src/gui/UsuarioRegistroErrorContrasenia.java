@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.Window.Type;
 
 public class UsuarioRegistroErrorContrasenia extends JFrame {
 
@@ -37,6 +38,7 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 	 * Create the frame.
 	 */
 	public UsuarioRegistroErrorContrasenia() {
+		setType(Type.POPUP);
 		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
