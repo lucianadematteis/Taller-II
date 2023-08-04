@@ -84,13 +84,13 @@ public class registrarUsuario extends JFrame {
 		pass2.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Ingrese documento de usuario");
-		lblNewLabel.setForeground(escritura);
+		lblNewLabel.setForeground(fuentePrincipal);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(21, 82, 287, 20);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nueva contrase\u00F1a");
-		lblNewLabel_1.setForeground(escritura);
+		lblNewLabel_1.setForeground(fuentePrincipal);
 		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(128, 143, 225, 17);
 		panel.add(lblNewLabel_1);
