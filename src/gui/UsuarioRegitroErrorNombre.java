@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -31,6 +32,13 @@ public class UsuarioRegitroErrorNombre extends JFrame {
 	 * Create the frame.
 	 */
 	public UsuarioRegitroErrorNombre() {
+		
+		Color fondoPrincipal = new Color (66,141,138);
+		Color fondoVentana = new Color (187,218,219);
+		Color fuentePrincipal = new Color (255,255,255);
+		Color escritura = new Color (0,0,0);
+		Color botones = new Color (3,60,88);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
