@@ -119,6 +119,7 @@ public class RegistrarUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				login frame = new login();
 				frame.setVisible(true);
+				dispose();
 			}
 		});
 		btnCancelar.setForeground(Color.WHITE);
