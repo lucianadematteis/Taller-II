@@ -102,6 +102,7 @@ public class registrarUsuario extends JFrame {
 		panel.add(lblNewLabel_2);
 		
 		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.setForeground(escritura);
 		aceptar.setBackground(botones);
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
