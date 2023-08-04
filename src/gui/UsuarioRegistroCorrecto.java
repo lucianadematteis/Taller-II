@@ -39,7 +39,7 @@ public class UsuarioRegistroCorrecto extends JFrame {
 	 */
 	public UsuarioRegistroCorrecto() {
 		setType(Type.POPUP);
-		setResizable(false);
+		//setResizable(false);
 		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
