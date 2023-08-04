@@ -61,7 +61,9 @@ public class UsuarioRegistroCorrecto extends JFrame {
 			}
 		});
 		aceptar.setForeground(fuentePrincipal);
+		aceptar.setBackground(botones);
 		aceptar.setBounds(173, 215, 89, 23);
+		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
 		JLabel lblNewLabel = new JLabel("El usuario se ha registrado correctamente");
