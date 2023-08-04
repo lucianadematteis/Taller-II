@@ -107,6 +107,16 @@ public class RegistrarUsuario extends JFrame {
 		aceptar.setBackground(botones);
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			/*
+				if (*inserte aquí si se pudo registrar*) {
+					UsuarioRegistroCorrecto frame = new UsuarioRegistroCorrecto();
+					frame.setVisible(true);
+					dispose();
+				}else {
+					
+				}
+				*/
+				
 			}
 		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
