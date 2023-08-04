@@ -64,41 +64,41 @@ public class registrarUsuario extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel.setBackground(recuadro);
-		panel.setBounds(276, 180, 471, 344);
+		panel.setBounds(226, 180, 537, 344);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		usuario = new JTextField();
-		usuario.setBounds(236, 95, 198, 20);
+		usuario.setBounds(307, 82, 198, 20);
 		panel.add(usuario);
 		usuario.setColumns(10);
 		
 		pass = new JTextField();
-		pass.setBounds(236, 158, 198, 20);
+		pass.setBounds(307, 145, 198, 20);
 		panel.add(pass);
 		pass.setColumns(10);
 		
 		pass2 = new JTextField();
-		pass2.setBounds(236, 218, 198, 20);
+		pass2.setBounds(307, 205, 198, 20);
 		panel.add(pass2);
 		pass2.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Ingrese un usuario");
+		JLabel lblNewLabel = new JLabel("Ingrese documento de usuario");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(59, 91, 210, 20);
+		lblNewLabel.setBounds(21, 82, 287, 20);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nueva contrase\u00F1a");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(57, 156, 225, 17);
+		lblNewLabel_1.setBounds(128, 143, 225, 17);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Confirmar contrase\u00F1a");
 		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(27, 221, 199, 17);
+		lblNewLabel_2.setBounds(98, 208, 199, 17);
 		panel.add(lblNewLabel_2);
 		
 		JButton aceptar = new JButton("ACEPTAR");
@@ -108,7 +108,7 @@ public class registrarUsuario extends JFrame {
 			}
 		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
-		aceptar.setBounds(345, 298, 89, 23);
+		aceptar.setBounds(416, 285, 89, 23);
 		panel.add(aceptar);
 		
 		JLabel lblNewLabel_3 = new JLabel("REGISTRO DE USUARIO");
