@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -16,12 +17,13 @@ import java.awt.Font;
 import javax.swing.border.LineBorder;
 import javax.swing.JSeparator;
 
+
 public class login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField user;
-	private JTextField pass;
+	private JPasswordField pass;
 
 	public static void main(String[] args) { //BORRAR LUEGO
 		EventQueue.invokeLater(new Runnable() {
@@ -58,7 +60,7 @@ public class login extends JFrame {
 		user.setBounds(311, 308, 365, 20);
 		user.setColumns(10);
 		
-		pass = new JTextField();
+		JPasswordField pass = new JPasswordField();
 		pass.setForeground(escritura);
 		pass.setBounds(311, 408, 365, 20);
 		pass.setBackground(fondoVentana);;
