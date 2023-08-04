@@ -102,7 +102,11 @@ public class login extends JFrame {
 		panel.setLayout(null);
 		
 		JButton inicioSesion = new JButton("INICIAR SESION");
-		inicioSesion.setBounds(338, 275, 89, 23);
+		inicioSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		inicioSesion.setBounds(281, 275, 146, 23);
 		panel.add(inicioSesion);
 		
 		
