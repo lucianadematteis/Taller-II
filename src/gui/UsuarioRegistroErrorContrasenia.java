@@ -3,11 +3,13 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -61,6 +63,12 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		aceptar.setBounds(173, 215, 89, 23);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
+		
+		JLabel lblNewLabel = new JLabel("Error. Las contraseñas no coinciden");
+		lblNewLabel.setForeground(Color.YELLOW);
+		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel.setBounds(59, 36, 485, 155);
+		contentPane.add(lblNewLabel);
 	}
 
 }
