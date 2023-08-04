@@ -116,7 +116,8 @@ public class RegistrarUsuario extends JFrame {
 					UsuarioRegistroErrorNombre frame1 = new UsuarioRegistroErrorNombre();
 					frame1.setVisible(true);
 				}else{
-				
+				UsuarioRegisroErrorContrasenia frame2 = new UsuarioRegistroErrorContrasenia();
+				frame2.setVisible (true);
 				}
 				*/
 				
