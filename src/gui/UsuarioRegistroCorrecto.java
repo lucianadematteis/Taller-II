@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
 
 public class UsuarioRegistroCorrecto extends JFrame {
 
@@ -37,6 +38,8 @@ public class UsuarioRegistroCorrecto extends JFrame {
 	 * Create the frame.
 	 */
 	public UsuarioRegistroCorrecto() {
+		setType(Type.POPUP);
+		setResizable(false);
 		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
@@ -45,7 +48,6 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		Color botones = new Color (3,60,88);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(fondoPrincipal);
