@@ -54,7 +54,8 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		JButton aceptar = new JButton("ACEPTAR");
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				VentanaPrincipal frame = new VentanaPrincipal();
+				frame.setVisible(true);
 				dispose();
 			}
 		});
