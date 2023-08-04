@@ -64,10 +64,10 @@ public class LoginError extends JFrame {
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Nombre de usuario o contraseña inválidos");
+		JLabel lblNewLabel = new JLabel("Usuario o contraseña inválidos");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(29, 40, 485, 155);
+		lblNewLabel.setBounds(75, 36, 485, 155);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 8");
