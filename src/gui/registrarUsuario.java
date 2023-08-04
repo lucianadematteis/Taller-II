@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
@@ -20,8 +21,8 @@ public class registrarUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField usuario;
-	private JTextField pass;
-	private JTextField pass2;
+	private JPasswordField pass;
+	private JPasswordField pass2;
 
 	/**
 	 * Launch the application.
@@ -73,12 +74,12 @@ public class registrarUsuario extends JFrame {
 		panel.add(usuario);
 		usuario.setColumns(10);
 		
-		pass = new JTextField();
+		pass = new JPasswordField();
 		pass.setBounds(307, 145, 198, 20);
 		panel.add(pass);
 		pass.setColumns(10);
 		
-		pass2 = new JTextField();
+		pass2 = new JPasswordField();
 		pass2.setBounds(307, 205, 198, 20);
 		panel.add(pass2);
 		pass2.setColumns(10);
