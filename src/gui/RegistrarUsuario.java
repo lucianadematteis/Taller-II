@@ -115,6 +115,12 @@ public class RegistrarUsuario extends JFrame {
 		panel.add(aceptar);
 		
 		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login frame = new login();
+				frame.setVisible(true);
+			}
+		});
 		btnCancelar.setForeground(Color.WHITE);
 		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		btnCancelar.setFocusPainted(false);
