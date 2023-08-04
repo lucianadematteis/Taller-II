@@ -108,10 +108,7 @@ public class login extends JFrame {
 		});
 		inicioSesion.setBounds(281, 275, 146, 23);
 		panel.add(inicioSesion);
-		
-		
-        
-  
+
 		
 	}
 }
