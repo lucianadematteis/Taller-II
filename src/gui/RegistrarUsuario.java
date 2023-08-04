@@ -17,7 +17,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class registrarUsuario extends JFrame {
+public class RegistrarUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField usuario;
@@ -31,7 +31,7 @@ public class registrarUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					registrarUsuario frame = new registrarUsuario();
+					RegistrarUsuario frame = new RegistrarUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class registrarUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public registrarUsuario() {
+	public RegistrarUsuario() {
 		
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
