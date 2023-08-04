@@ -98,6 +98,9 @@ public class VentanaPrincipal extends JFrame {
 		cerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 13));
 		cerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				login frame = new login();
+				frame.setVisible(true);
+				dispose();
 			}
 		});
 		cerrarSesion.setBounds(843, 613, 143, 23);
