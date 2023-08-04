@@ -41,7 +41,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public VentanaPrincipal() {
-		//holiwis
+		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
