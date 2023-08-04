@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UsuarioRegistroCorrecto extends JFrame {
 
@@ -50,6 +52,13 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+			}
+		});
+		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBounds(173, 215, 89, 23);
 		contentPane.add(aceptar);
 		
