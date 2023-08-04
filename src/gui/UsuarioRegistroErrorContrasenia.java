@@ -71,6 +71,10 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(59, 36, 485, 155);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 7");
+		lblNewLabel_1.setBounds(322, 236, 102, 14);
+		contentPane.add(lblNewLabel_1);
 	}
 
 }
