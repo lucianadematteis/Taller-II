@@ -3,7 +3,10 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -44,8 +47,22 @@ public class UsuarioRegitroErrorNombre extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(fondoPrincipal);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaPrincipal frame = new VentanaPrincipal();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
+		aceptar.setForeground(fuentePrincipal);
+		aceptar.setBackground(botones);
+		aceptar.setBounds(173, 215, 89, 23);
+		aceptar.setFocusPainted(false);
+		contentPane.add(aceptar);
 	}
 
 }
