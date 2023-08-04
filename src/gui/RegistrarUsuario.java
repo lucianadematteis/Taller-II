@@ -112,8 +112,11 @@ public class RegistrarUsuario extends JFrame {
 					UsuarioRegistroCorrecto frame = new UsuarioRegistroCorrecto();
 					frame.setVisible(true);
 					dispose();
-				}else {
-					
+				}else if {
+					UsuarioRegistroErrorNombre frame1 = new UsuarioRegistroErrorNombre();
+					frame1.setVisible(true);
+				}else{
+				
 				}
 				*/
 				
