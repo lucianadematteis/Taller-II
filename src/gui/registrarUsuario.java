@@ -110,9 +110,17 @@ public class registrarUsuario extends JFrame {
 			}
 		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
-		aceptar.setBounds(416, 285, 89, 23);
+		aceptar.setBounds(401, 285, 104, 23);
 		aceptar.setFocusPainted(false);
 		panel.add(aceptar);
+		
+		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.setForeground(Color.WHITE);
+		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 11));
+		btnCancelar.setFocusPainted(false);
+		btnCancelar.setBackground(new Color(3, 60, 88));
+		btnCancelar.setBounds(274, 285, 104, 23);
+		panel.add(btnCancelar);
 		
 		JLabel lblNewLabel_3 = new JLabel("REGISTRO DE USUARIO");
 		lblNewLabel_3.setForeground(Color.WHITE);
