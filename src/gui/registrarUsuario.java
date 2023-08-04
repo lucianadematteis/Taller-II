@@ -96,13 +96,13 @@ public class registrarUsuario extends JFrame {
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Confirmar contrase\u00F1a");
-		lblNewLabel_2.setForeground(escritura);
+		lblNewLabel_2.setForeground(fuentePrincipal);
 		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel_2.setBounds(98, 208, 199, 17);
 		panel.add(lblNewLabel_2);
 		
 		JButton aceptar = new JButton("ACEPTAR");
-		aceptar.setForeground(escritura);
+		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
