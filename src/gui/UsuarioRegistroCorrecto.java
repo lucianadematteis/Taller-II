@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -34,6 +35,13 @@ public class UsuarioRegistroCorrecto extends JFrame {
 	 * Create the frame.
 	 */
 	public UsuarioRegistroCorrecto() {
+		
+		Color fondoPrincipal = new Color (66,141,138);
+		Color fondoVentana = new Color (187,218,219);
+		Color fuentePrincipal = new Color (255,255,255);
+		Color escritura = new Color (0,0,0);
+		Color botones = new Color (3,60,88);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -47,7 +55,7 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("El usuario se ha registrado correctamente");
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(32, 27, 485, 155);
+		lblNewLabel.setBounds(32, 31, 485, 155);
 		contentPane.add(lblNewLabel);
 	}
 }
