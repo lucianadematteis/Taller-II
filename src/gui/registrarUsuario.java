@@ -102,13 +102,14 @@ public class registrarUsuario extends JFrame {
 		panel.add(lblNewLabel_2);
 		
 		JButton aceptar = new JButton("ACEPTAR");
-		aceptar.setBackground(Color.WHITE);
+		aceptar.setBackground(botones);
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		aceptar.setBounds(416, 285, 89, 23);
+		aceptar.setFocusPainted(false);
 		panel.add(aceptar);
 		
 		JLabel lblNewLabel_3 = new JLabel("REGISTRO DE USUARIO");
