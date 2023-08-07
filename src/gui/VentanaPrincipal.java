@@ -611,6 +611,9 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(cerrarSesion);
 		contentPane.add(separator);
 		
+		JButton btnConfigUsuario = new JButton("CONFIGURACI\u00D3N DE USUARIO");
+		btnConfigUsuario.setBounds(29, 614, 248, 23);
+		contentPane.add(btnConfigUsuario);
+		
 	}
-
 }
