@@ -1,5 +1,5 @@
 package logica;
 
-public class Entero extends Atributo {
+class Entero extends Atributo {
 
 }
