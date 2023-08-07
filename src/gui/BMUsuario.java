@@ -50,7 +50,7 @@ public class BMUsuario extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel.setBackground(recuadro);
-		panel.setBounds(250, 228, 471, 323);
+		panel.setBounds(250, 195, 471, 356);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
