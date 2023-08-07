@@ -56,15 +56,9 @@ public class BMUsuario extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel.setBackground(recuadro);
-		panel.setBounds(250, 195, 471, 356);
+		panel.setBounds(22, 135, 471, 484);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Ingrese documento de usuario");
-		lblNewLabel.setForeground(fuentePrincipal);
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(21, 82, 287, 20);
-		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nueva contrase\u00F1a");
 		lblNewLabel_1.setForeground(fuentePrincipal);
@@ -119,7 +113,7 @@ public class BMUsuario extends JFrame {
 		btnCancelar.setBounds(213, 285, 104, 23);
 		panel.add(btnCancelar);
 		
-		JLabel lblNewLabel_3 = new JLabel("REGISTRO DE USUARIO");
+		JLabel lblNewLabel_3 = new JLabel("MODIFICACI\u00D3N DE USUARIO");
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("SansSerif", Font.PLAIN, 36));
 		lblNewLabel_3.setBounds(276, 11, 545, 99);
