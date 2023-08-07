@@ -3,9 +3,15 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -53,6 +59,76 @@ public class BMUsuario extends JFrame {
 		panel.setBounds(250, 195, 471, 356);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Ingrese documento de usuario");
+		lblNewLabel.setForeground(fuentePrincipal);
+		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel.setBounds(21, 82, 287, 20);
+		panel.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Nueva contrase\u00F1a");
+		lblNewLabel_1.setForeground(fuentePrincipal);
+		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(128, 143, 225, 17);
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Confirmar contrase\u00F1a");
+		lblNewLabel_2.setForeground(fuentePrincipal);
+		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel_2.setBounds(98, 208, 199, 17);
+		panel.add(lblNewLabel_2);
+		
+		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.setForeground(fuentePrincipal);
+		aceptar.setBackground(botones);
+		aceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			/*
+				if (*inserte aquí si se pudo registrar*) {
+					UsuarioRegistroCorrecto frame = new UsuarioRegistroCorrecto();
+					frame.setVisible(true);
+					dispose();
+				}else if {
+					UsuarioRegistroErrorNombre frame1 = new UsuarioRegistroErrorNombre();
+					frame1.setVisible(true);
+				}else{
+				UsuarioRegisroErrorContrasenia frame2 = new UsuarioRegistroErrorContrasenia();
+				frame2.setVisible (true);
+				}
+				*/
+				
+			}
+		});
+		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
+		aceptar.setBounds(401, 285, 104, 23);
+		aceptar.setFocusPainted(false);
+		panel.add(aceptar);
+		
+		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login frame = new login();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
+		btnCancelar.setForeground(Color.WHITE);
+		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 11));
+		btnCancelar.setFocusPainted(false);
+		btnCancelar.setBackground(new Color(3, 60, 88));
+		btnCancelar.setBounds(274, 285, 104, 23);
+		panel.add(btnCancelar);
+		
+		JLabel lblNewLabel_3 = new JLabel("REGISTRO DE USUARIO");
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setFont(new Font("SansSerif", Font.PLAIN, 36));
+		lblNewLabel_3.setBounds(276, 11, 545, 99);
+		contentPane.add(lblNewLabel_3);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(10, 96, 988, 2);
+		contentPane.add(separator_1);
+		
 		
 	}
 
