@@ -100,7 +100,7 @@ public class BMUsuario extends JFrame {
 			}
 		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
-		aceptar.setBounds(401, 285, 104, 23);
+		aceptar.setBounds(341, 285, 104, 23);
 		aceptar.setFocusPainted(false);
 		panel.add(aceptar);
 		
@@ -116,7 +116,7 @@ public class BMUsuario extends JFrame {
 		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
-		btnCancelar.setBounds(274, 285, 104, 23);
+		btnCancelar.setBounds(213, 285, 104, 23);
 		panel.add(btnCancelar);
 		
 		JLabel lblNewLabel_3 = new JLabel("REGISTRO DE USUARIO");
