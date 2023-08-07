@@ -21,6 +21,8 @@ public class BMUsuario extends JFrame {
 	private JPanel contentPane;
 	private JTextField pass;
 	private JTextField pass2;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -59,7 +61,7 @@ public class BMUsuario extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel.setBackground(recuadro);
-		panel.setBounds(47, 156, 456, 353);
+		panel.setBounds(35, 156, 456, 353);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -130,6 +132,57 @@ public class BMUsuario extends JFrame {
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(10, 96, 988, 2);
 		contentPane.add(separator_1);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		panel_1.setBackground(new Color(3, 90, 88));
+		panel_1.setBounds(513, 156, 456, 353);
+		contentPane.add(panel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Ingrese nueva contrase\u00F1a");
+		lblNewLabel_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel_1_1.setBounds(92, 102, 250, 39);
+		panel_1.add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("Repita la contrase\u00F1a");
+		lblNewLabel_2_1.setForeground(Color.WHITE);
+		lblNewLabel_2_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel_2_1.setBounds(92, 202, 205, 26);
+		panel_1.add(lblNewLabel_2_1);
+		
+		JButton aceptar_1 = new JButton("CONFIRMAR");
+		aceptar_1.setForeground(Color.WHITE);
+		aceptar_1.setFont(new Font("SansSerif", Font.PLAIN, 11));
+		aceptar_1.setFocusPainted(false);
+		aceptar_1.setBackground(new Color(3, 60, 88));
+		aceptar_1.setBounds(316, 302, 104, 23);
+		panel_1.add(aceptar_1);
+		
+		JLabel lblEliminarUsuario = new JLabel("ELIMINAR USUARIO");
+		lblEliminarUsuario.setForeground(Color.WHITE);
+		lblEliminarUsuario.setFont(new Font("SansSerif", Font.BOLD, 24));
+		lblEliminarUsuario.setBounds(92, 11, 328, 55);
+		panel_1.add(lblEliminarUsuario);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(22, 77, 392, 2);
+		panel_1.add(separator_2);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(92, 152, 235, 20);
+		panel_1.add(textField);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(92, 234, 229, 20);
+		panel_1.add(textField_1);
+		
+		JLabel lblNewLabel_4 = new JLabel("ATENCI\u00D3N: El siguiente cambio dar\u00E1 de baja el usuario pero\r\nno realizar\u00E1 la eliminaci\u00F3n total del mismo. La cuenta podr\u00E1\r\nser reactivada registr\u00E1ndose nuevamente.");
+		lblNewLabel_4.setBounds(10, 202, 413, 122);
+		panel_1.add(lblNewLabel_4);
 		
 		
 	}
