@@ -612,6 +612,13 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(separator);
 		
 		JButton btnConfigUsuario = new JButton("CONFIGURACI\u00D3N DE USUARIO");
+		btnConfigUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BMUsuario frame = new BMUsuario();
+				frame.setVisible(true);
+				dispose();	
+			}
+		});
 		btnConfigUsuario.setBounds(24, 614, 248, 23);
 		contentPane.add(btnConfigUsuario);
 		
