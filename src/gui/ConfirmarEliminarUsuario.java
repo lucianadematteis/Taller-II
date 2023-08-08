@@ -51,17 +51,17 @@ public class ConfirmarEliminarUsuario extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton aceptar = new JButton("ACEPTAR");
-		aceptar.addActionListener(new ActionListener() {
+		JButton confirmar = new JButton("CONFIRMAR");
+		confirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		aceptar.setForeground(fuentePrincipal);
-		aceptar.setBackground(botones);
-		aceptar.setBounds(173, 215, 89, 23);
-		aceptar.setFocusPainted(false);
-		contentPane.add(aceptar);
+		confirmar.setForeground(fuentePrincipal);
+		confirmar.setBackground(botones);
+		confirmar.setBounds(43, 215, 156, 23);
+		confirmar.setFocusPainted(false);
+		contentPane.add(confirmar);
 		
 		
 		JLabel lblNewLabel = new JLabel("\u00BFConfirma que desea eliminar el usuario?");
@@ -70,9 +70,12 @@ public class ConfirmarEliminarUsuario extends JFrame {
 		lblNewLabel.setBounds(26, 37, 485, 155);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 6");
-		lblNewLabel_1.setBounds(322, 236, 102, 14);
-		contentPane.add(lblNewLabel_1);
+		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.setForeground(Color.WHITE);
+		btnCancelar.setFocusPainted(false);
+		btnCancelar.setBackground(new Color(3, 60, 88));
+		btnCancelar.setBounds(242, 215, 144, 23);
+		contentPane.add(btnCancelar);
 	}
 
 }
