@@ -15,6 +15,7 @@ import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 public class BMUsuario extends JFrame {
 
@@ -180,9 +181,13 @@ public class BMUsuario extends JFrame {
 		textField_1.setBounds(92, 234, 229, 20);
 		panel_1.add(textField_1);
 		
-		JLabel lblNewLabel_4 = new JLabel("ATENCI\u00D3N: El siguiente cambio dar\u00E1 de baja el usuario pero <BR>\r\nno realizar\u00E1 la eliminaci\u00F3n total del mismo. La cuenta podr\u00E1 <BR>\r\nser reactivada registr\u00E1ndose nuevamente.");
-		lblNewLabel_4.setBounds(10, 202, 413, 122);
-		panel_1.add(lblNewLabel_4);
+		JTextArea txtrAtencinElSiguiente = new JTextArea();
+		txtrAtencinElSiguiente.setForeground(Color.YELLOW);
+		txtrAtencinElSiguiente.setFont(new Font("SansSerif", Font.BOLD, 13));
+		txtrAtencinElSiguiente.setBackground(recuadro);
+		txtrAtencinElSiguiente.setText("ATENCI\u00D3N: El siguiente cambio dar\u00E1 de baja el usuario pero\r\nno realizar\u00E1 la eliminaci\u00F3n total del mismo. La cuenta podr\u00E1 \r\nser reactivada registr\u00E1ndose nuevamente.");
+		txtrAtencinElSiguiente.setBounds(22, 99, 398, 92);
+		panel_1.add(txtrAtencinElSiguiente);
 		
 		
 	}
