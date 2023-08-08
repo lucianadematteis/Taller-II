@@ -22,7 +22,6 @@ public class BMUsuario extends JFrame {
 	private JPanel contentPane;
 	private JTextField pass;
 	private JTextField pass2;
-	private JTextField textField;
 	private JTextField textField_1;
 
 	/**
@@ -141,44 +140,33 @@ public class BMUsuario extends JFrame {
 		panel_1.setBounds(513, 156, 456, 353);
 		contentPane.add(panel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Ingrese nueva contrase\u00F1a");
-		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel_1_1.setBounds(92, 102, 250, 39);
-		panel_1.add(lblNewLabel_1_1);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Repita la contrase\u00F1a");
+		JLabel lblNewLabel_2_1 = new JLabel("Ingrese su contrase\u00F1a actual");
 		lblNewLabel_2_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel_2_1.setBounds(92, 202, 205, 26);
+		lblNewLabel_2_1.setBounds(92, 190, 266, 26);
 		panel_1.add(lblNewLabel_2_1);
 		
-		JButton aceptar_1 = new JButton("CONFIRMAR");
+		JButton aceptar_1 = new JButton("ELIMINAR CUENTA");
 		aceptar_1.setForeground(Color.WHITE);
 		aceptar_1.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		aceptar_1.setFocusPainted(false);
 		aceptar_1.setBackground(new Color(3, 60, 88));
-		aceptar_1.setBounds(316, 302, 104, 23);
+		aceptar_1.setBounds(275, 302, 145, 23);
 		panel_1.add(aceptar_1);
 		
 		JLabel lblEliminarUsuario = new JLabel("ELIMINAR USUARIO");
 		lblEliminarUsuario.setForeground(Color.WHITE);
 		lblEliminarUsuario.setFont(new Font("SansSerif", Font.BOLD, 24));
-		lblEliminarUsuario.setBounds(92, 11, 328, 55);
+		lblEliminarUsuario.setBounds(102, 11, 328, 55);
 		panel_1.add(lblEliminarUsuario);
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(22, 77, 392, 2);
 		panel_1.add(separator_2);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(92, 152, 235, 20);
-		panel_1.add(textField);
-		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(92, 234, 229, 20);
+		textField_1.setBounds(111, 238, 229, 20);
 		panel_1.add(textField_1);
 		
 		JTextArea txtrAtencinElSiguiente = new JTextArea();
@@ -188,6 +176,14 @@ public class BMUsuario extends JFrame {
 		txtrAtencinElSiguiente.setText("ATENCI\u00D3N: El siguiente cambio dar\u00E1 de baja el usuario pero\r\nno realizar\u00E1 la eliminaci\u00F3n total del mismo. La cuenta podr\u00E1 \r\nser reactivada registr\u00E1ndose nuevamente.");
 		txtrAtencinElSiguiente.setBounds(22, 99, 398, 92);
 		panel_1.add(txtrAtencinElSiguiente);
+		
+		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.setForeground(Color.WHITE);
+		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 11));
+		btnCancelar.setFocusPainted(false);
+		btnCancelar.setBackground(new Color(3, 60, 88));
+		btnCancelar.setBounds(865, 579, 104, 23);
+		contentPane.add(btnCancelar);
 		
 		
 	}
