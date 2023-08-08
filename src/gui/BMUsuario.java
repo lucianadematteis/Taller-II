@@ -143,7 +143,7 @@ public class BMUsuario extends JFrame {
 		JLabel lblNewLabel_2_1 = new JLabel("Ingrese su contrase\u00F1a actual");
 		lblNewLabel_2_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel_2_1.setBounds(92, 190, 266, 26);
+		lblNewLabel_2_1.setBounds(102, 201, 266, 26);
 		panel_1.add(lblNewLabel_2_1);
 		
 		JButton aceptar_1 = new JButton("ELIMINAR CUENTA");
