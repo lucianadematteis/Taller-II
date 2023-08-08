@@ -64,10 +64,10 @@ public class ConfirmarEliminarUsuario extends JFrame {
 		contentPane.add(aceptar);
 		
 		
-		JLabel lblNewLabel = new JLabel("Nombre de usuario incorrecto");
+		JLabel lblNewLabel = new JLabel("\u00BFConfirma que desea eliminar el usuario?");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(81, 36, 485, 155);
+		lblNewLabel.setBounds(26, 37, 485, 155);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 6");
