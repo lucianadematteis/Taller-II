@@ -59,7 +59,7 @@ public class ConfirmarEliminarUsuario extends JFrame {
 		});
 		confirmar.setForeground(fuentePrincipal);
 		confirmar.setBackground(botones);
-		confirmar.setBounds(43, 215, 156, 23);
+		confirmar.setBounds(43, 203, 156, 35);
 		confirmar.setFocusPainted(false);
 		contentPane.add(confirmar);
 		
@@ -67,14 +67,14 @@ public class ConfirmarEliminarUsuario extends JFrame {
 		JLabel lblNewLabel = new JLabel("\u00BFConfirma que desea eliminar el usuario?");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(26, 37, 485, 155);
+		lblNewLabel.setBounds(38, 37, 485, 155);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnCancelar = new JButton("CANCELAR");
 		btnCancelar.setForeground(Color.WHITE);
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
-		btnCancelar.setBounds(242, 215, 144, 23);
+		btnCancelar.setBounds(242, 203, 144, 35);
 		contentPane.add(btnCancelar);
 	}
 
