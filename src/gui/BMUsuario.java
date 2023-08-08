@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -113,12 +114,12 @@ public class BMUsuario extends JFrame {
 		separator.setBounds(22, 77, 392, 2);
 		panel.add(separator);
 		
-		pass = new JTextField();
+		pass = new JPasswordField();
 		pass.setBounds(92, 152, 235, 20);
 		panel.add(pass);
 		pass.setColumns(10);
 		
-		pass2 = new JTextField();
+		pass2 = new JPasswordField();
 		pass2.setBounds(92, 234, 229, 20);
 		panel.add(pass2);
 		pass2.setColumns(10);
@@ -172,7 +173,7 @@ public class BMUsuario extends JFrame {
 		separator_2.setBounds(22, 77, 392, 2);
 		panel_1.add(separator_2);
 		
-		textField_1 = new JTextField();
+		textField_1 = new JPasswordField();
 		textField_1.setColumns(10);
 		textField_1.setBounds(111, 238, 229, 20);
 		panel_1.add(textField_1);
