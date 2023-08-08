@@ -147,6 +147,14 @@ public class BMUsuario extends JFrame {
 		panel_1.add(lblNewLabel_2_1);
 		
 		JButton aceptar_1 = new JButton("ELIMINAR CUENTA");
+		aceptar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//si usuario y contraseña correctos entonces:
+				ConfirmarEliminarUsuario frame = new ConfirmarEliminarUsuario();
+				frame.setVisible(true);
+				
+			}
+		});
 		aceptar_1.setForeground(Color.WHITE);
 		aceptar_1.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		aceptar_1.setFocusPainted(false);
