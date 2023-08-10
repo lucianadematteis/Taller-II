@@ -52,19 +52,7 @@ public class login extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(fondoPrincipal);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		
-		user = new JTextField();
-		user.setForeground(escritura);
-		user.setBackground(fondoVentana);
-		user.setBounds(311, 308, 365, 20);
-		user.setColumns(10);
-		
-		JPasswordField pass = new JPasswordField();
-		pass.setForeground(escritura);
-		pass.setBounds(311, 408, 365, 20);
-		pass.setBackground(fondoVentana);;
-		pass.setColumns(10);
+		setContentPane(contentPane);;
 		
 		JLabel lblNewLabel = new JLabel("Usuario");
 		lblNewLabel.setBounds(417, 276, 160, 26);
@@ -80,8 +68,6 @@ public class login extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(lblNewLabel);
 		contentPane.add(lblContrasea);
-		contentPane.add(pass);
-		contentPane.add(user);
 		
 		JLabel lblNewLabel_1 = new JLabel("MANEJADOR DE BASES DE DATOS");
 		lblNewLabel_1.setForeground(fuentePrincipal);
@@ -108,9 +94,37 @@ public class login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		inicioSesion.setBounds(281, 275, 146, 23);
+		inicioSesion.setBounds(250, 275, 146, 23);
 		inicioSesion.setFocusPainted(false);
 		panel.add(inicioSesion);
+		
+		JButton btnRegistrarse = new JButton("REGISTRARSE");
+		btnRegistrarse.setForeground(Color.WHITE);
+		btnRegistrarse.setFocusPainted(false);
+		btnRegistrarse.setBackground(new Color(3, 60, 88));
+		btnRegistrarse.setBounds(64, 275, 146, 23);
+		panel.add(btnRegistrarse);
+		
+		user = new JTextField();
+		user.setBounds(50, 82, 365, 20);
+		panel.add(user);
+		user.setForeground(escritura);
+		user.setBackground(fondoVentana);
+		user.setColumns(10);
+		
+		JPasswordField pass_1 = new JPasswordField();
+		pass_1.setBounds(50, 182, 365, 20);
+		panel.add(pass_1);
+		pass_1.setForeground(escritura);
+		pass_1.setBackground(fondoVentana);
+		pass_1.setColumns(10);
+		
+		JButton btnIniciarDemo = new JButton("INICIAR DEMO");
+		btnIniciarDemo.setForeground(Color.WHITE);
+		btnIniciarDemo.setFocusPainted(false);
+		btnIniciarDemo.setBackground(new Color(3, 60, 88));
+		btnIniciarDemo.setBounds(800, 558, 146, 47);
+		contentPane.add(btnIniciarDemo);
 
 		
 	}
