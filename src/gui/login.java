@@ -102,6 +102,8 @@ public class login extends JFrame {
 		panel.setLayout(null);
 		
 		JButton inicioSesion = new JButton("INICIAR SESION");
+		inicioSesion.setForeground(fuentePrincipal);
+		inicioSesion.setBackground(botones);
 		inicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
