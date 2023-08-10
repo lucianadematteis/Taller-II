@@ -123,7 +123,7 @@ public class login extends JFrame {
 		btnIniciarDemo.setForeground(Color.WHITE);
 		btnIniciarDemo.setFocusPainted(false);
 		btnIniciarDemo.setBackground(new Color(3, 60, 88));
-		btnIniciarDemo.setBounds(800, 558, 146, 47);
+		btnIniciarDemo.setBounds(796, 568, 146, 47);
 		contentPane.add(btnIniciarDemo);
 
 		
