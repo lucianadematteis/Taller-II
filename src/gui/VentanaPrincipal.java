@@ -612,6 +612,9 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(separator);
 		
 		JButton btnConfigUsuario = new JButton("CONFIGURACI\u00D3N DE USUARIO");
+		btnConfigUsuario.setBackground(botones);
+		btnConfigUsuario.setForeground(fuentePrincipal);
+		btnConfigUsuario.setFont(new Font("SansSerif", Font.BOLD, 12));
 		btnConfigUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BMUsuario frame = new BMUsuario();
@@ -620,6 +623,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		btnConfigUsuario.setBounds(24, 614, 248, 23);
+		btnConfigUsuario.setFocusPainted(false);
 		contentPane.add(btnConfigUsuario);
 		
 	}
