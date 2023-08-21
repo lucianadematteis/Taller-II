@@ -110,6 +110,13 @@ public class login extends JFrame {
 		panel.add(inicioSesion);
 		
 		JButton btnRegistrarse = new JButton("REGISTRARSE");
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistrarUsuario frame= new RegistrarUsuario();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
 		btnRegistrarse.setForeground(Color.WHITE);
 		btnRegistrarse.setFocusPainted(false);
 		btnRegistrarse.setBackground(new Color(3, 60, 88));
