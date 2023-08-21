@@ -92,6 +92,8 @@ public class login extends JFrame {
 		inicioSesion.setBackground(botones);
 		inicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 			}
 		});
 		inicioSesion.setBounds(250, 275, 146, 23);
