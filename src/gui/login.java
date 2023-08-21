@@ -92,7 +92,14 @@ public class login extends JFrame {
 		inicioSesion.setBackground(botones);
 		inicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (pass.getPassword()== comunicacion.DTOUsuario.getContrasenia && 
+				if (pass.getPassword()== comunicacion.DTOUsuario.Usuarios.get(Integer.parseInt(user.getText())).getContrasenia && comunicacion.DTOUsuario.Usuarios.containsKey(Integer.parseInt(user.getText()))) {
+					VentanaPrincipal frame = new VentanaPrincipal();
+					frame.setVisible(true);
+					dispose();
+				}
+				else if (pass.getPassword() != comunicacion.DTOUsuario.Usuarios.get(Integer.parseInt(user.getText())).getContrasenia ) {
+					
+				}
 				
 			}
 		});
