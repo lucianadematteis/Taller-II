@@ -92,7 +92,7 @@ public class login extends JFrame {
 		inicioSesion.setBackground(botones);
 		inicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				if (pass.getPassword()== comunicacion.DTOUsuario.getContrasenia && 
 				
 			}
 		});
