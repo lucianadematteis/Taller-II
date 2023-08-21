@@ -100,7 +100,6 @@ public class login extends JFrame {
 				else {
 					LoginError frame = new LoginError();
 					frame.setVisible(true);
-					
 				}
 				*/
 				
