@@ -108,19 +108,19 @@ public class RegistrarUsuario extends JFrame {
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			/*
-				if (*inserte aquí si se pudo registrar*) {
+				if (!(comunicacion.DTOUsuario.Usuarios.constainsValue(Integer.parseInt(usuario.getText())))&& Integer.parseInt(pass.getText())== Integer.parseInt(pass2.getText())) {
 					UsuarioRegistroCorrecto frame = new UsuarioRegistroCorrecto();
 					frame.setVisible(true);
 					dispose();
-				}else if {
+				}else if (comunicacion.DTOUsuario.Usuarios.constainsValue(Integer.parseInt(usuario.getText()))) {
 					UsuarioRegistroErrorNombre frame1 = new UsuarioRegistroErrorNombre();
 					frame1.setVisible(true);
 				}else{
 				UsuarioRegisroErrorContrasenia frame2 = new UsuarioRegistroErrorContrasenia();
 				frame2.setVisible (true);
 				}
-				*/
 				
+			*/	
 			}
 		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
