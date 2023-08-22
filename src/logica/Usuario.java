@@ -7,13 +7,11 @@ public class Usuario {
 	
 	private String nombreUser;
 	private String contrasenia;
-	private Map<String, BasesDatos> basesDatos;
 	
 	
-	public Usuario(String nombreUser, String contrasenia, Map<String, BasesDatos> basesDatos) {
+	public Usuario(String nombreUser, String contrasenia) {
 		this.nombreUser = nombreUser;
 		this.contrasenia = contrasenia;
-		this.basesDatos = basesDatos;
 	}
 
 
@@ -30,10 +28,6 @@ public class Usuario {
 
 
 
-	public Map<String, BasesDatos> getBasesDatos() {
-		return basesDatos;
-	}
-
 
 
 	public void setNombreUser(String nombreUser) {
@@ -46,9 +40,6 @@ public class Usuario {
 	}
 
 
-	public void setBasesDatos(Map<String, BasesDatos> basesDatos) {
-		this.basesDatos = basesDatos;
-	}
 	
 	
 	

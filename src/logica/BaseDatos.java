@@ -5,12 +5,10 @@ import java.util.Map;
 public class BaseDatos {
 
 	private String nombreBD;
-	private Map <String, Tablas> tablas;
 	
 	
-	public BaseDatos(String nombreBD, Map<String, Tablas> tablas) {
+	public BaseDatos(String nombreBD) {
 		this.nombreBD = nombreBD;
-		this.tablas = tablas;
 	}
 
 

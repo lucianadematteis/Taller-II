@@ -1,38 +1,44 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Map;
 
-class Tabla {
+import comunicacion.DTOTabla;
+
+public class Tabla {
 	
-private String nombreTabla;
-private ArrayList<Registros> tuplas;
+	private String nombreTabla;
+	private ArrayList<Map<String, Atributo>> registros;
+	
+	public Tabla(DTOTabla tabla) {
+		
+		this.nombreTabla = tabla.getNombreTabla();
+		setRegistros(new ArrayList<>());
+		
+	}
+	
+	public String getNombreTabla() {
+		
+		return nombreTabla;
+		
+	}
+	
+	public void setNombreTabla(String nombreTabla) {
+		
+		this.nombreTabla = nombreTabla;
+		
+	}
 
+	public ArrayList<Map<String, Atributo>> getRegistros() {
+		
+		return registros;
+		
+	}
 
-public Tabla(String nombreTabla, ArrayList<Registros> tuplas) {
-	super();
-	this.nombreTabla = nombreTabla;
-	this.tuplas = tuplas;
-}
-
-
-public String getNombreTabla() {
-	return nombreTabla;
-}
-
-
-public void setNombreTabla(String nombreTabla) {
-	this.nombreTabla = nombreTabla;
-}
-
-
-public ArrayList<Registros> getTuplas() {
-	return tuplas;
-}
-
-
-public void setTupla(ArrayList<Registros> tuplas) {
-	this.tuplas = tuplas;
-}
-
+	public void setRegistros(ArrayList<Map<String, Atributo>> registros) {
+		
+		this.registros = registros;
+		
+	}
 
 }
