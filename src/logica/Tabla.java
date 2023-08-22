@@ -17,6 +17,13 @@ public class Tabla {
 		
 	}
 	
+	public Tabla(String nombreTabla) {
+		
+		this.nombreTabla = nombreTabla;
+		registros = new ArrayList<Map<String, Atributo>>();
+		
+	}
+	
 	public String getNombreTabla() {
 		
 		return nombreTabla;

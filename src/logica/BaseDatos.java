@@ -16,6 +16,13 @@ public class BaseDatos {
 		tablas = new HashMap<String, Tabla>();
 		
 	}
+	
+	public BaseDatos(String nombreBD) {
+		
+		this.nombreBD = nombreBD;
+		tablas = new HashMap<String, Tabla>();
+		
+	}
 
 	public String getNombreBD() {
 		

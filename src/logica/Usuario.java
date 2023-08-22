@@ -18,6 +18,14 @@ public class Usuario {
 		basesDatos = new HashMap<String, BaseDatos>();
 		
 	}
+	
+	public Usuario(String nombreUser, String contrasenia) {
+		
+		this.nombreUser = nombreUser;
+		this.contrasenia = contrasenia;
+		basesDatos = new HashMap<String, BaseDatos>();
+		
+	}
 
 	public String getNombreUser() {
 		

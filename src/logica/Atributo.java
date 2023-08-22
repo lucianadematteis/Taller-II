@@ -15,6 +15,14 @@ public abstract class Atributo {
 		this.clave = atributo.getClave();
 		
 	}
+	
+	public Atributo(String nombreAtributo, boolean nulo, boolean clave) {
+		
+		this.nombreAtributo = nombreAtributo;
+		this.nulo = nulo;
+		this.clave = clave;
+		
+	}
 
 	public String getNombreAtributo() {
 		

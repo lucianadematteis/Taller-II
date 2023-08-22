@@ -12,6 +12,13 @@ class Entero extends Atributo {
 		this.valor = entero.getValor();
 		
 	}
+	
+	public Entero(String nombreAtributo, boolean nulo, boolean clave, int valor) {
+		
+		super(nombreAtributo, nulo, clave);
+		this.valor = valor;
+		
+	}
 
 	public int getValor() {
 		
