@@ -13,7 +13,7 @@ public class Tabla {
 	public Tabla(DTOTabla tabla) {
 		
 		this.nombreTabla = tabla.getNombreTabla();
-		setRegistros(new ArrayList<>());
+		registros = new ArrayList<Map<String, Atributo>>();
 		
 	}
 	

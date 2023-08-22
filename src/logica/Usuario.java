@@ -15,7 +15,7 @@ public class Usuario {
 		
 		this.nombreUser = usuario.getNombreUser();
 		this.contrasenia = usuario.getContrasenia();
-		setBasesDatos(new HashMap<String, BaseDatos>());
+		basesDatos = new HashMap<String, BaseDatos>();
 		
 	}
 
