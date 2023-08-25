@@ -30,6 +30,7 @@ public class Usuario {
 	public String getNombreUser() {
 		
 		return nombreUser;
+		//Usaadasdasd
 		
 	}
 
