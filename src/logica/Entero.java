@@ -2,7 +2,7 @@ package logica;
 
 import comunicacion.DTOEntero;
 
-class Entero extends Atributo {
+public class Entero extends Atributo {
 	
 	private int valor;
 

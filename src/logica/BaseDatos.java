@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import comunicacion.DTOBaseDatos;
@@ -8,19 +9,19 @@ import comunicacion.DTOBaseDatos;
 public class BaseDatos {
 
 	private String nombreBD;
-	private Map<String, Tabla> tablas;
+	private LinkedHashMap<String, Tabla> tablas;
 	
 	public BaseDatos(DTOBaseDatos BaseDatos) {
 		
 		this.nombreBD = BaseDatos.getNombreBD();
-		tablas = new HashMap<String, Tabla>();
+		tablas = new LinkedHashMap<String, Tabla>();
 		
 	}
 	
 	public BaseDatos(String nombreBD) {
 		
 		this.nombreBD = nombreBD;
-		tablas = new HashMap<String, Tabla>();
+		tablas = new LinkedHashMap<String, Tabla>();
 		
 	}
 
@@ -42,7 +43,7 @@ public class BaseDatos {
 		
 	}
 
-	public void setTablas(Map<String, Tabla> tablas) {
+	public void setTablas(LinkedHashMap<String, Tabla> tablas) {
 		
 		this.tablas = tablas;
 		

@@ -1,7 +1,6 @@
 package logica;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 import comunicacion.DTOUsuario;
 
@@ -9,13 +8,13 @@ public class Usuario {
 	
 	private String nombreUser;
 	private String contrasenia;
-	private Map<String, BaseDatos> basesDatos;
+	private LinkedHashMap<String, BaseDatos> basesDatos;
 	
 	public Usuario(DTOUsuario usuario) {
 		
 		this.nombreUser = usuario.getNombreUser();
 		this.contrasenia = usuario.getContrasenia();
-		basesDatos = new HashMap<String, BaseDatos>();
+		basesDatos = new LinkedHashMap<String, BaseDatos>();
 		
 	}
 	
@@ -23,14 +22,13 @@ public class Usuario {
 		
 		this.nombreUser = nombreUser;
 		this.contrasenia = contrasenia;
-		basesDatos = new HashMap<String, BaseDatos>();
+		basesDatos = new LinkedHashMap<String, BaseDatos>();
 		
 	}
 
 	public String getNombreUser() {
 		
 		return nombreUser;
-		//Usaadasdasd
 		
 	}
 
@@ -52,13 +50,13 @@ public class Usuario {
 		
 	}
 
-	public Map<String, BaseDatos> getBasesDatos() {
+	public LinkedHashMap<String, BaseDatos> getBasesDatos() {
 		
 		return basesDatos;
 		
 	}
 
-	public void setBasesDatos(Map<String, BaseDatos> basesDatos) {
+	public void setBasesDatos(LinkedHashMap<String, BaseDatos> basesDatos) {
 		
 		this.basesDatos = basesDatos;
 		
