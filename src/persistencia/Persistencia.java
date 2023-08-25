@@ -39,14 +39,14 @@ public class Persistencia {
 		
 		if (identificarSistema()==1) { //Si es windows
 			
-			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreTabla + "\\" + nombreBD + "\\" + "Registros.txt";
+			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBD + "\\" + nombreTabla + "\\" + "Registros.txt";
 			
 		}else if(identificarSistema()==0){ //Si es linux
 			
-			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreTabla + "//" + nombreBD + "//" + "Registros.txt";
+			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBD + "//" + nombreTabla + "//" + "Registros.txt";
 			
 		}
-		
+
 		try {
 			
 		    FileWriter archivo = new FileWriter(nombreArchivo, true);
