@@ -4,11 +4,15 @@ import java.io.File;
 import java.io.FileWriter;//escritura
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import logica.Atributo;
+import logica.BaseDatos;
 import logica.Cadena;
 import logica.Entero;
+import logica.Tabla;
+import logica.Usuario;
 
 public class Persistencia {
 
@@ -51,7 +55,7 @@ public class Persistencia {
 		
 	}
 	
-	public void persistirRegistros(ArrayList<Map<String, Atributo>> registros, String nombreUsuario, String nombreTabla, String nombreBD){
+	public void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreUsuario, String nombreBD, String nombreTabla){
 		
 		String nombreArchivo="";
 		
@@ -116,4 +120,30 @@ public class Persistencia {
 
 	}
 	
+	public void persistirRegistrosTotales(LinkedHashMap<String, Usuario> usuarios) {
+		
+		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
+			
+			Usuario user = usuario.getValue();
+			
+			for (Map.Entry<String, BaseDatos> baseDatos : user.getBasesDatos().entrySet()) {
+				
+				BaseDatos bd = baseDatos.getValue();
+				
+				for (Map.Entry<String, Tabla> tabla : bd.getTablas().entrySet()) {
+					
+					Tabla tablita = tabla.getValue();
+					
+					this.persistirRegistros(tablita.getRegistros(), user.getNombreUser(), bd.getNombreBD(), tablita.getNombreTabla());
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
 }
+
+
