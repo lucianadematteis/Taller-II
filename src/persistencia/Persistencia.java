@@ -1,12 +1,10 @@
 package persistencia;
 
-import java.util.StringTokenizer;//tokenizador
+import java.io.File;
 import java.io.FileWriter;//escritura
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import logica.Atributo;
 import logica.Cadena;
@@ -14,6 +12,26 @@ import logica.Entero;
 
 public class Persistencia {
 
+	public boolean crearCarpeta(String nombreCarpeta, String ruta) { //Retorna true si tiene exito
+		
+		File carpeta = new File(ruta + File.separator + nombreCarpeta);
+		
+		if (carpeta.exists()) {
+			
+			return false;
+			
+		}else if (carpeta.mkdir()){
+		     
+			return true;
+			
+		} else {
+		
+			return false;
+		
+		}
+		
+	}
+	
 	public int identificarSistema() {
 		
 		String so = System.getProperty("os.name").toLowerCase();
@@ -83,7 +101,7 @@ public class Persistencia {
 		            
 		        }
 
-		        registroFinal += "|"; // Agregar el carácter "|" al final de cada registro
+		        registroFinal += "|"; // Agregar el carï¿½cter "|" al final de cada registro
 
 		        archivo.write(registroFinal + "\n");
 		    }
@@ -92,7 +110,7 @@ public class Persistencia {
 		    
 		} catch (IOException e) {
 		    
-			System.out.println("Ocurrió un error al persistir los datos en el archivo: " + e.getMessage());
+			System.out.println("Ocurriï¿½ un error al persistir los datos en el archivo: " + e.getMessage());
 		
 		}
 
