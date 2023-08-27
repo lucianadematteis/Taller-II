@@ -73,7 +73,13 @@ public class Persistencia {
 	            Map<String, Tabla> tablas = baseDatos.getTablas();
 	         // if(tablas.size() )  
 	            insertar.append(nombreBase);
-	            crearCarpeta(nombreBase, System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario);
+	            
+	            if(identificarSistema()==1) {
+	            	crearCarpeta(nombreBase, System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario);
+	            } else {
+	            	crearCarpeta(nombreBase, System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario );
+	            }
+	            
 	            for (Map.Entry<String, Tabla> entry2 : tablas.entrySet()) {
 	            	
 	            	String nombreTabla = entry2.getKey();
