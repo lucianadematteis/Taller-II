@@ -55,7 +55,7 @@ public class Persistencia {
 		
 	}
 	
-	public void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreUsuario, String nombreBD, String nombreTabla){
+	public String obtenerRutaRegistro(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
 		String nombreArchivo="";
 		
@@ -68,10 +68,16 @@ public class Persistencia {
 			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBD + "//" + nombreTabla + "//" + "Registros.txt";
 			
 		}
-
+		
+		return nombreArchivo;
+		
+	}
+	
+	public void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, String ruta){
+		
 		try {
 			
-		    FileWriter archivo = new FileWriter(nombreArchivo, true);
+		    FileWriter archivo = new FileWriter(ruta, true);
 
 		    for (Map<String, Atributo> registro : registros) {
 		    	
@@ -134,7 +140,9 @@ public class Persistencia {
 					
 					Tabla tablita = tabla.getValue();
 					
-					this.persistirRegistros(tablita.getRegistros(), user.getNombreUser(), bd.getNombreBD(), tablita.getNombreTabla());
+					String ruta = obtenerRutaRegistro(user.getNombreUser(), bd.getNombreBD(), tablita.getNombreTabla());
+					
+					this.persistirRegistros(tablita.getRegistros(), ruta);
 					
 				}
 				
