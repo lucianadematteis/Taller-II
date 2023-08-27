@@ -55,6 +55,42 @@ public class Persistencia {
 		
 	}
 	
+	public void persistirBasesDeDatos(Map<String, BaseDatos> BasesDatos, String nombreUsuario){
+		
+		String nombreArchivo="";
+		StringBuilder insertar = new StringBuilder();
+		if (identificarSistema()==1) { //Si es windows
+			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + "nombreBDs.txt";
+			
+		}else if(identificarSistema()==0){ //Si es linux
+			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + "nombreBDs.txt";	
+		}
+		
+	    try (FileWriter archivo = new FileWriter(nombreArchivo, true)) {
+	        for (Map.Entry<String, BaseDatos> entry : BasesDatos.entrySet()) {
+	            BaseDatos baseDatos = entry.getValue();
+	            String nombreBase =baseDatos.getNombreBD();
+	            Map<String, Tabla> tablas = baseDatos.getTablas();
+	         // if(tablas.size() )  
+	            insertar.append(nombreBase);
+	            crearCarpeta(nombreBase, System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario);
+	            for (Map.Entry<String, Tabla> entry2 : tablas.entrySet()) {
+	            	
+	            	String nombreTabla = entry2.getKey();
+	            	 insertar.append(":" +nombreTabla );
+	            }
+	            
+	            insertar.append("|"); // Separador de salto de línea
+	            String ingreso = insertar.toString();
+	            archivo.write(ingreso + "\n");
+	            
+	        }
+	        archivo.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
 	public void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreUsuario, String nombreBD, String nombreTabla){
 		
 		String nombreArchivo="";
