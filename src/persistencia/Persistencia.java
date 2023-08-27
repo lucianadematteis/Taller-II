@@ -143,6 +143,67 @@ public class Persistencia {
 		}
 		
 	}
+	public void persistirTablas(Map<String, Tabla> tablas, String nombreBase, String nombreUsuario){
+		
+		String nombreArchivo="";
+		StringBuilder insertar = new StringBuilder();
+		if (identificarSistema()==1) { //Si es windows
+			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBase + "\\" + "Tablas.txt";
+			
+		}else if(identificarSistema()==0){ //Si es linux
+			
+			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBase + "//" + "Tablas.txt";
+			
+		}
+		
+        try (FileWriter archivo = new FileWriter(nombreArchivo)) {
+            for (Map.Entry<String, Tabla> entry : tablas.entrySet()) {
+                String nombreTabla = entry.getKey();
+                Tabla tabla = entry.getValue();
+                insertar.append(nombreTabla + ":");
+                for (LinkedHashMap<String, Atributo> registro : tabla.getRegistros()) {//esta linea esta mal
+                    for (Map.Entry<String, Atributo> atributoEntry : registro.entrySet()) {//esta linea esta mal
+                        String nombreAtributo = atributoEntry.getKey();
+                        Atributo atributo = atributoEntry.getValue();
+                        String tipo="";
+                        String nulo="";
+                        String clave="";
+                        if (atributo instanceof Cadena) {
+    		                tipo="Cadena";
+                        	
+    		            } else if (atributo instanceof Entero) {
+    		            	tipo="Entero";
+    		            }
+                        if (atributo.getNulo()) {
+    		                nulo="1";
+                        	
+    		            } else if (atributo.getNulo()==false) {
+    		            	nulo="0";
+    		            }
+                        if (atributo.getClave()) {
+    		                clave="1";
+                        	
+    		            } else if (atributo.getClave()==false) {
+    		            	clave="0";
+    		            }
+                        
+                        insertar.append(nombreAtributo + ":"+ nulo + ":" + clave + ":" + tipo + ":");
+                        
+                    }
+                }
+                insertar.deleteCharAt(insertar.length() - 1);
+                insertar.append("|"); // Separador de salto de línea
+                String ingreso = insertar.toString();
+                archivo.write(ingreso + "\n");
+                insertar.setLength(0);
+                
+            }
+            archivo.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+}
 	
 }
 
