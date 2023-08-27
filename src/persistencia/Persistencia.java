@@ -71,7 +71,6 @@ public class Persistencia {
 	            BaseDatos baseDatos = entry.getValue();
 	            String nombreBase =baseDatos.getNombreBD();
 	            Map<String, Tabla> tablas = baseDatos.getTablas();
-	         // if(tablas.size() )  
 	            insertar.append(nombreBase);
 	            
 	            if(identificarSistema()==1) {
