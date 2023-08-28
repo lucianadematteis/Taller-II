@@ -80,7 +80,7 @@ public class Persistencia {
 		
 		try {
 			
-		    FileWriter archivo = new FileWriter(ruta, true);
+		    FileWriter archivo = new FileWriter(ruta);
 
 		    for (Map<String, Atributo> registro : registros) {
 		    	
