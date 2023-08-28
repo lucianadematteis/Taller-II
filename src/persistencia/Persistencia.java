@@ -61,19 +61,19 @@ public class Persistencia {
 	public String obtenerRutaRegistro(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
 		String nombreArchivo="";
-		
-		if (identificarSistema()==1) { //Si es windows
-			
-			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBD + "\\" + nombreTabla + "\\" + "Registros.txt";
-			
-		}else if(identificarSistema()==0){ //Si es linux
-			
-			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBD + "//" + nombreTabla + "//" + "Registros.txt";
-			
-		}
-		
-		return nombreArchivo;
-		
+		int sistema = identificarSistema();
+	    
+		if (sistema == 1) { // Si es Windows
+        	
+            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBD + "\\" + nombreTabla + "\\" + "Registros.txt";
+        
+        } else if (sistema == 0) { // Si es Linux
+            
+        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBD + "//" + nombreTabla + "//" + "Registros.txt";
+       
+        }
+	     
+	    return nombreArchivo;
 	}
 	
 	public void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, String ruta){
@@ -114,7 +114,7 @@ public class Persistencia {
 		            
 		        }
 
-		        registroFinal += "|"; // Agregar el car�cter "|" al final de cada registro
+		        registroFinal += "|"; // Agregar el caracter "|" al final de cada registro
 
 		        archivo.write(registroFinal + "\n");
 		    }
@@ -123,8 +123,8 @@ public class Persistencia {
 		    
 		} catch (IOException e) {
 		    
-			System.out.println("Ocurri� un error al persistir los datos en el archivo: " + e.getMessage());
-		
+			e.printStackTrace();
+			
 		}
 
 	}
@@ -143,15 +143,18 @@ public class Persistencia {
 					
 					Tabla tablita = tabla.getValue();
 					
-					String ruta = obtenerRutaRegistro(user.getNombreUser(), bd.getNombreBD(), tablita.getNombreTabla());
+					if (!(user.getNombreUser().isEmpty() || bd.getNombreBD().isEmpty() || tablita.getNombreTabla().isEmpty() || tablita.getRegistros().isEmpty())) {
+					    
+						String ruta = obtenerRutaRegistro(user.getNombreUser(), bd.getNombreBD(), tablita.getNombreTabla());
+						
+						ArrayList<LinkedHashMap<String, Atributo>> registros = tablita.getRegistros();
+						ArrayList<LinkedHashMap<String, Atributo>> guia = new ArrayList<>(registros);
+						
+						guia.remove(0);
+						
+						persistirRegistros(guia, ruta);
 					
-					ArrayList<LinkedHashMap<String, Atributo>> registros = tablita.getRegistros();
-					
-					ArrayList<LinkedHashMap<String, Atributo>> guia = new ArrayList<>(registros);
-					
-					guia.remove(0);
-					
-					persistirRegistros(guia, ruta);
+					}
 					
 				}
 				
@@ -185,6 +188,7 @@ public class Persistencia {
 	                    if (palabra.endsWith("|")) {
 	                    	
 	                        palabra = palabra.substring(0, palabra.length() - 1);
+	                        
 	                    }
 	                    
 	                    if (guiaa.getValue() instanceof Cadena) {
@@ -206,6 +210,7 @@ public class Persistencia {
 	            }
 		        
 		        resultado.add(registro); // Agregar el registro al resultado
+		        
 		    }
 		    
 		} catch (IOException e) {
@@ -231,11 +236,17 @@ public class Persistencia {
 				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
 					
 				    Tabla tablita = tabla.getValue();
-				    String ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
 				    
-				    LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+				    if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty() || tablita.getNombreTabla().isEmpty() || tablita.getRegistros().isEmpty())) {
+					    
+						String ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
+						
+				    	LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+					    
+					    tablita.setRegistros(recuperarRegistros(ruta, guia));
+					
+				    }
 				    
-				    tablita.setRegistros(recuperarRegistros(ruta, guia));
 				}
 				
 			}
@@ -243,7 +254,7 @@ public class Persistencia {
 		}
 		
 	}
-	
+
 	public void persistirBasesDeDatos(Map<String, BaseDatos> BasesDatos, String nombreUsuario){
 		
 		String nombreArchivo="";
@@ -284,8 +295,6 @@ public class Persistencia {
 	        e.printStackTrace();
 	    }
 	}
-	
-
 	
 	public void persistirTablas(Map<String, Tabla> tablas, String nombreBase, String nombreUsuario){
 		
