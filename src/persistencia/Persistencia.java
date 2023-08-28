@@ -81,42 +81,52 @@ public class Persistencia {
 		try {
 			
 		    FileWriter archivo = new FileWriter(ruta);
+		    boolean primerRegistro = true;
 
 		    for (Map<String, Atributo> registro : registros) {
 		    	
-		        String registroFinal = ""; // Reiniciar para cada nuevo registro
-		        int atributoActual = 0;
-
-		        for (Map.Entry<String, Atributo> posicion : registro.entrySet()) {
-		        	
-		            Atributo atributo = posicion.getValue();
-		            atributoActual++;
-
-		            if (atributo instanceof Cadena) {
-		            	
-		                Cadena cadena = (Cadena) atributo;
-		                String dato = cadena.getDato();
-		                registroFinal += dato;
-		                
-		            } else if (atributo instanceof Entero) {
-		            	
-		                Entero entero = (Entero) atributo;
-		                int valor = entero.getValor();
-		                registroFinal += Integer.toString(valor);
-		                
-		            }
-
-		            if (atributoActual < registro.size()) {
-		            	
-		                registroFinal += ":";
-		                
-		            }
-		            
-		        }
-
-		        registroFinal += "|"; // Agregar el caracter "|" al final de cada registro
-
-		        archivo.write(registroFinal + "\n");
+		    	if (primerRegistro) {
+		    		
+		    		primerRegistro = false;
+		    		
+	            } else {
+		    	
+			        String registroFinal = ""; // Reiniciar para cada nuevo registro
+			        int atributoActual = 0;
+	
+			        for (Map.Entry<String, Atributo> posicion : registro.entrySet()) {
+			        	
+			            Atributo atributo = posicion.getValue();
+			            atributoActual++;
+	
+			            if (atributo instanceof Cadena) {
+			            	
+			                Cadena cadena = (Cadena) atributo;
+			                String dato = cadena.getDato();
+			                registroFinal += dato;
+			                
+			            } else if (atributo instanceof Entero) {
+			            	
+			                Entero entero = (Entero) atributo;
+			                int valor = entero.getValor();
+			                registroFinal += Integer.toString(valor);
+			                
+			            }
+	
+			            if (atributoActual < registro.size()) {
+			            	
+			                registroFinal += ":";
+			                
+			            }
+			            
+			        }
+			        
+	            
+			        registroFinal += "|"; // Agregar el caracter "|" al final de cada registro
+	
+			        archivo.write(registroFinal + "\n");
+			        
+	            }
 		    }
 
 		    archivo.close();
@@ -240,8 +250,7 @@ public class Persistencia {
 				    if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty() || tablita.getNombreTabla().isEmpty() || tablita.getRegistros().isEmpty())) {
 					    
 						String ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
-						
-				    	LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+						LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
 					    
 					    tablita.setRegistros(recuperarRegistros(ruta, guia));
 					
