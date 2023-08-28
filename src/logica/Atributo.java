@@ -23,6 +23,14 @@ public abstract class Atributo {
 		this.clave = clave;
 		
 	}
+	
+	public Atributo() {
+		
+		this.nombreAtributo = "";
+		this.nulo = false;
+		this.clave = false;
+		
+	}
 
 	public String getNombreAtributo() {
 		

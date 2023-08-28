@@ -19,6 +19,13 @@ public class Cadena extends Atributo {
 		this.dato = dato;
 		
 	}
+	
+	public Cadena(String dato) {
+		
+		super();
+		this.dato = dato;
+		
+	}
 
 	public String getDato() {
 		

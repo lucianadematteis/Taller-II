@@ -1,11 +1,14 @@
 package persistencia;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;//escritura
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import logica.Atributo;
 import logica.BaseDatos;
@@ -55,7 +58,7 @@ public class Persistencia {
 		
 	}
 	
-	public String obtenerRutaRegistro(String nombreUsuario, String nombreBD, String nombreTabla) {
+		public String obtenerRutaRegistro(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
 		String nombreArchivo="";
 		
@@ -142,8 +145,97 @@ public class Persistencia {
 					
 					String ruta = obtenerRutaRegistro(user.getNombreUser(), bd.getNombreBD(), tablita.getNombreTabla());
 					
-					this.persistirRegistros(tablita.getRegistros(), ruta);
+					ArrayList<LinkedHashMap<String, Atributo>> registros = tablita.getRegistros();
 					
+					ArrayList<LinkedHashMap<String, Atributo>> guia = new ArrayList<>(registros);
+					
+					guia.remove(0);
+					
+					persistirRegistros(guia, ruta);
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+
+	public ArrayList<LinkedHashMap<String, Atributo>> recuperarRegistros(String ruta, LinkedHashMap<String, Atributo> guia){
+		
+		ArrayList<LinkedHashMap<String, Atributo>> resultado = new ArrayList<LinkedHashMap<String, Atributo>>();
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+		    
+			String linea;
+
+		    while ((linea = br.readLine()) != null) {
+		    	
+		    	LinkedHashMap<String, Atributo> registro = new LinkedHashMap<String, Atributo>(); // Nuevo registro en cada iteración
+		        
+		        String[] palabras = linea.split(":");
+		        int index = 0;
+		        
+		        for (Entry<String, Atributo> guiaa : guia.entrySet()) {
+		        	
+		        	if (index < palabras.length) {
+		        		
+	                    String palabra = palabras[index++];
+	                    
+	                    if (palabra.endsWith("|")) {
+	                    	
+	                        palabra = palabra.substring(0, palabra.length() - 1);
+	                    }
+	                    
+	                    if (guiaa.getValue() instanceof Cadena) {
+	                    	
+	                        // Crear y agregar un atributo de tipo Cadena al registro
+	                        Cadena atri = new Cadena(palabra);
+	                        registro.put(guiaa.getKey(), atri);
+	                        
+	                    } else if (guiaa.getValue() instanceof Entero) {
+	                    	
+	                        // Crear y agregar un atributo de tipo Entero al registro
+	                        Entero atri = new Entero(Integer.parseInt(palabra));
+	                        registro.put(guiaa.getKey(), atri);
+	                        
+	                    }
+	                    
+	                } 
+		        	
+	            }
+		        
+		        resultado.add(registro); // Agregar el registro al resultado
+		    }
+		    
+		} catch (IOException e) {
+			
+		    e.printStackTrace();
+		    
+		}
+
+		return resultado;
+		
+	}
+	
+	public void recuperarRegistrosTotales(LinkedHashMap<String, Usuario> usuarios){
+		
+		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
+			
+			Usuario user = usuario.getValue();
+			
+			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
+				
+				BaseDatos base = bd.getValue();
+				
+				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
+					
+				    Tabla tablita = tabla.getValue();
+				    String ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
+				    
+				    LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+				    
+				    tablita.setRegistros(recuperarRegistros(ruta, guia));
 				}
 				
 			}
