@@ -158,8 +158,6 @@ public class Persistencia {
 						try (FileWriter archivo = new FileWriter(ruta)) {
 							
 	                        ArrayList<LinkedHashMap<String, Atributo>> registros = tablita.getRegistros();
-	                        ArrayList<LinkedHashMap<String, Atributo>> guia = new ArrayList<>(registros);
-							guia.remove(0);
 	                        persistirRegistros(registros, archivo);
 	                        
 	                    } catch (IOException e) {
