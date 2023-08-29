@@ -27,7 +27,6 @@ public class VentanaPrincipal extends JFrame {
 	private JTable salida;
 	static JTable depuracion;
 	
-	Principal principal = new Principal();
 	Comandos comandos = new Comandos();
 	
 	public static void main(String[] args) { //BORRAR LUEGO
