@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal extends JFrame {
@@ -39,6 +41,58 @@ public class VentanaPrincipal extends JFrame {
 				}
 			}
 		});
+	}
+	
+	public void insertarDepuracion(String mensaje1, String mensaje2) {
+
+		DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.depuracion.getModel();
+
+		Object[] nuevaFila = { mensaje1, mensaje2 };
+		model.insertRow(0, nuevaFila);
+
+	}
+	
+	public ArrayList<String[]> administraSentencia(String sentencia) {
+
+		// Se pretende generar un arreglo de arreglos. Donde en cada posici�n del
+		// arreglo principal
+		// se almacene una linea de la sentencia, de forma tal que cada palabra
+		// corresponda a una posicion de los arreglos secundarios
+
+		// Separa el contenido en lineas
+		String[] lineas = sentencia.split("\n");
+
+		// Crea un arreglo para cada linea
+		ArrayList<String[]> arregloLinea = new ArrayList<>();
+
+		// Recorre cada linea
+		for (String unaLinea : lineas) {
+
+			ArrayList<String> palabras = new ArrayList<>();
+
+			Matcher matcher = Pattern.compile("\"([^\"]*)\"|\\S+").matcher(unaLinea);
+
+			// Encuentra las palabras entre comillas o las palabras separadas por espacios
+			while (matcher.find()) {
+
+				String palabra = matcher.group();
+
+				// Si la palabra tiene comillas, se eliminan las comillas
+				if (palabra.startsWith("\"") && palabra.endsWith("\"")) {
+
+					palabra = palabra.substring(1, palabra.length() - 1);
+
+				}
+
+				palabras.add(palabra);
+
+			}
+
+			arregloLinea.add(palabras.toArray(new String[0]));
+		}
+
+		return arregloLinea;
+
 	}
 
 	public VentanaPrincipal() {
@@ -176,7 +230,7 @@ public class VentanaPrincipal extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				ArrayList<String[]> arregloLinea = principal.administraSentencia(entrada.getText());
+				ArrayList<String[]> arregloLinea = administraSentencia(entrada.getText());
 		        
 		        String comando=arregloLinea.get(0)[0].toUpperCase();
 		        
