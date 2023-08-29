@@ -23,6 +23,10 @@ public class Principal {
 	public List<String> comandosNivel2 = Arrays.asList("SET", "FROM", "WHERE", "TABLES", "DATABASE", "TABLE", "VALUES");
 
 	public List<String> operadoresLogicos = Arrays.asList("AND", "OR");
+	
+	public List<String> tiposDatos = Arrays.asList("CADENA", "ENTERO");
+	
+	public List<String> operadores = Arrays.asList("=");
 
 	public ArrayList<String[]> administraSentencia(String sentencia) {
 
@@ -101,7 +105,7 @@ public class Principal {
 
 	public boolean validaTipoDato(String tipo) {
 
-		return ((tipo.toUpperCase().equals("CADENA")) || (tipo.toUpperCase().equals("ENTERO")));
+		return ((tipo.toUpperCase().equals(tiposDatos.get(0))) || (tipo.toUpperCase().equals(tiposDatos.get(1))));
 
 	}
 
@@ -200,13 +204,13 @@ public class Principal {
 
 		} else {
 
-			if (!(sentencia.get(2)[0].toUpperCase().equals("WHERE"))) {
+			if (!(sentencia.get(2)[0].toUpperCase().equals(comandosNivel2.get(2)))) {
 
 				insertarDepuracion("Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es valido");
 
 			} else {
 
-				if (!(sentencia.get(2)[2].toUpperCase().equals("="))) {
+				if (!(sentencia.get(2)[2].toUpperCase().equals(operadores.get(0)))) {
 
 					insertarDepuracion("Error #05", "El operador: " + sentencia.get(2)[2] + " no es valido");
 
@@ -231,7 +235,7 @@ public class Principal {
 
 		} else {
 
-			if (!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
+			if (!(sentencia.get(1)[0].toUpperCase().equals(comandosNivel2.get(1)))) {
 
 				insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 
