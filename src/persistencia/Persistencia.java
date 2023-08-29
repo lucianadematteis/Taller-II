@@ -78,61 +78,51 @@ public class Persistencia {
 	
 	public void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, FileWriter archivo){
 		
-	    boolean primerRegistro = true;
-
 	    for (Map<String, Atributo> registro : registros) {
 	    	
-	    	if (primerRegistro) {
-	    		
-	    		primerRegistro = false;
-	    		
-            } else {
-	    	
-		        String registroFinal = ""; // Reiniciar para cada nuevo registro
-		        int atributoActual = 0;
+	        String registroFinal = ""; // Reiniciar para cada nuevo registro
+	        int atributoActual = 0;
 
-		        for (Map.Entry<String, Atributo> posicion : registro.entrySet()) {
-		        	
-		            Atributo atributo = posicion.getValue();
-		            atributoActual++;
+	        for (Map.Entry<String, Atributo> posicion : registro.entrySet()) {
+	        	
+	            Atributo atributo = posicion.getValue();
+	            atributoActual++;
 
-		            if (atributo instanceof Cadena) {
-		            	
-		                Cadena cadena = (Cadena) atributo;
-		                String dato = cadena.getDato();
-		                registroFinal += dato;
-		                
-		            } else if (atributo instanceof Entero) {
-		            	
-		                Entero entero = (Entero) atributo;
-		                int valor = entero.getValor();
-		                registroFinal += Integer.toString(valor);
-		                
-		            }
+	            if (atributo instanceof Cadena) {
+	            	
+	                Cadena cadena = (Cadena) atributo;
+	                String dato = cadena.getDato();
+	                registroFinal += dato;
+	                
+	            } else if (atributo instanceof Entero) {
+	            	
+	                Entero entero = (Entero) atributo;
+	                int valor = entero.getValor();
+	                registroFinal += Integer.toString(valor);
+	                
+	            }
 
-		            if (atributoActual < registro.size()) {
-		            	
-		                registroFinal += ":";
-		                
-		            }
-		            
-		        }
-		        
-		        registroFinal += "|"; // Agregar el caracter "|" al final de cada registro
+	            if (atributoActual < registro.size()) {
+	            	
+	                registroFinal += ":";
+	                
+	            }
+	            
+	        }
+	        
+	        registroFinal += "|"; // Agregar el caracter "|" al final de cada registro
 
-		        try {
-		        	
-					archivo.write(registroFinal + "\n");
-					
-				} catch (IOException e) {
-					
-					
-					e.printStackTrace();
-					
-				}
-		        
-            }
-	    	
+	        try {
+	        	
+				archivo.write(registroFinal + "\n");
+				
+			} catch (IOException e) {
+				
+				
+				e.printStackTrace();
+				
+			}
+		       
 	    }
 
 	}
@@ -156,14 +146,14 @@ public class Persistencia {
 						String ruta = obtenerRutaRegistro(user.getNombreUser(), bd.getNombreBD(), tablita.getNombreTabla());
 						
 						try (FileWriter archivo = new FileWriter(ruta)) {
-							
-	                        ArrayList<LinkedHashMap<String, Atributo>> registros = tablita.getRegistros();
+	                        
+							ArrayList<LinkedHashMap<String, Atributo>> registros = tablita.getRegistros();
 	                        persistirRegistros(registros, archivo);
-	                        
+							
 	                    } catch (IOException e) {
-	                    	
-	                        e.printStackTrace();
-	                        
+	                       
+	                    	e.printStackTrace();
+	                   
 	                    }
 							
 					}
@@ -173,8 +163,6 @@ public class Persistencia {
 			}
 			
 		}
-		
-		//archivo.close();
 		
 	}
 
