@@ -585,6 +585,7 @@ public class Persistencia {
 	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
 
 		recuperarUsuarios(usuarios);
+		String ruta = "";
 		
 		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
 
@@ -593,7 +594,7 @@ public class Persistencia {
 			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
 
 				BaseDatos base = bd.getValue();
-				String ruta = obtenerRutaBD(user.getNombreUser());
+				ruta = obtenerRutaBD(user.getNombreUser());
 				recuperarBasesDeDatos(ruta);
 
 				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
@@ -603,7 +604,7 @@ public class Persistencia {
 					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty()
 							|| tablita.getNombreTabla().isEmpty() || tablita.getRegistros().isEmpty())) {
 
-						String ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(),
+						ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(),
 								tablita.getNombreTabla());
 						LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
 
