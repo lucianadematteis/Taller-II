@@ -520,7 +520,6 @@ public class Persistencia {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		int a = 0;
 		String contenidoString = contenidoArchivo.toString();
 		String[] lineas = contenidoString.split("\\|");// separador
 		int cantLineas = lineas.length;// obtener tamaño del arreglo
@@ -531,13 +530,7 @@ public class Persistencia {
 			String[] comandos = lineas[i].split(":");
 			cargado.put(comandos[0],comandos[1]);
 			
-		}
 		
-		for (Entry<String, String> entry : cargado.entrySet()) {
-           String clave = entry.getKey();
-           String valor = entry.getValue();
-           System.out.println("Clave: " + clave + ", Valor: " + valor);
-       }
 
 		return cargado;
 		
