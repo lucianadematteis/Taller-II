@@ -510,6 +510,39 @@ public class Persistencia {
 		
 	
 	}
+	public LinkedHashMap<String, String> recuperarAyuda(String ruta) {
+		StringBuilder contenidoArchivo = new StringBuilder();
+		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+			String linea;
+			while ((linea = br.readLine()) != null) {
+				contenidoArchivo.append(linea);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		int a = 0;
+		String contenidoString = contenidoArchivo.toString();
+		String[] lineas = contenidoString.split("\\|");// separador
+		int cantLineas = lineas.length;// obtener tamaño del arreglo
+		
+		LinkedHashMap<String, String> cargado=new LinkedHashMap<String, String>();
+
+		for (int i = 0; i < cantLineas-1; i++) {
+			String[] comandos = lineas[i].split(":");
+			cargado.put(comandos[0],comandos[1]);
+			
+		}
+		
+		for (Entry<String, String> entry : cargado.entrySet()) {
+           String clave = entry.getKey();
+           String valor = entry.getValue();
+           System.out.println("Clave: " + clave + ", Valor: " + valor);
+       }
+
+		return cargado;
+		
+	}
+    
 
 	
 }
