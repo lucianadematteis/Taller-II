@@ -417,12 +417,76 @@ public class Persistencia {
 		
 	}
 	
+	public Atributo recuperarAtributo(String nombre, String nulo, String pk, String tipoDato) {
+		
+		Atributo resultado = null;
+		
+		boolean clave=pk.equals("1");
+		boolean esNulo=nulo.equals("1");
+		
+		if(tipoDato.equals("Cadena")) {
+			
+			resultado = new Cadena(nombre, clave, esNulo, "");
+			
+		}else {
+			
+			resultado = new Entero(nombre, clave, esNulo, 0);
+			
+		}
+		
+		return resultado;
+		
+	}
+	
+	public LinkedHashMap<String, Atributo> recuperarTabla(String nombreTabla, String ruta){
+		
+		LinkedHashMap<String, Atributo> resultado = new LinkedHashMap<String, Atributo>();
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+		    
+			String linea;
+			
+            while ((linea = br.readLine()) != null) {
+            	
+                String[] partes = linea.split(":");
+                
+                if (partes[0].equals(nombreTabla)) {
+                	
+                	for (int i = 1; i < partes.length; i += 4) {
+                		
+                        String nombreAtributo = partes[i];
+                        String nulo = partes[i + 1];
+                        String pk = partes[i + 2];
+                        String tipo = partes[i + 3];
+
+                        Atributo atributoResultante=recuperarAtributo(nombreAtributo, nulo, pk, tipo);
+                        
+                        resultado.put(nombreAtributo, atributoResultante);
+                        
+                    }
+               
+                }
+                
+            }
+		    
+		} catch (IOException e) {
+			
+		    e.printStackTrace();
+		    
+		}
+
+		return resultado;
+		
+	}
+	
 	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
 
+		recuperarUsuarios(usuarios);
+		
 		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
 
 			Usuario user = usuario.getValue();
-
+			
 			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
 
 				BaseDatos base = bd.getValue();
@@ -506,10 +570,8 @@ public class Persistencia {
 		
 		return bds;
 		
-		
-		
-	
 	}
+    
 	public LinkedHashMap<String, String> recuperarAyuda(String ruta) {
 		StringBuilder contenidoArchivo = new StringBuilder();
 		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
@@ -522,7 +584,7 @@ public class Persistencia {
 		}
 		String contenidoString = contenidoArchivo.toString();
 		String[] lineas = contenidoString.split("\\|");// separador
-		int cantLineas = lineas.length;// obtener tamaño del arreglo
+		int cantLineas = lineas.length;// obtener tamaï¿½o del arreglo
 		
 		LinkedHashMap<String, String> cargado=new LinkedHashMap<String, String>();
 
@@ -530,12 +592,12 @@ public class Persistencia {
 			String[] comandos = lineas[i].split(":");
 			cargado.put(comandos[0],comandos[1]);
 			
-		
+		}
 
 		return cargado;
 		
-	}
-    
-
+		}
+	
+	
 	
 }
