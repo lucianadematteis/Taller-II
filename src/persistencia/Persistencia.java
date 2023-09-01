@@ -445,6 +445,7 @@ public class Persistencia {
 
 	}
 	
+	
 
     public LinkedHashMap<String, Usuario> recuperarUsuarios(LinkedHashMap<String, Usuario> usuarios) {
         try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
@@ -466,6 +467,16 @@ public class Persistencia {
 
         return usuarios;
     }
+
+	public void persistirBasesDeDatosTotales(LinkedHashMap<String, Usuario> usuarios) {
+		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
+
+			Usuario user = usuario.getValue();
+			user.getBasesDatos();
+			persistirBasesDeDatos(user.getBasesDatos(),user.getNombreUser());
+		}
+	}
 	
+    
 	
 }
