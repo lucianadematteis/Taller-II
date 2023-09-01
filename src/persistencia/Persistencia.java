@@ -94,6 +94,25 @@ public class Persistencia {
 		return nombreArchivo;
 		
 	}
+	
+	public String obtenerRutaBD(String nombreUsuario) {
+		
+		String nombreArchivo = "";
+		int sistema = identificarSistema();
+
+		if (sistema == 1) { // Si es Windows
+			
+			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario +"\\" +"nombreBDs.txt";
+			
+		} else if (sistema == 0) { // Si es Linux
+			
+			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario +"//" + "nombreBDs.txt";
+			
+		}
+
+		return nombreArchivo;
+		
+	}
 
 	public void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, FileWriter archivo){
 		
@@ -479,41 +498,6 @@ public class Persistencia {
 		
 	}
 	
-	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
-
-		recuperarUsuarios(usuarios);
-		
-		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
-
-			Usuario user = usuario.getValue();
-			
-			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
-
-				BaseDatos base = bd.getValue();
-
-				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
-
-					Tabla tablita = tabla.getValue();
-
-					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty()
-							|| tablita.getNombreTabla().isEmpty() || tablita.getRegistros().isEmpty())) {
-
-						String ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(),
-								tablita.getNombreTabla());
-						LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
-
-						tablita.setRegistros(recuperarRegistros(ruta, guia));
-
-					}
-
-				}
-
-			}
-
-		}
-
-	}
-
     public LinkedHashMap<String, Usuario> recuperarUsuarios(LinkedHashMap<String, Usuario> usuarios) {
         try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
             String linea;
@@ -598,6 +582,43 @@ public class Persistencia {
 		
 		}
 	
-	
+	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
+
+		recuperarUsuarios(usuarios);
+		
+		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
+
+			Usuario user = usuario.getValue();
+			
+			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
+
+				BaseDatos base = bd.getValue();
+				String ruta = obtenerRutaBD(user.getNombreUser());
+				recuperarBasesDeDatos(ruta);
+
+				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
+
+					Tabla tablita = tabla.getValue();
+
+					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty()
+							|| tablita.getNombreTabla().isEmpty() || tablita.getRegistros().isEmpty())) {
+
+						String ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(),
+								tablita.getNombreTabla());
+						LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+
+						tablita.setRegistros(recuperarRegistros(ruta, guia));
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+
 	
 }
