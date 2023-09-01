@@ -191,7 +191,7 @@ public class Persistencia {
 			while ((linea = br.readLine()) != null) {
 
 				LinkedHashMap<String, Atributo> registro = new LinkedHashMap<String, Atributo>(); // Nuevo registro en
-																									// cada iteraci�n
+																									// cada iteraciï¿½n
 
 				String[] palabras = linea.split(":");
 				int index = 0;
@@ -286,13 +286,12 @@ public class Persistencia {
 					+ "nombreBDs.txt";
 		}
 
-		try (FileWriter archivo = new FileWriter(nombreArchivo, true)) {
+		try (FileWriter archivo = new FileWriter(nombreArchivo)) {
 			for (Map.Entry<String, BaseDatos> entry : BasesDatos.entrySet()) {
 				BaseDatos baseDatos = entry.getValue();
 				String nombreBase = baseDatos.getNombreBD();
 				Map<String, Tabla> tablas = baseDatos.getTablas();
 				insertar.append(nombreBase);
-
 				if (identificarSistema() == 1) {
 					crearCarpeta(nombreBase, System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario);
 				} else {
@@ -303,11 +302,13 @@ public class Persistencia {
 
 					String nombreTabla = entry2.getKey();
 					insertar.append(":" + nombreTabla);
+					
 				}
 
 				insertar.append("|"); // Separador de salto de l�nea
 				String ingreso = insertar.toString();
 				archivo.write(ingreso + "\n");
+				insertar.setLength(0);
 
 			}
 			archivo.close();
@@ -315,6 +316,7 @@ public class Persistencia {
 			e.printStackTrace();
 		}
 	}
+
 
 	public void persistirTablas(Map<String, Tabla> tablas, String nombreBase, String nombreUsuario) {
 
@@ -367,7 +369,7 @@ public class Persistencia {
 					}
 				}
 				insertar.deleteCharAt(insertar.length() - 1);
-				insertar.append("|"); // Separador de salto de línea
+				insertar.append("|"); // Separador de salto de lÃ­nea
 				String ingreso = insertar.toString();
 				archivo.write(ingreso + "\n");
 				insertar.setLength(0);
