@@ -470,6 +470,46 @@ public class Persistencia {
 
         return usuarios;
     }
+    
+    public LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
+		LinkedHashMap <String, BaseDatos> bds = new LinkedHashMap <String, BaseDatos>();
+		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+            	boolean primerElemento=true;
+            	
+                String[] partes = linea.split(":");
+                String nombreBD = partes[0];
+                BaseDatos bd = new BaseDatos(nombreBD);
+         
+                LinkedHashMap<String, Tabla> tabs = new LinkedHashMap<String, Tabla>(); 
+                if (partes.length > 1) {
+                    	for (String tabla : partes) {
+                    		if (primerElemento) {
+                    			primerElemento=false;
+                    			continue;
+                    		}
+                    		Tabla tab = new Tabla (tabla);
+                    		tabs.put(tabla, tab);
+                    	}
+                bd.setTablas(tabs);
+                bds.put(nombreBD, bd);
+            }
+                else {
+                	 bds.put(nombreBD, bd);
+                }
+                }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
+		return bds;
+		
+		
+		
+	
+	}
 
 	
 }
