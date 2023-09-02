@@ -47,7 +47,7 @@ public class Persistencia {
         	
             return 1;
             
-        } else if (so.contains("nix") || so.contains("nux")) {
+        } else if (so.contains("nix") || so.contains("nux") || so.contains("mac")) {
         	
             return 0;
             
@@ -95,7 +95,7 @@ public class Persistencia {
 		
 	}
 	
-	public String obtenerRutaBasesDatos(String nombreUsuario) {
+	public String obtenerRutaBD(String nombreUsuario) {
 		
 		String nombreArchivo = "";
 		int sistema = identificarSistema();
@@ -114,42 +114,6 @@ public class Persistencia {
 		
 	}
 
-	public String obtenerRutaTablas(String nombreUsuario, String nombreBase) {
-		
-		String ruta = "";
-		
-		if (identificarSistema()==1) { //Si es windows
-			
-			ruta = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBase + "\\" + "Tablas.txt";
-			
-		}else if(identificarSistema()==0){ //Si es linux
-			
-			ruta = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBase + "//" + "Tablas.txt";
-			
-		}
-		
-		return ruta;
-		
-	}
-	
-	public String obtenerRutaBaseDatos(String nombreUsuario, String nombreBase) {
-		
-		String ruta = "";
-		
-		if (identificarSistema()==1) { //Si es windows
-			
-			ruta = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBase;
-		
-		}else if(identificarSistema()==0){ //Si es linux
-			
-			ruta = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBase;
-		
-		}
-		
-		return ruta;
-		
-	}
-	
 	public void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, FileWriter archivo){
 		
 		boolean primerRegistro = true;
@@ -237,33 +201,32 @@ public class Persistencia {
 	
 	public void persistirBasesDeDatos(Map<String, BaseDatos> BasesDatos, String nombreUsuario){
 		
-		String nombreArchivo=obtenerRutaBasesDatos(nombreUsuario);
+		String nombreArchivo="";
 		StringBuilder insertar = new StringBuilder();
+		if (identificarSistema()==1) { //Si es windows
+			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + "nombreBDs.txt";
+			
+		}else if(identificarSistema()==0){ //Si es linux
+			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + "nombreBDs.txt";	
+		}
 		
 	    try (FileWriter archivo = new FileWriter(nombreArchivo, true)) {
-	    	
 	        for (Map.Entry<String, BaseDatos> entry : BasesDatos.entrySet()) {
-	        	
 	            BaseDatos baseDatos = entry.getValue();
 	            String nombreBase =baseDatos.getNombreBD();
 	            Map<String, Tabla> tablas = baseDatos.getTablas();
 	            insertar.append(nombreBase);
 	            
 	            if(identificarSistema()==1) {
-	            	
 	            	crearCarpeta(nombreBase, System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario);
-	           
 	            } else {
-	            
-	            	crearCarpeta(nombreBase, System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario);
-	         
+	            	crearCarpeta(nombreBase, System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario );
 	            }
 	            
 	            for (Map.Entry<String, Tabla> entry2 : tablas.entrySet()) {
 	            	
 	            	String nombreTabla = entry2.getKey();
 	            	 insertar.append(":" +nombreTabla );
-	            	 
 	            }
 	            
 	            insertar.append("|"); // Separador de salto de l�nea
@@ -271,22 +234,29 @@ public class Persistencia {
 	            archivo.write(ingreso + "\n");
 	            
 	        }
-	        
 	        archivo.close();
-	        
 	    } catch (IOException e) {
-	    	
 	        e.printStackTrace();
-	        
 	    }
-	    
 	}
 	
 	public void persistirTablas(Map<String, Tabla> tablas, String nombreBase, String nombreUsuario){
 		
-		String nombreArchivo=obtenerRutaTablas(nombreUsuario, nombreBase);
-		String ruta=obtenerRutaBaseDatos(nombreUsuario, nombreBase);
+		String nombreArchivo="";
+		String ruta="";
 		StringBuilder insertar = new StringBuilder();
+		
+		if (identificarSistema()==1) { //Si es windows
+			
+			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBase + "\\" + "Tablas.txt";
+			ruta = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBase;
+		
+		}else if(identificarSistema()==0){ //Si es linux
+			
+			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBase + "//" + "Tablas.txt";
+			ruta = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBase;
+		
+		}
 		
         try (FileWriter archivo = new FileWriter(nombreArchivo)) {
         	
@@ -356,6 +326,7 @@ public class Persistencia {
             e.printStackTrace();
             
         }
+
 
 	}
 	
@@ -528,46 +499,32 @@ public class Persistencia {
 	}
 	
     public LinkedHashMap<String, Usuario> recuperarUsuarios(LinkedHashMap<String, Usuario> usuarios) {
-        
-    	try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
-        
-    		String linea;
+        try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
+            String linea;
 
             while ((linea = br.readLine()) != null) {
-            
-            	String[] partes = linea.split(":");
-                
-            	if (partes.length > 1) {
-                
-            		String nombreUsuario = partes[0];
+                String[] partes = linea.split(":");
+                if (partes.length > 1) {
+                    String nombreUsuario = partes[0];
                     String contrasenia = partes[1];
 
                     Usuario usuario = new Usuario(nombreUsuario, contrasenia);
                     usuarios.put(nombreUsuario, usuario);
-                
-            	}
-            
+                }
             }
-        
-    	} catch (IOException e) {
-        
-    		e.printStackTrace();
-        
-    	}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return usuarios;
     }
     
     public LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
-		
-    	LinkedHashMap <String, BaseDatos> bds = new LinkedHashMap <String, BaseDatos>();
-		
-    	try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
-        
-    		String linea;
+		LinkedHashMap <String, BaseDatos> bds = new LinkedHashMap <String, BaseDatos>();
+		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+            String linea;
 
             while ((linea = br.readLine()) != null) {
-            
             	boolean primerElemento=true;
             	
                 String[] partes = linea.split(":");
@@ -575,33 +532,23 @@ public class Persistencia {
                 BaseDatos bd = new BaseDatos(nombreBD);
          
                 LinkedHashMap<String, Tabla> tabs = new LinkedHashMap<String, Tabla>(); 
-              
                 if (partes.length > 1) {
-                	
-                	for (String tabla : partes) {
-                	
-                		if (primerElemento) {
-                		
-                			primerElemento=false;
-                			continue;
-                		
-                		}
-                	
-                		Tabla tab = new Tabla (tabla);
-                		tabs.put(tabla, tab);
-                	
-                	}
-               
-                	bd.setTablas(tabs);
-                	bds.put(nombreBD, bd);
-                } else {
-                	
-                	bds.put(nombreBD, bd);
-                }
+                    	for (String tabla : partes) {
+                    		if (primerElemento) {
+                    			primerElemento=false;
+                    			continue;
+                    		}
+                    		Tabla tab = new Tabla (tabla);
+                    		tabs.put(tabla, tab);
+                    	}
+                bd.setTablas(tabs);
+                bds.put(nombreBD, bd);
             }
-            
+                else {
+                	 bds.put(nombreBD, bd);
+                }
+                }
         } catch (IOException e) {
-        	
             e.printStackTrace();
         }
 		
@@ -610,25 +557,15 @@ public class Persistencia {
 	}
     
 	public LinkedHashMap<String, String> recuperarAyuda(String ruta) {
-		
 		StringBuilder contenidoArchivo = new StringBuilder();
-		
 		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
-		
 			String linea;
-			
 			while ((linea = br.readLine()) != null) {
-			
 				contenidoArchivo.append(linea);
-			
 			}
-		
 		} catch (IOException e) {
-			
 			e.printStackTrace();
-		
 		}
-		
 		String contenidoString = contenidoArchivo.toString();
 		String[] lineas = contenidoString.split("\\|");// separador
 		int cantLineas = lineas.length;// obtener tama�o del arreglo
@@ -636,7 +573,6 @@ public class Persistencia {
 		LinkedHashMap<String, String> cargado=new LinkedHashMap<String, String>();
 
 		for (int i = 0; i < cantLineas-1; i++) {
-		
 			String[] comandos = lineas[i].split(":");
 			cargado.put(comandos[0],comandos[1]);
 			
@@ -644,7 +580,7 @@ public class Persistencia {
 
 		return cargado;
 		
-	}
+		}
 	
 	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
 
@@ -658,7 +594,7 @@ public class Persistencia {
 			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
 
 				BaseDatos base = bd.getValue();
-				ruta = obtenerRutaBasesDatos(user.getNombreUser());
+				ruta = obtenerRutaBD(user.getNombreUser());
 				recuperarBasesDeDatos(ruta);
 
 				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
@@ -684,4 +620,6 @@ public class Persistencia {
 
 	}
 
+
+	
 }
