@@ -332,7 +332,7 @@ public class Persistencia {
 	
 	public void persistirTodo(LinkedHashMap<String, Usuario> usuarios) {
 		
-		String ruta =null;
+		String ruta = obtenerRutaUsuarios();
 		
 		try (FileWriter archivo = new FileWriter(ruta)) {
             
