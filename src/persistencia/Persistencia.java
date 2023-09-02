@@ -526,7 +526,7 @@ public class Persistencia {
 
             while ((linea = br.readLine()) != null) {
             	boolean primerElemento=true;
-            	
+            	linea =linea.replace("|","");
                 String[] partes = linea.split(":");
                 String nombreBD = partes[0];
                 BaseDatos bd = new BaseDatos(nombreBD);
