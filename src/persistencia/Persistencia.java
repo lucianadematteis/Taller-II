@@ -185,6 +185,11 @@ public class Persistencia {
 				
 				infoUsuario += ":" + bdEntry.getKey(); // Agregar nombres de las bases de datos
 				
+				 if(identificarSistema()==1) {
+		            	crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "\\Desktop\\Sistema\\" );
+		            } else {
+		            	crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "//Desktop//Sistema//" );
+		            }
 			}
 
 			infoUsuario += "|";
