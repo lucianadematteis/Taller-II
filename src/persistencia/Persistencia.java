@@ -186,10 +186,15 @@ public class Persistencia {
 				infoUsuario += ":" + bdEntry.getKey(); // Agregar nombres de las bases de datos
 				
 				 if(identificarSistema()==1) {
-		            	crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "\\Desktop\\Sistema\\" );
-		            } else {
-		            	crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "//Desktop//Sistema//" );
-		            }
+					 
+		            crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "\\Desktop\\Sistema\\" );
+		          
+				 } else {
+					 
+		            crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "//Desktop//Sistema//" );
+		            
+				 }
+				 
 			}
 
 			infoUsuario += "|";
@@ -208,24 +213,34 @@ public class Persistencia {
 		
 		String nombreArchivo="";
 		StringBuilder insertar = new StringBuilder();
+		
 		if (identificarSistema()==1) { //Si es windows
+			
 			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + "nombreBDs.txt";
 			
 		}else if(identificarSistema()==0){ //Si es linux
+			
 			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + "nombreBDs.txt";	
+		
 		}
 		
 	    try (FileWriter archivo = new FileWriter(nombreArchivo, true)) {
+	    	
 	        for (Map.Entry<String, BaseDatos> entry : BasesDatos.entrySet()) {
+	        	
 	            BaseDatos baseDatos = entry.getValue();
 	            String nombreBase =baseDatos.getNombreBD();
 	            Map<String, Tabla> tablas = baseDatos.getTablas();
 	            insertar.append(nombreBase);
 	            
 	            if(identificarSistema()==1) {
+	            	
 	            	crearCarpeta(nombreBase, System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario);
+	            
 	            } else {
+	            	
 	            	crearCarpeta(nombreBase, System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario );
+	            
 	            }
 	            
 	            for (Map.Entry<String, Tabla> entry2 : tablas.entrySet()) {
@@ -239,10 +254,15 @@ public class Persistencia {
 	            archivo.write(ingreso + "\n");
 	            
 	        }
+	        
 	        archivo.close();
+	        
 	    } catch (IOException e) {
+	    	
 	        e.printStackTrace();
+	        
 	    }
+	    
 	}
 	
 	public void persistirTablas(Map<String, Tabla> tablas, String nombreBase, String nombreUsuario){
@@ -332,7 +352,6 @@ public class Persistencia {
             
         }
 
-
 	}
 	
 	public void persistirTodo(LinkedHashMap<String, Usuario> usuarios) {
@@ -372,13 +391,11 @@ public class Persistencia {
 				
 			}
 		
-		
         } catch (IOException e) {
            
         	e.printStackTrace();
        
         }
-			
 		
 	}
 
@@ -504,32 +521,46 @@ public class Persistencia {
 	}
 	
     public LinkedHashMap<String, Usuario> recuperarUsuarios(LinkedHashMap<String, Usuario> usuarios) {
-        try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
-            String linea;
+      
+    	try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
+
+    		String linea;
 
             while ((linea = br.readLine()) != null) {
-                String[] partes = linea.split(":");
-                if (partes.length > 1) {
-                    String nombreUsuario = partes[0];
+           
+            	String[] partes = linea.split(":");
+            
+            	if (partes.length > 1) {
+             
+            		String nombreUsuario = partes[0];
                     String contrasenia = partes[1];
 
                     Usuario usuario = new Usuario(nombreUsuario, contrasenia);
                     usuarios.put(nombreUsuario, usuario);
-                }
+              
+            	}
+           
             }
+            
         } catch (IOException e) {
+        	
             e.printStackTrace();
+            
         }
 
         return usuarios;
     }
     
     public LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
-		LinkedHashMap <String, BaseDatos> bds = new LinkedHashMap <String, BaseDatos>();
-		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
-            String linea;
+		
+    	LinkedHashMap <String, BaseDatos> bds = new LinkedHashMap <String, BaseDatos>();
+		
+    	try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+         
+    		String linea;
 
             while ((linea = br.readLine()) != null) {
+           
             	boolean primerElemento=true;
             	linea =linea.replace("|","");
                 String[] partes = linea.split(":");
@@ -537,24 +568,39 @@ public class Persistencia {
                 BaseDatos bd = new BaseDatos(nombreBD);
          
                 LinkedHashMap<String, Tabla> tabs = new LinkedHashMap<String, Tabla>(); 
+              
                 if (partes.length > 1) {
-                    	for (String tabla : partes) {
-                    		if (primerElemento) {
-                    			primerElemento=false;
-                    			continue;
-                    		}
-                    		Tabla tab = new Tabla (tabla);
-                    		tabs.put(tabla, tab);
+                
+                	for (String tabla : partes) {
+                   
+                		if (primerElemento) {
+                    
+                			primerElemento=false;
+                    
+                			continue;
                     	}
+                    	
+                		Tabla tab = new Tabla (tabla);
+                    	
+                		tabs.put(tabla, tab);
+                    	
+                	}
+                	
                 bd.setTablas(tabs);
                 bds.put(nombreBD, bd);
+                
+		        }else {
+		             
+		        	bds.put(nombreBD, bd);
+		       
+		        }
+                
             }
-                else {
-                	 bds.put(nombreBD, bd);
-                }
-                }
+            
         } catch (IOException e) {
+        	
             e.printStackTrace();
+            
         }
 		
 		return bds;
@@ -562,15 +608,25 @@ public class Persistencia {
 	}
     
 	public LinkedHashMap<String, String> recuperarAyuda(String ruta) {
+	
 		StringBuilder contenidoArchivo = new StringBuilder();
+		
 		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+		
 			String linea;
+		
 			while ((linea = br.readLine()) != null) {
+		
 				contenidoArchivo.append(linea);
+		
 			}
+		
 		} catch (IOException e) {
+		
 			e.printStackTrace();
+		
 		}
+		
 		String contenidoString = contenidoArchivo.toString();
 		String[] lineas = contenidoString.split("\\|");// separador
 		int cantLineas = lineas.length;// obtener tama�o del arreglo
@@ -578,6 +634,7 @@ public class Persistencia {
 		LinkedHashMap<String, String> cargado=new LinkedHashMap<String, String>();
 
 		for (int i = 0; i < cantLineas-1; i++) {
+		
 			String[] comandos = lineas[i].split(":");
 			cargado.put(comandos[0],comandos[1]);
 			
@@ -625,6 +682,4 @@ public class Persistencia {
 
 	}
 
-
-	
 }
