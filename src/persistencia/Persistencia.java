@@ -113,6 +113,24 @@ public class Persistencia {
 		return nombreArchivo;
 		
 	}
+	
+	public String obtenerRutaTabla(String nombreUsuario, String nombreBD, String nombreTabla) {
+		
+		String nombreArchivo="";
+		int sistema = identificarSistema();
+	    
+		if (sistema == 1) { // Si es Windows
+        	
+            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBD + "\\" + "Tablas.txt";
+        
+        } else if (sistema == 0) { // Si es Linux
+            
+        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBD + "//" + "Tablas.txt";
+       
+        }
+	     
+	    return nombreArchivo;
+	}
 
 	//NO BORRÃ‰ LO QUE ESTABA, SIMPLEMENTE COPIÃ‰ LOS MÃ‰TODOS QUE HABÃ�A HECHO ANTES PARA PROBARLOS LUEGO
 	
@@ -623,13 +641,12 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
 
 					Tabla tablita = tabla.getValue();
+					String rutaTabla= obtenerRutaTabla(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
 
-					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty()
-							|| tablita.getNombreTabla().isEmpty() || tablita.getRegistros().isEmpty())) {
+					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty() || tablita.getNombreTabla().isEmpty())) {
 
-						ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(),
-								tablita.getNombreTabla());
-						LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+						ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
+						LinkedHashMap<String, Atributo> guia = recuperarTabla(tablita.getNombreTabla(), rutaTabla);
 
 						tablita.setRegistros(recuperarRegistros(ruta, guia));
 
