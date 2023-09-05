@@ -58,6 +58,25 @@ public class Persistencia {
 		
 	}
 	
+	public String obtenerRutaAyuda() {
+		
+		String nombreArchivo="";
+		int sistema = identificarSistema();
+	    
+		if (sistema == 1) { // Si es Windows
+        	
+            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\Ayuda.txt";
+        
+        } else if (sistema == 0) { // Si es Linux
+            
+        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//Ayuda.txt";
+       
+        }
+	     
+	    return nombreArchivo;
+		
+	}
+	
 	public String obtenerRutaRegistro(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
 		String nombreArchivo="";
@@ -74,6 +93,7 @@ public class Persistencia {
         }
 	     
 	    return nombreArchivo;
+	    
 	}
 	
 	public String obtenerRutaUsuarios() {
@@ -631,16 +651,17 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
 
 			Usuario user = usuario.getValue();
+			ruta = obtenerRutaBD(user.getNombreUser());
+			user.setBasesDatos(recuperarBasesDeDatos(ruta));
 			
 			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
 
 				BaseDatos base = bd.getValue();
-				ruta = obtenerRutaBD(user.getNombreUser());
-				recuperarBasesDeDatos(ruta);
-
+				
 				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
 
 					Tabla tablita = tabla.getValue();
+					
 					String rutaTabla= obtenerRutaTabla(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
 
 					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty() || tablita.getNombreTabla().isEmpty())) {
@@ -659,6 +680,7 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		}
 
 	}
+
 	
 	//LO QUE ESTAMOS SEGUROS QUE ANDA BIEN ACA
 	
