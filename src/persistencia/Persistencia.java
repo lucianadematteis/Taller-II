@@ -175,6 +175,9 @@ public class Persistencia {
 
 	}
 	
+	//NO BORRÉ LO QUE ESTABA, SIMPLEMENTE COPIÉ LOS MÉTODOS QUE HABÍA HECHO ANTES PARA PROBARLOS LUEGO
+	
+	/*
 	public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		
 		try {
@@ -208,6 +211,58 @@ public class Persistencia {
 		}
 		
 	}
+	*/
+	
+public void persistirUsuario(Usuario usuario, FileWriter archivo) {
+		
+		try {
+			
+			String infoUsuario = usuario.getNombreUser() + ":" + usuario.getContrasenia();
+
+			for (Map.Entry<String, BaseDatos> bdEntry : usuario.getBasesDatos().entrySet()) {
+				
+				infoUsuario += ":" + bdEntry.getKey(); // Agregar nombres de las bases de datos
+				
+			}
+
+			infoUsuario += "|";
+			
+			archivo.write(infoUsuario + "\n");
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+	}
+
+	public void persistirUsuariosTotales(LinkedHashMap<String, Usuario> usuarios) {
+		
+		String ruta = obtenerRutaUsuarios();
+		FileWriter archivo;
+		
+		try {
+			
+			archivo = new FileWriter(ruta);
+			
+			for (Map.Entry<String, Usuario> usuarioEntry : usuarios.entrySet()) {
+				
+				Usuario usuario = usuarioEntry.getValue();
+				persistirUsuario(usuario, archivo);
+				
+			}
+			
+			archivo.close();
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+	}
+	
 	
 	public void persistirBasesDeDatos(Map<String, BaseDatos> BasesDatos, String nombreUsuario){
 		
@@ -520,6 +575,8 @@ public class Persistencia {
 		
 	}
 	
+	
+	/*
     public LinkedHashMap<String, Usuario> recuperarUsuarios(LinkedHashMap<String, Usuario> usuarios) {
       
     	try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
@@ -551,6 +608,30 @@ public class Persistencia {
         return usuarios;
     }
     
+    
+    */
+	
+	public LinkedHashMap<String, Usuario> recuperarUsuarios(LinkedHashMap<String, Usuario> usuarios) {
+        try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split(":");
+                if (partes.length > 1) {
+                    String nombreUsuario = partes[0];
+                    String contrasenia = partes[1];
+
+                    Usuario usuario = new Usuario(nombreUsuario, contrasenia);
+                    usuarios.put(nombreUsuario, usuario);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return usuarios;
+    }
+	
     public LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 		
     	LinkedHashMap <String, BaseDatos> bds = new LinkedHashMap <String, BaseDatos>();
