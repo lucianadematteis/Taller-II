@@ -530,21 +530,37 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
     */
 	
 	public LinkedHashMap<String, Usuario> recuperarUsuarios(LinkedHashMap<String, Usuario> usuarios) {
-        try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
-            String linea;
-
+       
+		try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
+            
+			String linea;
+            
             while ((linea = br.readLine()) != null) {
+            	
                 String[] partes = linea.split(":");
+                
                 if (partes.length > 1) {
+                	
                     String nombreUsuario = partes[0];
                     String contrasenia = partes[1];
+                    
+                    if (contrasenia.endsWith("|")) {
+                        
+                    	contrasenia = contrasenia.substring(0, contrasenia.length() - 1);
+                        
+                    }
 
                     Usuario usuario = new Usuario(nombreUsuario, contrasenia);
                     usuarios.put(nombreUsuario, usuario);
+                    
                 }
+                
             }
+            
         } catch (IOException e) {
+        	
             e.printStackTrace();
+            
         }
 
         return usuarios;
