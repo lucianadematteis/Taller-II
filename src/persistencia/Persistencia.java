@@ -629,8 +629,8 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
                     	
                 	}
                 	
-                bd.setTablas(tabs);
-                bds.put(nombreBD, bd);
+	                bd.setTablas(tabs);
+	                bds.put(nombreBD, bd);
                 
 		        }else {
 		             
@@ -695,49 +695,6 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		
 	}
 	
-	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
-
-		recuperarUsuarios(usuarios);
-		String ruta = "";
-		
-		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
-
-			Usuario user = usuario.getValue();
-			ruta = obtenerRutaBD(user.getNombreUser());
-			user.setBasesDatos(recuperarBasesDeDatos(ruta));
-			
-			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
-
-				BaseDatos base = bd.getValue();
-				
-				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
-
-					Tabla tablita = tabla.getValue();
-					
-					String rutaTabla= obtenerRutaTabla(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
-
-					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty() || tablita.getNombreTabla().isEmpty())) {
-
-						ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
-						LinkedHashMap<String, Atributo> guia = recuperarTabla(tablita.getNombreTabla(), rutaTabla);
-
-						tablita.setRegistros(recuperarRegistros(ruta, guia));
-
-					}
-
-				}
-
-			}
-
-		}
-
-	}
-
-	
-	//LO QUE ESTAMOS SEGUROS QUE ANDA BIEN ACA
-	
-	//RECUPERAR REGISTROS
-	
 	public ArrayList<LinkedHashMap<String, Atributo>> recuperarRegistros(String ruta, LinkedHashMap<String, Atributo> guia){
 		
 		ArrayList<LinkedHashMap<String, Atributo>> resultado = new ArrayList<LinkedHashMap<String, Atributo>>();
@@ -789,36 +746,45 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		        
 		    }
 		    
-		} catch (IOException e) {
-			
-		    e.printStackTrace();
-		    
-		}
+		} catch (FileNotFoundException e) {
+        	
+        	System.err.println("El archivo no se encontro: " + e.getMessage());
+        	
+        } catch (IOException g) {
+        	
+        	System.err.println("Error de lectura del archivo: " + g.getMessage());
+        	
+        }
 
 		return resultado;
 		
 	}
 	
-	public void recuperarRegistrosTotales(LinkedHashMap<String, Usuario> usuarios) {
+	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
 
+		recuperarUsuarios(usuarios);
+		String ruta = "";
+		
 		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
 
 			Usuario user = usuario.getValue();
-
+			ruta = obtenerRutaBD(user.getNombreUser());
+			user.setBasesDatos(recuperarBasesDeDatos(ruta));
+			
 			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
 
 				BaseDatos base = bd.getValue();
-
+				
 				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
 
 					Tabla tablita = tabla.getValue();
+					
+					String rutaTabla= obtenerRutaTabla(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
 
-					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty()
-							|| tablita.getNombreTabla().isEmpty() || tablita.getRegistros().isEmpty())) {
+					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty() || tablita.getNombreTabla().isEmpty())) {
 
-						String ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(),
-								tablita.getNombreTabla());
-						LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+						ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
+						LinkedHashMap<String, Atributo> guia = recuperarTabla(tablita.getNombreTabla(), rutaTabla);
 
 						tablita.setRegistros(recuperarRegistros(ruta, guia));
 
@@ -831,8 +797,6 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		}
 
 	}
-	
-	//PERSISTIR REGISTROS
 	
 	public void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, FileWriter archivo){
 		
