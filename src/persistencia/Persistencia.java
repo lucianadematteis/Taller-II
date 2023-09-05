@@ -2,6 +2,7 @@ package persistencia;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;//escritura
 import java.io.IOException;
@@ -36,6 +37,25 @@ public class Persistencia {
 			return false;
 		
 		}
+		
+	}
+	
+	public void crearCarpetaInicial() {
+		
+		String nombreArchivo="";
+		int sistema = identificarSistema();
+	    
+		if (sistema == 1) { // Si es Windows
+        	
+            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\";
+            
+        } else if (sistema == 0) { // Si es Linux
+            
+        	nombreArchivo = System.getProperty("user.home") + "//Desktop//";
+       
+        }
+	    
+		crearCarpeta("Sistema", nombreArchivo);
 		
 	}
 	
@@ -483,11 +503,15 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
                 
             }
 		    
-		} catch (IOException e) {
-			
-		    e.printStackTrace();
-		    
-		}
+		} catch (FileNotFoundException e) {
+        	
+        	System.err.println("El archivo no se encontro: " + e.getMessage());
+        	
+        } catch (IOException g) {
+        	
+        	System.err.println("Error de lectura del archivo: " + g.getMessage());
+        	
+        }
 
 		return resultado;
 		
@@ -557,10 +581,14 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
                 
             }
             
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
         	
-            e.printStackTrace();
-            
+        	System.err.println("El archivo no se encontro: " + e.getMessage());
+        	
+        } catch (IOException g) {
+        	
+        	System.err.println("Error de lectura del archivo: " + g.getMessage());
+        	
         }
 
         return usuarios;
@@ -612,10 +640,14 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
                 
             }
             
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
         	
-            e.printStackTrace();
-            
+        	System.err.println("El archivo no se encontro: " + e.getMessage());
+        	
+        } catch (IOException g) {
+        	
+        	System.err.println("Error de lectura del archivo: " + g.getMessage());
+        	
         }
 		
 		return bds;
@@ -636,11 +668,15 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		
 			}
 		
-		} catch (IOException e) {
-		
-			e.printStackTrace();
-		
-		}
+		} catch (FileNotFoundException e) {
+        	
+        	System.err.println("El archivo no se encontro: " + e.getMessage());
+        	
+        } catch (IOException g) {
+        	
+        	System.err.println("Error de lectura del archivo: " + g.getMessage());
+        	
+        }
 		
 		String contenidoString = contenidoArchivo.toString();
 		String[] lineas = contenidoString.split("\\|");// separador
