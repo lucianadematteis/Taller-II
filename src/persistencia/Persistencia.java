@@ -342,13 +342,14 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
                 String nombreTabla = entry.getKey();
                 Tabla tabla = entry.getValue();
                 insertar.append(nombreTabla + ":");
+                
+                LinkedHashMap<String, Atributo> atributos = new LinkedHashMap<String, Atributo>();
+                atributos = tabla.getRegistros().get(0);
                
-                for (LinkedHashMap<String, Atributo> registro : tabla.getRegistros()) {//esta linea esta mal
-                   
-                	for (Map.Entry<String, Atributo> atributoEntry : registro.entrySet()) {//esta linea esta mal
-                     
-                		String nombreAtributo = atributoEntry.getKey();
-                        Atributo atributo = atributoEntry.getValue();
+                for (Map.Entry<String, Atributo> atrib : atributos.entrySet()) {
+    
+                		String nombreAtributo = atrib.getKey();
+                        Atributo atributo = atrib.getValue();
                         String tipo="";
                         String nulo="";
                         String clave="";
@@ -383,12 +384,12 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
                         
                         insertar.append(nombreAtributo + ":"+ nulo + ":" + clave + ":" + tipo + ":");
                         
-                    }
+                    
                 	
                 }
                 
                 insertar.deleteCharAt(insertar.length() - 1);
-                insertar.append("|"); // Separador de salto de lÃ­nea
+                insertar.append("|"); // Separador de salto de línea
                 String ingreso = insertar.toString();
                 archivo.write(ingreso + "\n");
                 insertar.setLength(0);
@@ -899,6 +900,31 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		}
 
 	}
+	public void persistirTablasTotales(LinkedHashMap<String, Usuario> usuarios) {
+
+		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
+
+			Usuario user = usuario.getValue();
+
+			for (Map.Entry<String, BaseDatos> baseDatos : user.getBasesDatos().entrySet()) {
+
+				BaseDatos bd = baseDatos.getValue();
+
+					if (!(user.getNombreUser().isEmpty() || bd.getNombreBD().isEmpty())) {
+						
+						Map<String, Tabla> tablas = bd.getTablas();
+						persistirTablas(tablas,bd.getNombreBD(),user.getNombreUser());
+
+
+						
+					}
+
+				}
+
+			}
+
+		}
+	
 
 
 }
