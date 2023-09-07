@@ -172,7 +172,7 @@ public class Persistencia {
 	    return nombreArchivo;
 	}
 
-	//NO BORRÃ‰ LO QUE ESTABA, SIMPLEMENTE COPIÃ‰ LOS MÃ‰TODOS QUE HABÃ�A HECHO ANTES PARA PROBARLOS LUEGO
+	//NO BORRÃƒâ€° LO QUE ESTABA, SIMPLEMENTE COPIÃƒâ€° LOS MÃƒâ€°TODOS QUE HABÃƒï¿½A HECHO ANTES PARA PROBARLOS LUEGO
 	
 	/*
 	public void persistirUsuario(Usuario usuario, FileWriter archivo) {
@@ -261,60 +261,48 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 	}
 	
 	
-	public void persistirBasesDeDatos(Map<String, BaseDatos> BasesDatos, String nombreUsuario){
-		
-		String nombreArchivo="";
+	public void persistirBasesDeDatos(Map<String, BaseDatos> BasesDatos, String nombreUsuario) {
+
+		String nombreArchivo = "";
 		StringBuilder insertar = new StringBuilder();
-		
-		if (identificarSistema()==1) { //Si es windows
-			
-			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + "nombreBDs.txt";
-			
-		}else if(identificarSistema()==0){ //Si es linux
-			
-			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + "nombreBDs.txt";	
-		
+		if (identificarSistema() == 1) { // Si es windows
+			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\"
+					+ "nombreBDs.txt";
+
+		} else if (identificarSistema() == 0) { // Si es linux
+			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//"
+					+ "nombreBDs.txt";
 		}
-		
-	    try (FileWriter archivo = new FileWriter(nombreArchivo, true)) {
-	    	
-	        for (Map.Entry<String, BaseDatos> entry : BasesDatos.entrySet()) {
-	        	
-	            BaseDatos baseDatos = entry.getValue();
-	            String nombreBase =baseDatos.getNombreBD();
-	            Map<String, Tabla> tablas = baseDatos.getTablas();
-	            insertar.append(nombreBase);
-	            
-	            if(identificarSistema()==1) {
-	            	
-	            	crearCarpeta(nombreBase, System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario);
-	            
-	            } else {
-	            	
-	            	crearCarpeta(nombreBase, System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario );
-	            
-	            }
-	            
-	            for (Map.Entry<String, Tabla> entry2 : tablas.entrySet()) {
-	            	
-	            	String nombreTabla = entry2.getKey();
-	            	 insertar.append(":" +nombreTabla );
-	            }
-	            
-	            insertar.append("|"); // Separador de salto de lï¿½nea
-	            String ingreso = insertar.toString();
-	            archivo.write(ingreso + "\n");
-	            
-	        }
-	        
-	        archivo.close();
-	        
-	    } catch (IOException e) {
-	    	
-	        e.printStackTrace();
-	        
-	    }
-	    
+
+		try (FileWriter archivo = new FileWriter(nombreArchivo)) {
+			for (Map.Entry<String, BaseDatos> entry : BasesDatos.entrySet()) {
+				BaseDatos baseDatos = entry.getValue();
+				String nombreBase = baseDatos.getNombreBD();
+				Map<String, Tabla> tablas = baseDatos.getTablas();
+				insertar.append(nombreBase);
+				if (identificarSistema() == 1) {
+					crearCarpeta(nombreBase, System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario);
+				} else {
+					crearCarpeta(nombreBase, System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario);
+				}
+
+				for (Map.Entry<String, Tabla> entry2 : tablas.entrySet()) {
+
+					String nombreTabla = entry2.getKey();
+					insertar.append(":" + nombreTabla);
+					
+				}
+
+				insertar.append("|"); // Separador de salto de l�nea
+				String ingreso = insertar.toString();
+				archivo.write(ingreso + "\n");
+				insertar.setLength(0);
+
+			}
+			archivo.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void persistirTablas(Map<String, Tabla> tablas, String nombreBase, String nombreUsuario){
@@ -389,7 +377,7 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
                 }
                 
                 insertar.deleteCharAt(insertar.length() - 1);
-                insertar.append("|"); // Separador de salto de línea
+                insertar.append("|"); // Separador de salto de lÃ­nea
                 String ingreso = insertar.toString();
                 archivo.write(ingreso + "\n");
                 insertar.setLength(0);
@@ -681,7 +669,7 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		
 		String contenidoString = contenidoArchivo.toString();
 		String[] lineas = contenidoString.split("\\|");// separador
-		int cantLineas = lineas.length;// obtener tamaï¿½o del arreglo
+		int cantLineas = lineas.length;// obtener tamaÃ¯Â¿Â½o del arreglo
 		
 		LinkedHashMap<String, String> cargado=new LinkedHashMap<String, String>();
 
@@ -708,7 +696,7 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 
 		    while ((linea = br.readLine()) != null) {
 		    	
-		    	LinkedHashMap<String, Atributo> registro = new LinkedHashMap<String, Atributo>(); // Nuevo registro en cada iteraciï¿½n
+		    	LinkedHashMap<String, Atributo> registro = new LinkedHashMap<String, Atributo>(); // Nuevo registro en cada iteraciÃ¯Â¿Â½n
 		        
 		        String[] palabras = linea.split(":");
 		        int index = 0;
