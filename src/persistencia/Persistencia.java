@@ -210,22 +210,44 @@ public class Persistencia {
 	}
 	*/
 	
-public void persistirUsuario(Usuario usuario, FileWriter archivo) {
-		
-		try {
+	
+	// nueva versión persistir usuario
+	public void persistirUsuario(Usuario usuario, String ruta) {
+		String nombreArchivo="";
+	if (identificarSistema()==1) { //Si es windows
 			
-			String infoUsuario = usuario.getNombreUser() + ":" + usuario.getContrasenia();
+			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\"+ "Usuarios.txt";
+			
+		}else if(identificarSistema()==0){ //Si es linux
+			
+			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + "Usuarios.txt";	
+		
+		}			
+				 if(identificarSistema()==1) {
+					 
+		            crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "\\Desktop\\Sistema\\" );
+		          
+				 } else {
+				
+		            crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "//Desktop//Sistema//" );
+		            
+				 }
+					try (FileWriter archivo = new FileWriter(nombreArchivo, true)) {
+						String infoUsuario = usuario.getNombreUser() + ":" + usuario.getContrasenia();
+						 // System.out.println("Entra?");
 
-			for (Map.Entry<String, BaseDatos> bdEntry : usuario.getBasesDatos().entrySet()) {
-				
-				infoUsuario += ":" + bdEntry.getKey(); // Agregar nombres de las bases de datos
-				
+						for (Map.Entry<String, BaseDatos> bdEntry : usuario.getBasesDatos().entrySet()) {
+							
+							infoUsuario += ":" + bdEntry.getKey(); // Agregar nombres de las bases de datos
+
+				 
 			}
+			
 
 			infoUsuario += "|";
 			
 			archivo.write(infoUsuario + "\n");
-			
+			archivo.close();
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -234,31 +256,21 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		
 	}
 
-	public void persistirUsuariosTotales(LinkedHashMap<String, Usuario> usuarios) {
+	//nueva version persistir user totales
+public void persistirUsuariosTotales(LinkedHashMap<String, Usuario> usuarios) {
 		
 		String ruta = obtenerRutaUsuarios();
 		FileWriter archivo;
 		
-		try {
+		for (Map.Entry<String, Usuario> usuarioEntry : usuarios.entrySet()) {
 			
-			archivo = new FileWriter(ruta);
-			
-			for (Map.Entry<String, Usuario> usuarioEntry : usuarios.entrySet()) {
-				
-				Usuario usuario = usuarioEntry.getValue();
-				persistirUsuario(usuario, archivo);
-				
-			}
-			
-			archivo.close();
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
+			Usuario usuario = usuarioEntry.getValue();
+			persistirUsuario(usuario, ruta);
 			
 		}
 		
 	}
+	
 	
 	
 	public void persistirBasesDeDatos(Map<String, BaseDatos> BasesDatos, String nombreUsuario) {
@@ -405,7 +417,7 @@ public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 				
 				Usuario user = usuario.getValue();
 				ruta = obtenerRutaUsuarios();
-				persistirUsuario(usuario.getValue(), archivo);
+				persistirUsuario(usuario.getValue(), ruta);
 				persistirBasesDeDatos(user.getBasesDatos(), user.getNombreUser());
 				
 				for (Map.Entry<String, BaseDatos> baseDatos : user.getBasesDatos().entrySet()) {
