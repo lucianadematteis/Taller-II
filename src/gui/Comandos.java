@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import javax.swing.table.DefaultTableModel;
+
 import comunicacion.FachadaLogica;
 import comunicacion.IFachadaLogica;
 
 public class Comandos {
 	
-	VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+	//VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
 	IFachadaLogica logica= new FachadaLogica();
 	
     private int aciertos;
@@ -45,6 +47,15 @@ public class Comandos {
         
     }
 	
+    public void insertarDepuracion(String mensaje1, String mensaje2) {
+
+		DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.depuracion.getModel();
+
+		Object[] nuevaFila = { mensaje1, mensaje2 };
+		model.insertRow(0, nuevaFila);
+
+	}
+    
 	public boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
 
 		if (posInicial == posFinal) {
@@ -108,13 +119,13 @@ public class Comandos {
 
 		if (!(validaCantidadLineas(sentencia, 1, 1))) {
 
-			ventanaPrincipal.insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+			insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
 
 		} else {
 
 			if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
 
-				ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
+				insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
 
 			} else {
 
@@ -132,19 +143,19 @@ public class Comandos {
 
 		if (!(validaCantidadLineas(sentencia, 2, 2))) {
 
-			ventanaPrincipal.insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+			insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
 
 		} else {
 
 			if (!(validaCantidadArgumentos(sentencia, 0, sentencia.size(), 2))) {
 
-				ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
+				insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
 
 			} else {
 
 				if (!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
 
-					ventanaPrincipal.insertarDepuracion("Error #01",
+					insertarDepuracion("Error #01",
 							"El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 
 				} else {
@@ -165,19 +176,19 @@ public class Comandos {
 
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 4))) {
 
-			ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida en linea 3");
+			insertarDepuracion("Error #03", "Cantidad de argumentos no valida en linea 3");
 
 		} else {
 
 			if (!(sentencia.get(2)[0].toUpperCase().equals("WHERE"))) {
 
-				ventanaPrincipal.insertarDepuracion("Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es valido");
+				insertarDepuracion("Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es valido");
 
 			} else {
 
 				if (!(sentencia.get(2)[2].toUpperCase().equals("="))) {
 
-					ventanaPrincipal.insertarDepuracion("Error #05", "El operador: " + sentencia.get(2)[2] + " no es valido");
+					insertarDepuracion("Error #05", "El operador: " + sentencia.get(2)[2] + " no es valido");
 
 				} else {
 
@@ -196,13 +207,13 @@ public class Comandos {
 
 		if (!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 
-			ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida en la linea 2");
+			insertarDepuracion("Error #03", "Cantidad de argumentos no valida en la linea 2");
 
 		} else {
 
 			if (!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
 
-				ventanaPrincipal.insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+				insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 
 			} else {
 
@@ -219,7 +230,7 @@ public class Comandos {
 
 		if (!(validaCantidadLineas(sentencia, 3, 3))) {
 
-			ventanaPrincipal.insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+			insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
 
 		} else {
 
@@ -243,13 +254,13 @@ public class Comandos {
 
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 8))) {
 
-			ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida en la linea 3");
+			insertarDepuracion("Error #03", "Cantidad de argumentos no valida en la linea 3");
 
 		} else {
 
 			if (!(sentencia.get(2)[2].toUpperCase().equals("=")) || !(sentencia.get(2)[6].toUpperCase().equals("="))) {
 
-				ventanaPrincipal.insertarDepuracion("Error #05", "Operador/es de igualdad no valido en la linea 3");
+				insertarDepuracion("Error #05", "Operador/es de igualdad no valido en la linea 3");
 
 			} else {
 
@@ -267,24 +278,24 @@ public class Comandos {
 		
 		if(!(validaCantidadLineas(sentencia, 3, 5))) {
 			
-			ventanaPrincipal.insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla");
+			insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla");
         	
 		}else {
 			
 		    if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 2))) {
 			
-		    	ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las lineas 2 y " + sentencia.size());
+		    	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las lineas 2 y " + sentencia.size());
 	        	
 			}else {
 				
 				if(!(validaTiposAtributos(sentencia, 2, sentencia.size()))) {
 					
-					ventanaPrincipal.insertarDepuracion("Error #04", "Tipos de datos incorrectos, recuerde que solo se admiten datos de tipo entero o cadena");
+					insertarDepuracion("Error #04", "Tipos de datos incorrectos, recuerde que solo se admiten datos de tipo entero o cadena");
 		        	
 				}else {
 					
 					aciertos++;
-					ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere crear una tabla llamada: " +  sentencia.get(1)[1]);
+					insertarDepuracion("Acierto #" + aciertos, "El usuario quiere crear una tabla llamada: " +  sentencia.get(1)[1]);
 		        	
 				}
 			}		
@@ -296,18 +307,18 @@ public class Comandos {
 		
 		if(!(validaCantidadLineas(sentencia, 2, 2))) {
 			
-        	ventanaPrincipal.insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+        	insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
         	
 		}else {
 		
 			if(!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 				
-	        	ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en la linea 2");
+	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en la linea 2");
 	        	
 			}else {
 				
 				aciertos++;
-	        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere crear una base de datos llamada: " + sentencia.get(1)[1]);
+	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere crear una base de datos llamada: " + sentencia.get(1)[1]);
 				
 			}
 			
@@ -318,7 +329,7 @@ public class Comandos {
 	public void comandoSelectAnd(ArrayList<String[]> sentencia) {
 		
 		aciertos++;
-    	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + 
+    	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + 
 				" \n donde el atributo: " + sentencia.get(2)[1] + " valga " + sentencia.get(2)[3] +
 				" \n y el atributo: " + sentencia.get(2)[5] + " valga " + sentencia.get(2)[7]);
     	
@@ -327,7 +338,7 @@ public class Comandos {
 	public void comandoSelectOr(ArrayList<String[]> sentencia) {
 		
 		aciertos++;
-		ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + 
+		insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + 
 				" \n donde el atributo: " + sentencia.get(2)[1] + " valga " + sentencia.get(2)[3] +
 				" \n 0 el atributo: " + sentencia.get(2)[5] + " valga " + sentencia.get(2)[7]);
 		
@@ -339,12 +350,12 @@ public class Comandos {
         	
     		if(!(sentencia.get(0)[1].toUpperCase().equals("TABLES"))) {
             			
-	        	ventanaPrincipal.insertarDepuracion("Error #01", "El comando: " + sentencia.get(0)[1].toUpperCase() + " no es valido");
+	        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(0)[1].toUpperCase() + " no es valido");
 	        	
             }else {
             			
             	aciertos++;
-            	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere ver las tablas");
+            	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere ver las tablas");
 	        		
             }
         	
@@ -356,13 +367,13 @@ public class Comandos {
 		
 		if(!(sentencia.size()>1)){
 			
-    		ventanaPrincipal.insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+    		insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
         	
 		}else {
 			
         	if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { //no tiene mas nada alado del create
         		
-        		ventanaPrincipal.insertarDepuracion("Error #03", "Demasiados argumentos en linea 1");
+        		insertarDepuracion("Error #03", "Demasiados argumentos en linea 1");
 	        
         	}else {
     			
@@ -378,7 +389,7 @@ public class Comandos {
         			
         		}else {
         			
-        			ventanaPrincipal.insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+        			insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 		        	
         		}
         		
@@ -392,13 +403,13 @@ public class Comandos {
 		
 		if(!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
     		
-        	ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
+        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
         	
     	}else {
     		
     		if(!(validaCantidadLineas(sentencia, 3, 3))) {
     			
-	        	ventanaPrincipal.insertarDepuracion("Error #02", "Cantidad de lineas incorrecta");
+	        	insertarDepuracion("Error #02", "Cantidad de lineas incorrecta");
 	        	
     		}else {
     		
@@ -409,7 +420,7 @@ public class Comandos {
 		            	if(validaSentenciasWhereComun(sentencia)) {
 		            		
 		            		aciertos++;
-				        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + " donde el atributo: " + sentencia.get(2)[1] + " vale " + sentencia.get(2)[3]);
+				        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + " donde el atributo: " + sentencia.get(2)[1] + " vale " + sentencia.get(2)[3]);
 				        	
 		            	}	
 		            	
@@ -442,7 +453,7 @@ public class Comandos {
 		if(validaSentenciasUnaLinea(sentencia)){
         	
     		aciertos++;
-        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere seleccionar la base de datos: " + sentencia.get(0)[1]);
+        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere seleccionar la base de datos: " + sentencia.get(0)[1]);
         	
     	}
 		
@@ -452,24 +463,24 @@ public class Comandos {
 		
 		if (!(validaCantidadLineas(sentencia, 2, 2))){
 			
-        	ventanaPrincipal.insertarDepuracion("Error #02", "Cantidad de lineas no valida");
+        	insertarDepuracion("Error #02", "Cantidad de lineas no valida");
     		
     	}else {
     		
     		if ((!(sentencia.get(1).length>1)) || (!(validaCantidadArgumentos(sentencia, 0, 0, 2)))) {
         		
-	        	ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
+	        	insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
 	        	
         	}else { 
         		
         		if(!(sentencia.get(1)[0].toUpperCase().equals("VALUES"))) {
             			
-		        	ventanaPrincipal.insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 		        	
             	}else {
             			
             		aciertos++;
-		        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere insertar datos en la tabla: " + sentencia.get(0)[1]);
+		        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere insertar datos en la tabla: " + sentencia.get(0)[1]);
 		        	
             	}
         	}
@@ -481,14 +492,14 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
-        	ventanaPrincipal.insertarDepuracion("Error #03", "Demasiados argumentos en linea 1");
+        	insertarDepuracion("Error #03", "Demasiados argumentos en linea 1");
         	
     	}else {
     	
         	if(validaSentenciasFromWhere(sentencia)) {
         		
         		aciertos++;
-	        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere borrar el dato de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
+	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere borrar el dato de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
 	        	
         	}
     	}
@@ -499,25 +510,25 @@ public class Comandos {
 		
 		if(!(validaCantidadLineas(sentencia, 3, 3))) {
     		
-        	ventanaPrincipal.insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+        	insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
         	
     	}else {
     	
         	if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
         		
-	        	ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
+	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
 	        	
         	}else {
         	
             	if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 4))) {
             		
-		        	ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las lineas 2 y 3");
+		        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las lineas 2 y 3");
 		        	
             	}else {
             		
             		if(!(sentencia.get(1)[0].toUpperCase().equals("SET"))) {
             			
-			        	ventanaPrincipal.insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+			        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 			        	
             		}else {
             			
@@ -525,12 +536,12 @@ public class Comandos {
 	            			
 	            			if(!(sentencia.get(1)[2].equals("="))){
 	            				
-					        	ventanaPrincipal.insertarDepuracion("Error #05", "El operador: " + sentencia.get(1)[2] + " no es valido");
+					        	insertarDepuracion("Error #05", "El operador: " + sentencia.get(1)[2] + " no es valido");
 					        	
 	            			}else {
 	            		
 	            				aciertos++;
-					        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere actualizar el dato identificado por: " + sentencia.get(2)[1] + " = " + sentencia.get(2)[3] + " de la tabla: " + sentencia.get(0)[1] + " \n que actualmente es: " + sentencia.get(1)[1] + " por " + sentencia.get(1)[3]);
+					        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere actualizar el dato identificado por: " + sentencia.get(2)[1] + " = " + sentencia.get(2)[3] + " de la tabla: " + sentencia.get(0)[1] + " \n que actualmente es: " + sentencia.get(1)[1] + " por " + sentencia.get(1)[3]);
 					        	
 	            			}
 	            		}
@@ -546,7 +557,7 @@ public class Comandos {
 		if(validaSentenciasDosLineas(sentencia)) {
     		
     		aciertos++;
-        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer no nulo el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer no nulo el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
         	
     	}
 		
@@ -556,14 +567,14 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
-        	ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
+        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
         	
     	}else {
     	
         	if(validaSentenciasFromWhere(sentencia)) {
         		
         		aciertos++;
-	        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere contar la cantidad de datos de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
+	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere contar la cantidad de datos de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
         	
         	}
         	
@@ -575,14 +586,14 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
-        	ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
+        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
         	
     	}else {
     	
         	if(validaSentenciasFromWhere(sentencia)) {
         		
         		aciertos++;
-	        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el promedio de datos de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
+	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el promedio de datos de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
             	
         	}
     	}
@@ -594,7 +605,7 @@ public class Comandos {
 		if(validaSentenciasDosLineas(sentencia)) {
     		
         	aciertos++; 
-        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor maximo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor maximo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
         	
         }
 		
@@ -605,7 +616,7 @@ public class Comandos {
 		if(validaSentenciasDosLineas(sentencia)) {
     		
         	aciertos++;
-        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor minimo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor minimo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
         	
         }
 		
@@ -616,7 +627,7 @@ public class Comandos {
 		if(validaSentenciasDosLineas(sentencia)) {
     		
     		aciertos++;
-        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer clave primaria el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer clave primaria el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
         	
     	}
 		
@@ -627,7 +638,7 @@ public class Comandos {
 		if(validaSentenciasUnaLinea(sentencia)){
         	
     		aciertos++;
-        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener una descripcion sobre la tabla: " + sentencia.get(0)[1]);
+        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener una descripcion sobre la tabla: " + sentencia.get(0)[1]);
         	
     	}
 		
@@ -638,7 +649,7 @@ public class Comandos {
 		if(validaSentenciasUnaLinea(sentencia)){
         	
     		aciertos++;
-        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener ayuda sobre el comando: " + sentencia.get(0)[1]);
+        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener ayuda sobre el comando: " + sentencia.get(0)[1]);
         	
     	}
 		
@@ -648,30 +659,30 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
-        	ventanaPrincipal.insertarDepuracion("Error #03", "Demasiados argumentos en linea 1");
+        	insertarDepuracion("Error #03", "Demasiados argumentos en linea 1");
         	
     	}else {
     		
     		if(!(validaCantidadLineas(sentencia, 2, 2))) {
     			
-	        	ventanaPrincipal.insertarDepuracion("Error #02", "Cantidad de lineas no valida");
+	        	insertarDepuracion("Error #02", "Cantidad de lineas no valida");
 	        	
     		}else {
     			
     			if(!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
     				
-		        	ventanaPrincipal.insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 		        	
     			}else {
     			
         			if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 3))) {
         				
-			        	ventanaPrincipal.insertarDepuracion("Error #03", "Cantidad de argumentos no valida en linea 2, recuerde que el join natural se realiza entre dos tablas");
+			        	insertarDepuracion("Error #03", "Cantidad de argumentos no valida en linea 2, recuerde que el join natural se realiza entre dos tablas");
 			        	
         			}else {
         				
         				aciertos++;
-			        	ventanaPrincipal.insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer un join natural entre las tablas: " + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
+			        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer un join natural entre las tablas: " + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
 			        	
         			}
     			}
@@ -688,7 +699,7 @@ public class Comandos {
             
         } else {
         	
-            ventanaPrincipal.insertarDepuracion("Error #01", "El comando " + comando + " no es válido");
+            insertarDepuracion("Error #01", "El comando " + comando + " no es válido");
             
         }
     }

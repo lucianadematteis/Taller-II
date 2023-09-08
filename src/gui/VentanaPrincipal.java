@@ -42,14 +42,6 @@ public class VentanaPrincipal extends JFrame {
 		});
 	}
 	
-	public void insertarDepuracion(String mensaje1, String mensaje2) {
-
-		DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.depuracion.getModel();
-
-		Object[] nuevaFila = { mensaje1, mensaje2 };
-		model.insertRow(0, nuevaFila);
-
-	}
 	
 	public ArrayList<String[]> administraSentencia(String sentencia) {
 
