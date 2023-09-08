@@ -47,5 +47,17 @@ public class Tabla {
 		this.registros = registros;
 		
 	}
+	
+	public void insertarRegistro(LinkedHashMap<String, Atributo> registro) {
+		
+		registros.add(registro);
+		
+	}
+	
+	public void eliminarRegistro(LinkedHashMap<String, Atributo> registro) {
+		
+		registros.remove(registro);
+		
+	}
 
 }
