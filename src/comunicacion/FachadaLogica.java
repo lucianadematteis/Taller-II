@@ -1,25 +1,26 @@
 package comunicacion;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import logica.Usuario;
+import persistencia.Persistencia;
 
 public class FachadaLogica implements IFachadaLogica {
 
-	IFachadaPersistencia persitencia = new FachadaPersistencia();
+	Persistencia persistencia = new Persistencia();
 	private String baseDatos;
 	private String usuario;
 	private String tabla;
-	private Map<String, Usuario> usuarios;
-	private Map<String, String> ayuda;
+	private LinkedHashMap<String, Usuario> usuarios;
+	private LinkedHashMap<String, String> ayuda;
 	
 	public FachadaLogica() {
 		
 		baseDatos = "";
 		usuario = "";
 		tabla = "";
-		usuarios = new HashMap<String, Usuario>();
-		ayuda = new HashMap<String, String>();
+		usuarios = new LinkedHashMap<String, Usuario>();
+		ayuda = new LinkedHashMap<String, String>();
 		
 	}
 
@@ -59,13 +60,13 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 
-	public Map<String, Usuario> getUsuarios() {
+	public LinkedHashMap<String, Usuario> getUsuarios() {
 		
 		return usuarios;
 		
 	}
 
-	public void setUsuarios(Map<String, Usuario> usuarios) {
+	public void setUsuarios(LinkedHashMap<String, Usuario> usuarios) {
 		
 		this.usuarios = usuarios;
 		
@@ -77,9 +78,21 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 
-	public void setAyuda(Map<String, String> ayuda) {
+	public void setAyuda(LinkedHashMap<String, String> ayuda) {
 		
 		this.ayuda = ayuda;
+		
+	}
+	
+	public void persistirDatos(LinkedHashMap<String, Usuario> usuarios) {
+		
+		persistencia.persistirTodo(usuarios);
+		
+	}
+	
+	public void recuperarDatos(LinkedHashMap<String, Usuario> usuarios) {
+		
+		persistencia.recuperarTodo(usuarios);
 		
 	}
 	
