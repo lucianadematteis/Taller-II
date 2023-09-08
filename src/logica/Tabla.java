@@ -2,6 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.Map.Entry;
 
 import comunicacion.DTOTabla;
 
@@ -57,6 +58,63 @@ public class Tabla {
 	public void eliminarRegistro(LinkedHashMap<String, Atributo> registro) {
 		
 		registros.remove(registro);
+		
+	}
+	
+	public boolean tieneClave() {
+		
+		LinkedHashMap<String, Atributo> guia=registros.get(0);
+		
+		for (Entry<String, Atributo> atributo : guia.entrySet()) {
+			
+			if(atributo.getValue().getClave()) {
+				
+				return true;
+				
+			}
+			
+		}
+		
+		return false;
+		
+	}
+	
+	public String obtenerClave() {
+		
+		String clave="";
+		
+		LinkedHashMap<String, Atributo> guia=registros.get(0);
+		
+		for (Entry<String, Atributo> atributo : guia.entrySet()) {
+			
+			if(atributo.getValue().getClave()) {
+				
+				clave=atributo.getValue().getNombreAtributo();
+				
+			}
+			
+		}
+		
+		return clave;
+		
+	}
+	
+	public ArrayList<String> obtenerNotNull() {
+		
+		ArrayList<String> atributosNotNull = new ArrayList<String>();
+		LinkedHashMap<String, Atributo> guia=registros.get(0);
+		
+		for (Entry<String, Atributo> atributo : guia.entrySet()) {
+            	
+			if(atributo.getValue().getNulo()) {
+    				
+				atributosNotNull.add(atributo.getValue().getNombreAtributo());
+    				
+			}
+                
+		}
+         
+		return atributosNotNull;
 		
 	}
 
