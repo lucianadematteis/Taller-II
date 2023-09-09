@@ -61,6 +61,9 @@ public class Tabla {
 		
 	}
 	
+	
+	
+	
 	public boolean tieneClave() {
 		
 		LinkedHashMap<String, Atributo> guia=registros.get(0);

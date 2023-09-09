@@ -53,5 +53,21 @@ public class BaseDatos {
 		return tablas.get(nombreTabla) != null; 
 	}
 	
+	public void insertarTabla(LinkedHashMap<String, Tabla> tablita, String tablon) {
+        
+        Tabla nuevaTabla = new Tabla(); 
+        
+        tablita.put(tablon, nuevaTabla);
+    }
+	
+	 public Tabla obtenerTabla(LinkedHashMap<String, Tabla> tablita,String nombreTabla) {
+	       
+	        if (tablita.containsKey(nombreTabla)) {
+	        	
+	            return tablita.get(nombreTabla); 
+	        else {
+	        	
+	        	System.out.println("La tabla no existe");
+	    }
 
 }

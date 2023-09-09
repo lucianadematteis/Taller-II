@@ -102,6 +102,14 @@ public class FachadaLogica implements IFachadaLogica {
 		usuarios.replace(usAux.getNombreUser(), usAux);
 	}
 	
+	public void eliminarusuario(DTOUsuario user) {
+		Usuario usu = new Usuario(user);
+		usuarios.remove(usu);
+		}
+	
+	
+	
+	
 	//recibe un arraylist con los valores y devuelve el promedio
 	public int obtenerPromedio(ArrayList<Integer> valores) {
 		 int suma = 0;
