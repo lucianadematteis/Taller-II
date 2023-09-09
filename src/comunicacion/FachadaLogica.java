@@ -95,5 +95,10 @@ public class FachadaLogica implements IFachadaLogica {
 		persistencia.recuperarTodo(usuarios);
 		
 	}
+	//Dai mod usuario a partir de un dto usuario
+	public void modificarUsuario(DTOUsuario user){
+		Usuario usAux = new Usuario (user);
+		usuarios.replace(usAux.getNombreUser(), usAux);
+	}
 	
 }
