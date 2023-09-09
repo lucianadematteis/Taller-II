@@ -131,18 +131,19 @@ public class Persistencia {
 		
 	}
 	
-public String obtenerRutaBD(String nombreUsuario) {
+	public String obtenerRutaBD(String nombreUsuario) {
 		
 		String nombreArchivo = "";
-		int sistema = identificarSistema();
 
-		if (sistema == 1) { // Si es Windows
+		if (identificarSistema() == 1) { // Si es windows
 			
-			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario +"\\" +"BasesDeDatos.txt";
+			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\"
+					+ "nombreBDs.txt";
+
+		} else if (identificarSistema() == 0) { // Si es linux
 			
-		} else if (sistema == 0) { // Si es Linux
-			
-			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario +"//" + "BasesDeDatos.txt";
+			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//"
+					+ "nombreBDs.txt";
 			
 		}
 
