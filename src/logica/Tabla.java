@@ -2,6 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import comunicacion.DTOTabla;
@@ -115,6 +116,50 @@ public class Tabla {
 		}
          
 		return atributosNotNull;
+		
+	}
+	
+	public ArrayList<LinkedHashMap<String, Atributo>> obtenerRegistros(String nombreAtributo, String valorCondicion) {
+		
+		ArrayList<LinkedHashMap<String, Atributo>> registrosObtenidos = new ArrayList<LinkedHashMap<String, Atributo>>();
+		
+		for (LinkedHashMap<String, Atributo> misRegistros : this.getRegistros()) { 
+			
+		    for (Map.Entry<String, Atributo> entrada : misRegistros.entrySet()) {
+		    	
+		    	if(entrada.getValue().getNombreAtributo().equals(nombreAtributo)) {
+		    		
+		    		if(entrada.getValue() instanceof Entero) {
+			    		
+			    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
+			    		
+			    		Entero entradaEntera = (Entero) entrada.getValue();
+			    		
+			    		if(entradaEntera.getValor() == valorCondicionEntera) {
+			    			
+			    			registrosObtenidos.add(misRegistros);
+			    			
+			    		}
+			    		
+			    	}else if(entrada.getValue() instanceof Cadena){
+			    		
+			    		Cadena entradaCadena = (Cadena) entrada.getValue();
+			    		
+			    		if(entradaCadena.getDato().equals(valorCondicion)) {
+			    			
+			    			registrosObtenidos.add(misRegistros);
+			    			
+			    		}
+			    		
+			    	}
+		    		
+		    	}
+		    	
+		    }
+		    
+		}
+         
+		return registrosObtenidos;
 		
 	}
 
