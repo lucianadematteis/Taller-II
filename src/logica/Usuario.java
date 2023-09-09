@@ -22,9 +22,8 @@ public class Usuario {
 		
 		this.nombreUser = nombreUser;
 		this.contrasenia = contrasenia;
-		basesDatos = new LinkedHashMap<String, BaseDatos>(); //Si se pone en estado de null, se rompe el programa y no se puede persistir
-		//abajo queda comentado el cómo estaba antes
-		//this.basesDatos = null; // Establece el mapa de bases de datos como null
+		basesDatos = new LinkedHashMap<String, BaseDatos>(); 
+		
 	}
 
 	public String getNombreUser() {
