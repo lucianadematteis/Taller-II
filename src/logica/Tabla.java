@@ -127,15 +127,15 @@ public class Tabla {
 			
 		    for (Map.Entry<String, Atributo> entrada : misRegistros.entrySet()) {
 		    	
-		    	if(entrada.getValue().getNombreAtributo().equals(nombreAtributo)) {
+		    	if(entrada.getValue().getNombreAtributo().equals(nombreAtributo)) { //si es el atributo que debo evaluar
 		    		
-		    		if(entrada.getValue() instanceof Entero) {
+		    		if(entrada.getValue() instanceof Entero) { //como la condicion es un string debo de evaluar esto para convertirla
 			    		
 			    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
 			    		
 			    		Entero entradaEntera = (Entero) entrada.getValue();
 			    		
-			    		if(entradaEntera.getValor() == valorCondicionEntera) {
+			    		if(entradaEntera.getValor() == valorCondicionEntera) { //si cumple con la condicion
 			    			
 			    			registrosObtenidos.add(misRegistros);
 			    			
@@ -145,7 +145,7 @@ public class Tabla {
 			    		
 			    		Cadena entradaCadena = (Cadena) entrada.getValue();
 			    		
-			    		if(entradaCadena.getDato().equals(valorCondicion)) {
+			    		if(entradaCadena.getDato().equals(valorCondicion)) { //si cumple con la condicion
 			    			
 			    			registrosObtenidos.add(misRegistros);
 			    			
