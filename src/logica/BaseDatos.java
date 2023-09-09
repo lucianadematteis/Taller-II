@@ -65,9 +65,8 @@ public class BaseDatos {
 	        if (tablita.containsKey(nombreTabla)) {
 	        	
 	            return tablita.get(nombreTabla); 
-	        else {
-	        	
-	        	System.out.println("La tabla no existe");
-	    }
+	        
 
+}
+	 }
 }
