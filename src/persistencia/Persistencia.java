@@ -138,7 +138,7 @@ public class Persistencia {
 		if (identificarSistema() == 1) { // Si es windows
 
 			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\"
-					+ "BasesDeDatos.txt";
+					+ "BasesDeDatos.txt"; //Se acomodaron el nombre del doc bd
 
 		} else if (identificarSistema() == 0) { // Si es linux
 
