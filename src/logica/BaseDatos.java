@@ -47,5 +47,11 @@ public class BaseDatos {
 		this.tablas = tablas;
 		
 	}
+	
+	//Dai bool buscar en tablas objeto tabla
+	public boolean buscarTabla(String nombreTabla) {	
+		return tablas.get(nombreTabla) != null; 
+	}
+	
 
 }
