@@ -172,6 +172,16 @@ public class Persistencia {
 		
 	    String infoUsuario = usuario.getNombreUser() + ":" + usuario.getContrasenia();
 	    
+	    if(identificarSistema()==1) {
+			 
+            crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "\\Desktop\\Sistema\\" );
+          
+		 } else {
+			 
+            crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "//Desktop//Sistema//" );
+            
+		 }
+	    
 	    for (Map.Entry<String, BaseDatos> bdEntry : usuario.getBasesDatos().entrySet()) {
 	    	
 	        infoUsuario += ":" + bdEntry.getValue().getNombreBD(); // Agregar nombres de las bases de datos
