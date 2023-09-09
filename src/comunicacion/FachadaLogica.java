@@ -107,8 +107,18 @@ public class FachadaLogica implements IFachadaLogica {
 		usuarios.remove(usu);
 		}
 	
-	
-	
+	public Usuario obtenerUsuario(String nombreUse, LinkedHashMap<String, Usuario>[] usuarios1) {
+	 
+
+	    for (LinkedHashMap<String, Usuario> usuarioMap : usuarios1) {
+	     
+	        Usuario usuario1 = usuarioMap.get(nombreUse);
+	        if (usuario1 != null) {
+	            return usuario1; // o
+	        }
+	    }
+	    return null; // 
+	}
 	
 	//recibe un arraylist con los valores y devuelve el promedio
 	public int obtenerPromedio(ArrayList<Integer> valores) {
