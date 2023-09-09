@@ -162,5 +162,35 @@ public class Tabla {
 		return registrosObtenidos;
 		
 	}
+	public boolean buscarAtributo(String nombreAtributo) {
+	 
+	    for (LinkedHashMap<String, Atributo> registro : registros) {
+	        
+	        for (Atributo atributo : registro.values()) {
+	            
+	            if (atributo.getNombreAtributo().equals(nombreAtributo)) {
+	                return true; 
+	            }
+	        }
+	    }
+	    return false; 
+	}
+
+	public void insertarAtributo (Atributo atributo) {
+		registros.get(0).put(atributo.getNombreAtributo(), atributo); //agrega solo a la guia
+		
+	}
+	
+	public Atributo obtenerAtributo(String nombreAtributo) {
+	    
+	    for (LinkedHashMap<String, Atributo> registro : registros) {
+	       
+	        Atributo atributo = registro.get(nombreAtributo);
+	        if (atributo != null) {
+	            return atributo; 
+	        }
+	    }
+	    return null; 
+	}
 
 }
