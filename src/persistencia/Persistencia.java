@@ -271,17 +271,17 @@ public class Persistencia {
 		
 	}
 	
-public void persistirBasesDatosTotales(LinkedHashMap<String, Usuario> usuarios) {
+	public void persistirBasesDatosTotales(LinkedHashMap<String, Usuario> usuarios) {
 		
 		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
 
 			Usuario user = usuario.getValue();
-			//se comenta porque al recuperar si no existe el archivo da error entonces si es vacio lo crea vacio y no da error
-			//if (!(user.getBasesDatos().isEmpty())) {
+			
+			if (!(user.getBasesDatos().isEmpty())) {
 				
 				persistirBasesDeDatos(user.getBasesDatos(), user.getNombreUser());
 				
-			//}
+			}
 			
 		}
 

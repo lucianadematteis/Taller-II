@@ -120,11 +120,5 @@ public class FachadaLogica implements IFachadaLogica {
 		return promedio;
 	}
 	
-	public void insertarUsuario (DTOUsuario dto) {
-	
-		Usuario usuario = new Usuario (dto);
-		usuarios.put(dto.getNombreUser(), usuario);
-	}
-	
 	
 }
