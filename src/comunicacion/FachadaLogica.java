@@ -1,5 +1,6 @@
 package comunicacion;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import logica.Usuario;
@@ -100,5 +101,16 @@ public class FachadaLogica implements IFachadaLogica {
 		Usuario usAux = new Usuario (user);
 		usuarios.replace(usAux.getNombreUser(), usAux);
 	}
+	
+	//recibe un arraylist con los valores y devuelve el promedio
+	public int obtenerPromedio(ArrayList<Integer> valores) {
+		 int suma = 0;
+		    for (int i = 0; i < valores.size(); i++) {
+		        suma += valores.get(i);
+		    }
+		    int promedio = suma / valores.size();
+		return promedio;
+	}
+	
 	
 }
