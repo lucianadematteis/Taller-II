@@ -108,7 +108,7 @@ public class FachadaLogica implements IFachadaLogica {
 		usuarios.remove(usu);
 	}
 
-	public Usuario obtenerUsuario(String nombreUse, LinkedHashMap<String, Usuario>[] usuarios1) {
+	/*public Usuario obtenerUsuario(String nombreUse, LinkedHashMap<String, Usuario>[] usuarios1) {
 
 		for (LinkedHashMap<String, Usuario> usuarioMap : usuarios1) {
 
@@ -118,8 +118,17 @@ public class FachadaLogica implements IFachadaLogica {
 			}
 		}
 		return null; //
+	}*/
+	
+	public Usuario obtenerUsuario(String nombreUse) {
+		if (usuarios.containsKey(nombreUse)) {
+	        return usuarios.get(nombreuse);
+	    } else {
+	      
+	        return null ;
+	    }
 	}
-
+	
 	public int obtenerCantidad(ArrayList<Integer> valores) {
 
 		return valores.size();

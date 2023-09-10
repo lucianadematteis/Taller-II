@@ -120,5 +120,7 @@ public class Tabla {
 		return atributosNotNull;
 		
 	}
-
+	
+	
+	
 }
