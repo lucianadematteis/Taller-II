@@ -53,17 +53,15 @@ public class BaseDatos {
 		return tablas.get(nombreTabla) != null; 
 	}
 	
-	public void insertarTabla(LinkedHashMap<String, logica.Tabla> tablita, String tablon) {
+	public void insertarTabla(Tabla tabla) {
         
-       logica.Tabla  nuevaTabla = new logica.Tabla(tablon); 
-        
-        tablita.put(tablon, nuevaTabla);
+       tablas.put(tabla.getNombreTabla(), tabla);
     }
 	
 	
-	public logica.Tabla obtenerTabla(LinkedHashMap<String, logica.Tabla> tablita, String nombreTabla) {
-	    if (tablita.containsKey(nombreTabla)) {
-	        return tablita.get(nombreTabla);
+	public Tabla obtenerTabla(String nombreTabla) {
+	    if (tablas.containsKey(nombreTabla)) {
+	        return tablas.get(nombreTabla);
 	    } else {
 	      
 	        return null ;
