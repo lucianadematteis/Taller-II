@@ -29,9 +29,21 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public void setBaseDatos(String baseDatos) {
+	public void seleccionarBaseDatos(String baseDatos) {
 
 		this.baseDatos = baseDatos;
+
+	}
+	
+	public void liberarMemoriaBaseDatos() {
+
+		this.baseDatos = "";
+
+	}
+	
+	public void liberarMemoriaUsuario() {
+
+		this.usuario = "";
 
 	}
 
@@ -41,7 +53,7 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public void setUsuario(String usuario) {
+	public void seleccionarUsuario(String usuario) {
 
 		this.usuario = usuario;
 
@@ -71,14 +83,15 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public void persistirDatos(LinkedHashMap<String, Usuario> usuarios) {
+	public void persistirDatos() {
 
 		persistencia.persistirTodo(usuarios);
 
 	}
 
-	public void recuperarDatos(LinkedHashMap<String, Usuario> usuarios) {
+	public void recuperarDatos() {
 
+		ayuda=persistencia.recuperarAyuda();
 		persistencia.recuperarTodo(usuarios);
 
 	}
