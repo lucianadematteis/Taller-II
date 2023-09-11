@@ -61,8 +61,22 @@ public class Tabla {
 		
 	}
 	
-	
-	
+	/*public registros obtenerRegistros(String nombreAtributoCondicion, Atributo valorCondicion) {
+        List<LinkedHashMap<String, Atributo>> registrosFiltrados = new ArrayList<>();
+
+        for (LinkedHashMap<String, Atributo> registro : registros) {
+            if (registro.containsKey(nombreAtributoCondicion)) {
+                Atributo valorAtributo = registro.get(nombreAtributoCondicion);
+                if (valorAtributo.equals(valorCondicion)) {
+                    registrosFiltrados.add(registro);
+                }
+            }
+        }
+
+        return registrosFiltrados;
+    }
+
+	*/
 	
 	public boolean tieneClave() {
 		
