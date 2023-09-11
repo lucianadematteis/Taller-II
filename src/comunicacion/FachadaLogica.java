@@ -11,7 +11,6 @@ public class FachadaLogica implements IFachadaLogica {
 	Persistencia persistencia = new Persistencia();
 	private String baseDatos;
 	private String usuario;
-	private String tabla;
 	private LinkedHashMap<String, Usuario> usuarios;
 	private LinkedHashMap<String, String> ayuda;
 
@@ -19,7 +18,6 @@ public class FachadaLogica implements IFachadaLogica {
 
 		baseDatos = "";
 		usuario = "";
-		tabla = "";
 		usuarios = new LinkedHashMap<String, Usuario>();
 		ayuda = new LinkedHashMap<String, String>();
 
@@ -46,18 +44,6 @@ public class FachadaLogica implements IFachadaLogica {
 	public void setUsuario(String usuario) {
 
 		this.usuario = usuario;
-
-	}
-
-	public String getTabla() {
-
-		return tabla;
-
-	}
-
-	public void setTabla(String tabla) {
-
-		this.tabla = tabla;
 
 	}
 
