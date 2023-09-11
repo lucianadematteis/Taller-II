@@ -99,13 +99,16 @@ public class FachadaLogica implements IFachadaLogica {
 
 	// Dai mod usuario a partir de un dto usuario
 	public void modificarUsuario(DTOUsuario user) {
+		
 		Usuario usAux = new Usuario(user);
 		usuarios.replace(usAux.getNombreUser(), usAux);
+		
 	}
 
 	public void eliminarusuario(DTOUsuario user) {
-		Usuario usu = new Usuario(user);
-		usuarios.remove(usu);
+		
+		usuarios.remove(user.getNombreUser()); //Asi tambien funciona porque solo necesitas la cedula que es la key
+		
 	}
 
 	/*public Usuario obtenerUsuario(String nombreUse, LinkedHashMap<String, Usuario>[] usuarios1) {
@@ -120,27 +123,26 @@ public class FachadaLogica implements IFachadaLogica {
 		return null; //
 	}*/
 	
-	public Usuario obtenerUsuario(String nombreUse) {
-		if (usuarios.containsKey(nombreUse)) {
-	        return usuarios.get(nombreuse);
-	    } else {
+	public Usuario obtenerUsuario() {
+		
+		if (usuarios.containsKey(usuario)) {
+	    
+			return usuarios.get(usuario);
+	   
+		}else{
 	      
 	        return null ;
 	    }
+		
 	}
 	
 	public int obtenerCantidad(ArrayList<Integer> valores) {
 
 		return valores.size();
+		
 	}
 
 	public int obtenerMaximo(ArrayList<Integer> valores) {
-
-		if (valores.isEmpty()) {
-
-			throw new IllegalArgumentException("El ArrayList está vacío, no se puede obtener el máximo");
-
-		}
 
 		int maximo = valores.get(0);
 
@@ -160,12 +162,6 @@ public class FachadaLogica implements IFachadaLogica {
 
 	public int obtenerMinimo(ArrayList<Integer> valores) {
 
-		if (valores.isEmpty()) {
-
-			throw new IllegalArgumentException("El ArrayList está vacío, no se puede obtener el mínimo");
-
-		}
-
 		int minimo = valores.get(0);
 
 		for (int i = 1; i < valores.size(); i++) {
@@ -183,12 +179,19 @@ public class FachadaLogica implements IFachadaLogica {
 
 	// recibe un arraylist con los valores y devuelve el promedio
 	public int obtenerPromedio(ArrayList<Integer> valores) {
+		
 		int suma = 0;
+		
 		for (int i = 0; i < valores.size(); i++) {
+			
 			suma += valores.get(i);
+		
 		}
+		
 		int promedio = suma / valores.size();
+		
 		return promedio;
+		
 	}
 
 }

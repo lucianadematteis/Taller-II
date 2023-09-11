@@ -50,22 +50,29 @@ public class BaseDatos {
 	
 	//Dai bool buscar en tablas objeto tabla
 	public boolean buscarTabla(String nombreTabla) {	
+		
 		return tablas.get(nombreTabla) != null; 
+		
 	}
 	
 	public void insertarTabla(Tabla tabla) {
         
        tablas.put(tabla.getNombreTabla(), tabla);
+       
     }
 	
-	
 	public Tabla obtenerTabla(String nombreTabla) {
+		
 	    if (tablas.containsKey(nombreTabla)) {
+	    	
 	        return tablas.get(nombreTabla);
-	    } else {
+	        
+	    }else{
 	      
-	        return null ;
+	        return null;
+	        
 	    }
+	    
 	}
 
 }
