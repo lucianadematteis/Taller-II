@@ -19,7 +19,7 @@ import logica.Usuario;
 
 public class Persistencia {
 
-	private boolean crearCarpeta(String nombreCarpeta, String ruta) { //Retorna true si tiene exito
+	public boolean crearCarpeta(String nombreCarpeta, String ruta) { //Retorna true si tiene exito
 		
 		File carpeta = new File(ruta + File.separator + nombreCarpeta);
 		
@@ -39,7 +39,7 @@ public class Persistencia {
 		
 	}
 	
-	private void crearCarpetaInicial() {
+	public void crearCarpetaInicial() {
 		
 		String nombreArchivo="";
 		int sistema = identificarSistema();
@@ -58,7 +58,7 @@ public class Persistencia {
 		
 	}
 	
-	private int identificarSistema() {
+	public int identificarSistema() {
 		
 		String so = System.getProperty("os.name").toLowerCase();
         
@@ -77,7 +77,7 @@ public class Persistencia {
 		
 	}
 	
-	private String obtenerRutaAyuda() {
+	public String obtenerRutaAyuda() {
 		
 		String nombreArchivo="";
 	    
@@ -95,7 +95,7 @@ public class Persistencia {
 		
 	}
 	
-	private String obtenerRutaRegistro(String nombreUsuario, String nombreBD, String nombreTabla) {
+	public String obtenerRutaRegistro(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
 		String nombreArchivo="";
 	    
@@ -113,7 +113,7 @@ public class Persistencia {
 	    
 	}
 	
-	private String obtenerRutaUsuarios() {
+	public String obtenerRutaUsuarios() {
 		
 		String nombreArchivo = "";
 
@@ -131,7 +131,7 @@ public class Persistencia {
 		
 	}
 	
-	private String obtenerRutaBD(String nombreUsuario) {
+	public String obtenerRutaBD(String nombreUsuario) {
 
 		String nombreArchivo = "";
 
@@ -151,7 +151,7 @@ public class Persistencia {
 
 	}
 	
-	private String obtenerRutaTabla(String nombreUsuario, String nombreBD, String nombreTabla) {
+	public String obtenerRutaTabla(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
 		String nombreArchivo="";
 	    
@@ -168,7 +168,7 @@ public class Persistencia {
 	    return nombreArchivo;
 	}
 
-	private void persistirUsuario(Usuario usuario, FileWriter archivo) {
+	public void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		
 	    String infoUsuario = usuario.getNombreUser() + ":" + usuario.getContrasenia();
 	    
@@ -202,7 +202,7 @@ public class Persistencia {
 	    
 	}
 
-	private void persistirUsuariosTotales(LinkedHashMap<String, Usuario> usuarios) {
+	public void persistirUsuariosTotales(LinkedHashMap<String, Usuario> usuarios) {
 		
 	    String ruta = obtenerRutaUsuarios();
 	    
@@ -223,7 +223,7 @@ public class Persistencia {
 	    
 	}
 
-	private void persistirBasesDeDatos(Map<String, BaseDatos> BasesDatos, String nombreUsuario) {
+	public void persistirBasesDeDatos(Map<String, BaseDatos> BasesDatos, String nombreUsuario) {
 
 		String nombreArchivo = obtenerRutaBD(nombreUsuario);
 		StringBuilder insertar = new StringBuilder();
@@ -271,24 +271,23 @@ public class Persistencia {
 		
 	}
 	
-	private void persistirBasesDatosTotales(LinkedHashMap<String, Usuario> usuarios) {
+	public void persistirBasesDatosTotales(LinkedHashMap<String, Usuario> usuarios) {
 		
 		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
 
 			Usuario user = usuario.getValue();
 			
-			//se comenta porque al recuperar si no existe el archivo da error entonces si es vacio lo crea vacio y no da error
-		//	if (!(user.getBasesDatos().isEmpty())) {
+			if (!(user.getBasesDatos().isEmpty())) {
 				
 				persistirBasesDeDatos(user.getBasesDatos(), user.getNombreUser());
 				
-			//}
+			}
 			
 		}
 
 	}
 	
-	private void persistirTablas(Map<String, Tabla> tablas, String nombreBase, String nombreUsuario){
+	public void persistirTablas(Map<String, Tabla> tablas, String nombreBase, String nombreUsuario){
 		
 		String nombreArchivo="";
 		String ruta="";
@@ -376,7 +375,7 @@ public class Persistencia {
 
 	}
 	
-	private void persistirTablasTotales(LinkedHashMap<String, Usuario> usuarios) {
+	public void persistirTablasTotales(LinkedHashMap<String, Usuario> usuarios) {
 
 		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
 
@@ -399,7 +398,7 @@ public class Persistencia {
 
 	}
 	
-	private void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, FileWriter archivo){
+	public void persistirRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, FileWriter archivo){
 		
 		boolean primerRegistro = true;
 		
@@ -460,7 +459,7 @@ public class Persistencia {
 
 	}
 	
-	private void persistirRegistrosTotales(LinkedHashMap<String, Usuario> usuarios) {
+	public void persistirRegistrosTotales(LinkedHashMap<String, Usuario> usuarios) {
 
 		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
 
@@ -503,7 +502,6 @@ public class Persistencia {
 	
 	public void persistirTodo(LinkedHashMap<String, Usuario> usuarios) {
 		
-		crearCarpetaInicial();
 		persistirUsuariosTotales(usuarios);
 		persistirBasesDatosTotales(usuarios);
 		persistirTablasTotales(usuarios);
@@ -511,7 +509,7 @@ public class Persistencia {
 							
 	}
 
-	private LinkedHashMap<String, Usuario> recuperarUsuarios(LinkedHashMap<String, Usuario> usuarios) {
+	public LinkedHashMap<String, Usuario> recuperarUsuarios(LinkedHashMap<String, Usuario> usuarios) {
 	       
 		try (BufferedReader br = new BufferedReader(new FileReader(obtenerRutaUsuarios()))) {
             
@@ -552,7 +550,7 @@ public class Persistencia {
         return usuarios;
     }
 
-	private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
+    public LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 		
     	LinkedHashMap <String, BaseDatos> bds = new LinkedHashMap <String, BaseDatos>();
 		
@@ -612,7 +610,7 @@ public class Persistencia {
 		
 	}
    
-	private Atributo recuperarAtributo(String nombre, String nulo, String pk, String tipoDato) {
+	public Atributo recuperarAtributo(String nombre, String nulo, String pk, String tipoDato) {
 		
 		Atributo resultado = null;
 		
@@ -633,7 +631,7 @@ public class Persistencia {
 		
 	}
 	
-	private LinkedHashMap<String, Atributo> recuperarTabla(String nombreTabla, String ruta){
+	public LinkedHashMap<String, Atributo> recuperarTabla(String nombreTabla, String ruta){
 		
 		LinkedHashMap<String, Atributo> resultado = new LinkedHashMap<String, Atributo>();
 		
@@ -678,7 +676,7 @@ public class Persistencia {
 		
 	}
 		 	
-	private ArrayList<LinkedHashMap<String, Atributo>> recuperarRegistros(String ruta, LinkedHashMap<String, Atributo> guia){
+	public ArrayList<LinkedHashMap<String, Atributo>> recuperarRegistros(String ruta, LinkedHashMap<String, Atributo> guia){
 		
 		ArrayList<LinkedHashMap<String, Atributo>> resultado = new ArrayList<LinkedHashMap<String, Atributo>>();
 		
@@ -743,9 +741,7 @@ public class Persistencia {
 		
 	}
 	
-	public LinkedHashMap<String, String> recuperarAyuda() {
-		
-		String ruta = obtenerRutaAyuda();
+	public LinkedHashMap<String, String> recuperarAyuda(String ruta) {
 		
 		StringBuilder contenidoArchivo = new StringBuilder();
 		

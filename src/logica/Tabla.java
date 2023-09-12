@@ -3,7 +3,6 @@ package logica;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
-import java.util.Map;
 
 import comunicacion.DTOTabla;
 
@@ -62,26 +61,8 @@ public class Tabla {
 		
 	}
 	
-	public void modificarRegistro(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreAtributo, String valorNuevo) {
-		
-		for (LinkedHashMap<String, Atributo> registro : registros) {
-	    	
-	        Atributo atributo = registro.get(nombreAtributo);
-
-            if (atributo instanceof Entero) {
-            	
-                int valorEntero = Integer.parseInt(valorNuevo);
-                ((Entero) atributo).setValor(valorEntero);
-                 
-            } else if (atributo instanceof Cadena) {
-            	
-                ((Cadena) atributo).setDato(valorNuevo);
-                
-            }
-            
-	    }
-		
-	}
+	
+	
 	
 	public boolean tieneClave() {
 		
@@ -137,112 +118,6 @@ public class Tabla {
 		}
          
 		return atributosNotNull;
-		
-	}
-	
-	public ArrayList<LinkedHashMap<String, Atributo>> obtenerRegistros(String nombreAtributo, String valorCondicion) {
-		
-		ArrayList<LinkedHashMap<String, Atributo>> registrosObtenidos = new ArrayList<LinkedHashMap<String, Atributo>>();
-		
-		for (LinkedHashMap<String, Atributo> misRegistros : this.getRegistros()) { 
-			
-		    for (Map.Entry<String, Atributo> entrada : misRegistros.entrySet()) {
-		    	
-		    	if(entrada.getValue().getNombreAtributo().equals(nombreAtributo)) { //si es el atributo que debo evaluar
-		    		
-		    		if(entrada.getValue() instanceof Entero) { //como la condicion es un string debo de evaluar esto para convertirla
-			    		
-			    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
-			    		
-			    		Entero entradaEntera = (Entero) entrada.getValue();
-			    		
-			    		if(entradaEntera.getValor() == valorCondicionEntera) { //si cumple con la condicion
-			    			
-			    			registrosObtenidos.add(misRegistros);
-			    			
-			    		}
-			    		
-			    	}else if(entrada.getValue() instanceof Cadena){
-			    		
-			    		Cadena entradaCadena = (Cadena) entrada.getValue();
-			    		
-			    		if(entradaCadena.getDato().equals(valorCondicion)) { //si cumple con la condicion
-			    			
-			    			registrosObtenidos.add(misRegistros);
-			    			
-			    		}
-			    		
-			    	}
-		    		
-		    	}
-		    	
-		    }
-		    
-		}
-         
-		return registrosObtenidos;
-		
-	}
-	public boolean buscarAtributo(String nombreAtributo) {
-	 
-	    for (LinkedHashMap<String, Atributo> registro : registros) {
-	        
-	        for (Atributo atributo : registro.values()) {
-	            
-	            if (atributo.getNombreAtributo().equals(nombreAtributo)) {
-	                return true; 
-	            }
-	            
-	        }
-	        
-	    }
-	    
-	    return false; 
-	}
-
-	public void insertarAtributo (Atributo atributo) {
-		
-		registros.get(0).put(atributo.getNombreAtributo(), atributo); //agrega solo a la guia
-		
-	}
-	
-	public Atributo obtenerAtributo(String nombreAtributo) {
-	    
-	    for (LinkedHashMap<String, Atributo> registro : registros) {
-	       
-	        Atributo atributo = registro.get(nombreAtributo);
-	        
-	        if (atributo != null) {
-	        	
-	            return atributo; 
-	            
-	        }
-	        
-	    }
-	    
-	    return null; 
-	    
-	}
-	
-	public ArrayList<Atributo> seleccionarAtributo(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreAtributo){
-		
-		ArrayList<Atributo> registrosFinales = new ArrayList<Atributo>();
-		
-		for (LinkedHashMap<String, Atributo> misRegistros : registros) { 
-			
-		    for (Map.Entry<String, Atributo> entrada : misRegistros.entrySet()) {
-		    	
-		    	if(entrada.getKey().equals(nombreAtributo)) { 
-		    	
-		    		registrosFinales.add(entrada.getValue());
-		    		
-		    	}
-		    	
-		    }
-		    
-		}
-		
-		return registrosFinales;
 		
 	}
 	
