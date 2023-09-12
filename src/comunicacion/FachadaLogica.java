@@ -215,5 +215,37 @@ public class FachadaLogica implements IFachadaLogica {
 		return this.obtenerTabla(nombreTabla).seleccionarAtributo(registros, nombreAtributoCondicion);
 		
 	}
+	
+	public void borrarRegistro(String nombreTabla, String nombreAtributoCondicion, String valorCondicion) {
+		
+		Tabla tabla = this.obtenerTabla(nombreTabla);
+		
+		ArrayList<LinkedHashMap<String, Atributo>> registrosEliminar = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+		
+		for (LinkedHashMap<String, Atributo> registro : registrosEliminar) { 
+				
+		    tabla.eliminarRegistro(registro);
+		    	
+		}
+		
+	}
+	
+	public void cambiarRegistro(String nombreTabla, String atributoCambiar, String valorNuevo, String nombreAtributoCondicion, String valorCondicion) {
+		
+		Tabla tabla = this.obtenerTabla(nombreTabla);
+		
+	    ArrayList<LinkedHashMap<String, Atributo>> registrosCambiar = tabla.obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+	    
+	    tabla.modificarRegistro(registrosCambiar, nombreAtributoCondicion, valorNuevo);
+	    
+	}
+	
+	public void ingresarRegistro(String nombreTabla, LinkedHashMap<String, Atributo> registro) {
+		
+		Tabla tabla = this.obtenerTabla(nombreTabla);
+		
+		tabla.insertarRegistro(registro);
+		
+	}
 
 }

@@ -62,6 +62,27 @@ public class Tabla {
 		
 	}
 	
+	public void modificarRegistro(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreAtributo, String valorNuevo) {
+		
+		for (LinkedHashMap<String, Atributo> registro : registros) {
+	    	
+	        Atributo atributo = registro.get(nombreAtributo);
+
+            if (atributo instanceof Entero) {
+            	
+                int valorEntero = Integer.parseInt(valorNuevo);
+                ((Entero) atributo).setValor(valorEntero);
+                 
+            } else if (atributo instanceof Cadena) {
+            	
+                ((Cadena) atributo).setDato(valorNuevo);
+                
+            }
+            
+	    }
+		
+	}
+	
 	public boolean tieneClave() {
 		
 		LinkedHashMap<String, Atributo> guia=registros.get(0);
