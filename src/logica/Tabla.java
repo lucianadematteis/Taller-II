@@ -203,6 +203,28 @@ public class Tabla {
 	    
 	}
 	
+	public ArrayList<Atributo> seleccionarAtributo(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreAtributo){
+		
+		ArrayList<Atributo> registrosFinales = new ArrayList<Atributo>();
+		
+		for (LinkedHashMap<String, Atributo> misRegistros : registros) { 
+			
+		    for (Map.Entry<String, Atributo> entrada : misRegistros.entrySet()) {
+		    	
+		    	if(entrada.getKey().equals(nombreAtributo)) { 
+		    	
+		    		registrosFinales.add(entrada.getValue());
+		    		
+		    	}
+		    	
+		    }
+		    
+		}
+		
+		return registrosFinales;
+		
+	}
+	
 	
 	
 }

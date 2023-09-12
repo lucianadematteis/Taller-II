@@ -3,6 +3,8 @@ package comunicacion;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import logica.Atributo;
+import logica.Tabla;
 import logica.Usuario;
 import persistencia.Persistencia;
 
@@ -181,10 +183,36 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	public Tabla obtenerTabla (String nombreTabla) {
+		
+		return null; //LLENAR, LO AGREGO ASI PARA QUE NO ME DE ERROR
+		
+	}
+	
 	public void insertarUsuario (DTOUsuario dto) {
 		
 		Usuario usuario = new Usuario (dto);
 		usuarios.put(dto.getNombreUser(), usuario);
+		
+	}
+	
+	public String obtenerClave (String nombreTabla) {
+		
+		return this.obtenerTabla(nombreTabla).obtenerClave();
+		
+	}
+	
+	public ArrayList<String> obtenerNotNull (String nombreTabla){
+		
+		return this.obtenerTabla(nombreTabla).obtenerNotNull();
+		
+	}
+	
+	public ArrayList<Atributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion){
+	
+		ArrayList<LinkedHashMap<String, Atributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+		
+		return this.obtenerTabla(nombreTabla).seleccionarAtributo(registros, nombreAtributoCondicion);
 		
 	}
 
