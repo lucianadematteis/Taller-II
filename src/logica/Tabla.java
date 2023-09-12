@@ -171,12 +171,16 @@ public class Tabla {
 	            if (atributo.getNombreAtributo().equals(nombreAtributo)) {
 	                return true; 
 	            }
+	            
 	        }
+	        
 	    }
+	    
 	    return false; 
 	}
 
 	public void insertarAtributo (Atributo atributo) {
+		
 		registros.get(0).put(atributo.getNombreAtributo(), atributo); //agrega solo a la guia
 		
 	}
@@ -186,11 +190,17 @@ public class Tabla {
 	    for (LinkedHashMap<String, Atributo> registro : registros) {
 	       
 	        Atributo atributo = registro.get(nombreAtributo);
+	        
 	        if (atributo != null) {
+	        	
 	            return atributo; 
+	            
 	        }
+	        
 	    }
+	    
 	    return null; 
+	    
 	}
 	
 	

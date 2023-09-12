@@ -110,18 +110,6 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 
-	/*public Usuario obtenerUsuario(String nombreUse, LinkedHashMap<String, Usuario>[] usuarios1) {
-
-		for (LinkedHashMap<String, Usuario> usuarioMap : usuarios1) {
-
-			Usuario usuario1 = usuarioMap.get(nombreUse);
-			if (usuario1 != null) {
-				return usuario1; // o
-			}
-		}
-		return null; //
-	}*/
-	
 	public Usuario obtenerUsuario() {
 		
 		if (usuarios.containsKey(usuario)) {
@@ -197,6 +185,7 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		Usuario usuario = new Usuario (dto);
 		usuarios.put(dto.getNombreUser(), usuario);
+		
 	}
 
 }
