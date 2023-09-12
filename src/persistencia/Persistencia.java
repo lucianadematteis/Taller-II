@@ -277,11 +277,12 @@ public class Persistencia {
 
 			Usuario user = usuario.getValue();
 			
-			if (!(user.getBasesDatos().isEmpty())) {
+			//se comenta porque al recuperar si no existe el archivo da error entonces si es vacio lo crea vacio y no da error
+		//	if (!(user.getBasesDatos().isEmpty())) {
 				
 				persistirBasesDeDatos(user.getBasesDatos(), user.getNombreUser());
 				
-			}
+			//}
 			
 		}
 
