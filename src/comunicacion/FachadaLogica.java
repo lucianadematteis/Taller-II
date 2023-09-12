@@ -3,6 +3,8 @@ package comunicacion;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import logica.Atributo;
+import logica.Tabla;
 import logica.Usuario;
 import persistencia.Persistencia;
 
@@ -11,7 +13,6 @@ public class FachadaLogica implements IFachadaLogica {
 	Persistencia persistencia = new Persistencia();
 	private String baseDatos;
 	private String usuario;
-	private String tabla;
 	private LinkedHashMap<String, Usuario> usuarios;
 	private LinkedHashMap<String, String> ayuda;
 
@@ -19,7 +20,6 @@ public class FachadaLogica implements IFachadaLogica {
 
 		baseDatos = "";
 		usuario = "";
-		tabla = "";
 		usuarios = new LinkedHashMap<String, Usuario>();
 		ayuda = new LinkedHashMap<String, String>();
 
@@ -31,9 +31,21 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public void setBaseDatos(String baseDatos) {
+	public void seleccionarBaseDatos(String baseDatos) {
 
 		this.baseDatos = baseDatos;
+
+	}
+
+	public void liberarMemoriaBaseDatos() {
+
+		this.baseDatos = "";
+
+	}
+
+	public void liberarMemoriaUsuario() {
+
+		this.usuario = "";
 
 	}
 
@@ -43,21 +55,9 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public void setUsuario(String usuario) {
+	public void seleccionarUsuario(String usuario) {
 
 		this.usuario = usuario;
-
-	}
-
-	public String getTabla() {
-
-		return tabla;
-
-	}
-
-	public void setTabla(String tabla) {
-
-		this.tabla = tabla;
 
 	}
 
@@ -85,62 +85,53 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public void persistirDatos(LinkedHashMap<String, Usuario> usuarios) {
+	public void persistirDatos() {
 
 		persistencia.persistirTodo(usuarios);
 
 	}
 
-	public void recuperarDatos(LinkedHashMap<String, Usuario> usuarios) {
+	public void recuperarDatos() {
 
+		ayuda=persistencia.recuperarAyuda();
 		persistencia.recuperarTodo(usuarios);
 
 	}
 
 	// Dai mod usuario a partir de un dto usuario
 	public void modificarUsuario(DTOUsuario user) {
+
 		Usuario usAux = new Usuario(user);
 		usuarios.replace(usAux.getNombreUser(), usAux);
+
 	}
 
 	public void eliminarusuario(DTOUsuario user) {
-		Usuario usu = new Usuario(user);
-		usuarios.remove(usu);
+
+		usuarios.remove(user.getNombreUser()); //Asi tambien funciona porque solo necesitas la cedula que es la key
+
 	}
 
-	/*public Usuario obtenerUsuario(String nombreUse, LinkedHashMap<String, Usuario>[] usuarios1) {
+	public Usuario obtenerUsuario() {
 
-		for (LinkedHashMap<String, Usuario> usuarioMap : usuarios1) {
+		if (usuarios.containsKey(usuario)) {
 
-			Usuario usuario1 = usuarioMap.get(nombreUse);
-			if (usuario1 != null) {
-				return usuario1; // o
-			}
+			return usuarios.get(usuario);
+
+		}else{
+
+			return null ;
 		}
-		return null; //
-	}*/
-	
-	public Usuario obtenerUsuario(String nombreUse) {
-		if (usuarios.containsKey(nombreUse)) {
-	        return usuarios.get(nombreuse);
-	    } else {
-	      
-	        return null ;
-	    }
+
 	}
-	
+
 	public int obtenerCantidad(ArrayList<Integer> valores) {
 
 		return valores.size();
+
 	}
 
 	public int obtenerMaximo(ArrayList<Integer> valores) {
-
-		if (valores.isEmpty()) {
-
-			throw new IllegalArgumentException("El ArrayList está vacío, no se puede obtener el máximo");
-
-		}
 
 		int maximo = valores.get(0);
 
@@ -160,12 +151,6 @@ public class FachadaLogica implements IFachadaLogica {
 
 	public int obtenerMinimo(ArrayList<Integer> valores) {
 
-		if (valores.isEmpty()) {
-
-			throw new IllegalArgumentException("El ArrayList está vacío, no se puede obtener el mínimo");
-
-		}
-
 		int minimo = valores.get(0);
 
 		for (int i = 1; i < valores.size(); i++) {
@@ -183,12 +168,98 @@ public class FachadaLogica implements IFachadaLogica {
 
 	// recibe un arraylist con los valores y devuelve el promedio
 	public int obtenerPromedio(ArrayList<Integer> valores) {
+
 		int suma = 0;
+
 		for (int i = 0; i < valores.size(); i++) {
+
 			suma += valores.get(i);
+
 		}
+
 		int promedio = suma / valores.size();
+
 		return promedio;
+
 	}
+
+	public void insertarUsuario (DTOUsuario dto) {
+
+		Usuario usuario = new Usuario (dto);
+		usuarios.put(dto.getNombreUser(), usuario);
+
+	}
+
+	public String obtenerClave (String nombreTabla) {
+
+		return this.obtenerTabla(nombreTabla).obtenerClave();
+
+	}
+
+	public ArrayList<String> obtenerNotNull (String nombreTabla){
+
+		return this.obtenerTabla(nombreTabla).obtenerNotNull();
+
+	}
+
+	public ArrayList<Atributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion){
+
+		ArrayList<LinkedHashMap<String, Atributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+
+		return this.obtenerTabla(nombreTabla).seleccionarAtributo(registros, nombreAtributoCondicion);
+
+	}
+
+	public void borrarRegistro(String nombreTabla, String nombreAtributoCondicion, String valorCondicion) {
+
+		Tabla tabla = this.obtenerTabla(nombreTabla);
+
+		ArrayList<LinkedHashMap<String, Atributo>> registrosEliminar = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+
+		for (LinkedHashMap<String, Atributo> registro : registrosEliminar) { 
+
+			tabla.eliminarRegistro(registro);
+
+		}
+
+	}
+
+	public void cambiarRegistro(String nombreTabla, String atributoCambiar, String valorNuevo, String nombreAtributoCondicion, String valorCondicion) {
+
+		Tabla tabla = this.obtenerTabla(nombreTabla);
+
+		ArrayList<LinkedHashMap<String, Atributo>> registrosCambiar = tabla.obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+
+		tabla.modificarRegistro(registrosCambiar, nombreAtributoCondicion, valorNuevo);
+
+	}
+
+	public void ingresarRegistro(String nombreTabla, LinkedHashMap<String, Atributo> registro) {
+
+		Tabla tabla = this.obtenerTabla(nombreTabla);
+
+		tabla.insertarRegistro(registro);
+
+	}
+
+	//recibe un nombre de tabla, busca en tabla y devuelve la tabla correspondiente
+	public Tabla obtenerTabla(String nombreTabla) {
+
+		Tabla aux = new Tabla("");	
+
+		aux= usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla);
+
+		return aux;
+	}
+
+
+	public Atributo obtenerAtributo(String nombreAtributo, String nombreTabla) {
+
+		//debo crear un control por si no existe el atributo? o se encarga otro m�todo de eso?
+		Atributo atr =usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo);
+
+		return atr;
+	}
+
 
 }
