@@ -246,6 +246,22 @@ public class Tabla {
 		
 	}
 	
+	public String obtenerTipo(String nombreAtributo) {
+		
+		if(this.getRegistros().get(0).get(nombreAtributo) instanceof Entero) {
+			
+			return "entero";
+			
+		}else if(this.getRegistros().get(0).get(nombreAtributo) instanceof Cadena){
+			
+			return "cadena";
+			
+		}
+		
+		return null;
+		
+	}
+	
 	
 	
 }

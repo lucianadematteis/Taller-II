@@ -255,10 +255,33 @@ public class FachadaLogica implements IFachadaLogica {
 
 	public Atributo obtenerAtributo(String nombreAtributo, String nombreTabla) {
 
-		//debo crear un control por si no existe el atributo? o se encarga otro m�todo de eso?
+		//debo crear un control por si no existe el atributo? o se encarga otro m�todo de eso?
 		Atributo atr =usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo);
 
 		return atr;
+	}
+	
+	public boolean validaCondicion(String nombreTabla, String nombreAtributo, String valorCondicion) {
+		
+	    String tipoAtributo = this.obtenerTabla(nombreTabla).obtenerTipo(nombreAtributo);
+
+	    if ("entero".equals(tipoAtributo)) {
+	    	
+	        try {
+	        	
+	            Integer.parseInt(valorCondicion); // Si esto tiene éxito es porque es numérico
+	            return true;
+	            
+	        } catch (NumberFormatException e) {
+	        	
+	            return false;
+	            
+	        }
+	        
+	    }
+
+	    return true; // Si el tipo no es "entero", asumimos que cualquier valor de cadena es válido
+	    
 	}
 
 
