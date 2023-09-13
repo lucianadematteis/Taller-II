@@ -17,4 +17,6 @@ public interface IFachadaLogica {
 
 	public boolean esVacia(String nombreTabla);
 	
+	public boolean hayRegistros(String nombreTabla, String nombreAtributo, String valorCondicion);
+	
 }

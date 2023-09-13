@@ -332,7 +332,7 @@ public class Comandos {
 			
 			if(/*poner el metodo del and.isEmpty()*/false) { //Valido que hayan registros que mostrar para la condicion dada
 				
-				insertarDepuracion("Error #N", "No hay registros que mostrar para la consulta realizada");
+				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
 				
 			}else {
 				
@@ -357,7 +357,7 @@ public class Comandos {
 			
 			if(/*poner el metodo del and.isEmpty()*/ false) { //Valido que hayan registros que mostrar para la condicion dada
 				
-				insertarDepuracion("Error #N", "No hay registros que mostrar para la consulta realizada");
+				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
 				
 			}else {
 				
@@ -549,15 +549,15 @@ public class Comandos {
         		
         		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
         			
-        			if(logica.obtenerTabla(sentencia.get(1)[1]).obtenerRegistros(sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
-        				
-        				insertarDepuracion("Error #N", "No hay registros para la consulta realizada");
-        				
-        			}else {
+        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que hayan registros que mostrar para la condicion dada
         				
         				aciertos++;
         	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere borrar el dato de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
         	        	
+        			}else {
+        				
+        				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
+        				
         			}
         			
         		}else {
@@ -648,9 +648,9 @@ public class Comandos {
         		
         		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
         			
-        			if(logica.obtenerTabla(sentencia.get(1)[1]).obtenerRegistros(sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que hayan registros que mostrar para la condicion dada
         				
-        				insertarDepuracion("Error #N", "No hay registros que mostrar para la consulta realizada");
+        				insertarDepuracion("Error #N", "No hay registros No hay registros que coincidan con los parametros de la busqueda");
         				
         			}else {
         				
@@ -683,9 +683,9 @@ public class Comandos {
         		
         		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
         			
-        			if(logica.obtenerTabla(sentencia.get(1)[1]).obtenerRegistros(sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que hayan registros que mostrar para la condicion dada
         				
-        				insertarDepuracion("Error #N", "No hay registros para la consulta realizada");
+        				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
         				
         			}else {
         				
@@ -699,7 +699,6 @@ public class Comandos {
         					insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
         					
         				}
-        				
         				
         			}
         			
@@ -720,9 +719,9 @@ public class Comandos {
     		
 			if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
 			
-				if(logica.obtenerTabla(sentencia.get(1)[1]).obtenerRegistros(sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
-    				
-    				insertarDepuracion("Error #N", "No hay registros para la consulta realizada");
+				if(logica.esVacia(sentencia.get(1)[1])) { 
+					
+    				insertarDepuracion("Error #N", "No hay registros ingresados aun en la tabla");
     				
     			}else {
 				
@@ -743,22 +742,23 @@ public class Comandos {
 	
 	public void comandoMin(ArrayList<String[]> sentencia) {
 		
-		if(validaSentenciasDosLineas(sentencia)) {
-    		
-			if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
+		if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
+			
+			if(logica.esVacia(sentencia.get(1)[1])) { 
 				
-				//Controlar que haya registros para obtener minimo
+				insertarDepuracion("Error #N", "No hay registros ingresados aun en la tabla");
 				
+			}else {
+			
 				aciertos++;
 	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor minimo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
-	        	
-			}else {
-				
-				insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
-				
 			}
 			
-        }
+		}else {
+			
+			insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
+			
+		}
 		
 	}
 	

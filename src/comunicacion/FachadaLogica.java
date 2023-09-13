@@ -294,6 +294,12 @@ public class FachadaLogica implements IFachadaLogica {
 		return this.obtenerTabla(nombreTabla).esVacia();
 		
 	}
+	
+	public boolean hayRegistros(String nombreTabla, String nombreAtributo, String valorCondicion) {
+		
+		return !(this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributo, valorCondicion).isEmpty());
+		
+	}
 
 
 }
