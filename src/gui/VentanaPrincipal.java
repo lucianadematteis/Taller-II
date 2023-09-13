@@ -225,6 +225,8 @@ public class VentanaPrincipal extends JFrame {
 		        
 		        String comando=arregloLinea.get(0)[0].toUpperCase();
 		        	
+		        comandos.ejecutarComando(comando, arregloLinea);
+		         
 			} 
 			
 		});

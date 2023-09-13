@@ -850,12 +850,6 @@ public class Comandos {
     	
         if (acciones.containsKey(comando)) {
         	
-        	if((comando.equals("HELP") || (comando.equals("USE")))){
-        		
-        		
-        		
-        	}
-        	
             acciones.get(comando).accept(sentencia);
             
         } else {
