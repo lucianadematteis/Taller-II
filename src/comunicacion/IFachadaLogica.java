@@ -7,6 +7,8 @@ import logica.Tabla;
 
 public interface IFachadaLogica {
 	
+	public boolean bdSeleccionada();
+	
 	public void seleccionarUsuario(String usuario);
 	
 	public void seleccionarBaseDatos(String baseDatos);

@@ -47,6 +47,12 @@ public class Comandos {
         
     }
 	
+    public boolean validaSeleccionBD() {
+    	
+    	return logica.bdSeleccionada();
+    	
+    }
+    
     public void insertarDepuracion(String mensaje1, String mensaje2) {
 
 		DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.depuracion.getModel();
@@ -843,6 +849,12 @@ public class Comandos {
     public void ejecutarComando(String comando, ArrayList<String[]> sentencia) {
     	
         if (acciones.containsKey(comando)) {
+        	
+        	if((comando.equals("HELP") || (comando.equals("USE")))){
+        		
+        		
+        		
+        	}
         	
             acciones.get(comando).accept(sentencia);
             

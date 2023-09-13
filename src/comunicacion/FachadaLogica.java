@@ -42,6 +42,12 @@ public class FachadaLogica implements IFachadaLogica {
 		this.baseDatos = "";
 
 	}
+	
+	public boolean bdSeleccionada() {
+		
+		return !(this.baseDatos.isEmpty());
+		
+	}
 
 	public void liberarMemoriaUsuario() {
 

@@ -224,9 +224,7 @@ public class VentanaPrincipal extends JFrame {
 				ArrayList<String[]> arregloLinea = administraSentencia(entrada.getText());
 		        
 		        String comando=arregloLinea.get(0)[0].toUpperCase();
-		        
-		        comandos.ejecutarComando(comando, arregloLinea);
-		        
+		        	
 			} 
 			
 		});
