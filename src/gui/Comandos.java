@@ -846,17 +846,36 @@ public class Comandos {
 		
 	}
 	
-    public void ejecutarComando(String comando, ArrayList<String[]> sentencia) {
-    	
-        if (acciones.containsKey(comando)) {
-        	
-            acciones.get(comando).accept(sentencia);
-            
-        } else {
-        	
-            insertarDepuracion("Error #01", "El comando " + comando + " no es válido");
-            
-        }
-    }
+	public void ejecutarComando(String comando, ArrayList<String[]> sentencia) {
+		
+	    if (acciones.containsKey(comando)) {
+	    	
+	    	if ((comando.equals("USE")) || (comando.equals("HELP"))) {
+		    	
+		        acciones.get(comando).accept(sentencia);
+		        
+		    } else {
+		    	
+		        if (logica.bdSeleccionada()) {
+		        	
+		            acciones.get(comando).accept(sentencia);
+		            
+		        } else {
+		        	
+		            insertarDepuracion("Error #N", "Debe seleccionar la base de datos sobre la cual operar");
+		            
+		        }
+		        
+		    }
+	        
+	    } else {
+	    	
+	        insertarDepuracion("Error #01", "El comando " + comando + " no es válido");
+	        
+	    }
+	    
+	}
+
+
 	
 }
