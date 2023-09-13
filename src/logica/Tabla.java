@@ -184,20 +184,11 @@ public class Tabla {
 		
 	}
 	public boolean buscarAtributo(String nombreAtributo) {
-	 
-	    for (LinkedHashMap<String, Atributo> registro : registros) {
-	        
-	        for (Atributo atributo : registro.values()) {
-	            
-	            if (atributo.getNombreAtributo().equals(nombreAtributo)) {
-	                return true; 
-	            }
-	            
-	        }
-	        
-	    }
-	    
-	    return false; 
+		 
+		if  (registros.get(0).get(nombreAtributo)==null)
+			return false;
+		else
+			return true;
 	}
 
 	public void insertarAtributo (Atributo atributo) {
@@ -208,19 +199,7 @@ public class Tabla {
 	
 	public Atributo obtenerAtributo(String nombreAtributo) {
 	    
-	    for (LinkedHashMap<String, Atributo> registro : registros) {
-	       
-	        Atributo atributo = registro.get(nombreAtributo);
-	        
-	        if (atributo != null) {
-	        	
-	            return atributo; 
-	            
-	        }
-	        
-	    }
-	    
-	    return null; 
+		return registros.get(0).get(nombreAtributo); 
 	    
 	}
 	
