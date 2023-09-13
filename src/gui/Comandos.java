@@ -621,9 +621,17 @@ public class Comandos {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
     		
-    		aciertos++;
-        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer no nulo el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
-        	
+			if(logica.esVacia(sentencia.get(1)[1])) { 
+				
+				aciertos++;
+	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer no nulo el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+	        	
+			}else {
+			
+				insertarDepuracion("Error #N", "La tabla no debe de tener registros para la operacion a realizar");
+				
+			}
+			
     	}
 		
 	}
@@ -673,9 +681,34 @@ public class Comandos {
     	
         	if(validaSentenciasFromWhere(sentencia)) {
         		
-        		aciertos++;
-	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el promedio de datos de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
-            	
+        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+        			
+        			if(logica.obtenerTabla(sentencia.get(1)[1]).obtenerRegistros(sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+        				
+        				insertarDepuracion("Error #N", "No hay registros para la consulta realizada");
+        				
+        			}else {
+        				
+        				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
+        					
+        					aciertos++;
+            	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el promedio de datos de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
+                        	
+        				}else {
+        					
+        					insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
+        					
+        				}
+        				
+        				
+        			}
+        			
+        		}else {
+        			
+        			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+    				
+        		}
+        		
         	}
     	}
 		
@@ -687,9 +720,17 @@ public class Comandos {
     		
 			if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
 			
-	        	aciertos++; 
-	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor maximo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+				if(logica.obtenerTabla(sentencia.get(1)[1]).obtenerRegistros(sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+    				
+    				insertarDepuracion("Error #N", "No hay registros para la consulta realizada");
+    				
+    			}else {
+				
+    				aciertos++; 
+    				insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor maximo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
 	        	
+    			}
+				
 			}else {
 				
 				insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
@@ -704,9 +745,19 @@ public class Comandos {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
     		
-        	aciertos++;
-        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor minimo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
-        	
+			if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
+				
+				//Controlar que haya registros para obtener minimo
+				
+				aciertos++;
+	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor minimo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+	        	
+			}else {
+				
+				insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
+				
+			}
+			
         }
 		
 	}
@@ -715,9 +766,17 @@ public class Comandos {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
     		
-    		aciertos++;
-        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer clave primaria el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
-        	
+			if(logica.esVacia(sentencia.get(1)[1])) { 
+				
+				aciertos++;
+	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer clave primaria el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+	        	
+			}else {
+			
+				insertarDepuracion("Error #N", "La tabla no debe de tener registros para la operacion a realizar");
+				
+			}
+			
     	}
 		
 	}

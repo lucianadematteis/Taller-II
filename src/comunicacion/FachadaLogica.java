@@ -288,6 +288,12 @@ public class FachadaLogica implements IFachadaLogica {
 		return this.obtenerTabla(nombreTabla).obtenerTipo(nombreAtributo);
 		
 	}
+	
+	public boolean esVacia(String nombreTabla) { //retorna true si no tiene
+		
+		return this.obtenerTabla(nombreTabla).esVacia();
+		
+	}
 
 
 }

@@ -15,4 +15,6 @@ public interface IFachadaLogica {
 		
 	public String obtenerTipoAtributo(String nombreTabla, String nombreAtributo);
 
+	public boolean esVacia(String nombreTabla);
+	
 }

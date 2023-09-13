@@ -262,6 +262,12 @@ public class Tabla {
 		
 	}
 	
+	public boolean esVacia() { //retorna true si no tiene
+		
+		return this.getRegistros().size()==1;
+		
+	}
+	
 	
 	
 }
