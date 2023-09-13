@@ -328,19 +328,52 @@ public class Comandos {
 	
 	public void comandoSelectAnd(ArrayList<String[]> sentencia) {
 		
-		aciertos++;
-    	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + 
-				" \n donde el atributo: " + sentencia.get(2)[1] + " valga " + sentencia.get(2)[3] +
-				" \n y el atributo: " + sentencia.get(2)[5] + " valga " + sentencia.get(2)[7]);
-    	
+		if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //Valido que el tipo de atributo y condicion coincidan
+			
+			if(/*poner el metodo del and.isEmpty()*/false) { //Valido que hayan registros que mostrar para la condicion dada
+				
+				insertarDepuracion("Error #N", "No hay registros que mostrar para la consulta realizada");
+				
+			}else {
+				
+				aciertos++;
+		    	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + 
+						" \n donde el atributo: " + sentencia.get(2)[1] + " valga " + sentencia.get(2)[3] +
+						" \n y el atributo: " + sentencia.get(2)[5] + " valga " + sentencia.get(2)[7]);
+		    	
+			}
+			
+		}else {
+			
+			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+			
+		}
+		
 	}
 	
 	public void comandoSelectOr(ArrayList<String[]> sentencia) {
 		
-		aciertos++;
-		insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + 
-				" \n donde el atributo: " + sentencia.get(2)[1] + " valga " + sentencia.get(2)[3] +
-				" \n 0 el atributo: " + sentencia.get(2)[5] + " valga " + sentencia.get(2)[7]);
+		if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //Valido que el tipo de atributo y condicion coincidan
+			
+			if(/*poner el metodo del and.isEmpty()*/ false) { //Valido que hayan registros que mostrar para la condicion dada
+				
+				insertarDepuracion("Error #N", "No hay registros que mostrar para la consulta realizada");
+				
+			}else {
+				
+				aciertos++;
+				insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + 
+						" \n donde el atributo: " + sentencia.get(2)[1] + " valga " + sentencia.get(2)[3] +
+						" \n 0 el atributo: " + sentencia.get(2)[5] + " valga " + sentencia.get(2)[7]);
+		    	
+			}
+			
+		}else {
+			
+			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+			
+		}
+		
 		
 	}
 	
@@ -419,9 +452,25 @@ public class Comandos {
             	
 		            	if(validaSentenciasWhereComun(sentencia)) {
 		            		
-		            		aciertos++;
-				        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + " donde el atributo: " + sentencia.get(2)[1] + " vale " + sentencia.get(2)[3]);
-				        	
+		            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+		            			
+		            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+		            				
+		            				insertarDepuracion("Error #N", "No hay registros que mostrar para la consulta realizada");
+		            				
+		            			}else {
+		            				
+		            				aciertos++;
+						        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + " donde el atributo: " + sentencia.get(2)[1] + " vale " + sentencia.get(2)[3]);
+						        	//logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]) mostrar esto
+		            			}
+		            			
+		            		}else {
+		            			
+		            			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+	            				
+		            		}
+		            		
 		            	}	
 		            	
 		            }else {
@@ -498,9 +547,25 @@ public class Comandos {
     	
         	if(validaSentenciasFromWhere(sentencia)) {
         		
-        		aciertos++;
-	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere borrar el dato de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
-	        	
+        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+        			
+        			if(logica.obtenerTabla(sentencia.get(1)[1]).obtenerRegistros(sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+        				
+        				insertarDepuracion("Error #N", "No hay registros para la consulta realizada");
+        				
+        			}else {
+        				
+        				aciertos++;
+        	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere borrar el dato de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
+        	        	
+        			}
+        			
+        		}else {
+        			
+        			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+    				
+        		}
+        		
         	}
     	}
 		
@@ -573,9 +638,25 @@ public class Comandos {
     	
         	if(validaSentenciasFromWhere(sentencia)) {
         		
-        		aciertos++;
-	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere contar la cantidad de datos de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
-        	
+        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+        			
+        			if(logica.obtenerTabla(sentencia.get(1)[1]).obtenerRegistros(sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+        				
+        				insertarDepuracion("Error #N", "No hay registros que mostrar para la consulta realizada");
+        				
+        			}else {
+        				
+        				aciertos++;
+        	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere contar la cantidad de datos de la tabla: " + sentencia.get(1)[1] + " que cumple la condicion que el atributo " + sentencia.get(2)[1] + " es igual a: " + sentencia.get(2)[3]);
+                	
+        			}
+        			
+        		}else {
+        			
+        			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+    				
+        		}
+        		
         	}
         	
     	}
