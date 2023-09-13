@@ -201,6 +201,12 @@ public class FachadaLogica implements IFachadaLogica {
 		return this.obtenerTabla(nombreTabla).obtenerClave();
 
 	}
+	
+	public boolean tieneClave (String nombreTabla) {
+
+		return this.obtenerTabla(nombreTabla).tieneClave();
+
+	}
 
 	public ArrayList<String> obtenerNotNull (String nombreTabla){
 

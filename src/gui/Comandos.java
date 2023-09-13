@@ -612,9 +612,29 @@ public class Comandos {
 					        	
 	            			}else {
 	            		
-	            				aciertos++;
-					        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere actualizar el dato identificado por: " + sentencia.get(2)[1] + " = " + sentencia.get(2)[3] + " de la tabla: " + sentencia.get(0)[1] + " \n que actualmente es: " + sentencia.get(1)[1] + " por " + sentencia.get(1)[3]);
-					        	
+	            				if((logica.tieneClave(sentencia.get(0)[1])) && (logica.obtenerClave(sentencia.get(0)[1]).equals(sentencia.get(2)[1]))) {
+	            					
+		            				insertarDepuracion("Error #N", "No es posible cambiar la clave primaria de un registro");
+		            					
+		            			}else if(logica.validaCondicion(sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3])){
+		            				
+		            				if(logica.hayRegistros(sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3])){	
+			            				
+			            				aciertos++;
+			            				insertarDepuracion("Acierto #" + aciertos, "El usuario quiere actualizar el dato identificado por: " + sentencia.get(2)[1] + " = " + sentencia.get(2)[3] + " de la tabla: " + sentencia.get(0)[1] + " \n que actualmente es: " + sentencia.get(1)[1] + " por " + sentencia.get(1)[3]);
+			            				logica.cambiarRegistro(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(1)[3], sentencia.get(2)[1], sentencia.get(2)[3]);
+			            				
+		            				}else {
+		            					
+		            					insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
+		            					
+		            				}
+		            				
+		            			}else {
+		            				
+		            				insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+		            				
+		            			}
 	            			}
 	            		}
             		}

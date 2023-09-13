@@ -25,6 +25,12 @@ public interface IFachadaLogica {
 	
 	public boolean hayRegistros(String nombreTabla, String nombreAtributo, String valorCondicion);
 	
+	public String obtenerClave (String nombreTabla);
+	
+	public boolean tieneClave (String nombreTabla);
+	
+	public void cambiarRegistro(String nombreTabla, String atributoCambiar, String valorNuevo, String nombreAtributoCondicion, String valorCondicion);
+	
 	//public ArrayList<String> obtenerTablasNom();
 	
 }
