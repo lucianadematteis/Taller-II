@@ -13,5 +13,6 @@ public interface IFachadaLogica {
 	
 	public Tabla obtenerTabla(String nombreTabla);
 		
+	public String obtenerTipoAtributo(String nombreTabla, String nombreAtributo);
 
 }

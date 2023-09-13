@@ -252,7 +252,6 @@ public class FachadaLogica implements IFachadaLogica {
 		return aux;
 	}
 
-
 	public Atributo obtenerAtributo(String nombreAtributo, String nombreTabla) {
 
 		//debo crear un control por si no existe el atributo? o se encarga otro m�todo de eso?
@@ -282,6 +281,12 @@ public class FachadaLogica implements IFachadaLogica {
 
 	    return true; // Si el tipo no es "entero", asumimos que cualquier valor de cadena es válido
 	    
+	}
+	
+	public String obtenerTipoAtributo(String nombreTabla, String nombreAtributo) {
+		
+		return this.obtenerTabla(nombreTabla).obtenerTipo(nombreAtributo);
+		
 	}
 
 

@@ -685,8 +685,16 @@ public class Comandos {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
     		
-        	aciertos++; 
-        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor maximo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+			if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
+			
+	        	aciertos++; 
+	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener el valor maximo del atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+	        	
+			}else {
+				
+				insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
+				
+			}
         	
         }
 		
