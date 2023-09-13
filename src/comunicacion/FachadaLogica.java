@@ -300,6 +300,11 @@ public class FachadaLogica implements IFachadaLogica {
 		return !(this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributo, valorCondicion).isEmpty());
 		
 	}
-
-
+	/*
+	public ArrayList<String> obtenerTablasNom(){
+		
+		return this.obtenerBaseDatos.obtenerNomTablas();
+		
+	}
+	*/
 }

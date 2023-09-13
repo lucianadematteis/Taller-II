@@ -7,6 +7,10 @@ import logica.Tabla;
 
 public interface IFachadaLogica {
 	
+	public void seleccionarUsuario(String usuario);
+	
+	public void seleccionarBaseDatos(String baseDatos);
+	
 	public ArrayList<Atributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
 	
 	public boolean validaCondicion(String nombreTabla, String nombreAtributo, String valorCondicion);
@@ -18,5 +22,7 @@ public interface IFachadaLogica {
 	public boolean esVacia(String nombreTabla);
 	
 	public boolean hayRegistros(String nombreTabla, String nombreAtributo, String valorCondicion);
+	
+	//public ArrayList<String> obtenerTablasNom();
 	
 }

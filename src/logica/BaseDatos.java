@@ -1,7 +1,9 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import comunicacion.DTOBaseDatos;
 
@@ -73,6 +75,20 @@ public class BaseDatos {
 	        
 	    }
 	    
+	}
+	
+	public ArrayList<String> obtenerNomTablas(){
+		
+		ArrayList<String> tablasNom = new ArrayList<String>();
+		
+		for (Entry<String, Tabla> tabla : tablas.entrySet()) {
+			
+			tablasNom.add(tabla.getKey());
+			
+		}
+		
+		return tablasNom;
+		
 	}
 
 }

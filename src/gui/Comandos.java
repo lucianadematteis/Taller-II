@@ -503,6 +503,7 @@ public class Comandos {
         	
     		aciertos++;
         	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere seleccionar la base de datos: " + sentencia.get(0)[1]);
+        	logica.seleccionarBaseDatos(sentencia.get(0)[1]);
         	
     	}
 		
