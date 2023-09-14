@@ -552,7 +552,7 @@ public class Persistencia {
         return usuarios;
     }
 
-	private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
+private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 		
     	LinkedHashMap <String, BaseDatos> bds = new LinkedHashMap <String, BaseDatos>();
 		
@@ -562,7 +562,7 @@ public class Persistencia {
 
             while ((linea = br.readLine()) != null) {
            
-            	boolean primerElemento=true;
+            	boolean primerElemento=false;
             	linea =linea.replace("|","");
                 String[] partes = linea.split(":");
                 String nombreBD = partes[0];
@@ -575,16 +575,12 @@ public class Persistencia {
                 	for (String tabla : partes) {
                    
                 		if (primerElemento) {
-                    
-                			primerElemento=false;
-                    
-                			continue;
-                    	}
                     	
                 		Tabla tab = new Tabla (tabla);
                     	
                 		tabs.put(tabla, tab);
-                    	
+                	}
+                	primerElemento =true;
                 	}
                 	
 	                bd.setTablas(tabs);
@@ -823,5 +819,7 @@ public class Persistencia {
 		}
 
 	}
+	
+	
 	
 }
