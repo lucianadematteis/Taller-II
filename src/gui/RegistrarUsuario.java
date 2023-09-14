@@ -131,7 +131,7 @@ public class RegistrarUsuario extends JFrame {
 		JButton btnCancelar = new JButton("CANCELAR");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				login frame = new login();
+				Login frame = new Login();
 				frame.setVisible(true);
 				dispose();
 			}

@@ -4,7 +4,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
-		login frame = new login();
+		Login frame = new Login();
 		frame.setVisible(true);
 
 	}
