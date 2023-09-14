@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class UsuarioRegitroErrorNombre extends JFrame {
+public class UsuarioRegistroErrorNombre extends JFrame {
 
 	private JPanel contentPane;
 
@@ -24,7 +24,7 @@ public class UsuarioRegitroErrorNombre extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UsuarioRegitroErrorNombre frame = new UsuarioRegitroErrorNombre();
+					UsuarioRegistroErrorNombre frame = new UsuarioRegistroErrorNombre();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +36,7 @@ public class UsuarioRegitroErrorNombre extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public UsuarioRegitroErrorNombre() {
+	public UsuarioRegistroErrorNombre() {
 		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
