@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import logica.Atributo;
+import logica.Entero;
 import logica.Tabla;
 import logica.Usuario;
 import persistencia.Persistencia;
@@ -136,7 +137,8 @@ public class FachadaLogica implements IFachadaLogica {
 		return valores.size();
 
 	}
-
+/*
+ * Estos serían innecesarios. Mi método ya realiza todo esto
 	public int obtenerMaximo(ArrayList<Integer> valores) {
 
 		int maximo = valores.get(0);
@@ -171,6 +173,7 @@ public class FachadaLogica implements IFachadaLogica {
 		return minimo;
 
 	}
+	*/
 
 	// recibe un arraylist con los valores y devuelve el promedio
 	public int obtenerPromedio(ArrayList<Integer> valores) {
@@ -312,6 +315,78 @@ public class FachadaLogica implements IFachadaLogica {
 		return !(this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributo, valorCondicion).isEmpty());
 		
 	}
+	
+
+	public int obtenerMinimo (String nombreTabla, String nombreAtributo) {
+		boolean salto=false;
+		Integer min= null;
+		Entero aux;
+
+		ArrayList<LinkedHashMap<String, Atributo>> registros = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros();		
+
+		for (LinkedHashMap<String, Atributo> reg : registros) {
+
+			if (salto) {
+
+				for (Map.Entry<String, Atributo> regis : reg.entrySet()) {
+
+					if(regis.getValue().getNombreAtributo()==nombreAtributo) {
+
+						if (regis.getValue() instanceof Entero) {
+
+							aux = (Entero) regis.getValue();
+							int valor = aux.getValor();
+							if(min==null) {
+								min=valor;  
+							}
+							if (valor< min) {
+								min=valor;
+							}
+
+						}  
+					}
+				}
+			}
+			salto = true;
+		}
+		return min;
+	}
+	
+	public int obtenerMaximo (String nombreTabla, String nombreAtributo) {
+		boolean salto=false;
+		Integer max= null;
+		Entero aux;
+
+		ArrayList<LinkedHashMap<String, Atributo>> registros = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros();		
+
+		for (LinkedHashMap<String, Atributo> reg : registros) {
+
+			if (salto) {
+
+				for (Map.Entry<String, Atributo> regis : reg.entrySet()) {
+
+					if(regis.getValue().getNombreAtributo()==nombreAtributo) {
+
+						if (regis.getValue() instanceof Entero) {
+
+							aux = (Entero) regis.getValue();
+							int valor = aux.getValor();
+							if(max==null) {
+								max=valor;  
+							}
+							if (valor> max) {
+								max=valor;
+							}
+
+						}  
+					}
+				}
+			}
+			salto = true;
+		}
+		return max;
+	}
+	
 	/*
 	public ArrayList<String> obtenerTablasNom(){
 		
