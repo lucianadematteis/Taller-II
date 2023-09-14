@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import logica.Atributo;
+import logica.BaseDatos;
 import logica.Entero;
 import logica.Tabla;
 import logica.Usuario;
@@ -455,6 +456,56 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		return resultadoFinal;
 	} 
+	
+	
+	public boolean existeUsuario() {
+		return usuarios.containsKey(usuario);
+	}
+
+	public boolean existeBD() {
+		Usuario usuarioActual = obtenerUsuario();
+		if (usuarioActual != null) {
+			LinkedHashMap<String, BaseDatos> basesUsuario = usuarioActual.getBasesDatos();
+			return basesUsuario.containsKey(baseDatos);
+		}
+		return false;
+	}
+
+	public boolean existeTabla(String nombreTabla) {
+		Tabla tablita = obtenerTabla(nombreTabla);
+		if (tablita != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+		public void crearBD(DTOBaseDatos base) {
+		Usuario usuarioActual = obtenerUsuario();
+		if (usuarioActual != null) {
+			String nombreBD = base.getNombreBD();
+			if (!usuarioActual.getBasesDatos().containsKey(nombreBD)) {
+				BaseDatos nuevaBase = new BaseDatos(base);
+				usuarios.get(usuarioActual).getBasesDatos().put(nombreBD, nuevaBase);
+			}
+		}
+	}
+	
+		/*
+	public void crearTabla(DTOTabla tabla) {
+		Usuario usuarioActual = obtenerUsuario();
+		if (usuarioActual != null) {
+			String nombreTabla = tabla.getNombreTabla();
+			if (!usuarioActual.getBasesDatos().getTablas().constainsKey(nombreTabla)) {
+				Tabla unaTablita = new Tabla(tabla);
+				usuarios.get(usuarioActual).getBasesDatos().getTablas().put(nombreTabla, unaTablita);
+			}
+
+		}
+	}
+	
+	*/
 	
 	/*
 	public ArrayList<String> obtenerTablasNom(){
