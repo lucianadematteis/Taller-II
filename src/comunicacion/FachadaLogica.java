@@ -138,7 +138,7 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 /*
- * Estos serían innecesarios. Mi método ya realiza todo esto
+ * Estos serï¿½an innecesarios. Mi mï¿½todo ya realiza todo esto
 	public int obtenerMaximo(ArrayList<Integer> valores) {
 
 		int maximo = valores.get(0);
@@ -386,6 +386,75 @@ public class FachadaLogica implements IFachadaLogica {
 		}
 		return max;
 	}
+	
+	public void hacerNotNull (String nombreTabla, String nombreAtributo) {
+		
+		
+		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setNulo(false);
+				
+					
+	}
+
+	public void hacerClave (String nombreTabla, String nombreAtributo) {
+		
+		if(usuarios.get(usuario)!=null) {
+			System.out.println("No retorno null");
+			usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setClave(true);
+		}else
+			System.out.println("Retorno null");
+					
+	}
+	
+	public int calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion) { //hace promedios ENTEROS nada mas
+		
+		int promedio = 0;
+		int suma = 0;
+		ArrayList<Integer> numeros = new ArrayList<>();
+		ArrayList<LinkedHashMap<String, Atributo>> lista = new ArrayList<LinkedHashMap<String, Atributo>>();
+		lista = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+		for (LinkedHashMap<String, Atributo> elemento : lista) {
+		    	 for (Map.Entry<String, Atributo> entry : elemento.entrySet()) {
+		             if(nombreAtributo == entry.getValue().getNombreAtributo()) {
+		            	
+		            	if (entry.getValue() instanceof Entero) {
+				                Entero entero = (Entero) entry.getValue();
+				                int valor = entero.getValor();
+				                numeros.add(valor); 	 
+		             
+		             }
+		         }
+		            	 
+		    	
+		    	
+		    }
+		    
+		}
+		
+        for (int numero : numeros) {
+            suma += numero;
+        }
+		
+		
+		promedio = suma/numeros.size();
+		return promedio;
+	
+	}
+	
+	public ArrayList<Atributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2) {
+		
+		
+		ArrayList <Atributo> resultado1 = new ArrayList <Atributo>();
+		ArrayList <Atributo> resultado2 = new ArrayList <Atributo>();
+		ArrayList <Atributo> resultadoFinal = new ArrayList <Atributo>();
+	
+		resultado1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1);
+		resultado2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondcion2, valorCondicion2);
+		
+		resultadoFinal.addAll(resultado1);
+		resultadoFinal.addAll(resultado2);
+		
+		return resultadoFinal;
+	} 
 	
 	/*
 	public ArrayList<String> obtenerTablasNom(){
