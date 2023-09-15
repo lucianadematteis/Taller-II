@@ -15,6 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
+
+import comunicacion.DTOUsuario;
+import comunicacion.FachadaLogica;
+
 import javax.swing.JSeparator;
 
 
@@ -46,6 +50,7 @@ public class Login extends JFrame {
 		Color fuentePrincipal = new Color (255,255,255);
 		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
+		FachadaLogica fa = new FachadaLogica();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 700);
@@ -87,22 +92,41 @@ public class Login extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		JPasswordField pass_1 = new JPasswordField();
+		pass_1.setBounds(50, 182, 365, 20);
+		panel.add(pass_1);
+		pass_1.setForeground(escritura);
+		pass_1.setBackground(fondoVentana);
+		pass_1.setColumns(10);
+		
 		JButton inicioSesion = new JButton("INICIAR SESION");
 		inicioSesion.setForeground(fuentePrincipal);
 		inicioSesion.setBackground(botones);
 		inicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		/*		if (pass.getPassword()== comunicacion.DTOUsuario.Usuarios.get(Integer.parseInt(user.getText())).getContrasenia && comunicacion.DTOUsuario.Usuarios.containsKey(Integer.parseInt(user.getText()))) {
-					VentanaPrincipal frame = new VentanaPrincipal();
-					frame.setVisible(true);
-					dispose();
-				}
+				char[] arrayC = pass_1.getPassword();
+				String contra = new String (arrayC);
+				DTOUsuario usuario = new DTOUsuario (user.getText(),contra);
+			
+				if (fa.existeUsuario(user.getText())){
+
+					if (fa.validarContrasenia(usuario)){
+						VentanaPrincipal frame = new VentanaPrincipal();
+						frame.setVisible(true);
+						dispose();	
+					} else {
+							LoginError frame = new LoginError();
+							frame.setVisible(true);
+							
+							System.out.println("eror contra");
+						}
+					}
 				else {
 					LoginError frame = new LoginError();
 					frame.setVisible(true);
+
+					System.out.println("no existe user");
 				}
-				*/
-				
 			}
 		});
 		inicioSesion.setBounds(250, 275, 146, 23);
@@ -129,13 +153,6 @@ public class Login extends JFrame {
 		user.setForeground(escritura);
 		user.setBackground(fondoVentana);
 		user.setColumns(10);
-		
-		JPasswordField pass_1 = new JPasswordField();
-		pass_1.setBounds(50, 182, 365, 20);
-		panel.add(pass_1);
-		pass_1.setForeground(escritura);
-		pass_1.setBackground(fondoVentana);
-		pass_1.setColumns(10);
 		
 		JButton btnIniciarDemo = new JButton("INICIAR DEMO");
 		btnIniciarDemo.setForeground(Color.WHITE);
