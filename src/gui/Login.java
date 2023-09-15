@@ -118,14 +118,11 @@ public class Login extends JFrame {
 					} else {
 							LoginError frame = new LoginError();
 							frame.setVisible(true);	
-							System.out.println("eror contra");
 						}
 					}
 				else {
 					LoginError frame = new LoginError();
 					frame.setVisible(true);
-
-					System.out.println("no existe user");
 				}
 			}
 		});
