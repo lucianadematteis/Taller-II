@@ -548,11 +548,11 @@ public class FachadaLogica implements IFachadaLogica {
 		ArrayList<LinkedHashMap<String, Atributo>> resultado1 = new ArrayList<LinkedHashMap<String, Atributo>>();
 		Tabla tablita = this.obtenerTabla(nombreTabla);
 		resultado1= tablita.obtenerRegistros(nombreAtributo, valorCondicion);	
-		 resultado1.size();
+		return  resultado1.size();
 		 }
 
-	public String darAyuda(String ayuda) {
-		return ayuda.get(ayuda);
+	public String darAyuda(String ayuda1) {
+		return ayuda.get(ayuda1);
 }
 	
 }
