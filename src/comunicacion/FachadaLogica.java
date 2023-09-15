@@ -532,4 +532,13 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	public ArrayList<Atributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreArtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2) {
+    	
+    	ArrayList <Atributo>  res1= new ArrayList<Atributo>();
+    	ArrayList <Atributo> res2 = new ArrayList<Atributo>();
+    	res1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1);
+		res2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondcion2, valorCondicion2);
+    	res1.retainAll(res2);
+    }
+	
 }
