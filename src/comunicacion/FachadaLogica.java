@@ -523,12 +523,14 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	
-	public boolean validarContrasenia (DTOUsuario usuario) {
+	public boolean validarContrasenia (DTOUsuario usu) {
 		
-		String nombre = usuario.getNombreUser();
-		String contrasenia = usuario.getContrasenia();
-		
-		return (usuarios.get(nombre).getContrasenia()==contrasenia && usuarios.get(nombre).getNombreUser()==nombre);
+		String nombre = usu.getNombreUser();
+		String contrasenia = usu.getContrasenia();
+		if(usuarios.get(nombre).getContrasenia().equals(contrasenia))
+			return true;
+		else
+				return false;
 		
 	}
 	
