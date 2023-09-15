@@ -493,6 +493,30 @@ public Usuario obtenerUsuario(String nombreUsu) {
 
 	}
 	
+	public boolean existeUsuario(String nombreUsuario) {
+		
+		if (usuarios.containsKey(nombreUsuario))
+			return true;
+		else
+			return false;
+	}
+
+	public boolean usuarioTieneBase(String nombreBaseDatos) {
+		
+		if(usuarios.get(usuario).getBasesDatos().containsKey(nombreBaseDatos))
+			return true;
+		else
+			return false;
+	}
+
+	public boolean baseTieneTabla(String tabla) {
+		
+		if(usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().containsKey(tabla))
+			return true;
+		else
+			return false;
+	}
+	
 	/*
 	public ArrayList<String> obtenerTablasNom(){
 		
