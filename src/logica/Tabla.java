@@ -210,7 +210,7 @@ public class Tabla {
 			    		
 			    		DTOCadena entradaCadena = (DTOCadena) entrada.getValue();
 			    		
-			    		if(entradaCadena.getDato().equals(valorCondicion)) { //si cumple con la condicion
+			    		if(entradaCadena.getDato().toLowerCase().equals(valorCondicion.toLowerCase())) { //si cumple con la condicion
 			    			
 			    			registrosObtenidos.add(misRegistros);
 			    			
