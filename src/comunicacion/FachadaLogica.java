@@ -86,6 +86,23 @@ public class FachadaLogica implements IFachadaLogica {
 		persistencia.persistirTodo(usuarios);
 
 	}
+	
+public Usuario obtenerUsuario(String nombreUsu) {
+		
+		Usuario auxiliar= new Usuario("");
+		auxiliar=usuario.get(nombreUsu).;
+		return auxiliar;
+		
+	}
+	
+	public BaseDatos obtenerBaseDatos(String nomBD) {
+		BaseDatos auxiliar = new BaseDatos("");
+		auxiliar=usuario.get(usuario).getBasesDatos().get(nomBD);
+		
+		
+	}
+	
+}
 
 	public void recuperarDatos() {
 
