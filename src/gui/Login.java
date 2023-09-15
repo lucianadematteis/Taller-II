@@ -117,8 +117,7 @@ public class Login extends JFrame {
 						dispose();	
 					} else {
 							LoginError frame = new LoginError();
-							frame.setVisible(true);
-							
+							frame.setVisible(true);	
 							System.out.println("eror contra");
 						}
 					}
