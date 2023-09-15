@@ -7,6 +7,8 @@ import java.util.function.Consumer;
 
 import javax.swing.table.DefaultTableModel;
 
+import comunicacion.DTOBaseDatos;
+import comunicacion.DTOTabla;
 import comunicacion.FachadaLogica;
 import comunicacion.IFachadaLogica;
 
@@ -299,9 +301,19 @@ public class Comandos {
 		        	
 				}else {
 					
-					aciertos++;
-					insertarDepuracion("Acierto #" + aciertos, "El usuario quiere crear una tabla llamada: " +  sentencia.get(1)[1]);
-		        	
+					if(logica.existeTabla(sentencia.get(1)[1])) {
+						
+						insertarDepuracion("Error #N", "La tabla ingresada ya existe para la base de datose seleccionada");
+			        	
+					}else {
+						
+						DTOTabla tabla = new DTOTabla(sentencia.get(1)[1]);
+						logica.crearTabla(tabla);
+						
+						aciertos++;
+						insertarDepuracion("Acierto #" + aciertos, "El usuario quiere crear una tabla llamada: " +  sentencia.get(1)[1]);
+			        	
+					}
 				}
 			}		
 		}
@@ -320,8 +332,14 @@ public class Comandos {
 				
 	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en la linea 2");
 	        	
+			}else if(logica.existeBD(sentencia.get(1)[1])){
+				
+				insertarDepuracion("Error #N", "La base de datos ingresada ya existe para el usuario seleccionado");
+	        	
 			}else {
 				
+				DTOBaseDatos bd =new DTOBaseDatos(sentencia.get(1)[1]);
+				logica.crearBD(bd);
 				aciertos++;
 	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere crear una base de datos llamada: " + sentencia.get(1)[1]);
 				
@@ -335,7 +353,7 @@ public class Comandos {
 		
 		if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //Valido que el tipo de atributo y condicion coincidan
 			
-			if(/*poner el metodo del and.isEmpty()*/false) { //Valido que hayan registros que mostrar para la condicion dada
+			if(logica.consultaAnd(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
 				
 				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
 				
@@ -360,8 +378,8 @@ public class Comandos {
 		
 		if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //Valido que el tipo de atributo y condicion coincidan
 			
-			if(/*poner el metodo del or.isEmpty()*/ false) { //Valido que hayan registros que mostrar para la condicion dada
-				
+			if(logica.consultaOr(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+					
 				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
 				
 			}else {
@@ -391,7 +409,8 @@ public class Comandos {
 	        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(0)[1].toUpperCase() + " no es valido");
 	        	
             }else {
-            			
+            	
+            	logica.obtenerTablasNom();
             	aciertos++;
             	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere ver las tablas");
 	        		
@@ -506,9 +525,17 @@ public class Comandos {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
-    		aciertos++;
-        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere seleccionar la base de datos: " + sentencia.get(0)[1]);
-        	logica.seleccionarBaseDatos(sentencia.get(0)[1]);
+			if(logica.existeBD(sentencia.get(0)[1])) {
+				
+	    		aciertos++;
+	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere seleccionar la base de datos: " + sentencia.get(0)[1]);
+	        	logica.seleccionarBaseDatos(sentencia.get(0)[1]);
+        	
+			}else {
+				
+				insertarDepuracion("Error #N", "La base de datos ingresada no existe para el usuario logueado");
+	        	
+			}
         	
     	}
 		
@@ -549,7 +576,8 @@ public class Comandos {
             						
             						aciertos++;
             			        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere insertar datos en la tabla: " + sentencia.get(0)[1]);
-                    			
+            			        	logica.ingresarRegistro(sentencia.get(0)[1], null);
+            			        	
             					}else {
             						
             						insertarDepuracion("Error #N", "La calve primaria no puede quedar vacia ni repetirse");
@@ -686,8 +714,16 @@ public class Comandos {
     		
 			if(logica.esVacia(sentencia.get(1)[1])) { 
 				
-				aciertos++;
-	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer no nulo el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+				if((logica.obtenerAtributo(sentencia.get(1)[1], sentencia.get(0)[1])==null)) {
+					
+					insertarDepuracion("Error #N", "El atributo no existe para tabla ingresada");
+				
+				}else {
+					
+					aciertos++;
+		        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer no nulo el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+		        	logica.hacerNotNull(sentencia.get(1)[1], sentencia.get(0)[1]);
+				}
 	        	
 			}else {
 			
@@ -831,9 +867,18 @@ public class Comandos {
     		
 			if(logica.esVacia(sentencia.get(1)[1])) { 
 				
-				aciertos++;
-	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer clave primaria el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
-	        	
+				if((logica.obtenerAtributo(sentencia.get(1)[1], sentencia.get(0)[1])==null)) {
+					
+					insertarDepuracion("Error #N", "El atributo no existe para tabla ingresada");
+				
+				}else {
+					
+					aciertos++;
+		        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer clave primaria el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+		        	logica.hacerClave(sentencia.get(1)[1], sentencia.get(0)[1]);
+		        	
+				}
+				
 			}else {
 			
 				insertarDepuracion("Error #N", "La tabla no debe de tener registros para la operacion a realizar");
@@ -859,9 +904,16 @@ public class Comandos {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
-    		aciertos++;
-        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener ayuda sobre el comando: " + sentencia.get(0)[1]);
+			if(logica.comandoExiste(sentencia.get(0)[1])) {
+					
+				aciertos++;
+				insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener ayuda sobre el comando: " + sentencia.get(0)[1]);
         	
+			}else {
+				
+				insertarDepuracion("Error #N", "El comando ingresado no existe o no tiene ayuda asociada");
+				
+			}
     	}
 		
 	}

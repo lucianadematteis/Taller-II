@@ -445,17 +445,16 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	} 
 	
-	
 	public boolean existeUsuario() {
 		
 		return usuarios.containsKey(usuario);
 		
 	}
 
-	public boolean existeBD() {
+	public boolean existeBD(String nombreBD) {
 		
 		Usuario usuarioActual = obtenerUsuario();
-		return usuarioActual.getBasesDatos().containsKey(baseDatos);
+		return usuarioActual.getBasesDatos().containsKey(nombreBD);
 		
 	}
 
@@ -518,7 +517,7 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	
-	public ArrayList<String> obtenerTablasNom(){
+	public ArrayList<String> obtenerTablasNom() {
 		
 		return this.obtenerBaseDatos().obtenerNomTablas();
 		
@@ -545,6 +544,7 @@ public class FachadaLogica implements IFachadaLogica {
 		res2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion2, valorCondicion2);
     	res1.retainAll(res2);
     	return res1;
+    	
     }
 	
 	public int contarRegistros( String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion){
@@ -656,6 +656,12 @@ public class FachadaLogica implements IFachadaLogica {
 		}
 		
 		return true;
+		
+	}
+	
+	public boolean comandoExiste(String comando) {
+		
+		return this.ayuda.containsKey(comando);
 		
 	}
 	
