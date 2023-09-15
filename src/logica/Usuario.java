@@ -67,5 +67,11 @@ public class Usuario {
 		this.basesDatos.put(base.getNombreBD(), base);
 		
 	}
+	
+	public BaseDatos obtenerBD(String bd) {
+		
+		return this.basesDatos.get(bd);
+		
+	}
 
 }
