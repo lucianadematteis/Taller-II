@@ -13,6 +13,9 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+
+import comunicacion.FachadaLogica;
+
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -146,6 +149,10 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Login frame = new Login();
 				frame.setVisible(true);
+				FachadaLogica fa = new FachadaLogica();
+				fa.persistirDatos();
+				fa.liberarMemoriaBaseDatos();
+				fa.liberarMemoriaUsuario();
 				dispose();
 			}
 		});
