@@ -534,9 +534,33 @@ public class Comandos {
 		        	
             	}else {
             			
-            		aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere insertar datos en la tabla: " + sentencia.get(0)[1]);
-		        	
+            		ArrayList<String> atributos = new ArrayList<>();
+            		atributos.add(sentencia.get(1)[1]);
+            		atributos.add(sentencia.get(1)[2]);
+            		atributos.add(sentencia.get(1)[3]);
+            		
+            		if(logica.validaCantidadAtributos(sentencia.get(0)[1], atributos)) {
+            		
+            			if(logica.validaAtributos(sentencia.get(0)[1], atributos)) {
+            				
+            				//validar not null
+            				//validar pk
+            				
+            				aciertos++;
+    			        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere insertar datos en la tabla: " + sentencia.get(0)[1]);
+            			
+            			}else {
+            				
+            				insertarDepuracion("Error #N", "Los datos a ingresar son incorrectos para los atributos de la tabla");
+            				
+            			}
+            			
+            		}else {
+            			
+            			insertarDepuracion("Error #N", "Los datos no pueden quedar vacios, utilice la palabra NULL");
+        				
+            		}
+            		
             	}
         	}
     	}

@@ -31,6 +31,10 @@ public interface IFachadaLogica {
 	
 	public void cambiarRegistro(String nombreTabla, String atributoCambiar, String valorNuevo, String nombreAtributoCondicion, String valorCondicion);
 	
-	//public ArrayList<String> obtenerTablasNom();
+	public ArrayList<String> obtenerTablasNom();
+	
+	public boolean validaAtributos(String nombreTabla, ArrayList<String> atributos);
+	
+	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos);
 	
 }

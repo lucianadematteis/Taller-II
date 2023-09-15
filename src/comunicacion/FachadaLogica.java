@@ -3,6 +3,8 @@ package comunicacion;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+
 import logica.Atributo;
 import logica.BaseDatos;
 import logica.Entero;
@@ -527,10 +529,11 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		String nombre = usu.getNombreUser();
 		String contrasenia = usu.getContrasenia();
+		
 		if(usuarios.get(nombre).getContrasenia().equals(contrasenia))
 			return true;
 		else
-				return false;
+			return false;
 		
 	}
 	
@@ -543,16 +546,65 @@ public class FachadaLogica implements IFachadaLogica {
     	res1.retainAll(res2);
     	return res1;
     }
+	
 	public int 	 contarRegistros( String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion){
 		 
 		ArrayList<LinkedHashMap<String, Atributo>> resultado1 = new ArrayList<LinkedHashMap<String, Atributo>>();
 		Tabla tablita = this.obtenerTabla(nombreTabla);
 		resultado1= tablita.obtenerRegistros(nombreAtributo, valorCondicion);	
 		return  resultado1.size();
-		 }
+	}
 
 	public String darAyuda(String ayuda1) {
+	
 		return ayuda.get(ayuda1);
-}
+
+	}
+
+	public boolean validaAtributos(String nombreTabla, ArrayList<String> atributos) {
+		
+		Tabla tablita = this.obtenerTabla(nombreTabla);
+		LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+		
+		int i=0;
+		
+		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
+			
+			if(!(atributos.get(i).equals("NULL"))) {
+			
+				if((!(validaCondicion(nombreTabla, atriGuia.getKey(), atributos.get(i))))){
+					
+					return false;
+					
+				}
+			
+			}
+			
+			i++;
+				
+		}
+		
+		return true;
+		
+	}
+	
+	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos) {
+		
+		Tabla tablita = this.obtenerTabla(nombreTabla);
+		int cantidadAtributos = tablita.getRegistros().get(0).size();
+		
+		for (int i = 0; i < cantidadAtributos ; i++) {
+			
+			if(atributos.get(i) == null) {
+				
+				return false;
+				
+			}
+			
+		}
+		
+		return true;
+		
+	}
 	
 }
