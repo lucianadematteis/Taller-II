@@ -547,7 +547,7 @@ public class FachadaLogica implements IFachadaLogica {
 		 
 		 ArrayList <Atributo> resultado1 = new ArrayList <Atributo>();
 		 Tabla tablita = this.obtenerTabla(nombreTabla);
-		 resultado1= tablita.obtenerRegistros(nombreAtributo, valorCondición);
+		 resultado1= tablita.obtenerRegistros(nombreAtributo, valorCondicion);
 		  return resultado1.size();
 		 }
 	
