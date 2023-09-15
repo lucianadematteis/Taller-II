@@ -12,11 +12,10 @@ import comunicacion.IFachadaLogica;
 
 public class Comandos {
 	
-	//VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
 	IFachadaLogica logica= new FachadaLogica();
 	
     private int aciertos;
-    private Map<String, Consumer<ArrayList<String[]>>> acciones; //es una función que toma un valor y realiza algún tipo de acción con él, pero no produce ningún resultado como salida.
+    private Map<String, Consumer<ArrayList<String[]>>> acciones; //es una funciï¿½n que toma un valor y realiza algï¿½n tipo de acciï¿½n con ï¿½l, pero no produce ningï¿½n resultado como salida.
 
     public Comandos() {
     	
@@ -890,7 +889,7 @@ public class Comandos {
 	        
 	    } else {
 	    	
-	        insertarDepuracion("Error #01", "El comando " + comando + " no es válido");
+	        insertarDepuracion("Error #01", "El comando " + comando + " no es vï¿½lido");
 	        
 	    }
 	    

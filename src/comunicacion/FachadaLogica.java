@@ -521,4 +521,5 @@ public class FachadaLogica implements IFachadaLogica {
 		return this.obtenerBaseDatos().obtenerNomTablas();
 		
 	}
+	
 }
