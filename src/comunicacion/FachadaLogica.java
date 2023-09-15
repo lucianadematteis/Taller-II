@@ -81,18 +81,6 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public Map<String, String> getAyuda() {
-
-		return ayuda;
-
-	}
-
-	public void setAyuda(LinkedHashMap<String, String> ayuda) {
-
-		this.ayuda = ayuda;
-
-	}
-
 	public void persistirDatos() {
 
 		persistencia.persistirTodo(usuarios);
@@ -116,8 +104,8 @@ public class FachadaLogica implements IFachadaLogica {
 
 	public void eliminarusuario(DTOUsuario user) {
 
-		usuarios.remove(user.getNombreUser()); //Asi tambien funciona porque solo necesitas la cedula que es la key
-
+		usuarios.remove(user.getNombreUser()); 
+		
 	}
 
 	public Usuario obtenerUsuario() {
@@ -138,43 +126,6 @@ public class FachadaLogica implements IFachadaLogica {
 		return valores.size();
 
 	}
-/*
- * Estos ser�an innecesarios. Mi m�todo ya realiza todo esto
-	public int obtenerMaximo(ArrayList<Integer> valores) {
-
-		int maximo = valores.get(0);
-
-		for (int i = 1; i < valores.size(); i++) {
-
-			if (valores.get(i) > maximo) {
-
-				maximo = valores.get(i);
-
-			}
-
-		}
-
-		return maximo;
-
-	}
-
-	public int obtenerMinimo(ArrayList<Integer> valores) {
-
-		int minimo = valores.get(0);
-
-		for (int i = 1; i < valores.size(); i++) {
-
-			if (valores.get(i) < minimo) {
-
-				minimo = valores.get(i);
-
-			}
-		}
-
-		return minimo;
-
-	}
-	*/
 
 	// recibe un arraylist con los valores y devuelve el promedio
 	public int obtenerPromedio(ArrayList<Integer> valores) {
@@ -266,6 +217,7 @@ public class FachadaLogica implements IFachadaLogica {
 		aux= usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla);
 
 		return aux;
+		
 	}
 
 	public Atributo obtenerAtributo(String nombreAtributo, String nombreTabla) {
@@ -274,6 +226,7 @@ public class FachadaLogica implements IFachadaLogica {
 		Atributo atr =usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo);
 
 		return atr;
+		
 	}
 	
 	public boolean validaCondicion(String nombreTabla, String nombreAtributo, String valorCondicion) {
@@ -319,6 +272,7 @@ public class FachadaLogica implements IFachadaLogica {
 	
 
 	public int obtenerMinimo (String nombreTabla, String nombreAtributo) {
+		
 		boolean salto=false;
 		Integer min= null;
 		Entero aux;
@@ -337,23 +291,34 @@ public class FachadaLogica implements IFachadaLogica {
 
 							aux = (Entero) regis.getValue();
 							int valor = aux.getValor();
+							
 							if(min==null) {
+								
 								min=valor;  
+								
 							}
+							
 							if (valor< min) {
+								
 								min=valor;
+								
 							}
 
 						}  
 					}
 				}
 			}
+			
 			salto = true;
+			
 		}
+		
 		return min;
+		
 	}
 	
 	public int obtenerMaximo (String nombreTabla, String nombreAtributo) {
+		
 		boolean salto=false;
 		Integer max= null;
 		Entero aux;
@@ -372,38 +337,41 @@ public class FachadaLogica implements IFachadaLogica {
 
 							aux = (Entero) regis.getValue();
 							int valor = aux.getValor();
+							
 							if(max==null) {
+								
 								max=valor;  
+								
 							}
+							
 							if (valor> max) {
+								
 								max=valor;
+								
 							}
 
 						}  
 					}
 				}
 			}
+			
 			salto = true;
 		}
+		
 		return max;
+		
 	}
 	
 	public void hacerNotNull (String nombreTabla, String nombreAtributo) {
 		
-		
 		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setNulo(false);
-				
 					
 	}
 
 	public void hacerClave (String nombreTabla, String nombreAtributo) {
 		
-		if(usuarios.get(usuario)!=null) {
-			System.out.println("No retorno null");
-			usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setClave(true);
-		}else
-			System.out.println("Retorno null");
-					
+		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setClave(true);
+				
 	}
 	
 	public int calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion) { //hace promedios ENTEROS nada mas
@@ -413,28 +381,32 @@ public class FachadaLogica implements IFachadaLogica {
 		ArrayList<Integer> numeros = new ArrayList<>();
 		ArrayList<LinkedHashMap<String, Atributo>> lista = new ArrayList<LinkedHashMap<String, Atributo>>();
 		lista = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+		
 		for (LinkedHashMap<String, Atributo> elemento : lista) {
-		    	 for (Map.Entry<String, Atributo> entry : elemento.entrySet()) {
-		             if(nombreAtributo == entry.getValue().getNombreAtributo()) {
+			
+		   	 for (Map.Entry<String, Atributo> entry : elemento.entrySet()) {
+		   		 
+		   		 if(nombreAtributo == entry.getValue().getNombreAtributo()) {
 		            	
-		            	if (entry.getValue() instanceof Entero) {
-				                Entero entero = (Entero) entry.getValue();
-				                int valor = entero.getValor();
-				                numeros.add(valor); 	 
+		           	if (entry.getValue() instanceof Entero) {
+		           		
+		                Entero entero = (Entero) entry.getValue();
+		                int valor = entero.getValor();
+				        numeros.add(valor); 	 
 		             
 		             }
+		           	
 		         }
-		            	 
-		    	
-		    	
+		       
 		    }
 		    
 		}
 		
         for (int numero : numeros) {
+        	
             suma += numero;
+            
         }
-		
 		
 		promedio = suma/numeros.size();
 		return promedio;
@@ -442,7 +414,6 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	public ArrayList<Atributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2) {
-		
 		
 		ArrayList <Atributo> resultado1 = new ArrayList <Atributo>();
 		ArrayList <Atributo> resultado2 = new ArrayList <Atributo>();
@@ -455,57 +426,55 @@ public class FachadaLogica implements IFachadaLogica {
 		resultadoFinal.addAll(resultado2);
 		
 		return resultadoFinal;
+		
 	} 
 	
 	
 	public boolean existeUsuario() {
+		
 		return usuarios.containsKey(usuario);
+		
 	}
 
 	public boolean existeBD() {
+		
 		Usuario usuarioActual = obtenerUsuario();
-		if (usuarioActual != null) {
-			LinkedHashMap<String, BaseDatos> basesUsuario = usuarioActual.getBasesDatos();
-			return basesUsuario.containsKey(baseDatos);
-		}
-		return false;
+		return usuarioActual.getBasesDatos().containsKey(baseDatos);
+		
 	}
 
 	public boolean existeTabla(String nombreTabla) {
+
 		Tabla tablita = obtenerTabla(nombreTabla);
+	
 		if (tablita != null) {
+			
 			return true;
+			
 		} else {
+			
 			return false;
+		
 		}
+		
 	}
 
-
-		public void crearBD(DTOBaseDatos base) {
+	public void crearBD(DTOBaseDatos base) {
+		
 		Usuario usuarioActual = obtenerUsuario();
-		if (usuarioActual != null) {
-			String nombreBD = base.getNombreBD();
-			if (!usuarioActual.getBasesDatos().containsKey(nombreBD)) {
-				BaseDatos nuevaBase = new BaseDatos(base);
-				usuarios.get(usuarioActual).getBasesDatos().put(nombreBD, nuevaBase);
-			}
-		}
+		BaseDatos baseDatos = new BaseDatos(base);
+		usuarioActual.agregarBD(baseDatos);
+		
 	}
 	
-		/*
+	
 	public void crearTabla(DTOTabla tabla) {
-		Usuario usuarioActual = obtenerUsuario();
-		if (usuarioActual != null) {
-			String nombreTabla = tabla.getNombreTabla();
-			if (!usuarioActual.getBasesDatos().getTablas().constainsKey(nombreTabla)) {
-				Tabla unaTablita = new Tabla(tabla);
-				usuarios.get(usuarioActual).getBasesDatos().getTablas().put(nombreTabla, unaTablita);
-			}
+			
+		Tabla tablita = new Tabla(tabla);
+		
+		//obteneerBD.agregarTabla(tablita);
 
-		}
 	}
-	
-	*/
 	
 	/*
 	public ArrayList<String> obtenerTablasNom(){

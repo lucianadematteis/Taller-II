@@ -90,5 +90,11 @@ public class BaseDatos {
 		return tablasNom;
 		
 	}
+	
+	public void agregarTabla(Tabla tabla) {
+		
+		this.tablas.put(tabla.getNombreTabla(), tabla);
+		
+	}
 
 }

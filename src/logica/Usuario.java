@@ -61,5 +61,11 @@ public class Usuario {
 		this.basesDatos = basesDatos;
 
 	}
+	
+	public void agregarBD(BaseDatos base) {
+		
+		this.basesDatos.put(base.getNombreBD(), base);
+		
+	}
 
 }
