@@ -360,7 +360,7 @@ public class Comandos {
 		
 		if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //Valido que el tipo de atributo y condicion coincidan
 			
-			if(/*poner el metodo del and.isEmpty()*/ false) { //Valido que hayan registros que mostrar para la condicion dada
+			if(/*poner el metodo del or.isEmpty()*/ false) { //Valido que hayan registros que mostrar para la condicion dada
 				
 				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
 				
