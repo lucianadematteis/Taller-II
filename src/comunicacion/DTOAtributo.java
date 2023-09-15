@@ -1,5 +1,7 @@
 package comunicacion;
 
+import logica.Atributo;
+
 public abstract class DTOAtributo {
 
 	private String nombreAtributo;
@@ -11,6 +13,14 @@ public abstract class DTOAtributo {
 		this.nombreAtributo = nombreAtributo;
 		this.nulo = nulo;
 		this.clave = clave;
+		
+	}
+	
+	public DTOAtributo(Atributo atributo) {
+		
+		this.nombreAtributo = atributo.getNombreAtributo();
+		this.nulo = atributo.getNulo();
+		this.clave = atributo.getClave();
 		
 	}
 

@@ -1,5 +1,7 @@
 package comunicacion;
 
+import logica.Entero;
+
 public class DTOEntero extends DTOAtributo{
 
 	private int valor;
@@ -8,6 +10,13 @@ public class DTOEntero extends DTOAtributo{
 		
 		super(nombreAtributo, nulo, clave);
 		this.valor = valor;
+		
+	}
+	
+	public DTOEntero(Entero entero) {
+		
+		super(entero.getNombreAtributo(), entero.getClave(), entero.getNulo());
+		this.valor=entero.getValor();
 		
 	}
 

@@ -5,6 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 import java.util.Map;
 
+import comunicacion.DTOAtributo;
+import comunicacion.DTOCadena;
+import comunicacion.DTOEntero;
 import comunicacion.DTOTabla;
 
 public class Tabla {
@@ -43,6 +46,47 @@ public class Tabla {
 		return registros;
 		
 	}
+	
+	public ArrayList<LinkedHashMap<String, DTOAtributo>> getRegistrosDTO() {
+		
+	    ArrayList<LinkedHashMap<String, Atributo>> registros = this.getRegistros();
+	    ArrayList<LinkedHashMap<String, DTOAtributo>> registrosDTO = new ArrayList<>();
+
+	    for (LinkedHashMap<String, Atributo> registro : registros) {
+	    	
+	        LinkedHashMap<String, DTOAtributo> registroDTO = new LinkedHashMap<>();
+
+	        for (Map.Entry<String, Atributo> entry : registro.entrySet()) {
+	        	
+	            Atributo atributo = entry.getValue();
+	            DTOAtributo dtoAtributo = convertirAtributoATDTO(atributo); // Función de conversión unificada
+	            registroDTO.put(entry.getKey(), dtoAtributo);
+	       
+	        }
+
+	        registrosDTO.add(registroDTO);
+	 
+	    }
+
+	    return registrosDTO;
+	}
+
+	private DTOAtributo convertirAtributoATDTO(Atributo atributo) {
+		
+	    if (atributo instanceof Entero) {
+	    	
+	        Entero entero = (Entero) atributo;
+	        return new DTOEntero(entero);
+	        
+	    } else if (atributo instanceof Cadena) {
+	    	
+	        Cadena cadena = (Cadena) atributo;
+	        return new DTOCadena(cadena);
+	    }
+	    
+		return null;
+	}
+
 
 	public void setRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros) {
 		
@@ -56,26 +100,26 @@ public class Tabla {
 		
 	}
 	
-	public void eliminarRegistro(LinkedHashMap<String, Atributo> registro) {
+	public void eliminarRegistro(LinkedHashMap<String, DTOAtributo> registro) {
 		
 		registros.remove(registro);
 		
 	}
 	
-	public void modificarRegistro(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreAtributo, String valorNuevo) {
+	public void modificarRegistro(ArrayList<LinkedHashMap<String, DTOAtributo>> registros, String nombreAtributo, String valorNuevo) {
 		
-		for (LinkedHashMap<String, Atributo> registro : registros) {
+		for (LinkedHashMap<String, DTOAtributo> registro : registros) {
 	    	
-	        Atributo atributo = registro.get(nombreAtributo);
+	        DTOAtributo atributo = registro.get(nombreAtributo);
 
-            if (atributo instanceof Entero) {
+            if (atributo instanceof DTOEntero) {
             	
                 int valorEntero = Integer.parseInt(valorNuevo);
-                ((Entero) atributo).setValor(valorEntero);
+                ((DTOEntero) atributo).setValor(valorEntero);
                  
-            } else if (atributo instanceof Cadena) {
+            } else if (atributo instanceof DTOCadena) {
             	
-                ((Cadena) atributo).setDato(valorNuevo);
+                ((DTOCadena) atributo).setDato(valorNuevo);
                 
             }
             
@@ -140,21 +184,21 @@ public class Tabla {
 		
 	}
 	
-	public ArrayList<LinkedHashMap<String, Atributo>> obtenerRegistros(String nombreAtributo, String valorCondicion) {
+	public ArrayList<LinkedHashMap<String, DTOAtributo>> obtenerRegistros(String nombreAtributo, String valorCondicion) {
 		
-		ArrayList<LinkedHashMap<String, Atributo>> registrosObtenidos = new ArrayList<LinkedHashMap<String, Atributo>>();
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosObtenidos = new ArrayList<LinkedHashMap<String, DTOAtributo>>();
 		
-		for (LinkedHashMap<String, Atributo> misRegistros : this.getRegistros()) { 
+		for (LinkedHashMap<String, DTOAtributo> misRegistros : this.getRegistrosDTO()) { 
 			
-		    for (Map.Entry<String, Atributo> entrada : misRegistros.entrySet()) {
+		    for (Map.Entry<String, DTOAtributo> entrada : misRegistros.entrySet()) {
 		    	
 		    	if(entrada.getValue().getNombreAtributo().equals(nombreAtributo)) { //si es el atributo que debo evaluar
 		    		
-		    		if(entrada.getValue() instanceof Entero) { //como la condicion es un string debo de evaluar esto para convertirla
+		    		if(entrada.getValue() instanceof DTOEntero) { //como la condicion es un string debo de evaluar esto para convertirla
 			    		
 			    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
 			    		
-			    		Entero entradaEntera = (Entero) entrada.getValue();
+			    		DTOEntero entradaEntera = (DTOEntero) entrada.getValue();
 			    		
 			    		if(entradaEntera.getValor() == valorCondicionEntera) { //si cumple con la condicion
 			    			
@@ -162,9 +206,9 @@ public class Tabla {
 			    			
 			    		}
 			    		
-			    	}else if(entrada.getValue() instanceof Cadena){
+			    	}else if(entrada.getValue() instanceof DTOCadena){
 			    		
-			    		Cadena entradaCadena = (Cadena) entrada.getValue();
+			    		DTOCadena entradaCadena = (DTOCadena) entrada.getValue();
 			    		
 			    		if(entradaCadena.getDato().equals(valorCondicion)) { //si cumple con la condicion
 			    			
@@ -183,6 +227,7 @@ public class Tabla {
 		return registrosObtenidos;
 		
 	}
+	
 	public boolean buscarAtributo(String nombreAtributo) {
 		 
 		if  (registros.get(0).get(nombreAtributo)==null)
@@ -203,17 +248,19 @@ public class Tabla {
 	    
 	}
 	
-	public ArrayList<Atributo> seleccionarAtributo(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreAtributo){
+	public ArrayList<DTOAtributo> seleccionarAtributo(ArrayList<LinkedHashMap<String, DTOAtributo>> registros, String nombreAtributo){
 		
-		ArrayList<Atributo> registrosFinales = new ArrayList<Atributo>();
+		ArrayList<DTOAtributo> registrosFinales = new ArrayList<DTOAtributo>();
 		
-		for (LinkedHashMap<String, Atributo> misRegistros : registros) { 
+		for (LinkedHashMap<String, DTOAtributo> misRegistros : registros) { 
 			
-		    for (Map.Entry<String, Atributo> entrada : misRegistros.entrySet()) {
+		    for (Map.Entry<String, DTOAtributo> entrada : misRegistros.entrySet()) {
 		    	
 		    	if(entrada.getKey().equals(nombreAtributo)) { 
+		    		
+		    		DTOAtributo atributo = (DTOAtributo) entrada.getValue();
 		    	
-		    		registrosFinales.add(entrada.getValue());
+		    		registrosFinales.add(atributo);
 		    		
 		    	}
 		    	

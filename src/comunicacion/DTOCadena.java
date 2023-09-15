@@ -1,5 +1,7 @@
 package comunicacion;
 
+import logica.Cadena;
+
 public class DTOCadena extends DTOAtributo{
 
 	private String dato;
@@ -11,6 +13,13 @@ public class DTOCadena extends DTOAtributo{
 		
 	}
 
+	public DTOCadena(Cadena cadena) {
+		
+		super(cadena.getNombreAtributo(), cadena.getClave(), cadena.getNulo());
+		this.dato=cadena.getDato();
+		
+	}
+	
 	public String getDato() {
 		
 		return dato;

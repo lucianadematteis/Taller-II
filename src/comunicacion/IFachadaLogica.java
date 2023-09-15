@@ -13,7 +13,7 @@ public interface IFachadaLogica {
 	
 	public void seleccionarBaseDatos(String baseDatos);
 	
-	public ArrayList<Atributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
+	public ArrayList<DTOAtributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
 	
 	public boolean validaCondicion(String nombreTabla, String nombreAtributo, String valorCondicion);
 	
