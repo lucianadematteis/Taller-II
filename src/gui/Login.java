@@ -99,6 +99,7 @@ public class Login extends JFrame {
 		pass_1.setBackground(fondoVentana);
 		pass_1.setColumns(10);
 		
+		
 		JButton inicioSesion = new JButton("INICIAR SESION");
 		inicioSesion.setForeground(fuentePrincipal);
 		inicioSesion.setBackground(botones);
@@ -106,6 +107,7 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				char[] arrayC = pass_1.getPassword();
 				String contra = new String (arrayC);
+				//System.out.println(contra);
 				DTOUsuario usuario = new DTOUsuario (user.getText(),contra);
 			
 				if (fa.existeUsuario(user.getText())){
