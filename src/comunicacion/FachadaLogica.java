@@ -543,5 +543,12 @@ public class FachadaLogica implements IFachadaLogica {
     	res1.retainAll(res2);
     	return res1;
     }
+	public int 	 contarRegistros( String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String varlorCondicion){
+		 
+		 ArrayList <Atributo> resultado1 = new ArrayList <Atributo>();
+		 Tabla tablita = this.obtenerTabla(nombreTabla);
+		 resultado1= tablita.obtenerRegistros(nombreAtributo, valorCondición);
+		 resultado1.size();
+		 }
 	
 }
