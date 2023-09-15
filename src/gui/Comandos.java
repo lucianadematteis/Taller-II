@@ -543,12 +543,25 @@ public class Comandos {
             		
             			if(logica.validaAtributos(sentencia.get(0)[1], atributos)) {
             				
-            				//validar not null
-            				//validar pk
+            				if(logica.validaNotNull(sentencia.get(0)[1], atributos)) {
+            					
+            					if(logica.validaClave(sentencia.get(0)[1], atributos)) {
+            						
+            						aciertos++;
+            			        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere insertar datos en la tabla: " + sentencia.get(0)[1]);
+                    			
+            					}else {
+            						
+            						insertarDepuracion("Error #N", "La calve primaria no puede quedar vacia ni repetirse");
+            						
+            					}
+            					
+            				}else {
+            					
+            					insertarDepuracion("Error #N", "Ingreso como nulos atributos no permitidos");
+                				
+            				}
             				
-            				aciertos++;
-    			        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere insertar datos en la tabla: " + sentencia.get(0)[1]);
-            			
             			}else {
             				
             				insertarDepuracion("Error #N", "Los datos a ingresar son incorrectos para los atributos de la tabla");

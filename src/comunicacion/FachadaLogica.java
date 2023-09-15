@@ -607,4 +607,56 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	public boolean validaNotNull(String nombreTabla, ArrayList<String> atributos) {
+		
+		Tabla tablita = this.obtenerTabla(nombreTabla);
+		
+		LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+		
+		int i=0;
+		
+		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
+			
+			if((atributos.get(i).equals("NULL")) && (atriGuia.getValue().getNulo())) {
+			
+				return false;
+			
+			}
+			
+			i++;
+				
+		}
+		
+		return true;
+		
+	}
+	
+	public boolean validaClave(String nombreTabla, ArrayList<String> atributos) {
+		
+		Tabla tablita = this.obtenerTabla(nombreTabla);
+		LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+		String clave = tablita.obtenerClave();
+		
+		int i=0;
+		
+		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
+			
+			if((atributos.get(i).equals("NULL")) && (atriGuia.getKey().equals(clave))) {
+			
+				return false;
+			
+			}else if(!(tablita.obtenerRegistros(clave, atributos.get(i)).isEmpty())) {
+				
+				return false;
+				
+			}
+			
+			i++;
+				
+		}
+		
+		return true;
+		
+	}
+	
 }

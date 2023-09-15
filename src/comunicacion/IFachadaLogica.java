@@ -37,4 +37,8 @@ public interface IFachadaLogica {
 	
 	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos);
 	
+	public boolean validaNotNull(String nombreTabla, ArrayList<String> atributos);
+	
+	public boolean validaClave(String nombreTabla, ArrayList<String> atributos);
+	
 }
