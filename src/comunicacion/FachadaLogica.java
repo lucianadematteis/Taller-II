@@ -87,23 +87,20 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 	
-public Usuario obtenerUsuario(String nombreUsu) {
+	public Usuario obtenerUsuario(String nombreUsu) {
 		
-		Usuario auxiliar= new Usuario("");
-		auxiliar=usuario.get(nombreUsu).;
-		return auxiliar;
+		return usuarios.get(this.usuario);
 		
 	}
 	
-	public BaseDatos obtenerBaseDatos(String nomBD) {
-		BaseDatos auxiliar = new BaseDatos("");
-		auxiliar=usuario.get(usuario).getBasesDatos().get(nomBD);
+	public BaseDatos obtenerBaseDatos() {
 		
+		Usuario user = usuarios.get(usuario);
+		return user.obtenerBD(this.baseDatos);
 		
 	}
-	
-}
 
+	
 	public void recuperarDatos() {
 
 		ayuda=persistencia.recuperarAyuda();
@@ -484,21 +481,13 @@ public Usuario obtenerUsuario(String nombreUsu) {
 		
 	}
 	
-	
-	public void crearTabla(DTOTabla tabla) {
-			
-		Tabla tablita = new Tabla(tabla);
-		
-		//obteneerBD.agregarTabla(tablita);
-
-	}
-	
 	public boolean existeUsuario(String nombreUsuario) {
 		
 		if (usuarios.containsKey(nombreUsuario))
 			return true;
 		else
 			return false;
+		
 	}
 
 	public boolean usuarioTieneBase(String nombreBaseDatos) {
@@ -507,6 +496,7 @@ public Usuario obtenerUsuario(String nombreUsu) {
 			return true;
 		else
 			return false;
+		
 	}
 
 	public boolean baseTieneTabla(String tabla) {
@@ -515,13 +505,20 @@ public Usuario obtenerUsuario(String nombreUsu) {
 			return true;
 		else
 			return false;
+		
 	}
 	
-	/*
+	public void crearTabla(DTOTabla tabla) {
+		
+		Tabla tablita = new Tabla(tabla);
+		this.obtenerBaseDatos().agregarTabla(tablita);
+
+	}
+	
+	
 	public ArrayList<String> obtenerTablasNom(){
 		
-		return this.obtenerBaseDatos.obtenerNomTablas();
+		return this.obtenerBaseDatos().obtenerNomTablas();
 		
 	}
-	*/
 }
