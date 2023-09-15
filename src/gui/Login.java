@@ -112,6 +112,7 @@ public class Login extends JFrame {
 				if (fa.existeUsuario(user.getText())){
 
 					if (fa.validarContrasenia(usuario)){
+						fa.seleccionarUsuario(user.getText());
 						VentanaPrincipal frame = new VentanaPrincipal();
 						frame.setVisible(true);
 						dispose();	
