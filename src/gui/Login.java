@@ -27,7 +27,6 @@ public class Login extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField user;
-	private JPasswordField pass;
 	private FachadaLogica fa;
 
 	public Login(FachadaLogica fa) {
