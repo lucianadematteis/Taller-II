@@ -7,6 +7,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import comunicacion.FachadaLogica;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -17,30 +20,12 @@ import java.awt.Window.Type;
 public class UsuarioRegistroCorrecto extends JFrame {
 
 	private JPanel contentPane;
+	private FachadaLogica fa;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UsuarioRegistroCorrecto frame = new UsuarioRegistroCorrecto();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public UsuarioRegistroCorrecto() {
+	public UsuarioRegistroCorrecto(FachadaLogica fa) {
+		this.fa = fa;
 		setType(Type.POPUP);
-		//setResizable(false);
-		
+
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
@@ -58,7 +43,7 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		JButton aceptar = new JButton("ACEPTAR");
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal frame = new VentanaPrincipal();
+				VentanaPrincipal frame = new VentanaPrincipal(fa);
 				frame.setVisible(true);
 				dispose();
 			}
