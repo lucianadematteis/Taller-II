@@ -121,7 +121,7 @@ public class Login extends JFrame {
 		JButton btnRegistrarse = new JButton("REGISTRARSE");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegistrarUsuario frame= new RegistrarUsuario();
+				RegistrarUsuario frame= new RegistrarUsuario(fa);
 				frame.setVisible(true);
 				dispose();
 			}
