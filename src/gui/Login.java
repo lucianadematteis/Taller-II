@@ -28,29 +28,16 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField user;
 	private JPasswordField pass;
+	private FachadaLogica fa;
 
-	public static void main(String[] args) { //BORRAR LUEGO
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	public Login() {
-		
+	public Login(FachadaLogica fa) {
+		this.fa = fa;
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
 		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
-		FachadaLogica fa = new FachadaLogica();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 700);
