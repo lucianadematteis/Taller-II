@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import comunicacion.FachadaLogica;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -23,28 +26,11 @@ public class RegistrarUsuario extends JFrame {
 	private JTextField usuario;
 	private JPasswordField pass;
 	private JPasswordField pass2;
+	private FachadaLogica fa;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistrarUsuario frame = new RegistrarUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public RegistrarUsuario() {
-		
+	public RegistrarUsuario(FachadaLogica fa) {
+		this.fa = fa;
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
@@ -131,7 +117,7 @@ public class RegistrarUsuario extends JFrame {
 		JButton btnCancelar = new JButton("CANCELAR");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login frame = new Login();
+				Login frame = new Login(fa);
 				frame.setVisible(true);
 				dispose();
 			}
