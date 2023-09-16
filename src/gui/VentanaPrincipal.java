@@ -29,21 +29,9 @@ public class VentanaPrincipal extends JFrame {
 	private JTable tablaBD;
 	private JTable salida;
 	static JTable depuracion;
+	private FachadaLogica fa;
 	
 	Comandos comandos = new Comandos();
-	
-	public static void main(String[] args) { //BORRAR LUEGO
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	
 	public ArrayList<String[]> administraSentencia(String sentencia) {
@@ -89,7 +77,8 @@ public class VentanaPrincipal extends JFrame {
 
 	}
 
-	public VentanaPrincipal() {
+	public VentanaPrincipal(FachadaLogica fa) {
+		this.fa =fa;
 		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
@@ -147,7 +136,7 @@ public class VentanaPrincipal extends JFrame {
 		cerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 13));
 		cerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login frame = new Login();
+				Login frame = new Login(fa);
 				frame.setVisible(true);
 				FachadaLogica fa = new FachadaLogica();
 				fa.persistirDatos();
