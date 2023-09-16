@@ -100,7 +100,7 @@ public class Login extends JFrame {
 
 					if (fa.validarContrasenia(usuario)){
 						fa.seleccionarUsuario(user.getText());
-						VentanaPrincipal frame = new VentanaPrincipal();
+						VentanaPrincipal frame = new VentanaPrincipal(fa);
 						frame.setVisible(true);
 						dispose();	
 					} else {
