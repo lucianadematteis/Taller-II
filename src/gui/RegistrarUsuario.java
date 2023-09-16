@@ -10,6 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import comunicacion.DTOUsuario;
 import comunicacion.FachadaLogica;
 
 import javax.swing.JTextField;
@@ -93,20 +94,36 @@ public class RegistrarUsuario extends JFrame {
 		aceptar.setBackground(botones);
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			/* 
-				if (!(comunicacion.DTOUsuario.Usuarios.constainsValue(Integer.parseInt(usuario.getText())))&& Integer.parseInt(pass.getText())== Integer.parseInt(pass2.getText())) {
-					UsuarioRegistroCorrecto frame = new UsuarioRegistroCorrecto();
-					frame.setVisible(true);
-					dispose();
-				}else if (comunicacion.DTOUsuario.Usuarios.constainsValue(Integer.parseInt(usuario.getText()))) {
-					UsuarioRegistroErrorNombre frame1 = new UsuarioRegistroErrorNombre();
-					frame1.setVisible(true);
-				}else{
-				UsuarioRegisroErrorContrasenia frame2 = new UsuarioRegistroErrorContrasenia();
-				frame2.setVisible (true);
+				System.out.println(usuario.getText());
+				char [] c = pass.getPassword();
+				String contra = new String (c); 
+				char [] b = pass2.getPassword();
+				String contrasenia = new String (b); 
+				if(!(contra.isEmpty())&&!(usuario.getText().isEmpty())&&!(contrasenia.isEmpty())) {
+					if (!(fa.existeUsuario(usuario.getText()))) {
+						if (contra.equals(contrasenia)) {
+							UsuarioRegistroCorrecto ok = new UsuarioRegistroCorrecto(fa);
+							DTOUsuario aux = new DTOUsuario(usuario.getText(),contra);
+							fa.insertarUsuario(aux);
+							fa.persistirDatos();
+							ok.setVisible(true);
+							dispose();
+						}else {
+							UsuarioRegistroErrorContrasenia cn = new UsuarioRegistroErrorContrasenia();
+							cn.setVisible(true);	
+						}
+
+					}
+					else {
+						UsuarioRegistroErrorNombre error = new UsuarioRegistroErrorNombre();
+						error.setVisible(true);	
+					}
+				}else {
+
+					//complete todos los campos
+
+					System.out.println("error complete campos");
 				}
-				
-			*/	
 			}
 		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
