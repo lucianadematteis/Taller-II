@@ -1,12 +1,15 @@
 package gui;
 
+import comunicacion.FachadaLogica;
+
 public class Principal {
 
 	public static void main(String[] args) {
-		
-		Login frame = new Login();
-		frame.setVisible(true);
+		FachadaLogica fa = new FachadaLogica();
+		fa.recuperarDatos();
+		Login log = new Login(fa);
+		log.setVisible(true);
+		}
 
-	}
 
 }
