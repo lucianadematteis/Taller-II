@@ -138,7 +138,6 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Login frame = new Login(fa);
 				frame.setVisible(true);
-				FachadaLogica fa = new FachadaLogica();
 				fa.persistirDatos();
 				fa.liberarMemoriaBaseDatos();
 				fa.liberarMemoriaUsuario();
