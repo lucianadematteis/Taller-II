@@ -102,6 +102,7 @@ public class RegistrarUsuario extends JFrame {
 							DTOUsuario aux = new DTOUsuario(usuario.getText(),contra);
 							fa.insertarUsuario(aux);
 							fa.persistirDatos();
+							fa.seleccionarUsuario(aux.getNombreUser());
 							ok.setVisible(true);
 							dispose();
 						}else {
