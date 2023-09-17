@@ -513,8 +513,10 @@ public class Comandos {
 		            			}else {
 		            				
 		            				aciertos++;
-						        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere realizar una consulta en la tabla: " + sentencia.get(1)[1] + " donde el atributo: " + sentencia.get(2)[1] + " vale " + sentencia.get(2)[3]);
-						        	//logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]) mostrar esto
+						        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa");
+						        	ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]);
+						        	this.cargarTabla(atributos, sentencia.get(0)[1]);
+						        	
 		            			}
 		            			
 		            		}else {
@@ -556,7 +558,7 @@ public class Comandos {
 			if(logica.existeBD(sentencia.get(0)[1])) {
 				
 	    		aciertos++;
-	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere seleccionar la base de datos: " + sentencia.get(0)[1]);
+	        	insertarDepuracion("Acierto #" + aciertos, "Se selecciono la base de datos: " + sentencia.get(0)[1]);
 	        	logica.seleccionarBaseDatos(sentencia.get(0)[1]);
         	
 			}else {

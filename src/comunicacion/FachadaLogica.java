@@ -190,7 +190,7 @@ public class FachadaLogica implements IFachadaLogica {
 
 		ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
 
-		return this.obtenerTabla(nombreTabla).seleccionarAtributo(registros, nombreAtributoCondicion);
+		return this.obtenerTabla(nombreTabla).seleccionarAtributo(registros, nombreAtributo);
 
 	}
 
