@@ -27,7 +27,7 @@ public class VentanaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable tablaBD;
-	private JTable salida;
+	static JTable salida;
 	static JTable depuracion;
 	private FachadaLogica fa;
 	
