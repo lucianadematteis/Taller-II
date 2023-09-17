@@ -221,7 +221,7 @@ public class Tabla {
 		    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
 		    		DTOEntero entradaEntera = (DTOEntero) entrada.getValue();
 		    		
-		    		if((entrada.getKey().equals(nombreAtributo)) && (entradaEntera.getValor() == valorCondicionEntera)) { //si cumple con la condicion
+		    		if((entrada.getKey().equalsIgnoreCase(nombreAtributo)) && (entradaEntera.getValor() == valorCondicionEntera)) { //si cumple con la condicion
 		    			
 		    			registrosObtenidos.add(misRegistros);
 		    			
@@ -230,7 +230,7 @@ public class Tabla {
 		    	}else if(atributo instanceof DTOCadena){
 		    		
 		    		DTOCadena entradaCadena = (DTOCadena) entrada.getValue();
-		    		if((atributo.getNombreAtributo().equals(nombreAtributo)) && entradaCadena.getDato().equalsIgnoreCase(valorCondicion)) { //si cumple con la condicion
+		    		if((atributo.getNombreAtributo().equalsIgnoreCase(nombreAtributo)) && entradaCadena.getDato().equalsIgnoreCase(valorCondicion)) { //si cumple con la condicion
 		    			
 		    			registrosObtenidos.add(misRegistros);
 		    			
@@ -274,7 +274,7 @@ public class Tabla {
 			
 		    for (Map.Entry<String, DTOAtributo> entrada : misRegistros.entrySet()) {
 		    	
-		    	if(entrada.getKey().equals(nombreAtributo)) { 
+		    	if(entrada.getKey().equalsIgnoreCase(nombreAtributo)) { 
 		    		
 		    		DTOAtributo atributo = (DTOAtributo) entrada.getValue();
 		    	

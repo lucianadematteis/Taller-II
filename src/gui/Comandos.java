@@ -60,7 +60,9 @@ public class Comandos {
     public void cargarTabla(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
     	
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
-    	model.addColumn(nombreAtributo);
+    	model.setRowCount(0);
+    	model.setColumnCount(0);
+    	model.addColumn(nombreAtributo.toUpperCase());
 
     	for(DTOAtributo atr : atributos) {
     		
@@ -337,9 +339,8 @@ public class Comandos {
 						
 						DTOTabla tabla = new DTOTabla(sentencia.get(1)[1]);
 						logica.crearTabla(tabla);
-						
 						aciertos++;
-						insertarDepuracion("Acierto #" + aciertos, "El usuario quiere crear una tabla llamada: " +  sentencia.get(1)[1]);
+						insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con exito la tabla: " +  sentencia.get(1)[1]);
 			        	
 					}
 				}
@@ -369,7 +370,7 @@ public class Comandos {
 				DTOBaseDatos bd =new DTOBaseDatos(sentencia.get(1)[1]);
 				logica.crearBD(bd);
 				aciertos++;
-	        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere crear una base de datos llamada: " + sentencia.get(1)[1]);
+	        	insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con exito la base de datos: " + sentencia.get(1)[1]);
 				
 			}
 			

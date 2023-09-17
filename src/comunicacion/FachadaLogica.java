@@ -38,7 +38,15 @@ public class FachadaLogica implements IFachadaLogica {
 
 	public void seleccionarBaseDatos(String baseDatos) {
 
-		this.baseDatos = baseDatos;
+		for (Map.Entry<String, BaseDatos> bd : this.obtenerUsuario().getBasesDatos().entrySet()) {
+			
+			if(bd.getKey().equalsIgnoreCase(baseDatos)) {
+				
+				this.baseDatos = bd.getKey();
+				
+			}
+			
+		}
 
 	}
 
@@ -98,8 +106,16 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	public BaseDatos obtenerBaseDatos() {
 		
-		Usuario user = usuarios.get(usuario);
-		return user.obtenerBD(this.baseDatos);
+		for (Map.Entry<String, BaseDatos> entry : this.obtenerUsuario().getBasesDatos().entrySet()) {
+			
+			if(entry.getKey().equalsIgnoreCase(baseDatos)) {
+				
+				return entry.getValue();
+			}
+			
+		}
+		
+		return null;
 		
 	}
 
@@ -229,13 +245,17 @@ public class FachadaLogica implements IFachadaLogica {
 
 	//recibe un nombre de tabla, busca en tabla y devuelve la tabla correspondiente
 	public Tabla obtenerTabla(String nombreTabla) {
-
-		Tabla aux = new Tabla("");	
-
-		aux= usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla);
-
-		return aux;
 		
+		for (Map.Entry<String, Tabla> tabla : this.obtenerBaseDatos().getTablas().entrySet()) {
+			
+			if(tabla.getKey().equalsIgnoreCase(nombreTabla))
+				
+				return tabla.getValue();
+			
+		}
+		
+	    return null;
+
 	}
 
 	public Atributo obtenerAtributo(String nombreAtributo, String nombreTabla) {
@@ -455,8 +475,15 @@ public class FachadaLogica implements IFachadaLogica {
 
 	public boolean existeBD(String nombreBD) {
 		
-		Usuario usuarioActual = obtenerUsuario();
-		return usuarioActual.getBasesDatos().containsKey(nombreBD);
+		for (String nombre : this.obtenerUsuario().getBasesDatos().keySet()) {
+			
+	        if (nombre.equalsIgnoreCase(nombreBD)) 
+	           
+	        	return true;
+	        
+	    }
+
+	    return false;
 		
 	}
 
