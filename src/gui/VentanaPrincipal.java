@@ -199,11 +199,9 @@ public class VentanaPrincipal extends JFrame {
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		salida.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+				
 			}
 		));
 		scrollPane_1.setViewportView(salida);
