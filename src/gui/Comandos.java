@@ -56,16 +56,7 @@ public class Comandos {
     	return logica.bdSeleccionada();
     	
     }
-    
-    public void cargarBasesDatos(ArrayList<String> nBD) {
-		DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.guia.getModel();
-		model.addColumn("BASES DE DATOS");
-		for (int i = 0; i < nBD.size(); i++) {
-			model.addRow(new Object [] {nBD.get(i)});
-		}
-	}
-	
-    
+
     public void cargarTabla(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
     	
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
