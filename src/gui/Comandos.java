@@ -7,7 +7,10 @@ import java.util.function.Consumer;
 
 import javax.swing.table.DefaultTableModel;
 
+import comunicacion.DTOAtributo;
 import comunicacion.DTOBaseDatos;
+import comunicacion.DTOCadena;
+import comunicacion.DTOEntero;
 import comunicacion.DTOTabla;
 import comunicacion.FachadaLogica;
 import comunicacion.IFachadaLogica;
@@ -53,6 +56,28 @@ public class Comandos {
     	return logica.bdSeleccionada();
     	
     }
+    
+    public void cargarTabla(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
+    	
+    	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
+        	model.addColumn(nombreAtributo);
+        	boolean esCadena=true;
+        	for(DTOAtributo atr : atributos) {
+        			if (atr instanceof DTOCadena) {
+        				DTOCadena cadena = (DTOCadena) atr;
+        				String dato = cadena.getDato();
+        				model.addRow(new Object [] {dato});
+        			} else if (atr instanceof DTOEntero) {
+        				DTOEntero entero = (DTOEntero) atr;
+        				int valor = entero.getValor();
+        				model.addRow(new Object [] {valor});
+        			}
+        			
+        		}
+        	
+
+        	}
+    	
     
     public void insertarDepuracion(String mensaje1, String mensaje2) {
 
