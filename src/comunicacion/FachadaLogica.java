@@ -665,4 +665,14 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	public ArrayList<String> obtenerBasesNom(){
+		ArrayList <String> aux = new ArrayList<String>();
+		LinkedHashMap <String,BaseDatos> bdsAux =usuarios.get(usuario).getBasesDatos();
+		for (Entry<String, BaseDatos> Entry : bdsAux.entrySet()) {
+			String nom = Entry.getValue().getNombreBD();
+			aux.add(nom);
+		}
+		return aux;
+	}
+	
 }
