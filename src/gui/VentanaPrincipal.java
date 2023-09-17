@@ -244,5 +244,15 @@ public class VentanaPrincipal extends JFrame {
 		btnConfigUsuario.setFocusPainted(false);
 		contentPane.add(btnConfigUsuario);
 		
+		cargarBasesDatos(fa.obtenerBasesNom());
+		
+	}
+	
+	public void cargarBasesDatos(ArrayList<String> nBD) {
+		DefaultTableModel model = (DefaultTableModel) guia.getModel();
+		model.addColumn("BASES DE DATOS");
+		for (int i = 0; i < nBD.size(); i++) {
+			model.addRow(new Object [] {nBD.get(i)});
+		}
 	}
 }
