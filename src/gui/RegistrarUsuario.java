@@ -119,10 +119,9 @@ public class RegistrarUsuario extends JFrame {
 						error.setVisible(true);	
 					}
 				}else {
-
-					//complete todos los campos
-
-					System.out.println("error complete campos");
+					
+					UsuarioRegistroErrorCampos camp = new UsuarioRegistroErrorCampos();
+					camp.setVisible(true);
 				}
 			}
 		});
