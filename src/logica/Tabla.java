@@ -85,8 +85,26 @@ public class Tabla {
 	    }
 	    
 		return null;
+		
 	}
-
+	
+	public Atributo convertirDTOATributo(DTOAtributo dtoAtributo) {
+		
+	    if (dtoAtributo instanceof DTOEntero) {
+	    	
+	        DTOEntero dtoEntero = (DTOEntero) dtoAtributo;
+	        return new Entero(dtoEntero.getValor());
+	        
+	    } else if (dtoAtributo instanceof DTOCadena) {
+	    	
+	        DTOCadena dtoCadena = (DTOCadena) dtoAtributo;
+	        return new Cadena(dtoCadena.getDato());
+	        
+	    }
+	    
+	    return null;
+	    
+	}
 
 	public void setRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros) {
 		
@@ -94,9 +112,18 @@ public class Tabla {
 		
 	}
 	
-	public void insertarRegistro(LinkedHashMap<String, Atributo> registro) {
+	public void insertarRegistro(LinkedHashMap<String, DTOAtributo> registro) {
 		
-		registros.add(registro);
+		LinkedHashMap<String, Atributo> registroConvertido = new LinkedHashMap<String, Atributo>();
+		
+		for (Map.Entry<String, DTOAtributo> entry : registro.entrySet()) {
+			
+			Atributo resultado=this.convertirDTOATributo(entry.getValue());
+			registroConvertido.put(entry.getKey(), resultado);
+			
+		}
+		
+		registros.add(registroConvertido);
 		
 	}
 	

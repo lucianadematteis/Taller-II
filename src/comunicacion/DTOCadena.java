@@ -12,6 +12,13 @@ public class DTOCadena extends DTOAtributo{
 		this.dato = dato;
 		
 	}
+	
+	public DTOCadena() {
+		
+		super();
+		this.dato="";
+		
+	}
 
 	public DTOCadena(Cadena cadena) {
 		

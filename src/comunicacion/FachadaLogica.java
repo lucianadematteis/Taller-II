@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 
 import logica.Atributo;
 import logica.BaseDatos;
+import logica.Cadena;
 import logica.Entero;
 import logica.Tabla;
 import logica.Usuario;
@@ -217,7 +218,8 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public void ingresarRegistro(String nombreTabla, LinkedHashMap<String, Atributo> registro) {
+
+	public void ingresarRegistro(String nombreTabla, LinkedHashMap<String, DTOAtributo> registro) {
 
 		Tabla tabla = this.obtenerTabla(nombreTabla);
 
@@ -666,13 +668,61 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	public ArrayList<String> obtenerBasesNom(){
+		
 		ArrayList <String> aux = new ArrayList<String>();
 		LinkedHashMap <String,BaseDatos> bdsAux =usuarios.get(usuario).getBasesDatos();
+		
 		for (Entry<String, BaseDatos> Entry : bdsAux.entrySet()) {
+			
 			String nom = Entry.getValue().getNombreBD();
 			aux.add(nom);
+		
 		}
+		
 		return aux;
+		
+	}
+	
+	public LinkedHashMap<String, DTOAtributo> generarArrayListRegistro(String nombreTabla, ArrayList<String> atributos){
+		
+		LinkedHashMap<String, DTOAtributo> registro = new LinkedHashMap<String, DTOAtributo>();
+		LinkedHashMap<String, Atributo> guia = obtenerTabla(nombreTabla).getRegistros().get(0);
+		int i=0;
+		
+		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
+			
+			if(atriGuia.getValue() instanceof Entero) {
+				
+				DTOEntero atrE = new DTOEntero();
+				
+				if(!(atributos.get(i).equals("NULL"))) {
+					
+					atrE.setValor(Integer.parseInt(atributos.get(i)));
+					
+				}
+				
+				registro.put(atriGuia.getKey(), atrE);
+				
+			}else if(atriGuia.getValue() instanceof Cadena){
+				
+				DTOCadena atrC = new DTOCadena();
+				
+				if(!(atributos.get(i).equals("NULL"))) {
+					
+					atrC.setDato(atributos.get(i));
+					
+				}
+				
+				registro.put(atriGuia.getKey(), atrC);
+				
+			}
+				
+			i++;
+			
+		}
+		
+		return registro;
+		
 	}
 	
 }

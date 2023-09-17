@@ -2,6 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -610,9 +611,10 @@ public class Comandos {
             					
             					if(logica.validaClave(sentencia.get(0)[1], atributos)) {
             						
-            						aciertos++;
+            						LinkedHashMap<String, DTOAtributo> registro=logica.generarArrayListRegistro(sentencia.get(0)[1], atributos);
+            			        	logica.ingresarRegistro(sentencia.get(0)[1], registro);
+            			        	aciertos++;
             			        	insertarDepuracion("Acierto #" + aciertos, "El usuario quiere insertar datos en la tabla: " + sentencia.get(0)[1]);
-            			        	logica.ingresarRegistro(sentencia.get(0)[1], null);
             			        	
             					}else {
             						

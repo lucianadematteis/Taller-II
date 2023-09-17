@@ -23,6 +23,14 @@ public abstract class DTOAtributo {
 		this.clave = atributo.getClave();
 		
 	}
+	
+	public DTOAtributo() {
+		
+		this.nombreAtributo="";
+		this.nulo = false;
+		this.clave = false;
+		
+	}
 
 	public String getNombreAtributo() {
 		

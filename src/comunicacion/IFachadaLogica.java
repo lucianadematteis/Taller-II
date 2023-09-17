@@ -64,7 +64,7 @@ public interface IFachadaLogica {
 	
 	public void crearBD(DTOBaseDatos base);
 	
-	public void ingresarRegistro(String nombreTabla, LinkedHashMap<String, Atributo> registro);
+	public void ingresarRegistro(String nombreTabla, LinkedHashMap<String, DTOAtributo> registro);
 	
 	public void borrarRegistro(String nombreTabla, String nombreAtributoCondicion, String valorCondicion);
 	
@@ -88,4 +88,6 @@ public interface IFachadaLogica {
 	
 	public void insertarUsuario (DTOUsuario dto);
 	
+	public LinkedHashMap<String, DTOAtributo> generarArrayListRegistro(String nombreTabla, ArrayList<String> atributos);
+
 }

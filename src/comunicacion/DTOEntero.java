@@ -13,6 +13,14 @@ public class DTOEntero extends DTOAtributo{
 		
 	}
 	
+	@SuppressWarnings("null")
+	public DTOEntero() {
+		
+		super();
+		this.valor=(Integer) null;
+		
+	}
+	
 	public DTOEntero(Entero entero) {
 		
 		super(entero.getNombreAtributo(), entero.getClave(), entero.getNulo());
