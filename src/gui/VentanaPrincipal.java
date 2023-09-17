@@ -29,8 +29,6 @@ public class VentanaPrincipal extends JFrame {
 	static JTable depuracion;
 	private IFachadaLogica fa;
 	
-	Comandos comandos = new Comandos(fa);
-	
 	public ArrayList<String[]> administraSentencia(String sentencia) {
 
 		// Se pretende generar un arreglo de arreglos. Donde en cada posici�n del
@@ -208,6 +206,8 @@ public class VentanaPrincipal extends JFrame {
 		ejecutar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+				
+				Comandos comandos = new Comandos(fa);
 				
 				ArrayList<String[]> arregloLinea = administraSentencia(entrada.getText());
 		        
