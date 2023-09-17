@@ -89,5 +89,7 @@ public interface IFachadaLogica {
 	public void insertarUsuario (DTOUsuario dto);
 	
 	public LinkedHashMap<String, DTOAtributo> generarArrayListRegistro(String nombreTabla, ArrayList<String> atributos);
+	
+	public ArrayList<String> obtenerBasesNom();
 
 }
