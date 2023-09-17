@@ -14,11 +14,9 @@ import java.awt.Color;
 
 public class LoginError extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -32,9 +30,6 @@ public class LoginError extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public LoginError() {
 		
 		Color fondoPrincipal = new Color (66,141,138);
@@ -64,7 +59,7 @@ public class LoginError extends JFrame {
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Usuario o contraseña inválidos");
+		JLabel lblNewLabel = new JLabel("Usuario o contraseï¿½a invï¿½lidos");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(75, 36, 485, 155);

@@ -76,5 +76,16 @@ public interface IFachadaLogica {
 	
 	public int contarRegistros( String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
 		
+	public boolean existeUsuario(String nombreUsuario);
+	
+	public boolean validarContrasenia (DTOUsuario usu);
+	
+	public void liberarMemoriaUsuario();
+	
+	public void liberarMemoriaBaseDatos();
+	
+	public void persistirDatos();
+	
+	public void insertarUsuario (DTOUsuario dto);
 	
 }

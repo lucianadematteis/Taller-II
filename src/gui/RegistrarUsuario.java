@@ -1,9 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -11,7 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import comunicacion.DTOUsuario;
-import comunicacion.FachadaLogica;
+import comunicacion.IFachadaLogica;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -23,14 +20,14 @@ import java.awt.event.ActionEvent;
 
 public class RegistrarUsuario extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField usuario;
 	private JPasswordField pass;
 	private JPasswordField pass2;
-	private FachadaLogica fa;
+	private IFachadaLogica fa;
 
-
-	public RegistrarUsuario(FachadaLogica fa) {
+	public RegistrarUsuario(IFachadaLogica fa) {
 		this.fa = fa;
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
@@ -48,7 +45,6 @@ public class RegistrarUsuario extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel.setBackground(recuadro);

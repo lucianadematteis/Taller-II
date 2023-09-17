@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -13,8 +12,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
-
-import comunicacion.FachadaLogica;
+import comunicacion.IFachadaLogica;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -29,10 +27,9 @@ public class VentanaPrincipal extends JFrame {
 	static JTable guia;
 	static JTable salida;
 	static JTable depuracion;
-	private FachadaLogica fa;
+	private IFachadaLogica fa;
 	
-	Comandos comandos = new Comandos();
-	
+	Comandos comandos = new Comandos(fa);
 	
 	public ArrayList<String[]> administraSentencia(String sentencia) {
 
@@ -77,7 +74,7 @@ public class VentanaPrincipal extends JFrame {
 
 	}
 
-	public VentanaPrincipal(FachadaLogica fa) {
+	public VentanaPrincipal(IFachadaLogica fa) {
 		this.fa =fa;
 		
 		Color fondoPrincipal = new Color (66,141,138);

@@ -12,18 +12,17 @@ import comunicacion.DTOBaseDatos;
 import comunicacion.DTOCadena;
 import comunicacion.DTOEntero;
 import comunicacion.DTOTabla;
-import comunicacion.FachadaLogica;
 import comunicacion.IFachadaLogica;
 
 public class Comandos {
 	
-	IFachadaLogica logica= new FachadaLogica();
-	
+	private IFachadaLogica logica;
     private int aciertos;
     private Map<String, Consumer<ArrayList<String[]>>> acciones; //es una funci�n que toma un valor y realiza alg�n tipo de acci�n con �l, pero no produce ning�n resultado como salida.
 
-    public Comandos() {
+    public Comandos(IFachadaLogica fa) {
     	
+    	logica=fa;
         aciertos = 0;
         inicializarAcciones();
         
@@ -69,25 +68,28 @@ public class Comandos {
     public void cargarTabla(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
     	
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
-        	model.addColumn(nombreAtributo);
-        	boolean esCadena=true;
-        	for(DTOAtributo atr : atributos) {
-        			if (atr instanceof DTOCadena) {
-        				DTOCadena cadena = (DTOCadena) atr;
-        				String dato = cadena.getDato();
-        				model.addRow(new Object [] {dato});
-        			} else if (atr instanceof DTOEntero) {
-        				DTOEntero entero = (DTOEntero) atr;
-        				int valor = entero.getValor();
-        				model.addRow(new Object [] {valor});
-        			}
-        			
-        		}
-        	
+    	model.addColumn(nombreAtributo);
 
-        	}
+    	for(DTOAtributo atr : atributos) {
+    		
+			if (atr instanceof DTOCadena) {
+				
+				DTOCadena cadena = (DTOCadena) atr;
+				String dato = cadena.getDato();
+				model.addRow(new Object [] {dato});
+			
+			} else if (atr instanceof DTOEntero) {
+			
+				DTOEntero entero = (DTOEntero) atr;
+				int valor = entero.getValor();
+				model.addRow(new Object [] {valor});
+			
+			}
+    			
+    	}
     	
-    
+    }
+    	
     public void insertarDepuracion(String mensaje1, String mensaje2) {
 
 		DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.depuracion.getModel();

@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -12,15 +11,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Window.Type;
 
 public class UsuarioRegistroErrorContrasenia extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -34,9 +30,6 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public UsuarioRegistroErrorContrasenia() {
 		setType(Type.POPUP);
 		
@@ -66,7 +59,7 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Error. Las contraseñas no coinciden");
+		JLabel lblNewLabel = new JLabel("Error. Las contraseï¿½as no coinciden");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(59, 36, 485, 155);

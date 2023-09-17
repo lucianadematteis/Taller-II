@@ -1,8 +1,6 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -17,7 +15,7 @@ import java.awt.Font;
 import javax.swing.border.LineBorder;
 
 import comunicacion.DTOUsuario;
-import comunicacion.FachadaLogica;
+import comunicacion.IFachadaLogica;
 
 import javax.swing.JSeparator;
 
@@ -27,9 +25,9 @@ public class Login extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField user;
-	private FachadaLogica fa;
+	private IFachadaLogica fa;
 
-	public Login(FachadaLogica fa) {
+	public Login(IFachadaLogica fa) {
 		this.fa = fa;
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);

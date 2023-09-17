@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -25,9 +24,6 @@ public class BMUsuario extends JFrame {
 	private JTextField pass2;
 	private JTextField textField_1;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,9 +37,6 @@ public class BMUsuario extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public BMUsuario() {
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
@@ -84,7 +77,7 @@ public class BMUsuario extends JFrame {
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			/*
-				if (*inserte aquí si se pudo registrar*) {
+				if (*inserte aquï¿½ si se pudo registrar*) {
 					UsuarioRegistroCorrecto frame = new UsuarioRegistroCorrecto();
 					frame.setVisible(true);
 					dispose();
@@ -150,7 +143,7 @@ public class BMUsuario extends JFrame {
 		JButton aceptar_1 = new JButton("ELIMINAR CUENTA");
 		aceptar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//si usuario y contraseña correctos entonces:
+				//si usuario y contraseï¿½a correctos entonces:
 				ConfirmarEliminarUsuario frame = new ConfirmarEliminarUsuario();
 				frame.setVisible(true);
 				
