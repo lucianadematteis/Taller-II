@@ -26,7 +26,7 @@ public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable tablaBD;
+	static JTable guia;
 	static JTable salida;
 	static JTable depuracion;
 	private FachadaLogica fa;
@@ -154,18 +154,16 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane_3.getViewport().setBackground(fondoVentana);
 		contentPane.add(scrollPane_3);
 		
-		tablaBD = new JTable();
-		tablaBD.setForeground(escritura);
-		tablaBD.setBackground(fondoVentana);
-		tablaBD.setModel(new DefaultTableModel(
+		guia = new JTable();
+		guia.setForeground(escritura);
+		guia.setBackground(fondoVentana);
+		guia.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null},
 			},
 			new String[] {
-				"BASES DE DATOS"
 			}
 		));
-		scrollPane_3.setViewportView(tablaBD);
+		scrollPane_3.setViewportView(guia);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setBounds(170, 504, 816, 91);
