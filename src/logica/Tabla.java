@@ -59,9 +59,21 @@ public class Tabla {
 	        for (Map.Entry<String, Atributo> entry : registro.entrySet()) {
 	        	
 	            Atributo atributo = entry.getValue();
-	            DTOAtributo dtoAtributo = convertirAtributoATDTO(atributo); // Función de conversión unificada
-	            registroDTO.put(entry.getKey(), dtoAtributo);
-	       
+	            
+	            if (atributo instanceof Entero) {
+	    	    	
+	    	        Entero entero = (Entero) atributo;
+	    	        DTOEntero enteroConvertido = new DTOEntero(entero);
+	    	        registroDTO.put(entry.getKey(), enteroConvertido);
+	    	        
+	    	    } else if (atributo instanceof Cadena) {
+	    	    	
+	    	        Cadena cadena = (Cadena) atributo;
+	    	        DTOCadena cadenaConvertida = new DTOCadena(cadena);
+	    	        registroDTO.put(entry.getKey(), cadenaConvertida);
+	    	        
+	    	    }
+	            
 	        }
 
 	        registrosDTO.add(registroDTO);
@@ -69,23 +81,6 @@ public class Tabla {
 	    }
 
 	    return registrosDTO;
-	}
-
-	private DTOAtributo convertirAtributoATDTO(Atributo atributo) {
-		
-	    if (atributo instanceof Entero) {
-	    	
-	        Entero entero = (Entero) atributo;
-	        return new DTOEntero(entero);
-	        
-	    } else if (atributo instanceof Cadena) {
-	    	
-	        Cadena cadena = (Cadena) atributo;
-	        return new DTOCadena(cadena);
-	    }
-	    
-		return null;
-		
 	}
 	
 	public Atributo convertirDTOATributo(DTOAtributo dtoAtributo) {
@@ -212,45 +207,41 @@ public class Tabla {
 	}
 	
 	public ArrayList<LinkedHashMap<String, DTOAtributo>> obtenerRegistros(String nombreAtributo, String valorCondicion) {
-		
+			
 		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosObtenidos = new ArrayList<LinkedHashMap<String, DTOAtributo>>();
 		
 		for (LinkedHashMap<String, DTOAtributo> misRegistros : this.getRegistrosDTO()) { 
 			
 		    for (Map.Entry<String, DTOAtributo> entrada : misRegistros.entrySet()) {
 		    	
-		    	if(entrada.getValue().getNombreAtributo().equals(nombreAtributo)) { //si es el atributo que debo evaluar
+	    		DTOAtributo atributo = entrada.getValue();
+	    		
+	    		if(atributo instanceof DTOEntero) { //como la condicion es un string debo de evaluar esto para convertirla
 		    		
-		    		if(entrada.getValue() instanceof DTOEntero) { //como la condicion es un string debo de evaluar esto para convertirla
-			    		
-			    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
-			    		
-			    		DTOEntero entradaEntera = (DTOEntero) entrada.getValue();
-			    		
-			    		if(entradaEntera.getValor() == valorCondicionEntera) { //si cumple con la condicion
-			    			
-			    			registrosObtenidos.add(misRegistros);
-			    			
-			    		}
-			    		
-			    	}else if(entrada.getValue() instanceof DTOCadena){
-			    		
-			    		DTOCadena entradaCadena = (DTOCadena) entrada.getValue();
-			    		
-			    		if(entradaCadena.getDato().toLowerCase().equals(valorCondicion.toLowerCase())) { //si cumple con la condicion
-			    			
-			    			registrosObtenidos.add(misRegistros);
-			    			
-			    		}
-			    		
-			    	}
+		    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
+		    		DTOEntero entradaEntera = (DTOEntero) entrada.getValue();
+		    		
+		    		if((entrada.getKey().equals(nombreAtributo)) && (entradaEntera.getValor() == valorCondicionEntera)) { //si cumple con la condicion
+		    			
+		    			registrosObtenidos.add(misRegistros);
+		    			
+		    		}
+		    		
+		    	}else if(atributo instanceof DTOCadena){
+		    		
+		    		DTOCadena entradaCadena = (DTOCadena) entrada.getValue();
+		    		if((atributo.getNombreAtributo().equals(nombreAtributo)) && entradaCadena.getDato().equalsIgnoreCase(valorCondicion)) { //si cumple con la condicion
+		    			
+		    			registrosObtenidos.add(misRegistros);
+		    			
+		    		}
 		    		
 		    	}
-		    	
+	    		
 		    }
 		    
 		}
-         
+	     
 		return registrosObtenidos;
 		
 	}

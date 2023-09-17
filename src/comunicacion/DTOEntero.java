@@ -23,10 +23,12 @@ public class DTOEntero extends DTOAtributo{
 	
 	public DTOEntero(Entero entero) {
 		
-		super(entero.getNombreAtributo(), entero.getClave(), entero.getNulo());
-		this.valor=entero.getValor();
 		
+	    super(entero.getNombreAtributo(), entero.getClave(), entero.getNulo());
+	    this.valor = entero.getValor();
+	    
 	}
+
 
 	public int getValor() {
 		
