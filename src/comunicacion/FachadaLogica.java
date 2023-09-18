@@ -135,7 +135,7 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public void eliminarUsuario(DTOUsuario user) {
+	public void eliminarusuario(DTOUsuario user) {
 
 		usuarios.remove(user.getNombreUser()); 
 		
