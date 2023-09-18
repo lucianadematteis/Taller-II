@@ -599,6 +599,7 @@ public class Comandos {
 			if(logica.existeBD(sentencia.get(0)[1])) {
 				
 				logica.seleccionarBaseDatos(sentencia.get(0)[1]);
+				VentanaPrincipal.bdActual.setText("Base de datos: " + sentencia.get(0)[1]);
 	    		aciertos++;
 	        	insertarDepuracion("Acierto #" + aciertos, "Se selecciono la base de datos: " + sentencia.get(0)[1]);
 	        	

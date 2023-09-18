@@ -27,6 +27,7 @@ public class VentanaPrincipal extends JFrame {
 	static JTable guia;
 	static JTable salida;
 	static JTable depuracion;
+	static JLabel bdActual;
 	private IFachadaLogica fa;
 	
 	public ArrayList<String[]> administraSentencia(String sentencia) {
@@ -88,12 +89,12 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel saludo = new JLabel("Bienvenido");
+		JLabel saludo = new JLabel("Bienvenido " + fa.getUsuario());
 		saludo.setForeground(fuentePrincipal);
 		saludo.setBounds(29, 25, 223, 23);
 		saludo.setFont(new Font("SansSerif", Font.BOLD, 20));
 		
-		JLabel bdActual = new JLabel("Base de datos: ");
+		bdActual = new JLabel("Base de datos: ");
 		bdActual.setForeground(fuentePrincipal);
 		bdActual.setBounds(616, 26, 223, 23);
 		bdActual.setFont(new Font("SansSerif", Font.PLAIN, 18));
@@ -119,6 +120,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				entrada.setText("");
+				entrada.requestFocus();
 
 			}
 		});
