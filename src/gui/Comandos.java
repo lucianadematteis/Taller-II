@@ -960,7 +960,7 @@ public class Comandos {
     		
 			if(logica.existeTabla(sentencia.get(1)[1])) {
 			
-				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
+				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
 				
 					if(logica.esVacia(sentencia.get(1)[1])) { 
 						
@@ -1000,35 +1000,13 @@ public class Comandos {
 					insertarDepuracion("Error #N", "No hay registros ingresados aun en la tabla");
 					
 				}else {
-				
-					if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
-	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que hayan registros que mostrar para la condicion dada
-	        				
-	        				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
-	        				
-	        			}else {
-	        				
-	        				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
-	        					
-	        					aciertos++;
-	        					insertarDepuracion("Acierto #" + aciertos, "El valor minimo de los registros consultados es: " + logica.obtenerMinimo(sentencia.get(1)[1], sentencia.get(0)[1]));
-	        		        	
-	        				}else {
-	        					
-	        					insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
-	        					
-	        				}
-	        				
-	        			}
-	        			
-	        		}else {
-	        			
-	        			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
-	    				
-	        		}
-				}
-				
+			
+    				aciertos++;
+    				insertarDepuracion("Acierto #" + aciertos, "El valor minimo de los registros consultados es: " + logica.obtenerMinimo(sentencia.get(1)[1], sentencia.get(0)[1]));
+    		        
+        				
+        		}
+	        	
 			}else {
 				
 				insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");

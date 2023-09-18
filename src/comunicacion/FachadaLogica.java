@@ -308,97 +308,69 @@ System.out.println(registrosCambiar.size());
 	}
 	
 
-	public int obtenerMinimo (String nombreTabla, String nombreAtributo) {
+	public int obtenerMinimo(String nombreTabla, String nombreAtributo) {
 		
-		boolean salto=false;
-		Integer min= null;
-		Entero aux;
+	    Integer minimo = null;
+	    boolean primero=true;
+	    Tabla tabla = this.obtenerTabla(nombreTabla);
+	    ArrayList<DTOAtributo> registros = tabla.seleccionarAtributo(tabla.getRegistrosDTO(), nombreAtributo);
 
-		ArrayList<LinkedHashMap<String, Atributo>> registros = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros();		
-
-		for (LinkedHashMap<String, Atributo> reg : registros) {
-
-			if (salto) {
-
-				for (Map.Entry<String, Atributo> regis : reg.entrySet()) {
-
-					if(regis.getValue().getNombreAtributo().equals(nombreAtributo)) {
-
-						if (regis.getValue() instanceof Entero) {
-
-							aux = (Entero) regis.getValue();
-							int valor = aux.getValor();
-							
-							if(min==null) {
-								
-								min=valor;  
-								
-							}
-							
-							if (valor< min) {
-								
-								min=valor;
-								
-							}
-
-						}  
-					}
-				}
-			}
-			
-			salto = true;
-			
-		}
-		
-		return min;
-		
-	}
+	    for (DTOAtributo reg : registros) {
+	    
+	    	if (primero) {
+	            
+	        	primero = false;  
+	            
+	        } else {
+	    	
+		    	DTOEntero atributo = (DTOEntero) reg;
+		        Entero entero = new Entero(atributo);
+		        int valor = entero.getValor();
 	
-	public int obtenerMaximo (String nombreTabla, String nombreAtributo) {
-		
-		boolean salto=false;
-		Integer max= null;
-		Entero aux;
+		        if (minimo == null || valor < minimo) {
+		        
+		        	minimo = valor;
+		        
+		        }
+	        
+		   }
+	    
+	    }
 
-		ArrayList<LinkedHashMap<String, Atributo>> registros = this.obtenerTabla(nombreTabla).getRegistros();
-		
-		for (LinkedHashMap<String, Atributo> reg : registros) {
-
-			if (salto) {
-
-				for (Map.Entry<String, Atributo> regis : reg.entrySet()) {
-
-					if(regis.getValue().getNombreAtributo().equals(nombreAtributo)) {
-
-						if (regis.getValue() instanceof Entero) {
-
-							aux = (Entero) regis.getValue();
-							int valor = aux.getValor();
-							
-							if(max==null) {
-								
-								max=valor;  
-								
-							}
-							
-							if (valor> max) {
-								
-								max=valor;
-								
-							}
-
-						}  
-					}
-				}
-			}
-			
-			salto = true;
-		}
-		
-		return max;
-		
+	    return minimo;
 	}
-	
+
+	public int obtenerMaximo(String nombreTabla, String nombreAtributo) {
+		
+	    Integer maximo = null;
+	    boolean primero = true; 
+	    Tabla tablita = this.obtenerTabla(nombreTabla);
+	    ArrayList<DTOAtributo> registros = tablita.seleccionarAtributo(tablita.getRegistrosDTO(), nombreAtributo);
+
+	    for (DTOAtributo reg : registros) {
+	    	
+	        if (primero) {
+	            
+	        	primero = false;  
+	            
+	        } else {
+	        
+	        	DTOEntero atributo = (DTOEntero) reg;
+	            Entero entero = new Entero(atributo);
+	            int valor = entero.getValor();
+
+	            if (maximo == null || valor > maximo) {
+	              
+	            	maximo = valor;
+	            
+	            }
+	        }
+	    }
+
+	    return maximo;
+	    
+	}
+
 	public void hacerNotNull (String nombreTabla, String nombreAtributo) {
 		
 		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setNulo(false);
