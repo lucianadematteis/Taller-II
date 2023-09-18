@@ -95,5 +95,7 @@ public interface IFachadaLogica {
 	public void modificarUsuario(DTOUsuario user);
 	
 	public void recuperarDatos();
+	
+	public String getUsuario();
 
 }
