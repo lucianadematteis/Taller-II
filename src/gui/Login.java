@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -12,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.border.LineBorder;
 
 import comunicacion.DTOUsuario;
@@ -28,6 +32,7 @@ public class Login extends JFrame {
 	private IFachadaLogica fa;
 
 	public Login(IFachadaLogica fa) {
+		
 		this.fa = fa;
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
@@ -96,18 +101,27 @@ public class Login extends JFrame {
 				if (fa.existeUsuario(user.getText())){
 
 					if (fa.validarContrasenia(usuario)){
+						
 						fa.seleccionarUsuario(user.getText());
 						VentanaPrincipal frame = new VentanaPrincipal(fa);
 						frame.setVisible(true);
+				        frame.setLocationRelativeTo(null);
 						dispose();	
+						
 					} else {
-							LoginError frame = new LoginError();
-							frame.setVisible(true);	
-						}
+				
+						LoginError frame = new LoginError();
+						frame.setVisible(true);	
+						frame.setLocationRelativeTo(null);
+					
 					}
-				else {
+				
+				}else {
+				
 					LoginError frame = new LoginError();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+				
 				}
 			}
 		});
@@ -120,6 +134,7 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				RegistrarUsuario frame= new RegistrarUsuario(fa);
 				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
 				dispose();
 			}
 		});

@@ -1,8 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,14 +15,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import comunicacion.DTOUsuario;
-import comunicacion.FachadaLogica;
 import comunicacion.IFachadaLogica;
 
-import javax.swing.JTextField;
 import javax.swing.JTextArea;
 
 public class BMUsuario extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPasswordField pass;
 	private JPasswordField pass2;
@@ -32,6 +29,7 @@ public class BMUsuario extends JFrame {
 	private IFachadaLogica fa;
 
 	public BMUsuario(IFachadaLogica fa) {
+		
 		this.fa = fa;
 		
 		Color recuadro = new Color (3,90,88);
@@ -88,18 +86,24 @@ public class BMUsuario extends JFrame {
 						fa.seleccionarUsuario(aux.getNombreUser());
 						VentanaPrincipal ven = new VentanaPrincipal(fa);
 						ven.setVisible(true);
+						ven.setLocationRelativeTo(null);
 						UsuarioCambioContraseniaCorrecto rc = new UsuarioCambioContraseniaCorrecto();
 						rc.setVisible(true);
+						rc.setLocationRelativeTo(null);
 						dispose();
+						
 					} else {
 						
 						UsuarioRegistroErrorContrasenia cn = new UsuarioRegistroErrorContrasenia();
-						cn.setVisible(true);	
+						cn.setVisible(true);
+						cn.setLocationRelativeTo(null);
+						
 					}
 
 				}else {
 					UsuarioRegistroErrorCampos camp = new UsuarioRegistroErrorCampos();
 					camp.setVisible(true);
+					camp.setLocationRelativeTo(null);
 				}
 
 			}
@@ -160,9 +164,10 @@ public class BMUsuario extends JFrame {
 				String passA = new String (c3);
 				DTOUsuario auxUs = new DTOUsuario(fa.getUsuario(),passA);
 				if (fa.validarContrasenia(auxUs)){
-				ConfirmarEliminarUsuario frame = new ConfirmarEliminarUsuario(fa,auxUs);
-				frame.setVisible(true);
-				dispose();
+					ConfirmarEliminarUsuario frame = new ConfirmarEliminarUsuario(fa,auxUs);
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					dispose();
 				}
 				
 			}
@@ -202,6 +207,7 @@ public class BMUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				VentanaPrincipal ven = new VentanaPrincipal(fa);
 				ven.setVisible(true);
+				ven.setLocationRelativeTo(null);
 				dispose();
 			}
 		});

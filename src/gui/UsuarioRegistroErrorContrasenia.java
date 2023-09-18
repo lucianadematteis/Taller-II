@@ -23,6 +23,7 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 				try {
 					UsuarioRegistroErrorContrasenia frame = new UsuarioRegistroErrorContrasenia();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -31,6 +32,7 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 	}
 
 	public UsuarioRegistroErrorContrasenia() {
+		
 		setType(Type.POPUP);
 		
 		Color fondoPrincipal = new Color (66,141,138);
@@ -68,6 +70,7 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 7");
 		lblNewLabel_1.setBounds(322, 236, 102, 14);
 		contentPane.add(lblNewLabel_1);
+		
 	}
 
 }

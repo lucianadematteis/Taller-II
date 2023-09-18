@@ -23,6 +23,7 @@ public class LoginError extends JFrame {
 				try {
 					LoginError frame = new LoginError();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

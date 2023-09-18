@@ -48,6 +48,7 @@ public class ConfirmarEliminarUsuario extends JFrame {
 				fa.liberarMemoriaUsuario();
 				Login log = new Login(fa);
 				log.setVisible(true);
+				log.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -69,6 +70,7 @@ public class ConfirmarEliminarUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				BMUsuario frame = new BMUsuario(fa);
 				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
 				dispose();
 			}
 		});

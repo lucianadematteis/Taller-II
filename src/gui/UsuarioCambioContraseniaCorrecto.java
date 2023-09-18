@@ -1,8 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,9 +13,11 @@ import javax.swing.border.EmptyBorder;
 
 public class UsuarioCambioContraseniaCorrecto extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	public UsuarioCambioContraseniaCorrecto() {
+		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fuentePrincipal = new Color (255,255,255);
 		Color escritura = new Color (0,0,0);
@@ -50,6 +50,7 @@ public class UsuarioCambioContraseniaCorrecto extends JFrame {
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(38, 49, 485, 155);
 		contentPane.add(lblNewLabel);
+		
 	}
 
 }

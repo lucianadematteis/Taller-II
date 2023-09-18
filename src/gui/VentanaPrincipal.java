@@ -73,6 +73,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public VentanaPrincipal(IFachadaLogica fa) {
+		
 		this.fa =fa;
 		
 		Color fondoPrincipal = new Color (66,141,138);
@@ -133,6 +134,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Login frame = new Login(fa);
 				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
 				fa.persistirDatos();
 				fa.liberarMemoriaBaseDatos();
 				fa.liberarMemoriaUsuario();
@@ -237,6 +239,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				BMUsuario frame = new BMUsuario(fa);
 				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
 				dispose();	
 			}
 		});

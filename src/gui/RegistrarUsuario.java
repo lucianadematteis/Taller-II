@@ -28,6 +28,7 @@ public class RegistrarUsuario extends JFrame {
 	private IFachadaLogica fa;
 
 	public RegistrarUsuario(IFachadaLogica fa) {
+		
 		this.fa = fa;
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
@@ -35,7 +36,6 @@ public class RegistrarUsuario extends JFrame {
 		Color fuentePrincipal = new Color (255,255,255);
 		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
-		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024,700);
@@ -95,30 +95,43 @@ public class RegistrarUsuario extends JFrame {
 				String contra = new String (c); 
 				char [] b = pass2.getPassword();
 				String contrasenia = new String (b); 
+				
 				if(!(contra.isEmpty())&&!(usuario.getText().isEmpty())&&!(contrasenia.isEmpty())) {
+				
 					if (!(fa.existeUsuario(usuario.getText()))) {
+					
 						if (contra.equals(contrasenia)) {
+						
 							UsuarioRegistroCorrecto ok = new UsuarioRegistroCorrecto(fa);
 							DTOUsuario aux = new DTOUsuario(usuario.getText(),contra);
 							fa.insertarUsuario(aux);
 							fa.persistirDatos();
 							fa.seleccionarUsuario(aux.getNombreUser());
 							ok.setVisible(true);
+							ok.setLocationRelativeTo(null);
 							dispose();
+						
 						}else {
+						
 							UsuarioRegistroErrorContrasenia cn = new UsuarioRegistroErrorContrasenia();
 							cn.setVisible(true);	
+							cn.setLocationRelativeTo(null);
 						}
 
-					}
-					else {
+					}else {
+						
 						UsuarioRegistroErrorNombre error = new UsuarioRegistroErrorNombre();
 						error.setVisible(true);	
+						error.setLocationRelativeTo(null);
+					
 					}
+					
 				}else {
 					
 					UsuarioRegistroErrorCampos camp = new UsuarioRegistroErrorCampos();
 					camp.setVisible(true);
+					camp.setLocationRelativeTo(null);
+				
 				}
 			}
 		});
@@ -132,6 +145,7 @@ public class RegistrarUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Login frame = new Login(fa);
 				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -151,5 +165,6 @@ public class RegistrarUsuario extends JFrame {
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(10, 96, 988, 2);
 		contentPane.add(separator_1);
+		
 	}
 }

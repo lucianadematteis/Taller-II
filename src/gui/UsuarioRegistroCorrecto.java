@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 
 public class UsuarioRegistroCorrecto extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private IFachadaLogica fa;
 
@@ -42,6 +43,7 @@ public class UsuarioRegistroCorrecto extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				VentanaPrincipal frame = new VentanaPrincipal(fa);
 				frame.setVisible(true);
+				frame.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -56,5 +58,6 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(32, 31, 485, 155);
 		contentPane.add(lblNewLabel);
+		
 	}
 }

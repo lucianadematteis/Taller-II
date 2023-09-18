@@ -9,6 +9,7 @@ public class Principal {
 		FachadaLogica fa = new FachadaLogica();
 		fa.recuperarDatos();
 		Login log = new Login(fa);
+		log.setLocationRelativeTo(null);
 		log.setVisible(true);
 		
 	}

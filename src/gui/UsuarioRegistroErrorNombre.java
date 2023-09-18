@@ -23,6 +23,7 @@ public class UsuarioRegistroErrorNombre extends JFrame {
 				try {
 					UsuarioRegistroErrorNombre frame = new UsuarioRegistroErrorNombre();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -23,6 +23,7 @@ public class UsuarioRegistroErrorCampos extends JFrame {
 				try {
 					UsuarioRegistroErrorCampos frame = new UsuarioRegistroErrorCampos();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -69,6 +70,7 @@ public class UsuarioRegistroErrorCampos extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 10");
 		lblNewLabel_1.setBounds(321, 233, 108, 23);
 		contentPane.add(lblNewLabel_1);
+		
 	}
 
 }
