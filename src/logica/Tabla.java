@@ -114,7 +114,7 @@ public class Tabla {
 					DTOEntero atrEntero = new DTOEntero(atr.getKey(), false, false, 0);
 					resultado.put(atrEntero.getNombreAtributo(), atrEntero);
 					
-				}else if(atr.getValue().equalsIgnoreCase("entero")) {
+				}else if(atr.getValue().equalsIgnoreCase("cadena")) {
 					
 					DTOCadena atrCadena = new DTOCadena(atr.getKey(), false, false, "");
 					resultado.put(atr.getKey(), atrCadena);
