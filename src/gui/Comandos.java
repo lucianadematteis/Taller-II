@@ -499,7 +499,15 @@ public class Comandos {
         		
         		if(comando2.equals("TABLE")) { //TABLE
         			
-        			comandoTable(sentencia);
+        			if(logica.bdSeleccionada()) {
+        			
+        				comandoTable(sentencia);
+        			
+        			}else {
+        				
+        				insertarDepuracion("Error #N", "Debe seleccionar la base de datos sobre la cual operar");
+        				
+        			}
         			
         		}else if(comando2.equals("DATABASE")) { //DATABASE
         			
@@ -1182,7 +1190,7 @@ public class Comandos {
 		
 	    if (acciones.containsKey(comando)) {
 	    	
-	    	if ((comando.equals("USE")) || (comando.equals("HELP"))) {
+	    	if ((comando.equals("USE")) || (comando.equals("HELP") || (comando.equals("CREATE")))) {
 		    	
 		        acciones.get(comando).accept(sentencia);
 		        
