@@ -93,5 +93,7 @@ public interface IFachadaLogica {
 	public ArrayList<String> obtenerBasesNom();
 	
 	public void modificarUsuario(DTOUsuario user);
+	
+	public void recuperarDatos();
 
 }
