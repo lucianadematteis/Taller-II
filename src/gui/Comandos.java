@@ -885,13 +885,14 @@ public class Comandos {
 	        			
 	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que hayan registros que mostrar para la condicion dada
 	        				
-	        				insertarDepuracion("Error #N", "No hay registros No hay registros que coincidan con los parametros de la busqueda");
+	        				aciertos++;
+	        	        	insertarDepuracion("Acierto #" + aciertos, "La cantidad de registros que cumplen con la consulta es: " + logica.contarRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]));
+	            			
 	        				
 	        			}else {
 	        				
-	        				aciertos++;
-	        	        	insertarDepuracion("Acierto #" + aciertos, "La cantidad de registros que cumplen con la consulta es: " + logica.contarRegistros(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]));
-	            			
+	        				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
+	        				
 	        			}
 	        			
 	        		}else {

@@ -74,7 +74,7 @@ public interface IFachadaLogica {
 	
 	public boolean comandoExiste(String comando);
 	
-	public int contarRegistros( String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
+	public int contarRegistros( String nombreTabla, String nombreAtributoCondicion, String valorCondicion);
 		
 	public boolean existeUsuario(String nombreUsuario);
 	

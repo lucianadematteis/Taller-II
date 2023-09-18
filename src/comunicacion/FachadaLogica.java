@@ -555,12 +555,14 @@ public class FachadaLogica implements IFachadaLogica {
     	
     }
 	
-	public int contarRegistros( String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion){
+	public int contarRegistros( String nombreTabla, String nombreAtributoCondicion, String valorCondicion){
 		 
 		ArrayList<LinkedHashMap<String, DTOAtributo>> resultado1 = new ArrayList<LinkedHashMap<String, DTOAtributo>>();
 		Tabla tablita = this.obtenerTabla(nombreTabla);
-		resultado1= tablita.obtenerRegistros(nombreAtributo, valorCondicion);	
-		return  resultado1.size();
+		resultado1= tablita.obtenerRegistros(nombreAtributoCondicion, valorCondicion);	
+		
+		return resultado1.size();
+	
 	}
 
 	public String darAyuda(String ayuda1) {
