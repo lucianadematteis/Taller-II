@@ -60,7 +60,7 @@ public interface IFachadaLogica {
 		
 	public boolean existeTabla(String nombreTabla);
 	
-	public void crearTabla(DTOTabla tabla);
+	public void crearTabla(DTOTabla tabla, LinkedHashMap<String, String> atributos);
 	
 	public boolean existeBD(String nombreBD);
 	

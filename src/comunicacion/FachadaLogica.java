@@ -544,10 +544,11 @@ System.out.println(registrosCambiar.size());
 		
 	}
 	
-	public void crearTabla(DTOTabla tabla) {
+	public void crearTabla(DTOTabla tabla, LinkedHashMap<String, String> atributos) {
 		
 		Tabla tablita = new Tabla(tabla);
 		this.obtenerBaseDatos().agregarTabla(tablita);
+		tablita.insertarRegistro(tablita.generarAtributos(atributos));
 
 	}
 	
@@ -652,7 +653,7 @@ System.out.println(registrosCambiar.size());
 		
 		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
 			
-			if((atributos.get(i).equals("NULL")) && (atriGuia.getValue().getNulo())) {
+			if((atributos.get(i).equals("NULL")) && (atriGuia.getValue().getNulo()==false)) {
 			
 				return false;
 			
@@ -757,5 +758,6 @@ System.out.println(registrosCambiar.size());
 		return registro;
 		
 	}
+	
 	
 }

@@ -100,6 +100,34 @@ public class Tabla {
 	    return null;
 	    
 	}
+	
+	public LinkedHashMap<String, DTOAtributo> generarAtributos(LinkedHashMap<String, String> atributos) {
+		
+		LinkedHashMap<String, DTOAtributo> resultado = new LinkedHashMap<String, DTOAtributo>();
+		
+		for (Map.Entry<String, String> atr : atributos.entrySet()) {
+			
+			if(!(atr.getValue().equals(null)) && (!(atr.getKey().equals(null)))) {
+				
+				if(atr.getValue().equalsIgnoreCase("entero")) {
+					
+					DTOEntero atrEntero = new DTOEntero(atr.getKey(), false, false, 0);
+					resultado.put(atrEntero.getNombreAtributo(), atrEntero);
+					
+				}else if(atr.getValue().equalsIgnoreCase("entero")) {
+					
+					DTOCadena atrCadena = new DTOCadena(atr.getKey(), false, false, "");
+					resultado.put(atr.getKey(), atrCadena);
+					
+				}
+				
+			}
+			
+		}
+		
+		return resultado;
+		
+	}
 
 	public void setRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros) {
 		

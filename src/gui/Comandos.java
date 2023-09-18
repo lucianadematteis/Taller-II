@@ -352,8 +352,21 @@ public class Comandos {
 			        	
 					}else {
 						
+						LinkedHashMap<String, String> atributos = new LinkedHashMap<String, String>();
+
+						for (int i = 0; i < sentencia.size(); i++) {
+							
+						    if (sentencia.get(i) != null && sentencia.get(i).length >= 2 && sentencia.get(i)[0] != null && sentencia.get(i)[1] != null) {
+						       
+						    	atributos.put(sentencia.get(i)[0], sentencia.get(i)[1]);
+						    
+						    }
+						}
+
+
 						DTOTabla tabla = new DTOTabla(sentencia.get(1)[1]);
-						logica.crearTabla(tabla);
+						
+						logica.crearTabla(tabla, atributos);
 						aciertos++;
 						insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con exito la tabla: " +  sentencia.get(1)[1]);
 			        	
@@ -821,7 +834,7 @@ public class Comandos {
 			
 				if(logica.esVacia(sentencia.get(1)[1])) { 
 					
-					if((logica.obtenerAtributo(sentencia.get(1)[1], sentencia.get(0)[1])==null)) {
+					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])==null)) {
 						
 						insertarDepuracion("Error #N", "El atributo no existe para tabla ingresada");
 					
@@ -1038,7 +1051,7 @@ public class Comandos {
 			
 				if(logica.esVacia(sentencia.get(1)[1])) { 
 					
-					if((logica.obtenerAtributo(sentencia.get(1)[1], sentencia.get(0)[1])==null)) {
+					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])==null)) {
 						
 						insertarDepuracion("Error #N", "El atributo no existe para tabla ingresada");
 					
@@ -1050,7 +1063,7 @@ public class Comandos {
 						
 					logica.hacerClave(sentencia.get(1)[1], sentencia.get(0)[1]);
 					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Se hizo clave primaria con exito el atributo:: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+		        	insertarDepuracion("Acierto #" + aciertos, "Se hizo clave primaria con exito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
 		        
 				}else {
 				
