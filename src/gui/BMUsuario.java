@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -16,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import comunicacion.DTOUsuario;
-import comunicacion.IFachadaLogica;
+import comunicacion.FachadaLogica;
 
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
@@ -26,11 +27,12 @@ public class BMUsuario extends JFrame {
 	private JPanel contentPane;
 	private JPasswordField pass;
 	private JPasswordField pass2;
-	private JTextField textField_1;
-	private IFachadaLogica fa;
+	private JPasswordField passActual;
+	private FachadaLogica fa;
 
-	public BMUsuario(IFachadaLogica fa) {
+	public BMUsuario(FachadaLogica fa) {
 		this.fa = fa;
+		
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
@@ -152,9 +154,15 @@ public class BMUsuario extends JFrame {
 		JButton aceptar_1 = new JButton("ELIMINAR CUENTA");
 		aceptar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//si usuario y contrase�a correctos entonces:
-				ConfirmarEliminarUsuario frame = new ConfirmarEliminarUsuario();
+
+				char [] c3 = passActual.getPassword();
+				String passA = new String (c3);
+				DTOUsuario auxUs = new DTOUsuario(fa.getUsuario(),passA);
+				if (fa.validarContrasenia(auxUs)){
+				ConfirmarEliminarUsuario frame = new ConfirmarEliminarUsuario(fa,auxUs);
 				frame.setVisible(true);
+				dispose();
+				}
 				
 			}
 		});
@@ -175,10 +183,10 @@ public class BMUsuario extends JFrame {
 		separator_2.setBounds(22, 77, 392, 2);
 		panel_1.add(separator_2);
 		
-		textField_1 = new JPasswordField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(111, 238, 229, 20);
-		panel_1.add(textField_1);
+		passActual = new JPasswordField();
+		passActual.setColumns(10);
+		passActual.setBounds(111, 238, 229, 20);
+		panel_1.add(passActual);
 		
 		JTextArea txtrAtencinElSiguiente = new JTextArea();
 		txtrAtencinElSiguiente.setForeground(Color.YELLOW);
@@ -189,6 +197,13 @@ public class BMUsuario extends JFrame {
 		panel_1.add(txtrAtencinElSiguiente);
 		
 		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaPrincipal ven = new VentanaPrincipal(fa);
+				ven.setVisible(true);
+				dispose();
+			}
+		});
 		btnCancelar.setForeground(Color.WHITE);
 		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		btnCancelar.setFocusPainted(false);
