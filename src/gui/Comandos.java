@@ -363,7 +363,6 @@ public class Comandos {
 						    }
 						}
 
-
 						DTOTabla tabla = new DTOTabla(sentencia.get(1)[1]);
 						
 						logica.crearTabla(tabla, atributos);
@@ -418,7 +417,7 @@ public class Comandos {
 					insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
 					
 				}else {
-					System.out.println("nom");
+					
 					ArrayList<DTOAtributo> atributos=logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]);
 		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					aciertos++;
@@ -662,10 +661,13 @@ public class Comandos {
             		
             		if(logica.existeTabla(sentencia.get(0)[1])) {
             		
-	            		ArrayList<String> atributos = new ArrayList<>();
-	            		atributos.add(sentencia.get(1)[1]);
-	            		atributos.add(sentencia.get(1)[2]);
-	            		atributos.add(sentencia.get(1)[3]);
+            			ArrayList<String> atributos = new ArrayList<>();
+
+            			for (int i = 1; i <= sentencia.size(); i++) {
+            				
+            			    atributos.add(sentencia.get(1)[i]);
+            			    
+            			}
 	            		
 	            		if(logica.validaCantidadAtributos(sentencia.get(0)[1], atributos)) {
 	            		

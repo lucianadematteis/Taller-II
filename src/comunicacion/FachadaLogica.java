@@ -547,6 +547,7 @@ System.out.println(registrosCambiar.size());
     	res1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1);
 		res2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion2, valorCondicion2);
     	res1.retainAll(res2);
+    	
     	return res1;
     	
     }
@@ -621,7 +622,7 @@ System.out.println(registrosCambiar.size());
 		
 		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
 			
-			if((atributos.get(i).equals("NULL")) && (atriGuia.getValue().getNulo()==false)) {
+			if((atributos.get(i).equalsIgnoreCase("NULL")) && (atriGuia.getValue().getNulo()==false)) {
 			
 				return false;
 			
@@ -695,7 +696,8 @@ System.out.println(registrosCambiar.size());
 			
 			if(atriGuia.getValue() instanceof Entero) {
 				
-				DTOEntero atrE = new DTOEntero();
+				Entero atributoE = (Entero) atriGuia.getValue();
+				DTOEntero atrE =  new DTOEntero(atributoE);
 				
 				if(!(atributos.get(i).equals("NULL"))) {
 					
@@ -706,8 +708,9 @@ System.out.println(registrosCambiar.size());
 				registro.put(atriGuia.getKey(), atrE);
 				
 			}else if(atriGuia.getValue() instanceof Cadena){
-				
-				DTOCadena atrC = new DTOCadena();
+
+				Cadena atributoC = (Cadena) atriGuia.getValue();
+				DTOCadena atrC = new DTOCadena(atributoC);
 				
 				if(!(atributos.get(i).equals("NULL"))) {
 					
