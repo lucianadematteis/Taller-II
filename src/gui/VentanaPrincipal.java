@@ -124,14 +124,14 @@ public class VentanaPrincipal extends JFrame {
 
 			}
 		});
-		limpiar.setFont(new Font("Tahoma", Font.BOLD, 13));
-		limpiar.setBounds(887, 151, 99, 23);
+		limpiar.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		limpiar.setBounds(887, 146, 99, 28);
 		limpiar.setBackground(botones);
 		limpiar.setForeground(fuentePrincipal);
         limpiar.setFocusPainted(false); 
         
 		JButton cerrarSesion = new JButton("CERRAR SESI\u00D3N");
-		cerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 13));
+		cerrarSesion.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		cerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login frame = new Login(fa);
@@ -143,7 +143,7 @@ public class VentanaPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		cerrarSesion.setBounds(843, 613, 143, 23);
+		cerrarSesion.setBounds(843, 619, 143, 31);
 		cerrarSesion.setBackground(botones);
 		cerrarSesion.setForeground(fuentePrincipal);
         cerrarSesion.setFocusPainted(false); 
@@ -154,6 +154,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(scrollPane_3);
 		
 		guia = new JTable();
+		guia.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		guia.setForeground(escritura);
 		guia.setBackground(fondoVentana);
 		guia.setModel(new DefaultTableModel(
@@ -165,11 +166,12 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane_3.setViewportView(guia);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(170, 504, 816, 91);
+		scrollPane_2.setBounds(170, 484, 816, 111);
 		scrollPane_2.getViewport().setBackground(fondoVentana);
 		contentPane.add(scrollPane_2);
 		
 		depuracion = new JTable();
+		depuracion.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		depuracion.setForeground(escritura);
 		depuracion.setBackground(fondoVentana);
 		depuracion.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -186,13 +188,14 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane_2.setViewportView(depuracion);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(170, 185, 815, 310);
+		scrollPane_1.setBounds(170, 185, 815, 288);
 		scrollPane_1.getViewport().setBackground(fondoVentana);
 		scrollPane_1.getVerticalScrollBar().setBackground(fondoVentana);
 		scrollPane_1.getHorizontalScrollBar().setBackground(fondoVentana);
 		contentPane.add(scrollPane_1);
 		
 		salida = new JTable();
+		salida.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		salida.setForeground(escritura);
 		salida.setBackground(fondoVentana);
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -206,7 +209,7 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane_1.setViewportView(salida);
 		
 		JButton ejecutar = new JButton("EJECUTAR");
-		ejecutar.setFont(new Font("Tahoma", Font.BOLD, 13));
+		ejecutar.setFont(new Font("Segoe UI", Font.BOLD, 13));
 		ejecutar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -222,7 +225,7 @@ public class VentanaPrincipal extends JFrame {
 			} 
 			
 		});
-		ejecutar.setBounds(887, 117, 99, 23);
+		ejecutar.setBounds(887, 104, 99, 28);
 		ejecutar.setBackground(botones);
 		ejecutar.setForeground(fuentePrincipal);
         ejecutar.setFocusPainted(false); 
@@ -236,7 +239,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnConfigUsuario = new JButton("CONFIGURACI\u00D3N DE USUARIO");
 		btnConfigUsuario.setBackground(botones);
 		btnConfigUsuario.setForeground(fuentePrincipal);
-		btnConfigUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnConfigUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		btnConfigUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BMUsuario frame = new BMUsuario(fa);
@@ -245,7 +248,7 @@ public class VentanaPrincipal extends JFrame {
 				dispose();	
 			}
 		});
-		btnConfigUsuario.setBounds(24, 614, 248, 23);
+		btnConfigUsuario.setBounds(24, 620, 248, 30);
 		btnConfigUsuario.setFocusPainted(false);
 		contentPane.add(btnConfigUsuario);
 		

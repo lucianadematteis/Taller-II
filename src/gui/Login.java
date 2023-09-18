@@ -47,21 +47,7 @@ public class Login extends JFrame {
 		contentPane.setBackground(fondoPrincipal);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);;
-		
-		JLabel lblNewLabel = new JLabel("Usuario");
-		lblNewLabel.setBounds(417, 276, 160, 26);
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(Color.WHITE);
-		
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
-		lblContrasea.setBounds(414, 376, 160, 26);
-		lblContrasea.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
-		lblContrasea.setForeground(Color.WHITE);
 		contentPane.setLayout(null);
-		contentPane.add(lblNewLabel);
-		contentPane.add(lblContrasea);
 		
 		JLabel lblNewLabel_1 = new JLabel("MANEJADOR DE BASES DE DATOS");
 		lblNewLabel_1.setForeground(fuentePrincipal);
@@ -82,14 +68,16 @@ public class Login extends JFrame {
 		panel.setLayout(null);
 		
 		JPasswordField pass_1 = new JPasswordField();
-		pass_1.setBounds(50, 182, 365, 20);
+		pass_1.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 17));
+		pass_1.setBounds(64, 196, 340, 26);
 		panel.add(pass_1);
 		pass_1.setForeground(escritura);
 		pass_1.setBackground(fondoVentana);
 		pass_1.setColumns(10);
-		
+		pass_1.setHorizontalAlignment(JTextField.CENTER);
 		
 		JButton inicioSesion = new JButton("INICIAR SESION");
+		inicioSesion.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		inicioSesion.setForeground(fuentePrincipal);
 		inicioSesion.setBackground(botones);
 		inicioSesion.addActionListener(new ActionListener() {
@@ -125,11 +113,12 @@ public class Login extends JFrame {
 				}
 			}
 		});
-		inicioSesion.setBounds(250, 275, 146, 23);
+		inicioSesion.setBounds(252, 269, 152, 30);
 		inicioSesion.setFocusPainted(false);
 		panel.add(inicioSesion);
 		
 		JButton btnRegistrarse = new JButton("REGISTRARSE");
+		btnRegistrarse.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegistrarUsuario frame= new RegistrarUsuario(fa);
@@ -141,17 +130,34 @@ public class Login extends JFrame {
 		btnRegistrarse.setForeground(Color.WHITE);
 		btnRegistrarse.setFocusPainted(false);
 		btnRegistrarse.setBackground(new Color(3, 60, 88));
-		btnRegistrarse.setBounds(64, 275, 146, 23);
+		btnRegistrarse.setBounds(64, 269, 152, 30);
 		panel.add(btnRegistrarse);
 		
 		user = new JTextField();
-		user.setBounds(50, 82, 365, 20);
+		user.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 17));
+		user.setBounds(64, 92, 340, 26);
 		panel.add(user);
 		user.setForeground(escritura);
 		user.setBackground(fondoVentana);
 		user.setColumns(10);
+		user.setHorizontalAlignment(JTextField.CENTER);
+		
+		JLabel lblNewLabel = new JLabel("Usuario");
+		lblNewLabel.setBounds(153, 45, 160, 26);
+		panel.add(lblNewLabel);
+		lblNewLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(Color.WHITE);
+		
+		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
+		lblContrasea.setBounds(153, 148, 160, 26);
+		panel.add(lblContrasea);
+		lblContrasea.setFont(new Font("SansSerif", Font.BOLD, 20));
+		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
+		lblContrasea.setForeground(Color.WHITE);
 		
 		JButton btnIniciarDemo = new JButton("INICIAR DEMO");
+		btnIniciarDemo.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		btnIniciarDemo.setForeground(Color.WHITE);
 		btnIniciarDemo.setFocusPainted(false);
 		btnIniciarDemo.setBackground(new Color(3, 60, 88));
