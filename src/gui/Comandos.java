@@ -418,7 +418,7 @@ public class Comandos {
 					insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
 					
 				}else {
-					
+					System.out.println("nom");
 					ArrayList<DTOAtributo> atributos=logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]);
 		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					aciertos++;
@@ -604,9 +604,14 @@ public class Comandos {
 		            			
 		            			comandoSelectOr(sentencia);
 		            			
+		            		}else {
+		            			
+		            			insertarDepuracion("Error #N", "El operador " + sentencia.get(2)[4] + " no es valido");
+		                    	
 		            		}
 		            		
 	            		}
+	            		
 		            }
     			}
     		}
