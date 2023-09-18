@@ -39,4 +39,29 @@ public class Entero extends Atributo {
 		
 	}
 
+	public boolean equals(Object anObject) {
+		
+	    if (this == anObject) {
+	        return true;
+	    }
+	    if (anObject == null || getClass() != anObject.getClass()) {
+	        return false;
+	    }
+	    if (!super.equals(anObject)) {
+	        return false;
+	    }
+	    Entero entero = (Entero) anObject; 
+	    
+	    return valor == entero.valor;
+	    
+	}
+	
+	public int hashCode() {
+		
+	    int result = super.hashCode();
+	    result = 31 * result + Integer.hashCode(valor);
+	    return result;
+	    
+	}
+
 }

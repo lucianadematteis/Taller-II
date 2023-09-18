@@ -1,5 +1,7 @@
 package comunicacion;
 
+import java.util.Objects;
+
 import logica.Cadena;
 
 public class DTOCadena extends DTOAtributo{
@@ -37,6 +39,32 @@ public class DTOCadena extends DTOAtributo{
 		
 		this.dato = dato;
 		
+	}
+	
+	public boolean equals(Object anObject) {
+		
+	    if (this == anObject) {
+	        return true;
+	    }
+	    if (anObject == null || getClass() != anObject.getClass()) {
+	        return false;
+	    }
+	    if (!super.equals(anObject)) {
+	        return false;
+	    }
+	    DTOCadena cadena = (DTOCadena) anObject;
+	    
+	    return Objects.equals(dato, cadena.dato);
+	
+	}
+	
+	
+	public int hashCode() {
+		
+	    int result = super.hashCode();
+	    result = 31 * result + Objects.hashCode(dato);
+	    return result;
+	
 	}
 	
 }

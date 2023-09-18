@@ -1,5 +1,7 @@
 package logica;
 
+import java.util.Objects;
+
 import comunicacion.DTOCadena;
 
 public class Cadena extends Atributo {
@@ -37,6 +39,32 @@ public class Cadena extends Atributo {
 		
 		this.dato = dato;
 		
+	}
+	
+	public boolean equals(Object anObject) {
+		
+	    if (this == anObject) {
+	        return true;
+	    }
+	    if (anObject == null || getClass() != anObject.getClass()) {
+	        return false;
+	    }
+	    if (!super.equals(anObject)) {
+	        return false;
+	    }
+	    Cadena cadena = (Cadena) anObject;
+	    
+	    return Objects.equals(dato, cadena.dato);
+	
+	}
+	
+	
+	public int hashCode() {
+		
+	    int result = super.hashCode();
+	    result = 31 * result + Objects.hashCode(dato);
+	    return result;
+	
 	}
 
 }

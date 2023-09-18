@@ -145,15 +145,23 @@ public class Tabla {
 			registroConvertido.put(entry.getKey(), resultado);
 			
 		}
-		
 		registros.add(registroConvertido);
 		
 	}
 	
 	public void eliminarRegistro(LinkedHashMap<String, DTOAtributo> registro) {
 		
-		registros.remove(registro);
+		LinkedHashMap<String, Atributo> registroConvertido = new LinkedHashMap<String, Atributo>();
 		
+		for (Map.Entry<String, DTOAtributo> entry : registro.entrySet()) {
+			
+			Atributo resultado=this.convertirDTOATributo(entry.getValue());
+			registroConvertido.put(entry.getKey(), resultado);
+			
+		}
+		
+		registros.remove(registroConvertido);
+		   
 	}
 	
 	public void modificarRegistro(ArrayList<LinkedHashMap<String, DTOAtributo>> registros, String nombreAtributo, String valorNuevo) {

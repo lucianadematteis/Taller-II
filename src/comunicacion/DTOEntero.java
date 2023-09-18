@@ -42,4 +42,29 @@ public class DTOEntero extends DTOAtributo{
 		
 	}
 	
+	public boolean equals(Object anObject) {
+		
+	    if (this == anObject) {
+	        return true;
+	    }
+	    if (anObject == null || getClass() != anObject.getClass()) {
+	        return false;
+	    }
+	    if (!super.equals(anObject)) {
+	        return false;
+	    }
+	    DTOEntero entero = (DTOEntero) anObject; 
+	    
+	    return valor == entero.valor;
+	    
+	}
+	
+	public int hashCode() {
+		
+	    int result = super.hashCode();
+	    result = 31 * result + Integer.hashCode(valor);
+	    return result;
+	    
+	}
+	
 }

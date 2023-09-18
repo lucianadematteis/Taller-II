@@ -213,15 +213,15 @@ public class FachadaLogica implements IFachadaLogica {
 	public void borrarRegistro(String nombreTabla, String nombreAtributoCondicion, String valorCondicion) {
 
 		Tabla tabla = this.obtenerTabla(nombreTabla);
-
+		
 		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosEliminar = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
-
-		for (LinkedHashMap<String, DTOAtributo> registro : registrosEliminar) { 
-
-			tabla.eliminarRegistro(registro);
-
-		}
-
+		
+		 for (LinkedHashMap<String, DTOAtributo> registro : registrosEliminar) {
+	            
+			 tabla.eliminarRegistro(registro);
+			 
+	     }
+		
 	}
 
 	public void cambiarRegistro(String nombreTabla, String atributoCambiar, String valorNuevo, String nombreAtributoCondicion, String valorCondicion) {
@@ -229,7 +229,7 @@ public class FachadaLogica implements IFachadaLogica {
 		Tabla tabla = this.obtenerTabla(nombreTabla);
 
 		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosCambiar = tabla.obtenerRegistros(nombreAtributoCondicion, valorCondicion);
-System.out.println(registrosCambiar.size());
+
 		tabla.modificarRegistro(registrosCambiar, atributoCambiar, valorNuevo);
 
 	}

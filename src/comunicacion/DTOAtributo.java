@@ -1,5 +1,7 @@
 package comunicacion;
 
+import java.util.Objects;
+
 import logica.Atributo;
 
 public abstract class DTOAtributo {
@@ -67,5 +69,23 @@ public abstract class DTOAtributo {
 		this.clave = clave;
 		
 	}
+	
+    public boolean equals(Object o) {
+    	
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DTOAtributo atributo = (DTOAtributo) o;
+        
+        return nulo == atributo.nulo &&
+               clave == atributo.clave &&
+               Objects.equals(nombreAtributo, atributo.nombreAtributo);
+    
+    }
+    
+    public int hashCode() {
+    	
+        return Objects.hash(nombreAtributo, nulo, clave);
+   
+    }
 	
 }
