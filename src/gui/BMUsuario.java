@@ -14,30 +14,23 @@ import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import comunicacion.DTOUsuario;
+import comunicacion.IFachadaLogica;
+
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 
 public class BMUsuario extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField pass;
-	private JTextField pass2;
+	private JPasswordField pass;
+	private JPasswordField pass2;
 	private JTextField textField_1;
+	private IFachadaLogica fa;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BMUsuario frame = new BMUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	public BMUsuario() {
+	public BMUsuario(IFachadaLogica fa) {
+		this.fa = fa;
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fondoVentana = new Color (187,218,219);
@@ -76,20 +69,36 @@ public class BMUsuario extends JFrame {
 		aceptar.setBackground(botones);
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			/*
-				if (*inserte aqu� si se pudo registrar*) {
-					UsuarioRegistroCorrecto frame = new UsuarioRegistroCorrecto();
-					frame.setVisible(true);
-					dispose();
-				}else if {
-					UsuarioRegistroErrorNombre frame1 = new UsuarioRegistroErrorNombre();
-					frame1.setVisible(true);
-				}else{
-				UsuarioRegisroErrorContrasenia frame2 = new UsuarioRegistroErrorContrasenia();
-				frame2.setVisible (true);
+				char []c1 =pass.getPassword();
+				String contra1 = new String (c1);
+				char[] c2 = pass2.getPassword();
+				String contra2 = new String (c2);
+
+				if(!(contra1.isEmpty()) && !(contra2.isEmpty())){
+					
+					if (contra1.equals(contra2)) {
+						
+						DTOUsuario aux = new DTOUsuario(fa.getUsuario(),contra1);
+						fa.modificarUsuario(aux);
+						fa.persistirDatos();
+						fa.recuperarDatos();
+						fa.seleccionarUsuario(aux.getNombreUser());
+						VentanaPrincipal ven = new VentanaPrincipal(fa);
+						ven.setVisible(true);
+						UsuarioCambioContraseniaCorrecto rc = new UsuarioCambioContraseniaCorrecto();
+						rc.setVisible(true);
+						dispose();
+					} else {
+						
+						UsuarioRegistroErrorContrasenia cn = new UsuarioRegistroErrorContrasenia();
+						cn.setVisible(true);	
+					}
+
+				}else {
+					UsuarioRegistroErrorCampos camp = new UsuarioRegistroErrorCampos();
+					camp.setVisible(true);
 				}
-				*/
-				
+
 			}
 		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
