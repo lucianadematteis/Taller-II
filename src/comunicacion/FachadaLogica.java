@@ -412,6 +412,13 @@ public class FachadaLogica implements IFachadaLogica {
 				
 	}
 	
+	public void quitarClave (String nombreTabla) {
+		
+		String clave = this.obtenerTabla(nombreTabla).obtenerClave();
+		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(clave).setClave(false);
+		
+	}
+	
 	public int calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion) { //hace promedios ENTEROS nada mas
 		
 		int promedio = 0;
