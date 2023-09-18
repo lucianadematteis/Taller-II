@@ -394,7 +394,7 @@ System.out.println(registrosCambiar.size());
 	    int suma = 0;
 	    ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
 
-	    int cantidadValores = 0; // Variable para contar los valores válidos
+	    int cantidadValores = 0; 
 
 	    for (LinkedHashMap<String, DTOAtributo> registro : registros) {
 	    
