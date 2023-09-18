@@ -46,6 +46,8 @@ public interface IFachadaLogica {
 	
 	public void hacerClave (String nombreTabla, String nombreAtributo);
 	
+	public void quitarClave (String nombreTabla);
+	
 	public int calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
 	
 	public int obtenerMinimo (String nombreTabla, String nombreAtributo);
