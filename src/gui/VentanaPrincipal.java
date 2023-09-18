@@ -235,7 +235,7 @@ public class VentanaPrincipal extends JFrame {
 		btnConfigUsuario.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnConfigUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BMUsuario frame = new BMUsuario();
+				BMUsuario frame = new BMUsuario(fa);
 				frame.setVisible(true);
 				dispose();	
 			}
