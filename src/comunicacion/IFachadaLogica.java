@@ -18,7 +18,7 @@ public interface IFachadaLogica {
 	
 	public boolean validaCondicion(String nombreTabla, String nombreAtributo, String valorCondicion);
 	
-	public Tabla obtenerTabla(String nombreTabla);
+	//public Tabla obtenerTabla(String nombreTabla);
 		
 	public String obtenerTipoAtributo(String nombreTabla, String nombreAtributo);
 
@@ -72,7 +72,7 @@ public interface IFachadaLogica {
 	
 	public String darAyuda(String ayuda1);
 	
-	public Atributo obtenerAtributo(String nombreAtributo, String nombreTabla);
+	public DTOAtributo obtenerAtributo(String nombreAtributo, String nombreTabla);
 	
 	public boolean comandoExiste(String comando);
 	

@@ -256,11 +256,18 @@ public class VentanaPrincipal extends JFrame {
 		
 	}
 	
-	public void cargarBasesDatos(ArrayList<String> nBD) {
+	public static void cargarBasesDatos(ArrayList<String> nBD) {
+		
 		DefaultTableModel model = (DefaultTableModel) guia.getModel();
+		model.setRowCount(0);
+    	model.setColumnCount(0);
 		model.addColumn("BASES DE DATOS");
+		
 		for (int i = 0; i < nBD.size(); i++) {
+		
 			model.addRow(new Object [] {nBD.get(i)});
+			
 		}
+		
 	}
 }

@@ -384,6 +384,7 @@ public class Comandos {
 				
 				DTOBaseDatos bd =new DTOBaseDatos(sentencia.get(1)[1]);
 				logica.crearBD(bd);
+				VentanaPrincipal.cargarBasesDatos(logica.obtenerBasesNom());
 				aciertos++;
 	        	insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con exito la base de datos: " + sentencia.get(1)[1]);
 				

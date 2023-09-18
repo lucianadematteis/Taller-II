@@ -258,10 +258,9 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public Atributo obtenerAtributo(String nombreAtributo, String nombreTabla) {
+	public DTOAtributo obtenerAtributo(String nombreAtributo, String nombreTabla) {
 
-		//debo crear un control por si no existe el atributo? o se encarga otro m�todo de eso?
-		Atributo atr =usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo);
+		DTOAtributo atr =usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistrosDTO().get(0).get(nombreAtributo);
 
 		return atr;
 		
