@@ -322,7 +322,7 @@ public class FachadaLogica implements IFachadaLogica {
 
 				for (Map.Entry<String, Atributo> regis : reg.entrySet()) {
 
-					if(regis.getValue().getNombreAtributo()==nombreAtributo) {
+					if(regis.getValue().getNombreAtributo().equals(nombreAtributo)) {
 
 						if (regis.getValue() instanceof Entero) {
 
@@ -360,15 +360,15 @@ public class FachadaLogica implements IFachadaLogica {
 		Integer max= null;
 		Entero aux;
 
-		ArrayList<LinkedHashMap<String, Atributo>> registros = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros();		
-
+		ArrayList<LinkedHashMap<String, Atributo>> registros = this.obtenerTabla(nombreTabla).getRegistros();
+		
 		for (LinkedHashMap<String, Atributo> reg : registros) {
 
 			if (salto) {
 
 				for (Map.Entry<String, Atributo> regis : reg.entrySet()) {
 
-					if(regis.getValue().getNombreAtributo()==nombreAtributo) {
+					if(regis.getValue().getNombreAtributo().equals(nombreAtributo)) {
 
 						if (regis.getValue() instanceof Entero) {
 
