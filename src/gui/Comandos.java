@@ -795,7 +795,7 @@ public class Comandos {
 	            		
 	            				if(logica.existeTabla(sentencia.get(0)[1])) {
 	            				
-		            				if((logica.tieneClave(sentencia.get(0)[1])) && (logica.obtenerClave(sentencia.get(0)[1]).equalsIgnoreCase((sentencia.get(2)[1])))) {
+		            				if((logica.tieneClave(sentencia.get(0)[1])) && (logica.obtenerClave(sentencia.get(0)[1]).equalsIgnoreCase((sentencia.get(1)[1])))) {
 		            					
 			            				insertarDepuracion("Error #N", "No es posible cambiar la clave primaria de un registro");
 			            					
