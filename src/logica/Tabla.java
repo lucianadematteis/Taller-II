@@ -216,27 +216,31 @@ public class Tabla {
 		    	
 	    		DTOAtributo atributo = entrada.getValue();
 	    		
-	    		if(atributo instanceof DTOEntero) { //como la condicion es un string debo de evaluar esto para convertirla
-		    		
-		    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
-		    		DTOEntero entradaEntera = (DTOEntero) entrada.getValue();
-		    		
-		    		if((entrada.getKey().equalsIgnoreCase(nombreAtributo)) && (entradaEntera.getValor() == valorCondicionEntera)) { //si cumple con la condicion
-		    			
-		    			registrosObtenidos.add(misRegistros);
-		    			
-		    		}
-		    		
-		    	}else if(atributo instanceof DTOCadena){
-		    		
-		    		DTOCadena entradaCadena = (DTOCadena) entrada.getValue();
-		    		if((atributo.getNombreAtributo().equalsIgnoreCase(nombreAtributo)) && entradaCadena.getDato().equalsIgnoreCase(valorCondicion)) { //si cumple con la condicion
-		    			
-		    			registrosObtenidos.add(misRegistros);
-		    			
-		    		}
-		    		
-		    	}
+	    		if(entrada.getKey().equalsIgnoreCase(nombreAtributo)){
+	    		
+		    		if(atributo instanceof DTOEntero) { //como la condicion es un string debo de evaluar esto para convertirla
+			    		
+			    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
+			    		DTOEntero entradaEntera = (DTOEntero) entrada.getValue();
+			    		
+			    		if(entradaEntera.getValor() == valorCondicionEntera) { //si cumple con la condicion
+			    			
+			    			registrosObtenidos.add(misRegistros);
+			    			
+			    		}
+			    		
+			    	}else if(atributo instanceof DTOCadena){
+			    		
+			    		DTOCadena entradaCadena = (DTOCadena) entrada.getValue();
+			    		if(entradaCadena.getDato().equalsIgnoreCase(valorCondicion)) { //si cumple con la condicion
+			    			
+			    			registrosObtenidos.add(misRegistros);
+			    			
+			    		}
+			    		
+			    	}
+	    		
+	    		}
 	    		
 		    }
 		    
