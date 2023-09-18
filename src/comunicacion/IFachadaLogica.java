@@ -17,9 +17,7 @@ public interface IFachadaLogica {
 	public ArrayList<DTOAtributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
 	
 	public boolean validaCondicion(String nombreTabla, String nombreAtributo, String valorCondicion);
-	
-	//public Tabla obtenerTabla(String nombreTabla);
-		
+			
 	public String obtenerTipoAtributo(String nombreTabla, String nombreAtributo);
 
 	public boolean esVacia(String nombreTabla);
@@ -48,7 +46,7 @@ public interface IFachadaLogica {
 	
 	public void quitarClave (String nombreTabla);
 	
-	public int calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
+	public double calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
 	
 	public int obtenerMinimo (String nombreTabla, String nombreAtributo);
 	

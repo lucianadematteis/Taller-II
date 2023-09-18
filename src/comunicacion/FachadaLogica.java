@@ -324,8 +324,7 @@ System.out.println(registrosCambiar.size());
 	        } else {
 	    	
 		    	DTOEntero atributo = (DTOEntero) reg;
-		        Entero entero = new Entero(atributo);
-		        int valor = entero.getValor();
+		        int valor = atributo.getValor();
 	
 		        if (minimo == null || valor < minimo) {
 		        
@@ -356,8 +355,7 @@ System.out.println(registrosCambiar.size());
 	        } else {
 	        
 	        	DTOEntero atributo = (DTOEntero) reg;
-	            Entero entero = new Entero(atributo);
-	            int valor = entero.getValor();
+	            int valor = atributo.getValor();
 
 	            if (maximo == null || valor > maximo) {
 	              
@@ -390,45 +388,43 @@ System.out.println(registrosCambiar.size());
 		
 	}
 	
-	public int calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion) { //hace promedios ENTEROS nada mas
-		
-		int promedio = 0;
-		int suma = 0;
-		ArrayList<Integer> numeros = new ArrayList<>();
-		ArrayList<LinkedHashMap<String, DTOAtributo>> lista = new ArrayList<LinkedHashMap<String, DTOAtributo>>();
-		lista = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
-		
-		for (LinkedHashMap<String, DTOAtributo> elemento : lista) {
-			
-		   	 for (Map.Entry<String, DTOAtributo> entry : elemento.entrySet()) {
-		   		 
-		   		 if(nombreAtributo == entry.getValue().getNombreAtributo()) {
-		            	
-		           	if (entry.getValue() instanceof DTOEntero) {
-		           		
-		                DTOEntero entero = (DTOEntero) entry.getValue();
-		                int valor = entero.getValor();
-				        numeros.add(valor); 	 
-		             
-		             }
-		           	
-		         }
-		       
-		    }
-		    
-		}
-		
-        for (int numero : numeros) {
-        	
-            suma += numero;
-            
-        }
-		
-		promedio = suma/numeros.size();
-		return promedio;
-	
+	public double calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion) {
+	    
+		double promedio = 0.0;
+	    int suma = 0;
+	    ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+
+	    int cantidadValores = 0; // Variable para contar los valores válidos
+
+	    for (LinkedHashMap<String, DTOAtributo> registro : registros) {
+	    
+	    	for (Entry<String, DTOAtributo> dato : registro.entrySet()) {
+	        
+	    		DTOAtributo at = dato.getValue();
+	            
+	            if (at instanceof DTOEntero) {
+	            
+	            	DTOEntero atributo = (DTOEntero) at;
+	                int valor = atributo.getValor();
+	                suma += valor;
+	                cantidadValores++;
+	            
+	            }
+	        }
+	    }
+
+	    if (cantidadValores > 0) {
+	      
+	    	promedio = (double) suma / cantidadValores;
+	    
+	    }
+
+	    return promedio;
+	    
 	}
-	
+
+
+
 	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2) {
 		
 		ArrayList <DTOAtributo> resultado1 = new ArrayList <DTOAtributo>();
