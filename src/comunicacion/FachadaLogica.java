@@ -499,9 +499,9 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	}
 
-	public String darAyuda(String ayuda1) {
+	public String darAyuda(String comando) {
 	
-		return ayuda.get(ayuda1);
+		return ayuda.get(comando.toUpperCase());
 
 	}
 
@@ -605,7 +605,7 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	public boolean comandoExiste(String comando) {
 		
-		return this.ayuda.containsKey(comando);
+		return this.ayuda.containsKey(comando.toUpperCase());
 		
 	}
 	

@@ -1085,8 +1085,11 @@ public class Comandos {
         	
 			if(logica.comandoExiste(sentencia.get(0)[1])) {
 					
+				ArrayList<String> ayuda = new ArrayList<String>();
+				ayuda.add(logica.darAyuda(sentencia.get(0)[1]));
+				cargarTablaString(ayuda, "AYUDA " + sentencia.get(0)[1].toUpperCase());
 				aciertos++;
-				insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener ayuda sobre el comando: " + sentencia.get(0)[1]);
+				insertarDepuracion("Acierto #" + aciertos, "Mostrando ayuda para el comando: " + sentencia.get(0)[1]);
         	
 			}else {
 				

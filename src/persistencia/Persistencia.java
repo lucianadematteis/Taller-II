@@ -752,6 +752,7 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 			while ((linea = br.readLine()) != null) {
 		
 				contenidoArchivo.append(linea);
+				contenidoArchivo.append("\n");
 		
 			}
 		
