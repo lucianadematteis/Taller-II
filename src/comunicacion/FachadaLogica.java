@@ -228,15 +228,13 @@ public class FachadaLogica implements IFachadaLogica {
 
 		Tabla tabla = this.obtenerTabla(nombreTabla);
 		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosCambiar = tabla.obtenerRegistros(nombreAtributoCondicion, valorCondicion);
-		ArrayList<LinkedHashMap<String, Atributo>> resultado = new ArrayList<LinkedHashMap<String, Atributo>>();
 		
-		for (LinkedHashMap<String, DTOAtributo> linkedHashMap : registrosCambiar) {
-			
-			resultado.add(tabla.convertirMapa(linkedHashMap));
+		for (LinkedHashMap<String, DTOAtributo> registro : registrosCambiar) {
+		
+			tabla.modificarRegistros(tabla.convertirMapa(registro), atributoCambiar, valorNuevo);
 			
 		}
-		tabla.modificarRegistros(resultado, atributoCambiar, valorNuevo);
-		
+			
 	}
 
 	public void ingresarRegistro(String nombreTabla, LinkedHashMap<String, DTOAtributo> registro) {

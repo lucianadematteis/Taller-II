@@ -137,14 +137,8 @@ public class Tabla {
 	
 	public void insertarRegistro(LinkedHashMap<String, DTOAtributo> registro) {
 		
-		LinkedHashMap<String, Atributo> registroConvertido = new LinkedHashMap<String, Atributo>();
+		LinkedHashMap<String, Atributo> registroConvertido = this.convertirMapa(registro);
 		
-		for (Map.Entry<String, DTOAtributo> entry : registro.entrySet()) {
-			
-			Atributo resultado=this.convertirDTOATributo(entry.getValue());
-			registroConvertido.put(entry.getKey(), resultado);
-			
-		}
 		registros.add(registroConvertido);
 		
 	}
@@ -172,35 +166,33 @@ public class Tabla {
 		   
 	}
 	
-	public void modificarRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreAtributo, String valorNuevo) {
-		   
-		for (LinkedHashMap<String, Atributo> registro : registros) {
+	public void modificarRegistros(LinkedHashMap<String, Atributo> registroCambiar, String nombreAtributo, String valorNuevo) {
+		 	
+		this.registros.remove(registroCambiar);
+		
+		for(Entry<String, Atributo> registro : registroCambiar.entrySet()) {
+		
+			Atributo atributo = registro.getValue();
 			
-			this.registros.remove(registro);
+			if(registro.getKey().equalsIgnoreCase(nombreAtributo)) {
 			
-			for(Entry<String, Atributo> registroE : registro.entrySet()) {
-			
-				Atributo atributo = registroE.getValue();
-				
-				if(registroE.getKey().equalsIgnoreCase(nombreAtributo)) {
-				
-					if (atributo instanceof Entero) {
-			        
-						int valorEntero = Integer.parseInt(valorNuevo);
-			            ((Entero) atributo).setValor(valorEntero);
-			        
-					} else if (atributo instanceof Cadena) {
-			        
-						((Cadena) atributo).setDato(valorNuevo);
-			        
-					}
-					
-					this.registros.add(registro);
+				if (atributo instanceof Entero) {
+		        
+					int valorEntero = Integer.parseInt(valorNuevo);
+		            ((Entero) atributo).setValor(valorEntero);
+		        
+				} else if (atributo instanceof Cadena) {
+		        
+					((Cadena) atributo).setDato(valorNuevo);
+		        
 				}
-			
+				
+				this.registros.add(registroCambiar);
 			}
-	    }
-	}
+		
+		}
+    }
+	
 
 	public boolean tieneClave() {
 		
