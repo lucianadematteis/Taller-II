@@ -547,16 +547,13 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		Tabla tablita = this.obtenerTabla(nombreTabla);
 		int cantidadAtributos = tablita.getRegistros().get(0).size();
-		
-		for (int i = 0; i < cantidadAtributos ; i++) {
+
+		if(atributos.size() != cantidadAtributos) {
 			
-			if(atributos.get(i) == null) {
-				
-				return false;
-				
-			}
+			return false;
 			
 		}
+			
 		
 		return true;
 		
@@ -589,38 +586,43 @@ public class FachadaLogica implements IFachadaLogica {
 	public boolean validaClave(String nombreTabla, ArrayList<String> atributos) {
 		
 		Tabla tablita = this.obtenerTabla(nombreTabla);
-		LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
-		String clave = tablita.obtenerClave();
 		
-		int i=0;
-		int posClave =0;
+		if(tablita.tieneClave()) {
 		
-		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
+			LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
+			String clave = tablita.obtenerClave();
 			
-			if((atriGuia.getKey().equals(clave))) { //SI la clave es nula
+			int i=0;
+			int posClave =0;
+			
+			for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
 				
-				if((atributos.get(i).equals("NULL"))) {
+				if((atriGuia.getKey().equals(clave))) { //SI la clave es nula
 					
-					return false;
-				
+					if((atributos.get(i).equals("NULL"))) {
+						
+						return false;
+					
+					}
+					
+				}else {
+					
+					posClave++;
+					
 				}
 				
-			}else {
-				
-				posClave++;
+				i++;
 				
 			}
-			
-			i++;
-			
-		}	
-			
-		if(!(tablita.obtenerRegistros(clave, atributos.get(posClave)).isEmpty())) { //Si la clave se repite
-			
-			return false;
-			
+				
+			if(!(tablita.obtenerRegistros(clave, atributos.get(posClave)).isEmpty())) { //Si la clave se repite
+				
+				return false;
+				
+			}
+		
 		}
-			
+	
 		return true;
 		
 	}

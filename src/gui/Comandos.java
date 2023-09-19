@@ -655,13 +655,13 @@ public class Comandos {
             		if(logica.existeTabla(sentencia.get(0)[1])) {
             		
             			ArrayList<String> atributos = new ArrayList<>();
-
-            			for (int i = 1; i <= sentencia.size(); i++) {
+            			
+            			for (int i = 1; i < sentencia.get(1).length; i++) {
             				
             			    atributos.add(sentencia.get(1)[i]);
             			    
             			}
-	            		
+            			
 	            		if(logica.validaCantidadAtributos(sentencia.get(0)[1], atributos)) {
 	            		
 	            			if(logica.validaAtributos(sentencia.get(0)[1], atributos)) {
@@ -695,7 +695,7 @@ public class Comandos {
 	            			
 	            		}else {
 	            			
-	            			insertarDepuracion("Error #21", "Los datos no pueden quedar vacios, utilice la palabra NULL");
+	            			insertarDepuracion("Error #21", "Cantidad de atributos incorrecta, en caso de nulos use NULL");
 	        				
 	            		}
 	            		
