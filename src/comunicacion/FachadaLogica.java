@@ -327,7 +327,7 @@ public class FachadaLogica implements IFachadaLogica {
 
 	public void hacerNotNull (String nombreTabla, String nombreAtributo) {
 		
-		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setNulo(false);
+		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setNulo(true);
 					
 	}
 
