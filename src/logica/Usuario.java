@@ -38,18 +38,6 @@ public class Usuario {
 
 	}
 
-	public void setNombreUser(String nombreUser) {
-
-		this.nombreUser = nombreUser;
-
-	}
-
-	public void setContrasenia(String contrasenia) {
-
-		this.contrasenia = contrasenia;
-
-	}
-
 	public LinkedHashMap<String, BaseDatos> getBasesDatos() {
 
 		return basesDatos;
@@ -65,12 +53,6 @@ public class Usuario {
 	public void agregarBD(BaseDatos base) {
 		
 		this.basesDatos.put(base.getNombreBD(), base);
-		
-	}
-	
-	public BaseDatos obtenerBD(String bd) {
-		
-		return this.basesDatos.get(bd);
 		
 	}
 

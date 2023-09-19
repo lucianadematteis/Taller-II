@@ -52,12 +52,6 @@ public abstract class Atributo {
 	
 	}
 
-	public void setNombreAtributo(String nombreAtributo) {
-		
-		this.nombreAtributo = nombreAtributo;
-		
-	}
-
 	public void setNulo(boolean nulo) {
 		
 		this.nulo = nulo;

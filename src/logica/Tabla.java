@@ -304,12 +304,6 @@ public class Tabla {
 		
 	}
 	
-	public Atributo obtenerAtributo(String nombreAtributo) {
-	    
-		return registros.get(0).get(nombreAtributo); 
-	    
-	}
-	
 	public ArrayList<DTOAtributo> seleccionarAtributo(ArrayList<LinkedHashMap<String, DTOAtributo>> registros, String nombreAtributo){
 		
 		ArrayList<DTOAtributo> registrosFinales = new ArrayList<DTOAtributo>();

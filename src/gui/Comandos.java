@@ -51,13 +51,13 @@ public class Comandos {
         
     }
 	
-    public boolean validaSeleccionBD() {
+    private boolean validaSeleccionBD() {
     	
     	return logica.bdSeleccionada();
     	
     }
 
-    public void cargarTablaAtributos(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
+    private void cargarTablaAtributos(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
     	
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
     	model.setRowCount(0);
@@ -84,7 +84,7 @@ public class Comandos {
     	
     }
     
-    public void cargarTablaString(ArrayList<String> datos, String nombrColumna) {
+    private void cargarTablaString(ArrayList<String> datos, String nombrColumna) {
     	
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
     	model.setRowCount(0);
@@ -99,7 +99,7 @@ public class Comandos {
     	
     }
     	
-    public void insertarDepuracion(String mensaje1, String mensaje2) {
+    private void insertarDepuracion(String mensaje1, String mensaje2) {
 
 		DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.depuracion.getModel();
 
@@ -108,7 +108,7 @@ public class Comandos {
 
 	}
     
-	public boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
+	private boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
 
 		if (posInicial == posFinal) {
 
@@ -131,13 +131,13 @@ public class Comandos {
 
 	}
 
-	public boolean validaTipoDato(String tipo) {
+	private boolean validaTipoDato(String tipo) {
 
 		return ((tipo.toUpperCase().equals("ENTERO")) || (tipo.toUpperCase().equals("CADENA")));
 
 	}
 
-	public boolean validaTiposAtributos(ArrayList<String[]> sentencia, int posInicial, int posFinal) {
+	private boolean validaTiposAtributos(ArrayList<String[]> sentencia, int posInicial, int posFinal) {
 
 		for (int j = posInicial; j < posFinal; j++) {
 
@@ -153,7 +153,7 @@ public class Comandos {
 
 	}
 
-	public boolean validaCantidadLineas(ArrayList<String[]> sentencia, int min, int max) {
+	private boolean validaCantidadLineas(ArrayList<String[]> sentencia, int min, int max) {
 
 		if (min == max) {
 
@@ -167,7 +167,7 @@ public class Comandos {
 
 	}
 
-	public boolean validaSentenciasUnaLinea(ArrayList<String[]> sentencia) {
+	private boolean validaSentenciasUnaLinea(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadLineas(sentencia, 1, 1))) {
 
@@ -191,7 +191,7 @@ public class Comandos {
 
 	}
 
-	public boolean validaSentenciasDosLineas(ArrayList<String[]> sentencia) {
+	private boolean validaSentenciasDosLineas(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadLineas(sentencia, 2, 2))) {
 
@@ -224,7 +224,7 @@ public class Comandos {
 
 	}
 
-	public boolean validaSentenciasWhereComun(ArrayList<String[]> sentencia) {
+	private boolean validaSentenciasWhereComun(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 4))) {
 
@@ -255,7 +255,7 @@ public class Comandos {
 
 	}
 
-	public boolean validaSentenciasFrom(ArrayList<String[]> sentencia) {
+	private boolean validaSentenciasFrom(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 
@@ -278,7 +278,7 @@ public class Comandos {
 
 	}
 
-	public boolean validaSentenciasFromWhere(ArrayList<String[]> sentencia) {
+	private boolean validaSentenciasFromWhere(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadLineas(sentencia, 3, 3))) {
 
@@ -302,7 +302,7 @@ public class Comandos {
 
 	}
 
-	public boolean validaOperadoresLogicos(ArrayList<String[]> sentencia) {
+	private boolean validaOperadoresLogicos(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 8))) {
 
@@ -326,7 +326,7 @@ public class Comandos {
 
 	}
 
-	public void comandoTable(ArrayList<String[]> sentencia) {
+	private void comandoTable(ArrayList<String[]> sentencia) {
 		
 		if(!(validaCantidadLineas(sentencia, 3, 5))) {
 			
@@ -376,7 +376,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoDatabase(ArrayList<String[]> sentencia) {
+	private void comandoDatabase(ArrayList<String[]> sentencia) {
 		
 		if(!(validaCantidadLineas(sentencia, 2, 2))) {
 			
@@ -406,7 +406,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoSelectAnd(ArrayList<String[]> sentencia) {
+	private void comandoSelectAnd(ArrayList<String[]> sentencia) {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
@@ -439,7 +439,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoSelectOr(ArrayList<String[]> sentencia) {
+	private void comandoSelectOr(ArrayList<String[]> sentencia) {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
@@ -473,7 +473,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoShow(ArrayList<String[]> sentencia) {
+	private void comandoShow(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
@@ -494,7 +494,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoCreate(ArrayList<String[]> sentencia) {
+	private void comandoCreate(ArrayList<String[]> sentencia) {
 		
 		if(!(sentencia.size()>1)){
 			
@@ -538,7 +538,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoSelect(ArrayList<String[]> sentencia) {
+	private void comandoSelect(ArrayList<String[]> sentencia) {
 		
 		if(!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
     		
@@ -618,7 +618,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoUse(ArrayList<String[]> sentencia) {
+	private void comandoUse(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
@@ -639,7 +639,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoInsert(ArrayList<String[]> sentencia) {
+	private void comandoInsert(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadLineas(sentencia, 2, 2))){
 			
@@ -717,7 +717,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoDelete(ArrayList<String[]> sentencia) {
+	private void comandoDelete(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
@@ -759,7 +759,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoUpdate(ArrayList<String[]> sentencia) {
+	private void comandoUpdate(ArrayList<String[]> sentencia) {
 		
 		if(!(validaCantidadLineas(sentencia, 3, 3))) {
     		
@@ -833,7 +833,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoNotNull(ArrayList<String[]> sentencia) {
+	private void comandoNotNull(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
     		
@@ -869,7 +869,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoCount(ArrayList<String[]> sentencia) {
+	private void comandoCount(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
@@ -913,7 +913,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoAvg(ArrayList<String[]> sentencia) {
+	private void comandoAvg(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
@@ -962,7 +962,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoMax(ArrayList<String[]> sentencia) {
+	private void comandoMax(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
     		
@@ -997,7 +997,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoMin(ArrayList<String[]> sentencia) {
+	private void comandoMin(ArrayList<String[]> sentencia) {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
@@ -1029,7 +1029,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoPrimaryKey(ArrayList<String[]> sentencia) {
+	private void comandoPrimaryKey(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
     		
@@ -1067,7 +1067,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoDescribe(ArrayList<String[]> sentencia) {
+	private void comandoDescribe(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
@@ -1085,7 +1085,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoHelp(ArrayList<String[]> sentencia) {
+	private void comandoHelp(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
@@ -1103,7 +1103,7 @@ public class Comandos {
 		
 	}
 	
-	public void comandoJoinNatural(ArrayList<String[]> sentencia) {
+	private void comandoJoinNatural(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
