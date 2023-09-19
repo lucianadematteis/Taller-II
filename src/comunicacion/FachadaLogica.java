@@ -485,12 +485,19 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2) {
     	
+		
+		
     	ArrayList <DTOAtributo>  res1= new ArrayList<DTOAtributo>();
     	ArrayList <DTOAtributo> res2 = new ArrayList<DTOAtributo>();
     	res1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1);
 		res2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion2, valorCondicion2);
     	res1.retainAll(res2);
     	
+    	HashSet<DTOAtributo> noHayRepetidos = new HashSet<>(res1));
+
+        ArrayList<DTOAtributo> sinRepetidos = new ArrayList<>(noHayRepetidos);
+		
+		return sinRepetidos;
     	return res1;
     	
     }
