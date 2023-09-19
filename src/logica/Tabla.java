@@ -172,31 +172,36 @@ public class Tabla {
 		   
 	}
 	
-	public void modificarRegistro(LinkedHashMap<String, DTOAtributo> registroCambiar, String nombreAtributo, String valorNuevo) {
-	   
-		for (Entry<String, DTOAtributo> registro : registroCambiar.entrySet()) {
-	    
-			DTOAtributo atributo = registro.getValue();
-	        
-	        if (atributo.getNombreAtributo().equalsIgnoreCase(nombreAtributo)) {
-	        
-	        	if (atributo instanceof DTOEntero) {
-	            
-	        		DTOEntero entero = (DTOEntero) atributo;
-	                int valorEntero = Integer.parseInt(valorNuevo);
-	                entero.setValor(valorEntero);
-	          
-	        	} else if (atributo instanceof DTOCadena) {
-	            
-	        		DTOCadena cadena = (DTOCadena) atributo;
-	                cadena.setDato(valorNuevo);
-	            
-	        	}
-	        }
+	public void modificarRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros, String nombreAtributo, String valorNuevo) {
+		   
+		for (LinkedHashMap<String, Atributo> registro : registros) {
+			
+			this.registros.remove(registro);
+			
+			for(Entry<String, Atributo> registroE : registro.entrySet()) {
+			
+				Atributo atributo = registroE.getValue();
+				
+				if(registroE.getKey().equalsIgnoreCase(nombreAtributo)) {
+				
+					if (atributo instanceof Entero) {
+			        
+						int valorEntero = Integer.parseInt(valorNuevo);
+			            ((Entero) atributo).setValor(valorEntero);
+			        
+					} else if (atributo instanceof Cadena) {
+			        
+						((Cadena) atributo).setDato(valorNuevo);
+			        
+					}
+					
+					this.registros.add(registro);
+				}
+			
+			}
 	    }
 	}
 
-	
 	public boolean tieneClave() {
 		
 		LinkedHashMap<String, Atributo> guia=registros.get(0);
