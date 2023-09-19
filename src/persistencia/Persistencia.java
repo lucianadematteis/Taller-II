@@ -353,7 +353,7 @@ public class Persistencia {
 		            	clave="0";
 		            }
                     
-                    insertar.append(nombreAtributo + ":"+ nulo + ":" + clave + ":" + tipo + ":");
+                    insertar.append(nombreAtributo + ":"+ clave + ":" + nulo + ":" + tipo + ":");
 
                 }
                 
