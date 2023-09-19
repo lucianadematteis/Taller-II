@@ -815,7 +815,7 @@ public class FachadaLogica implements IFachadaLogica {
 	// Método para verificar si dos registros tienen atributos con el mismo nombre
 	private boolean repiteAtributo(Atributo atr1, Atributo atr2) {
 		
-		if(atr1.getNombreAtributo()==atr2.getNombreAtributo()) {
+		if(atr1.getNombreAtributo().equals(atr2.getNombreAtributo())) {
 		
 			if (atr1 instanceof Cadena && atr2 instanceof Cadena) {
 				
