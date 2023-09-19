@@ -842,4 +842,41 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	public ArrayList<String> describeTabla(String nombreTabla){
+		
+		ArrayList<String> resultado = new ArrayList<String>();
+		Tabla tablita = this.obtenerTabla(nombreTabla);
+		
+		LinkedHashMap <String, Atributo> atributos = tablita.getRegistros().get(0);
+		
+		for (Map.Entry<String, Atributo> entry : atributos.entrySet()) {
+			
+			String insertar="";
+			String nombre = entry.getKey();
+			String clave="";
+			String tipo="";
+			String notNull="";
+			
+			if(entry.getValue().getClave()==true)
+				clave = "Clave primaria";
+			else
+				clave = "No es clave primaria";
+			
+			if (entry.getValue() instanceof Cadena)
+				tipo="Cadena";
+			else
+				tipo="Entero";
+			
+			if(entry.getValue().getNulo()==true)
+				notNull="Nulo";
+			else
+				notNull="No es nulo";
+			
+			insertar = nombre + " - " + tipo + " - " + clave + " - " + notNull;
+			resultado.add(insertar);
+			
+		}
+		
+		return resultado;
+	}
 }
