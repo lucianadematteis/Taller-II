@@ -1,6 +1,7 @@
 package comunicacion;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -392,7 +393,12 @@ public class FachadaLogica implements IFachadaLogica {
 		resultadoFinal.addAll(resultado1);
 		resultadoFinal.addAll(resultado2);
 		
-		return resultadoFinal;
+        //HashSet para eliminar duplicados
+        HashSet<DTOAtributo> sinRepetidos = new HashSet<>(resultadoFinal);
+
+        ArrayList<DTOAtributo> arraySinRepetidos = new ArrayList<>(sinRepetidos);
+		
+		return arraySinRepetidos;
 		
 	} 
 	
