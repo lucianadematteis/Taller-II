@@ -207,7 +207,8 @@ public class VentanaPrincipal extends JFrame {
 			}
 		));
 		scrollPane_1.setViewportView(salida);
-		
+		salida.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+    	
 		JButton ejecutar = new JButton("EJECUTAR");
 		ejecutar.setFont(new Font("Segoe UI", Font.BOLD, 13));
 		ejecutar.addActionListener(new ActionListener() {

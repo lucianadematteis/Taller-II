@@ -842,7 +842,7 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
-	public ArrayList<String> describeTabla(String nombreTabla){
+	public ArrayList<String> describeTabla (String nombreTabla){
 		
 		ArrayList<String> resultado = new ArrayList<String>();
 		Tabla tablita = this.obtenerTabla(nombreTabla);

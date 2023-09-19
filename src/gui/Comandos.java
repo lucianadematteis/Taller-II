@@ -51,12 +51,6 @@ public class Comandos {
         
     }
 	
-    private boolean validaSeleccionBD() {
-    	
-    	return logica.bdSeleccionada();
-    	
-    }
-
     private void cargarTablaAtributos(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
     	
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
@@ -1073,8 +1067,9 @@ public class Comandos {
         	
 			if(logica.existeTabla(sentencia.get(0)[1])) {
 			
+				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "INFORMACION");
 				aciertos++;
-				insertarDepuracion("Acierto #" + aciertos, "El usuario quiere obtener una descripcion sobre la tabla: " + sentencia.get(0)[1]);
+				insertarDepuracion("Acierto #" + aciertos, "Se muestra la informacion de la tabla");
         	
 			}else {
 				

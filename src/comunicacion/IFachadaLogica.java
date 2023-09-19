@@ -97,4 +97,6 @@ public interface IFachadaLogica {
 	
 	public void modificarUsuario(DTOUsuario user);
 	
+	public ArrayList<String> describeTabla(String nombreTabla);
+	
 }
