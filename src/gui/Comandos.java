@@ -24,7 +24,6 @@ public class Comandos {
     public Comandos(IFachadaLogica fa) {
     	
     	logica=fa;
-        aciertos = 0;
         inicializarAcciones();
         
     }
@@ -78,12 +77,12 @@ public class Comandos {
     	
     }
     
-    private void cargarTablaString(ArrayList<String> datos, String nombrColumna) {
+    private void cargarTablaString(ArrayList<String> datos, String nombreColumna) {
     	
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
     	model.setRowCount(0);
     	model.setColumnCount(0);
-    	model.addColumn(nombrColumna.toUpperCase());
+    	model.addColumn(nombreColumna.toUpperCase());
 
     	for(String dato : datos) {
     		
@@ -342,7 +341,7 @@ public class Comandos {
 					
 					if(logica.existeTabla(sentencia.get(1)[1])) {
 						
-						insertarDepuracion("Error #N", "La tabla ingresada ya existe para la base de datose seleccionada");
+						insertarDepuracion("Error #11", "La tabla ingresada ya existe para la base de datos seleccionada");
 			        	
 					}else {
 						
@@ -384,7 +383,7 @@ public class Comandos {
 	        	
 			}else if(logica.existeBD(sentencia.get(1)[1])){
 				
-				insertarDepuracion("Error #N", "La base de datos ingresada ya existe para el usuario seleccionado");
+				insertarDepuracion("Error #12", "La base de datos ingresada ya existe para el usuario seleccionado");
 	        	
 			}else {
 				
@@ -408,7 +407,7 @@ public class Comandos {
 				
 				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
 					
-					insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
+					insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
 					
 				}else {
 					
@@ -421,13 +420,13 @@ public class Comandos {
 				
 			}else {
 				
-				insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
 				
 			}
 		
 		}else {
 			
-			insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+			insertarDepuracion("Error #11", "La tabla ingresada no existe para la base de datose seleccionada");
         	
 		}
 		
@@ -441,7 +440,7 @@ public class Comandos {
 				
 				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
 						
-					insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
+					insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
 					
 				}else {
 					
@@ -454,13 +453,13 @@ public class Comandos {
 				
 			}else {
 				
-				insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
 				
 			}
 		
 		}else {
 			
-			insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+			insertarDepuracion("Error #11", "La tabla ingresada no existe para la base de datose seleccionada");
 	    	
 		}
 		
@@ -512,7 +511,7 @@ public class Comandos {
         			
         			}else {
         				
-        				insertarDepuracion("Error #N", "Debe seleccionar la base de datos sobre la cual operar");
+        				insertarDepuracion("Error #15", "Debe seleccionar la base de datos sobre la cual operar");
         				
         			}
         			
@@ -558,7 +557,7 @@ public class Comandos {
 			            			
 			            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
 			            				
-			            				insertarDepuracion("Error #N", "No hay registros que mostrar para la consulta realizada");
+			            				insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
 			            				
 			            			}else {
 			            				
@@ -571,13 +570,13 @@ public class Comandos {
 			            			
 			            		}else {
 			            			
-			            			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+			            			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
 		            				
 			            		}
 			            		
 		            		}else {
 		            			
-		            			insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+		            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
 		                    	
 		            		}
 		            		
@@ -599,7 +598,7 @@ public class Comandos {
 		            			
 		            		}else {
 		            			
-		            			insertarDepuracion("Error #N", "El operador " + sentencia.get(2)[4] + " no es valido");
+		            			insertarDepuracion("Error #5", "El operador " + sentencia.get(2)[4] + " no es valido");
 		                    	
 		            		}
 		            		
@@ -625,7 +624,7 @@ public class Comandos {
 	        	
 			}else {
 				
-				insertarDepuracion("Error #N", "La base de datos ingresada no existe para el usuario logueado");
+				insertarDepuracion("Error #17", "La base de datos ingresada no existe para el usuario logueado");
 	        	
 			}
         	
@@ -678,31 +677,31 @@ public class Comandos {
 	            			        	
 	            					}else {
 	            						
-	            						insertarDepuracion("Error #N", "La calve primaria no puede quedar vacia ni repetirse");
+	            						insertarDepuracion("Error #18", "La clave primaria no puede quedar vacia ni repetirse");
 	            						
 	            					}
 	            					
 	            				}else {
 	            					
-	            					insertarDepuracion("Error #N", "Ingreso como nulos atributos no permitidos");
+	            					insertarDepuracion("Error #19", "Ingreso como nulos atributos no permitidos");
 	                				
 	            				}
 	            				
 	            			}else {
 	            				
-	            				insertarDepuracion("Error #N", "Los datos a ingresar son incorrectos para los atributos de la tabla");
+	            				insertarDepuracion("Error #20", "Los datos a ingresar son incorrectos para los atributos de la tabla");
 	            				
 	            			}
 	            			
 	            		}else {
 	            			
-	            			insertarDepuracion("Error #N", "Los datos no pueden quedar vacios, utilice la palabra NULL");
+	            			insertarDepuracion("Error #21", "Los datos no pueden quedar vacios, utilice la palabra NULL");
 	        				
 	            		}
 	            		
             		}else {
             			
-            			insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
                     	
             		}
             	}
@@ -733,19 +732,19 @@ public class Comandos {
 	        	        	
 	        			}else {
 	        				
-	        				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
+	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
 	        				
 	        			}
 	        			
 	        		}else {
 	        			
-	        			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
 	    				
 	        		}
 	        		
         		}else {
         			
-        			insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
                 	
         		}
         	}
@@ -791,7 +790,7 @@ public class Comandos {
 	            				
 		            				if((logica.tieneClave(sentencia.get(0)[1])) && (logica.obtenerClave(sentencia.get(0)[1]).equalsIgnoreCase((sentencia.get(1)[1])))) {
 		            					
-			            				insertarDepuracion("Error #N", "No es posible cambiar la clave primaria de un registro");
+			            				insertarDepuracion("Error #22", "No es posible cambiar la clave primaria de un registro");
 			            					
 			            			}else if(logica.validaCondicion(sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3])){
 			            				
@@ -803,19 +802,19 @@ public class Comandos {
 				            				
 			            				}else {
 			            					
-			            					insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
+			            					insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
 			            					
 			            				}
 			            				
 			            			}else {
 			            				
-			            				insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+			            				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
 			            				
 			            			}
 		            				
 	            				}else {
 	            					
-	            					insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+	            					insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
 	            		        	
 	            				}
 	            			}
@@ -837,7 +836,7 @@ public class Comandos {
 					
 					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])==null)) {
 						
-						insertarDepuracion("Error #N", "El atributo no existe para tabla ingresada");
+						insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
 					
 					}else {
 						
@@ -849,13 +848,13 @@ public class Comandos {
 		        	
 				}else {
 				
-					insertarDepuracion("Error #N", "La tabla no debe de tener registros para la operacion a realizar");
+					insertarDepuracion("Error #24", "La tabla no debe de tener registros para la operacion a realizar");
 					
 				}
 			
 			}else {
 				
-				insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
 	        	
 			}
 			
@@ -885,19 +884,19 @@ public class Comandos {
 	        				
 	        			}else {
 	        				
-	        				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
+	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
 	        				
 	        			}
 	        			
 	        		}else {
 	        			
-	        			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
 	    				
 	        		}
 	        		
         		}else {
         			
-        			insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
                 	
         		}
         		
@@ -930,25 +929,25 @@ public class Comandos {
 	                            
             				}else {
             					
-            					insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
+            					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
             					
             				}
 	                				
             			}else {
             				
-            				insertarDepuracion("Error #N", "No hay registros que coincidan con los parametros de la busqueda");
+            				insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
             				
             			}
             		
         			}else {
 	        			
-	        			insertarDepuracion("Error #N", "El tipo de atributo y el tipo de condicion no coinciden");
+	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
 	    				
 	        		}
 	        			
         		}else {
         			
-        			insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
                 	
         		}
         	}
@@ -966,7 +965,7 @@ public class Comandos {
 				
 					if(logica.esVacia(sentencia.get(1)[1])) { 
 						
-	    				insertarDepuracion("Error #N", "No hay registros ingresados aun en la tabla");
+	    				insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla");
 	    				
 	    			}else {
 					
@@ -977,13 +976,13 @@ public class Comandos {
 					
 				}else {
 					
-					insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
+					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
 					
 				}
 				
 			}else {
 				
-				insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
 	        	
 			}
         	
@@ -999,7 +998,7 @@ public class Comandos {
 				
 				if(logica.esVacia(sentencia.get(1)[1])) { 
 					
-					insertarDepuracion("Error #N", "No hay registros ingresados aun en la tabla");
+					insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla");
 					
 				}else {
 			
@@ -1011,13 +1010,13 @@ public class Comandos {
 	        	
 			}else {
 				
-				insertarDepuracion("Error #N", "El atributo debe de ser de tipo entero para esta operacion");
+				insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
 				
 			}
 			
 		}else {
 			
-			insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
         	
 		}
 		
@@ -1033,7 +1032,7 @@ public class Comandos {
 					
 					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])==null)) {
 						
-						insertarDepuracion("Error #N", "El atributo no existe para tabla ingresada");
+						insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
 					
 					}else if (logica.tieneClave(sentencia.get(1)[1])){
 						
@@ -1047,13 +1046,13 @@ public class Comandos {
 		        
 				}else {
 				
-					insertarDepuracion("Error #N", "La tabla no debe de tener registros para la operacion a realizar");
+					insertarDepuracion("Error #24", "La tabla no debe de tener registros para la operacion a realizar");
 					
 				}
 				
 			}else {
 				
-				insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datose seleccionada");
+				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
 	        	
 			}
 			
@@ -1073,7 +1072,7 @@ public class Comandos {
         	
 			}else {
 				
-				insertarDepuracion("Error #N", "La tabla ingresada no existe para la base de datos seleccionada");
+				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
 	        	
 			}
     	}
@@ -1091,7 +1090,7 @@ public class Comandos {
         	
 			}else {
 				
-				insertarDepuracion("Error #N", "El comando ingresado no existe o no tiene ayuda asociada");
+				insertarDepuracion("Error #27", "El comando ingresado no existe o no tiene ayuda asociada");
 				
 			}
     	}
@@ -1131,7 +1130,7 @@ public class Comandos {
 			        	
         				}else {
         					
-        					insertarDepuracion("Error #N", "La/s tabla/s ingresada/s no existe/n para la base de datos seleccionada");
+        					insertarDepuracion("Error #16", "La/s tabla/s ingresada/s no existe/n para la base de datos seleccionada");
         		        	
         				}
         			}
@@ -1157,7 +1156,7 @@ public class Comandos {
 		            
 		        } else {
 		        	
-		            insertarDepuracion("Error #N", "Debe seleccionar la base de datos sobre la cual operar");
+		            insertarDepuracion("Error #15", "Debe seleccionar la base de datos sobre la cual operar");
 		            
 		        }
 		        
