@@ -334,6 +334,7 @@ public class FachadaLogica implements IFachadaLogica {
 	public void hacerClave (String nombreTabla, String nombreAtributo) {
 		
 		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setClave(true);
+		hacerNotNull (nombreTabla, nombreAtributo);
 				
 	}
 	
