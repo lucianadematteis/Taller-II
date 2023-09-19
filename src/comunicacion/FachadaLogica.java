@@ -703,4 +703,167 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	
+	private ArrayList<Atributo> obtenerauxiliar(Tabla tabla1, Tabla tabla2) {
+		ArrayList<Atributo> resultado = new ArrayList< Atributo> ();
+		
+		ArrayList<LinkedHashMap<String, Atributo>> reg1 = new ArrayList<LinkedHashMap<String, Atributo>>();
+		ArrayList<LinkedHashMap<String, Atributo>> reg2 = new ArrayList<LinkedHashMap<String, Atributo>>();
+		
+		if(tabla1.getRegistros().size() > tabla2.getRegistros().size()) {
+			reg1 = tabla1.getRegistros();
+			reg2 = tabla2.getRegistros();
+	   
+		}
+		else {
+			 reg2 = tabla1.getRegistros();
+			 reg1 = tabla2.getRegistros();
+			
+		}
+	   reg2.remove(0);
+	   reg1.remove(0);
+	   
+	    for (int i=0; i<reg1.size(); i++) {
+	    	
+	    	for (int j=0; j<reg2.size(); j++) {
+	    	
+	    		
+
+	    	for(Map.Entry<String, Atributo> entry1 : reg1.get(i).entrySet()) {
+	    		
+        		for(Map.Entry<String, Atributo> entry2 : reg2.get(j).entrySet()) {
+	        		if (repiteAtributo(entry1.getValue(), entry2.getValue())) {
+	                resultado.add(entry2.getValue());
+	                
+	        		}
+	             
+	                
+	                
+	                }
+    
+	            }
+	        }
+	    }
+return resultado;
+    		
+    	}
+    	
+    	
+	public ArrayList<DTOAtributo> joinNatural(String tabla1, String tabla2, String busqueda){
+		Tabla tab1 = obtenerTabla(tabla1);
+		Tabla tab2 = obtenerTabla(tabla2);
+		ArrayList<Atributo> buscar = new ArrayList<Atributo> ();
+		ArrayList<DTOAtributo> resultado = new ArrayList<DTOAtributo>();
+		buscar = obtenerauxiliar(tab1, tab2);
+		
+		ArrayList<LinkedHashMap<String, Atributo>> reg = new ArrayList<LinkedHashMap<String, Atributo>>();
+		
+		
+		
+		if (existeAtributo(busqueda, tab1.getNombreTabla())) {
+			
+			reg = tab1.getRegistros();
+			
+		}
+		if (existeAtributo(busqueda, tab2.getNombreTabla())) {
+			
+			reg = tab2.getRegistros();
+		}
+			for (int i=0; i<buscar.size(); i++) {
+				Atributo atr = buscar.get(i);
+				for(LinkedHashMap<String, Atributo> registro : reg) {
+					if (registro.get(atr.getNombreAtributo()) instanceof Cadena) {
+						
+						
+						Cadena cadena1 = (Cadena) registro.get(atr.getNombreAtributo());//Da problemas
+						Cadena cad = (Cadena) atr;
+						
+						if(cad.getDato().equals(cadena1.getDato())) {
+							if (registro.get(busqueda) instanceof Cadena) {
+							Cadena ing = (Cadena)registro.get(busqueda);
+							DTOCadena dto = new DTOCadena (ing);
+							resultado.add(dto);
+							
+						}
+							if (registro.get(busqueda) instanceof Entero) {
+							Entero ing = (Entero)registro.get(busqueda);
+							DTOEntero dto = new DTOEntero (ing);
+							resultado.add(dto);
+							
+						}
+						}
+					}
+					else
+					
+					{
+					if (registro.get(atr.getNombreAtributo()) instanceof Entero) {
+						
+						Entero entero1 = (Entero) registro.get(atr.getNombreAtributo());//Da problemas
+						Entero ent = (Entero) atr;
+						
+						if (ent.getValor() == entero1.getValor()) {
+							
+							if (registro.get(busqueda) instanceof Cadena) {
+							Cadena ing = (Cadena)registro.get(busqueda);
+							DTOCadena dto = new DTOCadena (ing);
+							resultado.add(dto);
+							
+						}
+							if (registro.get(busqueda) instanceof Entero) {
+							Entero ing = (Entero)registro.get(busqueda);
+							DTOEntero dto = new DTOEntero (ing);
+							resultado.add(dto);
+							
+						}
+							}
+						
+						
+						
+						}
+					}
+					}
+					
+				}
+
+		return resultado;
+	}
+	
+	private boolean existeAtributo(String atributo, String nombreTabla) {
+		
+		if (usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(atributo) == null) {
+		return false;
+		}
+		else
+			return true;
+	}
+
+	// Método para verificar si dos registros tienen atributos con el mismo nombre
+	private boolean repiteAtributo(Atributo atr1, Atributo atr2) {
+		
+		if(atr1.getNombreAtributo()==atr2.getNombreAtributo()) {
+		
+		if (atr1 instanceof Cadena && atr2 instanceof Cadena) {
+			
+			Cadena cadena1 = (Cadena) atr1;
+			Cadena cadena2 = (Cadena) atr2;
+			
+			return (cadena1.getDato().equals(cadena2.getDato()));
+		}
+		else
+		if (atr1 instanceof Entero && atr1 instanceof Entero) {
+		
+			
+			Entero entero1 = (Entero) atr1;
+			Entero entero2 = (Entero) atr2;
+			
+			return (entero1.getValor()==entero2.getValor());
+			
+		}
+		}
+		else {
+		return false;
+		}
+		return false;
+	}
+	
+	
 }
