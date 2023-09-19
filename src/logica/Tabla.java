@@ -35,12 +35,6 @@ public class Tabla {
 		
 	}
 	
-	public void setNombreTabla(String nombreTabla) {
-		
-		this.nombreTabla = nombreTabla;
-		
-	}
-
 	public ArrayList<LinkedHashMap<String, Atributo>> getRegistros() {
 		
 		return registros;
@@ -193,7 +187,6 @@ public class Tabla {
 		}
     }
 	
-
 	public boolean tieneClave() {
 		
 		LinkedHashMap<String, Atributo> guia=registros.get(0);
@@ -303,14 +296,6 @@ public class Tabla {
 	     
 		return registrosObtenidos;
 		
-	}
-	
-	public boolean buscarAtributo(String nombreAtributo) {
-		 
-		if  (registros.get(0).get(nombreAtributo)==null)
-			return false;
-		else
-			return true;
 	}
 
 	public void insertarAtributo (Atributo atributo) {

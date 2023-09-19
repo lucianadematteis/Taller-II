@@ -86,12 +86,6 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public void setUsuarios(LinkedHashMap<String, Usuario> usuarios) {
-
-		this.usuarios = usuarios;
-
-	}
-
 	public void persistirDatos() {
 
 		persistencia.persistirTodo(usuarios);
@@ -157,23 +151,6 @@ public class FachadaLogica implements IFachadaLogica {
 	public int obtenerCantidad(ArrayList<Integer> valores) {
 
 		return valores.size();
-
-	}
-
-	// recibe un arraylist con los valores y devuelve el promedio
-	public int obtenerPromedio(ArrayList<Integer> valores) {
-
-		int suma = 0;
-
-		for (int i = 0; i < valores.size(); i++) {
-
-			suma += valores.get(i);
-
-		}
-
-		int promedio = suma / valores.size();
-
-		return promedio;
 
 	}
 
@@ -287,7 +264,7 @@ public class FachadaLogica implements IFachadaLogica {
 	        
 	    }
 
-	    return true; // Si el tipo no es "entero", asumimos que cualquier valor de cadena es válido
+	    return true; 
 	    
 	}
 	
@@ -499,15 +476,6 @@ public class FachadaLogica implements IFachadaLogica {
 	public boolean usuarioTieneBase(String nombreBaseDatos) {
 		
 		if(usuarios.get(usuario).getBasesDatos().containsKey(nombreBaseDatos))
-			return true;
-		else
-			return false;
-		
-	}
-
-	public boolean baseTieneTabla(String tabla) {
-		
-		if(usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().containsKey(tabla))
 			return true;
 		else
 			return false;

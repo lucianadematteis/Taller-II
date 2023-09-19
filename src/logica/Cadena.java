@@ -58,7 +58,6 @@ public class Cadena extends Atributo {
 	
 	}
 	
-	
 	public int hashCode() {
 		
 	    int result = super.hashCode();

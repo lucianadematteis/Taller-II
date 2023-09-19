@@ -3,9 +3,6 @@ package comunicacion;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import logica.Atributo;
-import logica.Tabla;
-
 public interface IFachadaLogica {
 	
 	public boolean bdSeleccionada();
@@ -99,4 +96,5 @@ public interface IFachadaLogica {
 	public void recuperarDatos();
 	
 	public void modificarUsuario(DTOUsuario user);
+	
 }

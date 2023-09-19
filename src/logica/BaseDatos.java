@@ -32,12 +32,6 @@ public class BaseDatos {
 		
 	}
 
-	public void setNombreBD(String nombreBD) {
-		
-		this.nombreBD = nombreBD;
-		
-	}
-
 	public Map<String, Tabla> getTablas() {
 		
 		return tablas;
@@ -47,13 +41,6 @@ public class BaseDatos {
 	public void setTablas(LinkedHashMap<String, Tabla> tablas) {
 		
 		this.tablas = tablas;
-		
-	}
-	
-	//Dai bool buscar en tablas objeto tabla
-	public boolean buscarTabla(String nombreTabla) {	
-		
-		return tablas.get(nombreTabla) != null; 
 		
 	}
 	
