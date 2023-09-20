@@ -426,7 +426,7 @@ public class Comandos {
 		
 		}else {
 			
-			insertarDepuracion("Error #11", "La tabla ingresada no existe para la base de datose seleccionada");
+			insertarDepuracion("Error #11", "La tabla ingresada no existe para la base de datos seleccionada");
         	
 		}
 		
@@ -459,7 +459,7 @@ public class Comandos {
 		
 		}else {
 			
-			insertarDepuracion("Error #11", "La tabla ingresada no existe para la base de datose seleccionada");
+			insertarDepuracion("Error #11", "La tabla ingresada no existe para la base de datos seleccionada");
 	    	
 		}
 		
@@ -576,7 +576,7 @@ public class Comandos {
 			            		
 		            		}else {
 		            			
-		            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
+		            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
 		                    	
 		            		}
 		            		
@@ -701,7 +701,7 @@ public class Comandos {
 	            		
             		}else {
             			
-            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
+            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
                     	
             		}
             	}
@@ -744,7 +744,7 @@ public class Comandos {
 	        		
         		}else {
         			
-        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
+        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
                 	
         		}
         	}
@@ -814,7 +814,7 @@ public class Comandos {
 		            				
 	            				}else {
 	            					
-	            					insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
+	            					insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
 	            		        	
 	            				}
 	            			}
@@ -854,7 +854,7 @@ public class Comandos {
 			
 			}else {
 				
-				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
+				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
 	        	
 			}
 			
@@ -896,7 +896,7 @@ public class Comandos {
 	        		
         		}else {
         			
-        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
+        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
                 	
         		}
         		
@@ -947,7 +947,7 @@ public class Comandos {
 	        			
         		}else {
         			
-        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
+        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
                 	
         		}
         	}
@@ -982,7 +982,7 @@ public class Comandos {
 				
 			}else {
 				
-				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
+				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
 	        	
 			}
         	
@@ -1016,7 +1016,7 @@ public class Comandos {
 			
 		}else {
 			
-			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
+			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
         	
 		}
 		
@@ -1052,7 +1052,7 @@ public class Comandos {
 				
 			}else {
 				
-				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datose seleccionada");
+				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
 	        	
 			}
 			
