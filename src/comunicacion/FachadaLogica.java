@@ -708,10 +708,12 @@ public class FachadaLogica implements IFachadaLogica {
 		ArrayList<LinkedHashMap<String, Atributo>> reg2 = new ArrayList<LinkedHashMap<String, Atributo>>();
 		
 		if(tabla1.getRegistros().size() > tabla2.getRegistros().size()) {
+			
 			reg1 = tabla1.getRegistros();
 			reg2 = tabla2.getRegistros();
 	   
 		}else {
+			
 			 reg2 = tabla1.getRegistros();
 			 reg1 = tabla2.getRegistros();
 			
