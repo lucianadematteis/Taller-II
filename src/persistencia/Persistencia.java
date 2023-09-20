@@ -771,7 +771,7 @@ public LinkedHashMap<String, String> recuperarAyuda() {
 		
 		String contenidoString = contenidoArchivo.toString();
 		String[] lineas = contenidoString.split("\\|");// separador
-		int cantLineas = lineas.length;// obtener tamaño del arreglo
+		int cantLineas = lineas.length;// obtener tamaï¿½o del arreglo
 
 		LinkedHashMap<String, String> cargado=new LinkedHashMap<String, String>();
 
@@ -786,7 +786,7 @@ public LinkedHashMap<String, String> recuperarAyuda() {
 	}
 
 
-}
+
 
 
 	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
