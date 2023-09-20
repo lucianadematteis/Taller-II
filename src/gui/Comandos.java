@@ -552,27 +552,35 @@ public class Comandos {
 		            	if(validaSentenciasWhereComun(sentencia)) {
 		            		
 		            		if(logica.existeTabla(sentencia.get(1)[1])) {
-		            		
-			            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
-			            			
-			            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+		            			
+		            			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
+		                			
+				            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+				            			
+				            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+				            				
+				            				insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
+				            				
+				            			}else {
+				            				
+				            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]);
+								        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
+				            				aciertos++;
+								        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa");
+								        	
+				            			}
+				            			
+				            		}else {
+				            			
+				            			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
 			            				
-			            				insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
-			            				
-			            			}else {
-			            				
-			            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]);
-							        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
-			            				aciertos++;
-							        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa");
-							        	
-			            			}
-			            			
-			            		}else {
-			            			
-			            			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
-		            				
-			            		}
+				            		}
+				            		
+		            			}else {
+		    	        			
+		            				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+		    	        		
+		            			}
 			            		
 		            		}else {
 		            			
@@ -918,31 +926,38 @@ public class Comandos {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
-	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
-	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que hayan registros que mostrar para la condicion dada
-	        				
-	        				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
-	                					
-	        					aciertos++;
-	                	       	insertarDepuracion("Acierto #" + aciertos, "El promedio de los registros consultados es: " + logica.calcularPromedioRegistros(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]));
-	                            
-            				}else {
-            					
-            					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
-            					
-            				}
-	                				
-            			}else {
-            				
-            				insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
-            				
-            			}
-            		
+        			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
+        			
+		        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+		        			
+		        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que hayan registros que mostrar para la condicion dada
+		        				
+		        				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
+		                					
+		        					aciertos++;
+		                	       	insertarDepuracion("Acierto #" + aciertos, "El promedio de los registros consultados es: " + logica.calcularPromedioRegistros(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]));
+		                            
+	            				}else {
+	            					
+	            					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
+	            					
+	            				}
+		                				
+	            			}else {
+	            				
+	            				insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
+	            				
+	            			}
+	            		
+	        			}else {
+		        			
+		        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
+		    				
+		        		}
+		        		
         			}else {
 	        			
-	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
-	    				
+        				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
 	        		}
 	        			
         		}else {
@@ -960,24 +975,32 @@ public class Comandos {
 		if(validaSentenciasDosLineas(sentencia)) {
     		
 			if(logica.existeTabla(sentencia.get(1)[1])) {
-			
-				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
 				
-					if(logica.esVacia(sentencia.get(1)[1])) { 
+				if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
+        			
+					if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
+					
+						if(logica.esVacia(sentencia.get(1)[1])) { 
+							
+		    				insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla");
+		    				
+		    			}else {
 						
-	    				insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla");
-	    				
-	    			}else {
-					
-    					aciertos++; 
-        				insertarDepuracion("Acierto #" + aciertos, "El valor maximo de los registros consultados es: " + logica.obtenerMaximo(sentencia.get(1)[1], sentencia.get(0)[1]));
-        				
-	    			}
-					
+	    					aciertos++; 
+	        				insertarDepuracion("Acierto #" + aciertos, "El valor maximo de los registros consultados es: " + logica.obtenerMaximo(sentencia.get(1)[1], sentencia.get(0)[1]));
+	        				
+		    			}
+						
+					}else {
+						
+						insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
+						
+					}
+				
 				}else {
-					
-					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
-					
+        			
+    				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+        		
 				}
 				
 			}else {
@@ -994,25 +1017,32 @@ public class Comandos {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
-			if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
+			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
+    		
+				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
+					
+					if(logica.esVacia(sentencia.get(1)[1])) { 
+						
+						insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla");
+						
+					}else {
 				
-				if(logica.esVacia(sentencia.get(1)[1])) { 
-					
-					insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla");
-					
+	    				aciertos++;
+	    				insertarDepuracion("Acierto #" + aciertos, "El valor minimo de los registros consultados es: " + logica.obtenerMinimo(sentencia.get(1)[1], sentencia.get(0)[1]));
+	    		        
+	        				
+	        		}
+		        	
 				}else {
-			
-    				aciertos++;
-    				insertarDepuracion("Acierto #" + aciertos, "El valor minimo de los registros consultados es: " + logica.obtenerMinimo(sentencia.get(1)[1], sentencia.get(0)[1]));
-    		        
-        				
-        		}
-	        	
+					
+					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
+					
+				}
+				
 			}else {
-				
-				insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
-				
-			}
+    			
+				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+    		}
 			
 		}else {
 			
@@ -1030,20 +1060,23 @@ public class Comandos {
 			
 				if(logica.esVacia(sentencia.get(1)[1])) { 
 					
-					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])==null)) {
+					if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
 						
-						insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
-					
-					}else if (logica.tieneClave(sentencia.get(1)[1])){
+						if (logica.tieneClave(sentencia.get(1)[1])){
+							
+							logica.quitarClave(sentencia.get(1)[1]);
+							
+						}
 						
-						logica.quitarClave(sentencia.get(1)[1]);
+						logica.hacerClave(sentencia.get(1)[1], sentencia.get(0)[1]);
+						aciertos++;
+			        	insertarDepuracion("Acierto #" + aciertos, "Se hizo clave primaria con exito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
 						
-					}
+					}else {
+	        			
+        				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+	        		}
 						
-					logica.hacerClave(sentencia.get(1)[1], sentencia.get(0)[1]);
-					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Se hizo clave primaria con exito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
-					
 				}else {
 				
 					insertarDepuracion("Error #24", "La tabla no debe de tener registros para la operacion a realizar");

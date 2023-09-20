@@ -216,8 +216,14 @@ public class FachadaLogica implements IFachadaLogica {
 
 	public DTOAtributo obtenerAtributo(String nombreAtributo, String nombreTabla) {
 
-		DTOAtributo atr =usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistrosDTO().get(0).get(nombreAtributo);
+		DTOAtributo atr = null;
+		
+		if(!(usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistrosDTO().get(0).get(nombreAtributo) != null)){
+		
+			atr = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistrosDTO().get(0).get(nombreAtributo);
 
+		}
+	
 		return atr;
 		
 	}
@@ -350,24 +356,19 @@ public class FachadaLogica implements IFachadaLogica {
 		double promedio = 0.0;
 	    int suma = 0;
 	    ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+	    ArrayList<DTOAtributo> seleccion = this.obtenerTabla(nombreTabla).seleccionarAtributo(registros, nombreAtributo);
+	    int cantidadValores = seleccion.size(); 
 
-	    int cantidadValores = 0; 
-
-	    for (LinkedHashMap<String, DTOAtributo> registro : registros) {
-	    
-	    	for (Entry<String, DTOAtributo> dato : registro.entrySet()) {
-	        
-	    		DTOAtributo at = dato.getValue();
-	            
-	            if (at instanceof DTOEntero) {
-	            
-	            	DTOEntero atributo = (DTOEntero) at;
-	                int valor = atributo.getValor();
-	                suma += valor;
-	                cantidadValores++;
-	            
-	            }
-	        }
+	    for (DTOAtributo dato : seleccion) {
+			
+            if (dato instanceof DTOEntero) {
+            
+            	DTOEntero atributo = (DTOEntero) dato;
+                int valor = atributo.getValor();
+                suma += valor;
+            
+            }
+            
 	    }
 
 	    if (cantidadValores > 0) {
@@ -375,12 +376,10 @@ public class FachadaLogica implements IFachadaLogica {
 	    	promedio = (double) suma / cantidadValores;
 	    
 	    }
-
+	    
 	    return promedio;
 	    
 	}
-
-
 
 	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2) {
 		
@@ -394,9 +393,12 @@ public class FachadaLogica implements IFachadaLogica {
         HashSet<DTOAtributo> elementosUnicos = new HashSet<>(resultado1);
 
         for (DTOAtributo elemento : resultado2) {
+        	
             if (!elementosUnicos.contains(elemento)) {
+            	
                 resultado1.add(elemento);
                 elementosUnicos.add(elemento);
+                
             }
         }
         
