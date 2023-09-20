@@ -754,26 +754,25 @@ public class FachadaLogica implements IFachadaLogica {
 			
 			reg = tab2.getRegistros();
 		}
-		
 		for (int i=0; i<buscar.size(); i++) {
-			
+			boolean yaAgregado = false;
 			Atributo atr = buscar.get(i);
 			
 			for(LinkedHashMap<String, Atributo> registro : reg) {
 					
 				if (registro.get(atr.getNombreAtributo()) instanceof Cadena) {
 					
-					Cadena cadena1 = (Cadena) registro.get(atr.getNombreAtributo());//Da problemas
+					Cadena cadena1 = (Cadena) registro.get(atr.getNombreAtributo());
 					Cadena cad = (Cadena) atr;
 						
-					if(cad.getDato().equals(cadena1.getDato())) {
-							
+					if(cad.getDato().equals(cadena1.getDato()) && yaAgregado==false) {
+											
 						if (registro.get(busqueda) instanceof Cadena) {
 							
 							Cadena ing = (Cadena)registro.get(busqueda);
 							DTOCadena dto = new DTOCadena (ing);
 							resultado.add(dto);
-							
+							yaAgregado=true;
 						}
 						
 						if (registro.get(busqueda) instanceof Entero) {
@@ -781,6 +780,7 @@ public class FachadaLogica implements IFachadaLogica {
 							Entero ing = (Entero)registro.get(busqueda);
 							DTOEntero dto = new DTOEntero (ing);
 							resultado.add(dto);
+							yaAgregado=true;
 							
 						}
 					}
@@ -788,17 +788,17 @@ public class FachadaLogica implements IFachadaLogica {
 				}else{
 					
 					if (registro.get(atr.getNombreAtributo()) instanceof Entero) {
-						
-						Entero entero1 = (Entero) registro.get(atr.getNombreAtributo());//Da problemas
+						Entero entero1 = (Entero) registro.get(atr.getNombreAtributo());
 						Entero ent = (Entero) atr;
 						
-						if (ent.getValor() == entero1.getValor()) {
+						if (ent.getValor() == entero1.getValor() && yaAgregado==false) {
 							
 							if (registro.get(busqueda) instanceof Cadena) {
 								
 								Cadena ing = (Cadena)registro.get(busqueda);
 								DTOCadena dto = new DTOCadena (ing);
 								resultado.add(dto);
+								yaAgregado=true;
 								
 							}
 							
@@ -807,6 +807,7 @@ public class FachadaLogica implements IFachadaLogica {
 								Entero ing = (Entero)registro.get(busqueda);
 								DTOEntero dto = new DTOEntero (ing);
 								resultado.add(dto);
+								yaAgregado=true;
 								
 							}
 						}		
