@@ -193,7 +193,7 @@ public class Tabla {
 		
 		for (Entry<String, Atributo> atributo : guia.entrySet()) {
 			
-			if(atributo.getValue().getClave()) {
+			if(atributo.getValue().getClave()==true) {
 				
 				return true;
 				
@@ -349,27 +349,5 @@ public class Tabla {
 		return this.getRegistros().size()==1;
 		
 	}
-	
-	public int obtenerPosClave() {
-		
-		LinkedHashMap<String, Atributo> guia = this.getRegistros().get(0);
-		String clave = this.obtenerClave();
-		
-		int posClave=0;
-		
-		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
-			
-			if(!(atriGuia.getKey().equals(clave))) {
-				
-				posClave++;
-				
-			}
-			
-		}
-	
-		return posClave;
-		
-	}
-	
 	
 }

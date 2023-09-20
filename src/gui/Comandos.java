@@ -1043,7 +1043,7 @@ public class Comandos {
 					logica.hacerClave(sentencia.get(1)[1], sentencia.get(0)[1]);
 					aciertos++;
 		        	insertarDepuracion("Acierto #" + aciertos, "Se hizo clave primaria con exito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
-		        
+					
 				}else {
 				
 					insertarDepuracion("Error #24", "La tabla no debe de tener registros para la operacion a realizar");
