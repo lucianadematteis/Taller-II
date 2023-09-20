@@ -350,6 +350,26 @@ public class Tabla {
 		
 	}
 	
+	public int obtenerPosClave() {
+		
+		LinkedHashMap<String, Atributo> guia = this.getRegistros().get(0);
+		String clave = this.obtenerClave();
+		
+		int posClave=0;
+		
+		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
+			
+			if(!(atriGuia.getKey().equals(clave))) {
+				
+				posClave++;
+				
+			}
+			
+		}
+	
+		return posClave;
+		
+	}
 	
 	
 }

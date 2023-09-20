@@ -386,22 +386,24 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		ArrayList <DTOAtributo> resultado1 = new ArrayList <DTOAtributo>();
 		ArrayList <DTOAtributo> resultado2 = new ArrayList <DTOAtributo>();
-		ArrayList <DTOAtributo> resultadoFinal = new ArrayList <DTOAtributo>();
 	
 		resultado1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1);
 		resultado2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondcion2, valorCondicion2);
+	
 		
-		resultadoFinal.addAll(resultado1);
-		resultadoFinal.addAll(resultado2);
-		
-        //HashSet para eliminar duplicados
-        HashSet<DTOAtributo> sinRepetidos = new HashSet<>(resultadoFinal);
+        HashSet<DTOAtributo> elementosUnicos = new HashSet<>(resultado1);
 
-        ArrayList<DTOAtributo> arraySinRepetidos = new ArrayList<>(sinRepetidos);
+        for (DTOAtributo elemento : resultado2) {
+            if (!elementosUnicos.contains(elemento)) {
+                resultado1.add(elemento);
+                elementosUnicos.add(elemento);
+            }
+        }
+        
+        
+		return resultado1;
 		
-		return arraySinRepetidos;
-		
-	} 
+	}
 	
 	public boolean existeUsuario() {
 		
@@ -569,7 +571,7 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
 			
-			if((atributos.get(i).equalsIgnoreCase("NULL")) && (atriGuia.getValue().getNulo()==false)) {
+			if((atributos.get(i).equalsIgnoreCase("NULL")) && (atriGuia.getValue().getNulo()==true)) {
 			
 				return false;
 			
@@ -593,7 +595,7 @@ public class FachadaLogica implements IFachadaLogica {
 			String clave = tablita.obtenerClave();
 			
 			int i=0;
-			int posClave =0;
+			int posClave=tablita.obtenerPosClave();
 			
 			for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
 				
@@ -605,16 +607,12 @@ public class FachadaLogica implements IFachadaLogica {
 					
 					}
 					
-				}else {
-					
-					posClave++;
-					
 				}
 				
 				i++;
 				
 			}
-				
+			
 			if(!(tablita.obtenerRegistros(clave, atributos.get(posClave)).isEmpty())) { //Si la clave se repite
 				
 				return false;
