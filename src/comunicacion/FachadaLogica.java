@@ -569,7 +569,7 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
 			
-			if((atributos.get(i).equalsIgnoreCase("NULL")) && (atriGuia.getValue().getNulo()==false)) {
+			if((atributos.get(i).equalsIgnoreCase("NULL")) && (atriGuia.getValue().getNulo()==true)) {
 			
 				return false;
 			
@@ -593,7 +593,7 @@ public class FachadaLogica implements IFachadaLogica {
 			String clave = tablita.obtenerClave();
 			
 			int i=0;
-			int posClave =0;
+			int posClave=tablita.obtenerPosClave();
 			
 			for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
 				
@@ -605,16 +605,12 @@ public class FachadaLogica implements IFachadaLogica {
 					
 					}
 					
-				}else {
-					
-					posClave++;
-					
 				}
 				
 				i++;
 				
 			}
-				
+			
 			if(!(tablita.obtenerRegistros(clave, atributos.get(posClave)).isEmpty())) { //Si la clave se repite
 				
 				return false;
