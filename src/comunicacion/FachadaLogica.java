@@ -612,9 +612,13 @@ public class FachadaLogica implements IFachadaLogica {
 						
 						}
 						
-						if(!(tablita.obtenerRegistros(clave, atributos.get(i)).isEmpty())) { //Si la clave se repite
+						if(!(tablita.obtenerRegistros(atriGuia.getKey(), atributos.get(i)).isEmpty())) { //Si la clave se repite
 							
 							return false;
+							
+						}else {
+							
+							return true;
 							
 						}
 						
