@@ -739,20 +739,21 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 		
 	}
 	
-	public LinkedHashMap<String, String> recuperarAyuda() {
+public LinkedHashMap<String, String> recuperarAyuda() {
 		
 		String ruta = obtenerRutaAyuda();
 		
+		
 		StringBuilder contenidoArchivo = new StringBuilder();
-		
+	
 		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
-		
+			
 			String linea;
 		
 			while ((linea = br.readLine()) != null) {
-		
+			
 				contenidoArchivo.append(linea);
-				contenidoArchivo.append("\n");
+				//contenidoArchivo.append("\n");
 		
 			}
 		
@@ -766,22 +767,27 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
         	
         }
 		
+		
+		
 		String contenidoString = contenidoArchivo.toString();
 		String[] lineas = contenidoString.split("\\|");// separador
-		int cantLineas = lineas.length;
-		
+		int cantLineas = lineas.length;// obtener tamaño del arreglo
+
 		LinkedHashMap<String, String> cargado=new LinkedHashMap<String, String>();
 
-		for (int i = 0; i < cantLineas-1; i++) {
-		
+		for (int i = 0; i < cantLineas; i++) {
 			String[] comandos = lineas[i].split(":");
 			cargado.put(comandos[0],comandos[1]);
-			
 		}
-
+     
+		
 		return cargado;
 		
 	}
+
+
+}
+
 
 	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
 
