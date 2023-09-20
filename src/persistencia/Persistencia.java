@@ -334,7 +334,7 @@ public class Persistencia {
 		            	tipo="Entero";
 		          
 		            }
-                   
+                   System.out.println(atributo.getNombreAtributo());
                     if (atributo.getNulo()) {
 		             
                     	nulo="1";
@@ -619,7 +619,7 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 			
 			resultado = new Cadena(nombre, clave, esNulo, "");
 			
-		}else {
+		}else if(tipoDato.equals("Entero")){
 			
 			resultado = new Entero(nombre, clave, esNulo, 0);
 			
@@ -638,6 +638,12 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 			String linea;
 			
             while ((linea = br.readLine()) != null) {
+            	
+            	if (linea.endsWith("|")) {
+            		
+                    linea = linea.substring(0, linea.length() - 1);
+                    
+                }
             	
                 String[] partes = linea.split(":");
                 
