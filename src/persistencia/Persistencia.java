@@ -649,7 +649,8 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
                         String nulo = partes[i + 1];
                         String pk = partes[i + 2];
                         String tipo = partes[i + 3];
-
+                        tipo =tipo.replace("|","");
+                        
                         Atributo atributoResultante=recuperarAtributo(nombreAtributo, nulo, pk, tipo);
                         
                         resultado.put(nombreAtributo, atributoResultante);
