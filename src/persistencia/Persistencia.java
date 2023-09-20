@@ -334,7 +334,7 @@ public class Persistencia {
 		            	tipo="Entero";
 		          
 		            }
-                    
+                   System.out.println(atributo.getNombreAtributo());
                     if (atributo.getNulo()) {
 		             
                     	nulo="1";
