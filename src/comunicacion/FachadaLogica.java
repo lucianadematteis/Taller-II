@@ -216,15 +216,19 @@ public class FachadaLogica implements IFachadaLogica {
 
 	public DTOAtributo obtenerAtributo(String nombreAtributo, String nombreTabla) {
 
-		DTOAtributo atr = null;
+		LinkedHashMap<String, DTOAtributo> guia = this.obtenerTabla(nombreTabla).getRegistrosDTO().get(0);
 		
-		if(!(usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistrosDTO().get(0).get(nombreAtributo) != null)){
-		
-			atr = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistrosDTO().get(0).get(nombreAtributo);
-
+		for (Entry<String, DTOAtributo> entry : guia.entrySet()) {
+			
+			if(entry.getKey().equalsIgnoreCase(nombreAtributo)) {
+				
+				return entry.getValue();
+				
+			}
+			
 		}
-	
-		return atr;
+		
+		return null;
 		
 	}
 	

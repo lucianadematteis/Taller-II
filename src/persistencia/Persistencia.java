@@ -619,7 +619,7 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 			
 			resultado = new Cadena(nombre, clave, esNulo, "");
 			
-		}else {
+		}else if(tipoDato.equals("Entero")){
 			
 			resultado = new Entero(nombre, clave, esNulo, 0);
 			
