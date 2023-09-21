@@ -224,6 +224,15 @@ public class VentanaPrincipal extends JFrame {
 		        comandos.ejecutarComando(comando, arregloLinea);
 		        
 		        fa.persistirDatos();
+		        
+		        
+		        if (Login.demo && Comandos.usos == 4 ){
+		        	fa.liberarMemoriaBaseDatos();
+		        	fa.liberarMemoriaUsuario();
+		        	LimiteAlcanzado li = new LimiteAlcanzado(fa);
+		        	li.setVisible(true);
+		        	dispose();
+		        }
 		         
 			} 
 			
