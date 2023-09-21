@@ -1199,7 +1199,7 @@ public class Comandos {
         				
         				if((logica.existeTabla(sentencia.get(1)[1])) && (logica.existeTabla(sentencia.get(1)[2]))) {
         					
-        					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) && (logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[2])!=null)) {
+        					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) || (logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[2])!=null)) {
         						
         						cargarTablaAtributos(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]), sentencia.get(0)[1]);
             					aciertos++;
@@ -1207,7 +1207,7 @@ public class Comandos {
     			        	
         					}else {
         	        			
-                				insertarDepuracion("Error #23", "El atributo no existe en alguna de las tablas ingresadas");
+                				insertarDepuracion("Error #23", "El atributo no existe en ninguna de las tablas ingresadas");
         	        		}
         					
         				}else {
