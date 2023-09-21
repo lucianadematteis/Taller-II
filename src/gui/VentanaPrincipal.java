@@ -266,6 +266,10 @@ public class VentanaPrincipal extends JFrame {
 		
 		cargarBasesDatos(fa.obtenerBasesNom());
 		
+		if(Login.demo) {
+			VentanaPrincipal.bdActual.setText("Base de datos: base de prueba");
+		}
+		
 	}
 	
 	public static void cargarBasesDatos(ArrayList<String> nBD) {
