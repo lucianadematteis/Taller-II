@@ -156,9 +156,9 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public ArrayList<DTOAtributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion){
+	public ArrayList<DTOAtributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion, String operador){
 
-		ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion, operador);
 
 		return this.obtenerTabla(nombreTabla).seleccionarAtributo(registros, nombreAtributo);
 
@@ -175,11 +175,11 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	public void borrarRegistro(String nombreTabla, String nombreAtributoCondicion, String valorCondicion) {
+	public void borrarRegistro(String nombreTabla, String nombreAtributoCondicion, String valorCondicion, String operador) {
 
 		Tabla tabla = this.obtenerTabla(nombreTabla);
 		
-		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosEliminar = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosEliminar = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion, operador);
 		
 		 for (LinkedHashMap<String, DTOAtributo> registro : registrosEliminar) {
 	            
@@ -189,10 +189,10 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 
-	public void cambiarRegistro(String nombreTabla, String atributoCambiar, String valorNuevo, String nombreAtributoCondicion, String valorCondicion) {
+	public void cambiarRegistro(String nombreTabla, String atributoCambiar, String valorNuevo, String nombreAtributoCondicion, String valorCondicion, String operador) {
 
 		Tabla tabla = this.obtenerTabla(nombreTabla);
-		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosCambiar = tabla.obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosCambiar = tabla.obtenerRegistros(nombreAtributoCondicion, valorCondicion, operador);
 		
 		for (LinkedHashMap<String, DTOAtributo> registro : registrosCambiar) {
 		
@@ -278,9 +278,9 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
-	public boolean hayRegistros(String nombreTabla, String nombreAtributo, String valorCondicion) {
+	public boolean hayRegistros(String nombreTabla, String nombreAtributo, String valorCondicion, String operador) {
 		
-		return !(this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributo, valorCondicion).isEmpty());
+		return !(this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributo, valorCondicion, operador).isEmpty());
 		
 	}
 	
@@ -366,11 +366,11 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
-	public double calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion) {
+	public double calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion, String operador) {
 	    
 		double promedio = 0.0;
 	    int suma = 0;
-	    ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion);
+	    ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion, operador);
 	    ArrayList<DTOAtributo> seleccion = this.obtenerTabla(nombreTabla).seleccionarAtributo(registros, nombreAtributo);
 	    int cantidadValores = seleccion.size(); 
 
@@ -396,13 +396,13 @@ public class FachadaLogica implements IFachadaLogica {
 	    
 	}
 
-	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2) {
+	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2, String operador) {
 		
 		ArrayList <DTOAtributo> resultado1 = new ArrayList <DTOAtributo>();
 		ArrayList <DTOAtributo> resultado2 = new ArrayList <DTOAtributo>();
 	
-		resultado1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1);
-		resultado2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondcion2, valorCondicion2);
+		resultado1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1, operador);
+		resultado2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondcion2, valorCondicion2, operador);
 	
 		
         HashSet<DTOAtributo> elementosUnicos = new HashSet<>(resultado1);
@@ -503,12 +503,12 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
-	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2) {
+	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador) {
     	
     	ArrayList <DTOAtributo>  res1= new ArrayList<DTOAtributo>();
     	ArrayList <DTOAtributo> res2 = new ArrayList<DTOAtributo>();
-    	res1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1);
-		res2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion2, valorCondicion2);
+    	res1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1, operador);
+		res2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion2, valorCondicion2, operador);
     	res1.retainAll(res2);
     	
     	HashSet<DTOAtributo> noHayRepetidos = new HashSet<>(res1);
@@ -519,11 +519,11 @@ public class FachadaLogica implements IFachadaLogica {
 		
     }
 	
-	public int contarRegistros( String nombreTabla, String nombreAtributoCondicion, String valorCondicion){
+	public int contarRegistros( String nombreTabla, String nombreAtributoCondicion, String valorCondicion, String operador){
 		 
 		ArrayList<LinkedHashMap<String, DTOAtributo>> resultado1 = new ArrayList<LinkedHashMap<String, DTOAtributo>>();
 		Tabla tablita = this.obtenerTabla(nombreTabla);
-		resultado1= tablita.obtenerRegistros(nombreAtributoCondicion, valorCondicion);	
+		resultado1= tablita.obtenerRegistros(nombreAtributoCondicion, valorCondicion, operador);	
 		
 		return resultado1.size();
 	
@@ -623,7 +623,7 @@ public class FachadaLogica implements IFachadaLogica {
 						
 						}
 						
-						if(!(tablita.obtenerRegistros(atriGuia.getKey(), atributos.get(i)).isEmpty())) { //Si la clave se repite
+						if(!(tablita.obtenerRegistros(atriGuia.getKey(), atributos.get(i), "=").isEmpty())) { //Si la clave se repite
 							
 							return false;
 							
@@ -927,4 +927,5 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		return resultado;
 	}
+
 }

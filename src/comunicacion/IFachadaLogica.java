@@ -11,7 +11,7 @@ public interface IFachadaLogica {
 	
 	public void seleccionarBaseDatos(String baseDatos);
 	
-	public ArrayList<DTOAtributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
+	public ArrayList<DTOAtributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion, String operador);
 	
 	public boolean validaCondicion(String nombreTabla, String nombreAtributo, String valorCondicion);
 			
@@ -19,13 +19,13 @@ public interface IFachadaLogica {
 
 	public boolean esVacia(String nombreTabla);
 	
-	public boolean hayRegistros(String nombreTabla, String nombreAtributo, String valorCondicion);
+	public boolean hayRegistros(String nombreTabla, String nombreAtributo, String valorCondicion, String operador);
 	
 	public String obtenerClave (String nombreTabla);
 	
 	public boolean tieneClave (String nombreTabla);
 	
-	public void cambiarRegistro(String nombreTabla, String atributoCambiar, String valorNuevo, String nombreAtributoCondicion, String valorCondicion);
+	public void cambiarRegistro(String nombreTabla, String atributoCambiar, String valorNuevo, String nombreAtributoCondicion, String valorCondicion, String operador);
 	
 	public ArrayList<String> obtenerTablasNom();
 	
@@ -43,15 +43,15 @@ public interface IFachadaLogica {
 	
 	public void quitarClave (String nombreTabla);
 	
-	public double calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion);
+	public double calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion, String operador);
 	
 	public int obtenerMinimo (String nombreTabla, String nombreAtributo);
 	
 	public int obtenerMaximo (String nombreTabla, String nombreAtributo);
 		
-	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2);
+	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador);
 	    
-	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2);
+	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2, String operador);
 		
 	public boolean existeTabla(String nombreTabla);
 	
@@ -63,7 +63,7 @@ public interface IFachadaLogica {
 	
 	public void ingresarRegistro(String nombreTabla, LinkedHashMap<String, DTOAtributo> registro);
 	
-	public void borrarRegistro(String nombreTabla, String nombreAtributoCondicion, String valorCondicion);
+	public void borrarRegistro(String nombreTabla, String nombreAtributoCondicion, String valorCondicion, String operador);
 	
 	public String darAyuda(String ayuda1);
 	
@@ -71,7 +71,7 @@ public interface IFachadaLogica {
 	
 	public boolean comandoExiste(String comando);
 	
-	public int contarRegistros( String nombreTabla, String nombreAtributoCondicion, String valorCondicion);
+	public int contarRegistros( String nombreTabla, String nombreAtributoCondicion, String valorCondicion, String operador);
 		
 	public boolean existeUsuario(String nombreUsuario);
 	

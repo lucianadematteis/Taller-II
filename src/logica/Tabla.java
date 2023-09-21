@@ -244,7 +244,7 @@ public class Tabla {
 		
 	}
 	
-	public ArrayList<LinkedHashMap<String, DTOAtributo>> obtenerRegistros(String nombreAtributo, String valorCondicion) {
+	public ArrayList<LinkedHashMap<String, DTOAtributo>> obtenerRegistros(String nombreAtributo, String valorCondicion, String operador) {
 			
 		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosObtenidos = new ArrayList<LinkedHashMap<String, DTOAtributo>>();
 		
@@ -265,11 +265,17 @@ public class Tabla {
 				    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
 				    		DTOEntero entradaEntera = (DTOEntero) entrada.getValue();
 				    		
-				    		if(entradaEntera.getValor() == valorCondicionEntera) { //si cumple con la condicion
-				    			
-				    			registrosObtenidos.add(misRegistros);
-				    			
-				    		}
+				    		if (operador.equals("=") && entradaEntera.getValor() == valorCondicionEntera) {
+			                    registrosObtenidos.add(misRegistros);
+			                } else if (operador.equals("<") && entradaEntera.getValor() < valorCondicionEntera) {
+			                    registrosObtenidos.add(misRegistros);
+			                } else if (operador.equals(">") && entradaEntera.getValor() > valorCondicionEntera) {
+			                    registrosObtenidos.add(misRegistros);
+			                } else if (operador.equals(">=") && entradaEntera.getValor() >= valorCondicionEntera) {
+			                    registrosObtenidos.add(misRegistros);
+			                } else if (operador.equals("<=") && entradaEntera.getValor() <= valorCondicionEntera) {
+			                    registrosObtenidos.add(misRegistros);
+			                }
 				    		
 				    	}else if(atributo instanceof DTOCadena){
 				    		

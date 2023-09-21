@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -219,6 +220,8 @@ public class Comandos {
 
 	private boolean validaSentenciasWhereComun(ArrayList<String[]> sentencia) {
 
+		ArrayList<String> operadores = new ArrayList<>(Arrays.asList("=", "<", ">", ">=", "<="));
+
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 4))) {
 
 			insertarDepuracion("Error #03", "Cantidad de argumentos no valida en linea 3");
@@ -231,7 +234,7 @@ public class Comandos {
 
 			} else {
 
-				if (!(sentencia.get(2)[2].toUpperCase().equals("="))) {
+				if (!(operadores.contains(sentencia.get(2)[2]))) {
 
 					insertarDepuracion("Error #05", "El operador: " + sentencia.get(2)[2] + " no es valido");
 
@@ -405,13 +408,13 @@ public class Comandos {
 		
 			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //Valido que el tipo de atributo y condicion coincidan
 				
-				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
 					
 					insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
 					
 				}else {
 					
-					ArrayList<DTOAtributo> atributos=logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]);
+					ArrayList<DTOAtributo> atributos=logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]);
 		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					aciertos++;
 		        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
@@ -438,13 +441,13 @@ public class Comandos {
 		
 			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //Valido que el tipo de atributo y condicion coincidan
 				
-				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
 						
 					insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
 					
 				}else {
 					
-					ArrayList<DTOAtributo> atributos=logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]);
+					ArrayList<DTOAtributo> atributos=logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]);
 		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					aciertos++;
 		        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
@@ -590,13 +593,13 @@ public class Comandos {
 			                			
 					            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
 					            			
-					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
 					            				
 					            				insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
 					            				
 					            			}else {
 					            				
-					            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]);
+					            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 									        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					            				aciertos++;
 									        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
@@ -767,9 +770,9 @@ public class Comandos {
         		
 	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
 	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que hayan registros que mostrar para la condicion dada
+	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //Valido que hayan registros que mostrar para la condicion dada
 	        				
-	        				logica.borrarRegistro(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]);
+	        				logica.borrarRegistro(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 	        				aciertos++;
 	        	        	insertarDepuracion("Acierto #" + aciertos, "Se eliminaron los datos con exito, en la tabla: " + sentencia.get(1)[1]);
 	        	        	
@@ -837,9 +840,9 @@ public class Comandos {
 			            					
 			            			}else if(logica.validaCondicion(sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3])){
 			            				
-			            				if(logica.hayRegistros(sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3])){	
+			            				if(logica.hayRegistros(sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])){	
 				            				
-			            					logica.cambiarRegistro(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(1)[3], sentencia.get(2)[1], sentencia.get(2)[3]);
+			            					logica.cambiarRegistro(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(1)[3], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 				            				aciertos++;
 				            				insertarDepuracion("Acierto #" + aciertos, "Se modificaron los datos con exito, en la tabla: " + sentencia.get(0)[1]);
 				            				
@@ -919,10 +922,10 @@ public class Comandos {
         		
 	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
 	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que hayan registros que mostrar para la condicion dada
+	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //Valido que hayan registros que mostrar para la condicion dada
 	        				
 	        				aciertos++;
-	        	        	insertarDepuracion("Acierto #" + aciertos, "La cantidad de registros que cumplen con la consulta es: " + logica.contarRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]));
+	        	        	insertarDepuracion("Acierto #" + aciertos, "La cantidad de registros que cumplen con la consulta es: " + logica.contarRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]));
 	            			
 	        				
 	        			}else {
@@ -965,12 +968,12 @@ public class Comandos {
         			
 		        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
 		        			
-		        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que hayan registros que mostrar para la condicion dada
+		        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //Valido que hayan registros que mostrar para la condicion dada
 		        				
 		        				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
 		                					
 		        					aciertos++;
-		                	       	insertarDepuracion("Acierto #" + aciertos, "El promedio de los registros consultados es: " + logica.calcularPromedioRegistros(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]));
+		                	       	insertarDepuracion("Acierto #" + aciertos, "El promedio de los registros consultados es: " + logica.calcularPromedioRegistros(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]));
 		                            
 	            				}else {
 	            					
