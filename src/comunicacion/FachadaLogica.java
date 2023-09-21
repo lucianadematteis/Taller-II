@@ -760,7 +760,7 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		Tabla tab1 = obtenerTabla(tabla1);
 		Tabla tab2 = obtenerTabla(tabla2);
-		ArrayList<Atributo> buscar = new ArrayList<Atributo> ();
+		ArrayList<Atributo> buscar = new ArrayList<Atributo>();
 		ArrayList<DTOAtributo> resultado = new ArrayList<DTOAtributo>();
 		buscar = obtenerAuxiliar(tab1, tab2);
 		
@@ -872,7 +872,7 @@ public class FachadaLogica implements IFachadaLogica {
 				
 				return (cadena1.getDato().equals(cadena2.getDato()));
 				
-			}else if (atr1 instanceof Entero && atr1 instanceof Entero) {
+			}else if (atr1 instanceof Entero && atr2 instanceof Entero) {
 			
 				Entero entero1 = (Entero) atr1;
 				Entero entero2 = (Entero) atr2;
