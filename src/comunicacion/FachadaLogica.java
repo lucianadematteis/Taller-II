@@ -929,23 +929,32 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	public boolean validaAtributosJoin (String tabla1, String tabla2) {
-		if (usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(tabla1).getRegistros().size()>0 && usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(tabla2).getRegistros().size()>0) {
-		LinkedHashMap <String, Atributo> guia1 = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(tabla1).getRegistros().get(0);
-		LinkedHashMap <String, Atributo> guia2 = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(tabla2).getRegistros().get(0);
 		
+		Tabla tablita1 = this.obtenerTabla(tabla1);
+		Tabla tablita2 = this.obtenerTabla(tabla2);
 		
-        for (Map.Entry<String, Atributo> entry : guia1.entrySet()) {
-            Atributo atributoGuia1 = entry.getValue();
-            	
-            for (Map.Entry<String, Atributo> entry2 : guia2.entrySet()) {
-            	Atributo atributoGuia2 = entry2.getValue();
-            	
-            		if(atributoGuia2.equals(atributoGuia1))
-            			return true;
-            	
-            }
-            
-        }}
+		if (tablita1.getRegistros().size()>0 && tablita2.getRegistros().size()>0) {
+			
+			LinkedHashMap <String, Atributo> guia1 = tablita1.getRegistros().get(0);
+			LinkedHashMap <String, Atributo> guia2 = tablita2.getRegistros().get(0);
+			
+	        for (Map.Entry<String, Atributo> entry : guia1.entrySet()) {
+	        	
+	            Atributo atributoGuia1 = entry.getValue();
+	            	
+	            for (Map.Entry<String, Atributo> entry2 : guia2.entrySet()) {
+	            	
+	            	Atributo atributoGuia2 = entry2.getValue();
+	            	
+	            		if(atributoGuia2.equals(atributoGuia1))
+	            			
+	            			return true;
+	            	
+	            }
+	            
+	        }
+	        
+	    }
         return false;
 		
 		
