@@ -164,7 +164,6 @@ public class Login extends JFrame {
 				fa.seleccionarUsuario(prueba.getNombreUser());
 				fa.seleccionarBaseDatos("base de prueba");
 				demo = true;
-				
 				VentanaPrincipal frame = new VentanaPrincipal(fa);
 				frame.setVisible(true);
 		        frame.setLocationRelativeTo(null);
