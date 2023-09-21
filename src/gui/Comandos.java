@@ -954,7 +954,7 @@ public class Comandos {
 	
 	private void comandoAvg(ArrayList<String[]> sentencia) {
 		
-		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
+		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
         	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
         	
@@ -964,33 +964,40 @@ public class Comandos {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
-	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
-	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //Valido que hayan registros que mostrar para la condicion dada
-	        				
-	        				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(2)[1]).equalsIgnoreCase("entero")) {
-	                					
-	        					aciertos++;
-	                	       	insertarDepuracion("Acierto #" + aciertos, "El promedio de los registros consultados es: " + logica.calcularPromedioRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]));
-	                            
-            				}else {
-            					
-            					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
-            					
-            				}
-	                				
-            			}else {
-            				
-            				insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
-            				
-            			}
-            		
+        			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
+        			
+		        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+		        			
+		        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //Valido que hayan registros que mostrar para la condicion dada
+		        				
+		        				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
+		                					
+		        					aciertos++;
+		                	       	insertarDepuracion("Acierto #" + aciertos, "El promedio de los registros consultados es: " + logica.calcularPromedioRegistros(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]));
+		                            
+	            				}else {
+	            					
+	            					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
+	            					
+	            				}
+		                				
+	            			}else {
+	            				
+	            				insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
+	            				
+	            			}
+	            		
+	        			}else {
+		        			
+		        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
+		    				
+		        		}
+		        		
         			}else {
 	        			
-	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
-	    				
+        				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
 	        		}
-		        	
+	        			
         		}else {
         			
         			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
