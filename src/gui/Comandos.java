@@ -19,7 +19,7 @@ public class Comandos {
 	
 	private IFachadaLogica logica;
     private int aciertos;
-    private Map<String, Consumer<ArrayList<String[]>>> acciones; //es una funci�n que toma un valor y realiza alg�n tipo de acci�n con �l, pero no produce ning�n resultado como salida.
+    private Map<String, Consumer<ArrayList<String[]>>> acciones; //es una funcion que toma un valor y realiza algun tipo de accion con el, pero no produce ningun resultado como salida.
 
     public Comandos(IFachadaLogica fa) {
     	
@@ -539,80 +539,107 @@ public class Comandos {
         	
     	}else {
     		
-    		if(!(validaCantidadLineas(sentencia, 3, 3))) {
+    		if(!(validaCantidadLineas(sentencia, 2, 3))) {
     			
 	        	insertarDepuracion("Error #02", "Cantidad de lineas incorrecta");
 	        	
     		}else {
     		
     			if(validaSentenciasFrom(sentencia)) {
-    			
-            		if(sentencia.get(2).length==4) { //SI ES WHERE COMUN
-            	
-		            	if(validaSentenciasWhereComun(sentencia)) {
-		            		
-		            		if(logica.existeTabla(sentencia.get(1)[1])) {
-		            			
-		            			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
-		                			
-				            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
-				            			
-				            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
-				            				
-				            				insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
-				            				
-				            			}else {
-				            				
-				            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]);
-								        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
-				            				aciertos++;
-								        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
-								        	
-				            			}
-				            			
-				            		}else {
-				            			
-				            			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
-			            				
-				            		}
-				            		
-		            			}else {
-		    	        			
-		            				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
-		    	        		
-		            			}
-			            		
-		            		}else {
-		            			
-		            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
-		                    	
-		            		}
-		            		
-		            	}	
-		            	
-		            }else {
-		            		
-	            		if(validaOperadoresLogicos(sentencia)) {
+    				
+    				if(validaCantidadLineas(sentencia, 2, 2)) { //SI ES SIN WHERE
+    					
+    					if(logica.existeTabla(sentencia.get(1)[1])) {
 	            			
-		            		String operador=sentencia.get(2)[4].toUpperCase();
+	            			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
+	                		
+		    					ArrayList<DTOAtributo> atributos=logica.realizarConsultaSinWhere(sentencia.get(1)[1], sentencia.get(0)[1]);
+					        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
+					        	aciertos++;
+					        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+	            			
+	            			}else {
+	    	        			
+	            				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+	    	        		
+	            			}
 		            		
-		            		if(operador.equals("AND")) {
+	            		}else {
+	            			
+	            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+	                    	
+	            		}	
+    					
+    				}else {
+    			
+	            		if(sentencia.get(2).length==4) { //SI ES WHERE COMUN
+	            	
+			            	if(validaSentenciasWhereComun(sentencia)) {
+			            		
+			            		if(logica.existeTabla(sentencia.get(1)[1])) {
+			            			
+			            			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
+			                			
+					            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+					            			
+					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+					            				
+					            				insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
+					            				
+					            			}else {
+					            				
+					            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]);
+									        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
+					            				aciertos++;
+									        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+									        	
+					            			}
+					            			
+					            		}else {
+					            			
+					            			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
+				            				
+					            		}
+					            		
+			            			}else {
+			    	        			
+			            				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+			    	        		
+			            			}
+				            		
+			            		}else {
+			            			
+			            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+			                    	
+			            		}
+			            		
+			            	}	
+			            	
+			            }else {
+			            		
+		            		if(validaOperadoresLogicos(sentencia)) {
 		            			
-		            			comandoSelectAnd(sentencia);
-		            			
-		            		} else if(operador.equals("OR")) {
-		            			
-		            			comandoSelectOr(sentencia);
-		            			
-		            		}else {
-		            			
-		            			insertarDepuracion("Error #5", "El operador " + sentencia.get(2)[4] + " no es valido");
-		                    	
+			            		String operador=sentencia.get(2)[4].toUpperCase();
+			            		
+			            		if(operador.equalsIgnoreCase("AND")) {
+			            			
+			            			comandoSelectAnd(sentencia);
+			            			
+			            		} else if(operador.equalsIgnoreCase("OR")) {
+			            			
+			            			comandoSelectOr(sentencia);
+			            			
+			            		}else {
+			            			
+			            			insertarDepuracion("Error #5", "El operador " + sentencia.get(2)[4] + " no es valido");
+			                    	
+			            		}
+			            		
 		            		}
 		            		
-	            		}
+			            }
 	            		
-		            }
+    				}
     			}
     		}
     	}

@@ -101,4 +101,7 @@ public interface IFachadaLogica {
 	
 	public ArrayList<DTOAtributo> joinNatural(String tabla1, String tabla2, String busqueda);
 	
+	public ArrayList<DTOAtributo> realizarConsultaSinWhere(String nombreTabla, String nombreAtributo);
+
+	
 }

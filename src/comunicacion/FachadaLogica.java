@@ -163,6 +163,15 @@ public class FachadaLogica implements IFachadaLogica {
 		return this.obtenerTabla(nombreTabla).seleccionarAtributo(registros, nombreAtributo);
 
 	}
+	
+	public ArrayList<DTOAtributo> realizarConsultaSinWhere(String nombreTabla, String nombreAtributo){
+
+		Tabla tablita = this.obtenerTabla(nombreTabla);
+		ArrayList<DTOAtributo> registros = tablita.seleccionarAtributo(tablita.getRegistrosDTO(), nombreAtributo);
+
+		return registros;
+
+	}
 
 	public void borrarRegistro(String nombreTabla, String nombreAtributoCondicion, String valorCondicion) {
 
