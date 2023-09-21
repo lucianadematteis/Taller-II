@@ -553,11 +553,19 @@ public class Comandos {
 	            			
 	            			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
 	                		
-		    					ArrayList<DTOAtributo> atributos=logica.realizarConsultaSinWhere(sentencia.get(1)[1], sentencia.get(0)[1]);
-					        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
-					        	aciertos++;
-					        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
-	            			
+	            				if(!(logica.realizarConsultaSinWhere(sentencia.get(1)[1], sentencia.get(0)[1]).isEmpty())){
+	            				
+			    					ArrayList<DTOAtributo> atributos=logica.realizarConsultaSinWhere(sentencia.get(1)[1], sentencia.get(0)[1]);
+						        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
+						        	aciertos++;
+						        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+		            			
+	            				}else {
+		    	        			
+	            					insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
+		            				
+		            			}
+	            				
 	            			}else {
 	    	        			
 	            				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
