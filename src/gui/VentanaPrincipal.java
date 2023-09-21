@@ -96,7 +96,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		bdActual = new JLabel("Base de datos: ");
 		bdActual.setForeground(fuentePrincipal);
-		bdActual.setBounds(616, 26, 223, 23);
+		bdActual.setBounds(564, 26, 429, 23);
 		bdActual.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		
 		JSeparator separator = new JSeparator();
@@ -195,7 +195,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(scrollPane_1);
 		
 		salida = new JTable();
-		salida.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		salida.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		salida.setForeground(escritura);
 		salida.setBackground(fondoVentana);
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
