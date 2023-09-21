@@ -927,5 +927,28 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		return resultado;
 	}
+	
+	public boolean validaAtributosJoin (String tabla1, String tabla2) {
+		if (usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(tabla1).getRegistros().size()>0 && usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(tabla2).getRegistros().size()>0) {
+		LinkedHashMap <String, Atributo> guia1 = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(tabla1).getRegistros().get(0);
+		LinkedHashMap <String, Atributo> guia2 = usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(tabla2).getRegistros().get(0);
+		
+		
+        for (Map.Entry<String, Atributo> entry : guia1.entrySet()) {
+            Atributo atributoGuia1 = entry.getValue();
+            	
+            for (Map.Entry<String, Atributo> entry2 : guia2.entrySet()) {
+            	Atributo atributoGuia2 = entry2.getValue();
+            	
+            		if(atributoGuia2.equals(atributoGuia1))
+            			return true;
+            	
+            }
+            
+        }}
+        return false;
+		
+		
+	}
 
 }
