@@ -765,7 +765,9 @@ public class FachadaLogica implements IFachadaLogica {
 			
 			reg = tab2.getRegistros();
 		}
+		
 		for (int i=0; i<buscar.size(); i++) {
+			
 			boolean yaAgregado = false;
 			Atributo atr = buscar.get(i);
 			
@@ -784,6 +786,7 @@ public class FachadaLogica implements IFachadaLogica {
 							DTOCadena dto = new DTOCadena (ing);
 							resultado.add(dto);
 							yaAgregado=true;
+							
 						}
 						
 						if (registro.get(busqueda) instanceof Entero) {

@@ -414,7 +414,7 @@ public class Comandos {
 					ArrayList<DTOAtributo> atributos=logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]);
 		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa");
+		        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 		        	
 				}
 				
@@ -447,7 +447,7 @@ public class Comandos {
 					ArrayList<DTOAtributo> atributos=logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7]);
 		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa");
+		        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 		        	
 				}
 				
@@ -566,7 +566,7 @@ public class Comandos {
 				            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3]);
 								        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 				            				aciertos++;
-								        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa");
+								        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 								        	
 				            			}
 				            			
@@ -681,7 +681,7 @@ public class Comandos {
 	            						LinkedHashMap<String, DTOAtributo> registro=logica.generarArrayListRegistro(sentencia.get(0)[1], atributos);
 	            			        	logica.ingresarRegistro(sentencia.get(0)[1], registro);
 	            			        	aciertos++;
-	            			        	insertarDepuracion("Acierto #" + aciertos, "Se ingresaron los datos con exito");
+	            			        	insertarDepuracion("Acierto #" + aciertos, "Se ingresaron los datos con exito, en la tabla: " + sentencia.get(0)[1]);
 	            			        	
 	            					}else {
 	            						
@@ -736,7 +736,7 @@ public class Comandos {
 	        				
 	        				logica.borrarRegistro(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]);
 	        				aciertos++;
-	        	        	insertarDepuracion("Acierto #" + aciertos, "Se eliminaron los datos con exito");
+	        	        	insertarDepuracion("Acierto #" + aciertos, "Se eliminaron los datos con exito, en la tabla: " + sentencia.get(1)[1]);
 	        	        	
 	        			}else {
 	        				
@@ -806,7 +806,7 @@ public class Comandos {
 				            				
 			            					logica.cambiarRegistro(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(1)[3], sentencia.get(2)[1], sentencia.get(2)[3]);
 				            				aciertos++;
-				            				insertarDepuracion("Acierto #" + aciertos, "Se modificaron los datos con exito");
+				            				insertarDepuracion("Acierto #" + aciertos, "Se modificaron los datos con exito, en la tabla: " + sentencia.get(0)[1]);
 				            				
 			            				}else {
 			            					
@@ -1101,7 +1101,7 @@ public class Comandos {
 			
 				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "INFORMACION");
 				aciertos++;
-				insertarDepuracion("Acierto #" + aciertos, "Se muestra la informacion de la tabla");
+				insertarDepuracion("Acierto #" + aciertos, "Se muestra la informacion de la tabla: " + sentencia.get(0)[1]);
         	
 			}else {
 				
@@ -1135,7 +1135,7 @@ public class Comandos {
 	
 	private void comandoJoinNatural(ArrayList<String[]> sentencia) {
 		
-		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
+		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
         	insertarDepuracion("Error #03", "Demasiados argumentos en linea 1");
         	
@@ -1161,9 +1161,17 @@ public class Comandos {
         				
         				if((logica.existeTabla(sentencia.get(1)[1])) && (logica.existeTabla(sentencia.get(1)[2]))) {
         					
-        					aciertos++;
-        					insertarDepuracion("Acierto #" + aciertos, "El usuario quiere hacer un join natural entre las tablas: " + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
-			        	
+        					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) && (logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[2])!=null)) {
+        						
+        						cargarTablaAtributos(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]), sentencia.get(0)[1]);
+            					aciertos++;
+            					insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados del join natural entre las tablas:" + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
+    			        	
+        					}else {
+        	        			
+                				insertarDepuracion("Error #23", "El atributo no existe en alguna de las tablas ingresadas");
+        	        		}
+        					
         				}else {
         					
         					insertarDepuracion("Error #16", "La/s tabla/s ingresada/s no existe/n para la base de datos seleccionada");
@@ -1200,7 +1208,7 @@ public class Comandos {
 	        
 	    } else {
 	    	
-	        insertarDepuracion("Error #01", "El comando " + comando + " no es v�lido");
+	        insertarDepuracion("Error #01", "El comando " + comando + " no es valido");
 	        
 	    }
 	    
