@@ -21,7 +21,7 @@ public class Comandos {
 	private IFachadaLogica logica;
     private int aciertos;
     private Map<String, Consumer<ArrayList<String[]>>> acciones; //es una funcion que toma un valor y realiza algun tipo de accion con el, pero no produce ningun resultado como salida.
-
+    static int usos;
     public Comandos(IFachadaLogica fa) {
     	
     	logica=fa;
@@ -32,6 +32,8 @@ public class Comandos {
     private void inicializarAcciones() {
     	
         acciones = new HashMap<>();
+        acciones.put("SELECT", sentencia -> comandoSelect(sentencia));
+        if (!(Login.demo)) {
         acciones.put("CREATE", sentencia -> comandoCreate(sentencia));
         acciones.put("INSERT", sentencia -> comandoInsert(sentencia));
         acciones.put("SHOW", sentencia -> comandoShow(sentencia));
@@ -39,7 +41,6 @@ public class Comandos {
         acciones.put("DELETE", sentencia -> comandoDelete(sentencia));
         acciones.put("UPDATE", sentencia -> comandoUpdate(sentencia));
         acciones.put("NOTNULL", sentencia -> comandoNotNull(sentencia));
-        acciones.put("SELECT", sentencia -> comandoSelect(sentencia));
         acciones.put("COUNT", sentencia -> comandoCount(sentencia));
         acciones.put("AVG", sentencia -> comandoAvg(sentencia));
         acciones.put("PRIMARYKEY", sentencia -> comandoPrimaryKey(sentencia));
@@ -48,7 +49,7 @@ public class Comandos {
         acciones.put("JOINNATURAL", sentencia -> comandoJoinNatural(sentencia));
         acciones.put("MAX", sentencia -> comandoMax(sentencia));
         acciones.put("MIN", sentencia -> comandoMin(sentencia));
-        
+        }
     }
 	
     private void cargarTablaAtributos(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
@@ -1243,7 +1244,11 @@ public class Comandos {
 		        }
 		        
 		    }
-	        
+	       
+	    	if(Login.demo) {
+		        usos++;
+		    	}
+	    	
 	    } else {
 	    	
 	        insertarDepuracion("Error #01", "El comando " + comando + " no es valido");
