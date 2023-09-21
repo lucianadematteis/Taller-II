@@ -30,6 +30,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField user;
 	private IFachadaLogica fa;
+	static boolean demo;
 
 	public Login(IFachadaLogica fa) {
 		
@@ -157,6 +158,20 @@ public class Login extends JFrame {
 		lblContrasea.setForeground(Color.WHITE);
 		
 		JButton btnIniciarDemo = new JButton("INICIAR DEMO");
+		btnIniciarDemo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DTOUsuario prueba = new DTOUsuario ("demo","demo");
+				fa.seleccionarUsuario(prueba.getNombreUser());
+				fa.seleccionarBaseDatos("base de prueba");
+				demo = true;
+				
+				VentanaPrincipal frame = new VentanaPrincipal(fa);
+				frame.setVisible(true);
+		        frame.setLocationRelativeTo(null);
+				dispose();	
+				
+			}
+		});
 		btnIniciarDemo.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		btnIniciarDemo.setForeground(Color.WHITE);
 		btnIniciarDemo.setFocusPainted(false);
@@ -164,6 +179,9 @@ public class Login extends JFrame {
 		btnIniciarDemo.setBounds(796, 568, 146, 47);
 		contentPane.add(btnIniciarDemo);
 
-		
+		   if (Comandos.usos >= 4 ) {
+		    	btnIniciarDemo.setEnabled(false);
+		    	demo = false;
+		    }
 	}
 }
