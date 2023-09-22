@@ -1237,11 +1237,8 @@ public class Comandos {
 	}
 	
 	/**
-	 * 
-	 * comandoMax(ArrayList<String[]>): void
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MAX" para encontrar el valor maximo de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor maximo.
 	 * @param sentencia-> lista de sentencias
-	 * 
 	 */
 	
 	private void comandoMax(ArrayList<String[]> sentencia) {
@@ -1289,11 +1286,8 @@ public class Comandos {
 	
 	
 	/**
-	 * 
-	 * comandoMin(ArrayList<String[]>): void
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MIN" para encontrar el valor minimo de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor minimo.
 	 * @param sentencia->lista de sentencia
-	 * 
 	 */
 	private void comandoMin(ArrayList<String[]> sentencia) {
 		
@@ -1335,11 +1329,8 @@ public class Comandos {
 	}
 	
 	/**
-	 * 
-	 * comandoPrimaryKey(ArrayList<String[]>): void
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "PRIMARY KEY" para especificar un atributo como clave primaria en una tabla. . El metodo verifica la validez de la sentencia y realiza la operacion si es valida.
 	 * @param sentencia->lista de sentencias
-	 * 
 	 */
 	
 	private void comandoPrimaryKey(ArrayList<String[]> sentencia) {
@@ -1384,12 +1375,11 @@ public class Comandos {
 	}
 	
 	/**
-	 * 
-	 * comandoDescribe(ArrayList<String[]>): void
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DESCRIBE" para mostrar informacion sobre la estructura de una tabla.  El metodo verifica si la tabla especificada existe y muestra su descripcion.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y 
+	 * procesa el comando "DESCRIBE" para mostrar informacion sobre la estructura de una tabla.  
+	 * El metodo verifica si la tabla especificada existe y muestra su descripcion.
 	 * @param sentencia->lista de sentencias
 	 */
-	
 	private void comandoDescribe(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
@@ -1409,11 +1399,8 @@ public class Comandos {
 		
 	}
 	/**
-	 * 
-	 * comandoHelp(ArrayList<String[]>): void
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "HELP" para mostrar informacion de ayuda sobre un comando especifico.  El metodo verifica si el comando especificado existe y muestra su ayuda asociada.
 	 * @param sentencia->lista de sentencia
-	 * 
 	 */
 	private void comandoHelp(ArrayList<String[]> sentencia) {
 		
@@ -1438,13 +1425,14 @@ public class Comandos {
 	
 	
 	/**
+	 * Realiza un join natural entre dos tablas basado en una sentencia.
 	 * 
-	 * comandoJoinNatural(ArrayList<String[]>): void
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "JOIN NATURAL" para realizar un join natural entre dos tablas.  El metodo verifica la validez de la sentencia y si las tablas especificadas existen
-	 * @param sentencia->lista de sentencias
+	 * Este es un metodo privado que recibe una lista de matrices de cadenas de texto (sentencia)
+	 * y procesa el comando "JOIN NATURAL" para realizar un join natural entre dos tablas.
+	 * El metodo verifica la validez de la sentencia y si las tablas especificadas existen.
 	 * 
+	 * @param sentencia Lista de sentencias a procesar.
 	 */
-	
 	private void comandoJoinNatural(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
