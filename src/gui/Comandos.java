@@ -233,6 +233,14 @@ public class Comandos {
 		}
 
 	}
+	/**
+	 * 
+	 * validaSentenciasUnaLinea(ArrayList<String[]>): boolean
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de una sola línea es válida o false en caso contrario.
+	 * @param sentencia->lista de sentencias
+	 * @return valida si la sentencia es valida
+	 * 
+	 */
 
 	private boolean validaSentenciasUnaLinea(ArrayList<String[]> sentencia) {
 
