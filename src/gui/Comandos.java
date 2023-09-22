@@ -1113,7 +1113,12 @@ public class Comandos {
 		
 	}
 	
-	
+	/**
+	 * 
+	 * comandoCount(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "COUNT" para contar la cantidad de registros que cumplen con una consulta en una tabla.  El método verifica la validez de la sentencia, el tipo de atributo y la condición antes de realizar el conteo.
+	 * @param sentencia-> lista de sentencias
+	 */
 	
 	private void comandoCount(ArrayList<String[]> sentencia) {
 		
