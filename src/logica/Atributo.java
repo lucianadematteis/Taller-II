@@ -95,7 +95,7 @@ public abstract class Atributo {
 	
 	/**
 	 * Metodo publico que permite establecer o modificar el valor del atributo nulo.
-	 * @param nulo-> atributo nulo
+	 * @param nulo-> atributo nulo a modificar o establecer
 	 */
 	public void setNulo(boolean nulo) {
 		
@@ -104,7 +104,7 @@ public abstract class Atributo {
 	
 	/**
 	 * Metodo publico que permite establecer o modificar el valor del atributo clave
-	 * @param clave-> atributo clave
+	 * @param clave-> atributo clave a nodificar o establecer
 	 */
 	public void setClave(boolean clave) {
 		
