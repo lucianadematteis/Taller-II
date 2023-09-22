@@ -1495,7 +1495,7 @@ public class Comandos {
 	 * 
 	 * ejecutarComando(String, ArrayList<String[]>): void
 	 * Metodo publico que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El metodo ejecuta el comando especificado y las operaciones asociadas, verificando si se selecciono una base de datos y si el comando es valido. Tambien muestra resultados o mensajes de error en la tabla de depuracion.
-	 * @param comando-> comando que se ejeucturá
+	 * @param comando-> comando que se ejeuctura
 	 * @param sentencia->lista de sentencia
 	 * 
 	 */
