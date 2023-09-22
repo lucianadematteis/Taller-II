@@ -441,7 +441,12 @@ public class Comandos {
 		return false;
 
 	}
-
+	
+	/**
+	 * comandoTable(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y valida la estructura de la misma: cantidad de líneas, cantidad de argumentos,  tipos de datos y si existe la tabla en la base de datos para luego crearla con los atributos especificados.
+	 * @param sentencia-> lista de sentencias
+	 */
 	private void comandoTable(ArrayList<String[]> sentencia) {
 		
 		if(!(validaCantidadLineas(sentencia, 3, 5))) {
@@ -492,6 +497,12 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * comandoDatabase(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DATABASE" para crear una nueva base de datos.  El método verifica la validez de la sentencia, asegura que se haya seleccionado una base de datos y comprueba si la base de datos ya existe antes de crearla.
+	 * @param sentencia->lista de sentencia
+	 */
+	
 	private void comandoDatabase(ArrayList<String[]> sentencia) {
 		
 		if(!(validaCantidadLineas(sentencia, 2, 2))) {
@@ -521,6 +532,14 @@ public class Comandos {
 		}
 		
 	}
+	
+	/**
+	 * 
+	 * comandoSelectAnd(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT AND", que realiza una consulta en una tabla con una condición "AND".  El método verifica la validez de la sentencia, el tipo de atributo y condición, y muestra los resultados de la consulta si es válida. 
+	 * @param sentencia-> lista de sentencias
+	 * 
+	 */
 	
 	private void comandoSelectAnd(ArrayList<String[]> sentencia) {
 		
@@ -555,6 +574,13 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * 
+	 * comandoSelectOr(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT OR", que realiza una consulta en una tabla con una condición "OR". Verifica la validez de la sentencia, el tipo de atributo y condición, y muestra los resultados de la consulta si es válida.
+	 * @param sentencia->lista de sentencias
+	 * 
+	 */
 	private void comandoSelectOr(ArrayList<String[]> sentencia) {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
@@ -589,6 +615,13 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * 
+	 * comandoShow(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SHOW", que verifica la validez de la sentencia y muestra las tablas si es válida.
+	 * @param sentencia-> lista de sentencias
+	 * 
+	 */
 	private void comandoShow(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
@@ -610,6 +643,13 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * 
+	 * comandoCreate(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "CREATE" para crear una tabla o una base de datos. El método verifica la validez de la sentencia y el tipo de comando ("TABLE" o "DATABASE") antes de llamar a métodos específicos (comandoTable o comandoDatabase) para ejecutar la acción correspondiente.
+	 * @param sentencia->lista de sentecias
+	 * 
+	 */
 	private void comandoCreate(ArrayList<String[]> sentencia) {
 		
 		if(!(sentencia.size()>1)){
@@ -653,6 +693,14 @@ public class Comandos {
 		}
 		
 	}
+	
+	/**
+	 * 
+	 * comandoSelect(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto llamada (sentencia) y procesa el comando "SELECT" para realizar una consulta en una tabla. El método valida la sentencia, el tipo de atributo y la condición. Luego, muestra los resultados de la consulta si es válida.
+	 * @param sentencia->lista de sentencias
+	 * 
+	 */
 	
 	private void comandoSelect(ArrayList<String[]> sentencia) {
 		
@@ -777,6 +825,13 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * 
+	 * comandoUse(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "USE" para seleccionar una base de datos. El método verifica si la base de datos especificada existe y la selecciona si es válida.
+	 * @param sentencia->lista de sentencias
+	 * 
+	 */
 	private void comandoUse(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
@@ -798,6 +853,13 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * 
+	 * comandoInsert(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "INSERT" para agregar datos a una tabla.  El método verifica la validez de la sentencia, los argumentos y los datos a insertar. Luego, agrega los datos si son válidos.
+	 * @param sentencia->lista de sentencias
+	 * 
+	 */
 	private void comandoInsert(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadLineas(sentencia, 2, 2))){
@@ -876,6 +938,14 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * 
+	 * comandoDelete(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DELETE" para eliminar registros de una tabla.  El método valida la sentencia, el tipo de atributo y la condición antes de realizar la eliminación.
+	 * @param sentencia->lista de sentencia
+	 * 
+	 */
+	
 	private void comandoDelete(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
@@ -917,6 +987,14 @@ public class Comandos {
     	}
 		
 	}
+	
+	/**
+	 * 
+	 * comandoUpdate(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "UPDATE" para modificar registros en una tabla.  El método valida la sentencia, los argumentos y los datos a actualizar antes de realizar la modificación.
+	 * @param sentencia->lista de sentencias
+	 * 
+	 */
 	
 	private void comandoUpdate(ArrayList<String[]> sentencia) {
 		
@@ -992,6 +1070,13 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * 
+	 * comandoNotNull(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "NOT NULL" para especificar que un atributo en una tabla no puede ser nulo.  El método valida la sentencia y realiza la operación si es válida.
+	 * @param sentencia->lista de sentencias
+	 * 
+	 */
 	private void comandoNotNull(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
@@ -1027,6 +1112,8 @@ public class Comandos {
     	}
 		
 	}
+	
+	
 	
 	private void comandoCount(ArrayList<String[]> sentencia) {
 		
