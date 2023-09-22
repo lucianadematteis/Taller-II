@@ -1,4 +1,9 @@
 package gui;
+/**
+ * 
+ * Proporciona clases para crear la interfaz de usuario y gestionar interacciones con el usuario.
+ * 
+ */
 
 
 import comunicacion.FachadaLogica;
