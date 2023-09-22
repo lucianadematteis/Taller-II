@@ -234,6 +234,11 @@ public class VentanaPrincipal extends JFrame {
 		        	li.setVisible(true);
 		        	dispose();
 		        }
+		        
+		        if(fa.bdSeleccionada()) {
+					cargarTablas(fa.obtenerTablasNom());
+				}
+
 		         
 			} 
 			
