@@ -29,6 +29,7 @@ public class VentanaPrincipal extends JFrame {
 	static JTable depuracion;
 	static JLabel bdActual;
 	private IFachadaLogica fa;
+	static JTable guiaTabla;
 	
 	public ArrayList<String[]> administraSentencia(String sentencia) {
 
@@ -149,7 +150,7 @@ public class VentanaPrincipal extends JFrame {
         cerrarSesion.setFocusPainted(false); 
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(25, 71, 135, 524);
+		scrollPane_3.setBounds(25, 71, 135, 246);
 		scrollPane_3.getViewport().setBackground(fondoVentana);
 		contentPane.add(scrollPane_3);
 		
@@ -263,6 +264,18 @@ public class VentanaPrincipal extends JFrame {
 		btnConfigUsuario.setBounds(24, 620, 248, 30);
 		btnConfigUsuario.setFocusPainted(false);
 		contentPane.add(btnConfigUsuario);
+
+		JScrollPane scrollPane_4 = new JScrollPane();
+		scrollPane_4.getViewport().setBackground(fondoVentana);
+		scrollPane_4.setBackground(fondoVentana);
+		scrollPane_4.setBounds(27, 329, 133, 266);
+		contentPane.add(scrollPane_4);
+
+		guiaTabla = new JTable();
+		scrollPane_4.setViewportView(guiaTabla);
+		guiaTabla.setForeground(escritura);
+		guiaTabla.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		guiaTabla.setBackground(fondoVentana);
 		
 		cargarBasesDatos(fa.obtenerBasesNom());
 		
@@ -285,5 +298,20 @@ public class VentanaPrincipal extends JFrame {
 			
 		}
 		
+	}
+
+	public static void cargarTablas(ArrayList<String> nTablas) {
+
+		DefaultTableModel model = (DefaultTableModel) guiaTabla.getModel();
+		model.setRowCount(0);
+		model.setColumnCount(0);
+		model.addColumn("TABLAS");
+
+		for (int i = 0; i < nTablas.size(); i++) {
+
+			model.addRow(new Object [] {nTablas.get(i)});
+
+		}
+
 	}
 }
