@@ -13,14 +13,6 @@ import comunicacion.FachadaLogica;
  *
  */
 public class Principal {
-	/**
-	 * @author Gabriel Bolsi
-	 * @author Brandon Cairus
-	 * @author Daiana Daguerre
-	 * @author Luciana De Matteis
-	 * @author Mauricio Gonzalez
-	 * 
-	 */
 
 	public static void main(String[] args) {
 		

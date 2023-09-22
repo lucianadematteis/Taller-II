@@ -2,8 +2,15 @@ package logica;
 
 import java.util.Objects;
 
-import comunicacion.DTOAtributo;
 
+
+import comunicacion.DTOAtributo;
+/**
+ * Clase abstracta que mantiene una relacion de herencia con las clases Cadena y Entero.
+ * Asimismo se relaciona con la clase Atributos con quien mantiene una relacion de agregacion.
+ *@author Brandon
+ *@author Gabriel
+ */
 public abstract class Atributo {
 	
 	private String nombreAtributo;

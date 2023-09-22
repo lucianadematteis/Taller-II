@@ -18,9 +18,14 @@ import comunicacion.IFachadaLogica;
 	/**
 	 * 
 	 * Esta clase maneja las palabras claves de los comandos que se utilizan para realizar las operaciones en las bases de datos.
-	 * 
+	 * @author Brandon
+	 * @author Gabriel
+	 * @author Daiana
+	 * @author Mauricio
+	 * @author Luciana
 	 */
 public class Comandos {
+	
 	
 	private IFachadaLogica logica;
     private int aciertos;
