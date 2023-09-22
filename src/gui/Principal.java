@@ -1,11 +1,11 @@
 package gui;
 /**
  * @author Gabriel Bolsi
- * @author Brandon Cairús
+ * @author Brandon Cairus
  * @author Daiana Daguerre
  * @author Luciana De Matteis
- * @author Mauricio González
- * @
+ * @author Mauricio Gonzalez
+ * 
  */
 
 import comunicacion.FachadaLogica;
