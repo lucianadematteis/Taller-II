@@ -14,6 +14,11 @@ import logica.Tabla;
 import logica.Usuario;
 import persistencia.Persistencia;
 
+
+/**
+ * Esta es una implementación concreta de la interfaz IFachadaLogica.
+ * Implementa todas las operaciones de IFachadaLogica.
+ */
 public class FachadaLogica implements IFachadaLogica {
 
 	Persistencia persistencia = new Persistencia();
@@ -31,6 +36,10 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
+	/**
+	 * Recibe el nombre de una base de datos como parámetro y establece la variable miembro de la clase (baseDatos) con ese nombre.
+	 * @param baseDatos nombre de la base de datos a seleccionar.
+	 */
 	public void seleccionarBaseDatos(String baseDatos) {
 
 		for (Map.Entry<String, BaseDatos> bd : this.obtenerUsuario().getBasesDatos().entrySet()) {
@@ -44,43 +53,65 @@ public class FachadaLogica implements IFachadaLogica {
 		}
 
 	}
-
+	
+	/**
+	 * Establece la variable baseDatos con cadena vacía.
+	 */
 	public void liberarMemoriaBaseDatos() {
 
 		this.baseDatos = "";
 
 	}
 	
+	/**
+	 * Verifica si se ha seleccionado una base de datos.
+	 * @return true si hay una base de datos seleccionada, false si no la hay.
+	 */
 	public boolean bdSeleccionada() {
 		
 		return !(this.baseDatos.isEmpty());
 		
 	}
 
+	/**
+	 * Establece la variable usuario con cadena vacía.
+	 */
 	public void liberarMemoriaUsuario() {
 
 		this.usuario = "";
 
 	}
-
+	
+	/**
+	 * @return Cadena de texto que representa el nombre del usuario actual.
+	 */
 	public String getUsuario() {
 
 		return usuario;
 
 	}
 
+	/**
+	 *Establece la variable miembro de la clase (usuario) con ese nombre.
+	 *@param usuario nombre del usuario a "seleccionar".
+	 */
 	public void seleccionarUsuario(String usuario) {
 
 		this.usuario = usuario;
 
 	}
-
+	/**
+	 *Persiste los datos almacenados en la colección de usuarios en la instancia de la clase Persistencia.
+	 */
 	public void persistirDatos() {
 
 		persistencia.persistirTodo(usuarios);
 
 	}
 	
+	/**
+	 * @return Instancia de la clase BaseDatos correspondiente a la base de datos seleccionada.
+	 */
 	private BaseDatos obtenerBaseDatos() {
 		
 		for (Map.Entry<String, BaseDatos> entry : this.obtenerUsuario().getBasesDatos().entrySet()) {
@@ -95,29 +126,40 @@ public class FachadaLogica implements IFachadaLogica {
 		return null;
 		
 	}
-
-	
+	/**
+	 *Recupera datos de persistencia y los carga en la colección de usuarios y en la variable ayuda.
+	 */
 	public void recuperarDatos() {
 
 		ayuda=persistencia.recuperarAyuda();
 		persistencia.recuperarTodo(usuarios);
 
 	}
-
-	// Dai mod usuario a partir de un dto usuario
+	/**
+	 *Crea una nueva instancia de Usuario a partir de los datos proporcionados y reemplaza la instancia anterior del usuario en la colección de usuarios.
+	 *@param user Representa los datos del usuario a modificar.
+	 */
 	public void modificarUsuario(DTOUsuario user) {
 
 		Usuario usAux = new Usuario(user);
 		usuarios.replace(usAux.getNombreUser(), usAux);
 
 	}
-
+	
+	/**
+	 *Lo elimina de la colección de usuarios.
+	 *@param user Representa al usuario a eliminar.
+	 */
 	public void eliminarusuario(DTOUsuario user) {
 
 		usuarios.remove(user.getNombreUser()); 
 		
 	}
-
+	
+	/**
+	 *Verifica si el nombre de usuario actual está presente en la colección de usuarios.
+	 *@return La instancia de Usuario correspondiente. Si no se encuentra retorna null.
+	 */
 	private Usuario obtenerUsuario() {
 
 		if (usuarios.containsKey(usuario)) {
@@ -130,32 +172,60 @@ public class FachadaLogica implements IFachadaLogica {
 		}
 
 	}
-
+	
+	/**
+	 *@param valores Lista de valores enteros.
+	 *@return Cantidad de elementos en la lista.
+	 */
 	public int obtenerCantidad(ArrayList<Integer> valores) {
 
 		return valores.size();
 
 	}
 
+	
+	/**
+	 *Crea una nueva instancia de Usuario a partir de los datos proporcionados en él y lo agrega a la colección de usuarios.
+	 *@param dto representa los datos del nuevo usuario a insertar.
+	 */
 	public void insertarUsuario (DTOUsuario dto) {
 
 		Usuario usuario = new Usuario (dto);
 		usuarios.put(dto.getNombreUser(), usuario);
 
 	}
-
+	
+	
+	/**
+	 *@param nombreTabla nombre de una tabla.
+	 *@return Clave primaria de la tabla especificada.
+	 */
 	public String obtenerClave (String nombreTabla) {
 
 		return this.obtenerTabla(nombreTabla).obtenerClave();
 
 	}
 	
+	/**
+	 *@param nombreTabla nombre de una tabla.
+	 *@return Retorna true si la tabla tiene una clave primaria, false si no la tiene.
+	 */
 	public boolean tieneClave (String nombreTabla) {
 
 		return this.obtenerTabla(nombreTabla).tieneClave();
 
 	}
-
+	
+	
+	/**
+	 * Realiza una consulta con 1 condición (WHERE)
+	 *@param nombreTabla tabla a la que se realizará la consulta
+	 *@param nombreAtributo nombre del atributo que se desea mostrar
+	 *@param nombreAtributoCondicion atributo al que se le aplicará la condición
+	 *@param valorCondicion valor de la condición
+	 *@param operador operador lógico de la condición
+	 *@return Lista de objetos DTOAtributo que representan los valores del atributo seleccionado en los registros que cumplen con la condición.
+	 */
 	public ArrayList<DTOAtributo> realizarConsultaClasica(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion, String operador){
 
 		ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion, operador);
@@ -164,6 +234,12 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 	
+	/**
+	 * Realiza una consulta sin condiciones.
+	 *@param nombreTabla tabla a la que se realizará la consulta
+	 *@param nombreAtributo nombre del atributo que se desea mostrar
+	 *@return Lista de objetos DTOAtributo que representan los valores del atributo seleccionado en los registros que cumplen con la condición.
+	 */
 	public ArrayList<DTOAtributo> realizarConsultaSinWhere(String nombreTabla, String nombreAtributo){
 
 		ArrayList<DTOAtributo> registros =null;
@@ -175,6 +251,14 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
+	
+	/**
+	 * Borra los registros de la tabla especificada que cumplan con la condición establecida por el nombreAtributoCondición y el valor de condición.
+	 *@param nombreTabla tabla de la que se borrarán los registros.
+	 *@param nombreAtributoCondicion atributo al que se le aplicará la condición.
+	 *@param valorCondicion valor de la condición.
+	 *@param operador operador lógico de la condición.
+	 */
 	public void borrarRegistro(String nombreTabla, String nombreAtributoCondicion, String valorCondicion, String operador) {
 
 		Tabla tabla = this.obtenerTabla(nombreTabla);
@@ -188,7 +272,16 @@ public class FachadaLogica implements IFachadaLogica {
 	     }
 		
 	}
-
+	
+	/**
+	 *Cambia el valor del atributo especificado por el nuevo valor en los registros de la tabla que cumplen con la condición especificada por el nombre del atributo de condición y el valor de condición.
+	 *@param nombreTabla tabla de la que se modificarán los registros.
+	 *@param atributoCambiar atributo que contiene los registros a modificar.
+	 *@param valorNuevo nuevo valor de los registros modificados.
+	 *@param nombreAtributoCondicion atributo al cual se le aplicarán las condiciones
+	 *@param valorCondicion valor de la condición
+	 *@param operador operador lógico de la condición.
+	 */
 	public void cambiarRegistro(String nombreTabla, String atributoCambiar, String valorNuevo, String nombreAtributoCondicion, String valorCondicion, String operador) {
 
 		Tabla tabla = this.obtenerTabla(nombreTabla);
