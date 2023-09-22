@@ -26,6 +26,12 @@ public class Comandos {
     private int aciertos;
     private Map<String, Consumer<ArrayList<String[]>>> acciones; //es una funcion que toma un valor y realiza algun tipo de accion con el, pero no produce ningun resultado como salida.
     static int usos;
+    
+    /**
+     * Metodo para inicializar las acciones
+     * @param fa-> inicializa la logica del programa para inicializar acciones
+     */
+    
     public Comandos(IFachadaLogica fa) {
     	
     	logica=fa;
@@ -1493,7 +1499,6 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * ejecutarComando(String, ArrayList<String[]>): void
 	 * Metodo publico que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El metodo ejecuta el comando especificado y las operaciones asociadas, verificando si se selecciono una base de datos y si el comando es valido. Tambien muestra resultados o mensajes de error en la tabla de depuracion.
 	 * @param comando-> comando que se ejeuctura
 	 * @param sentencia->lista de sentencia
