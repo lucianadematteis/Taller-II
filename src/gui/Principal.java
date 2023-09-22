@@ -5,6 +5,7 @@ package gui;
  * @author Daiana Daguerre
  * @author Luciana De Matteis
  * @author Mauricio González
+ * @
  */
 
 import comunicacion.FachadaLogica;

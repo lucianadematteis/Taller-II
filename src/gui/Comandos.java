@@ -265,6 +265,14 @@ public class Comandos {
 		return false;
 
 	}
+	
+	/**
+	 * 
+	 * validaSentenciasDosLineas(ArrayList<String[]>): boolean
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de dos líneas es válida o false en caso contrario.
+	 * @param sentencia-> lista de sentencias
+	 * @return valida si la sentencia es valida
+	 */
 
 	private boolean validaSentenciasDosLineas(ArrayList<String[]> sentencia) {
 
@@ -298,6 +306,13 @@ public class Comandos {
 		return false;
 
 	}
+	/**
+	 * validaSentenciasWhereComun(ArrayList<String[]>): boolean
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "WHERE" es válida o false en caso contrario.
+	 * @param sentencia->lista de sentencias
+	 * @return valida la sentencia 
+	 * 
+	 */
 
 	private boolean validaSentenciasWhereComun(ArrayList<String[]> sentencia) {
 
@@ -331,7 +346,15 @@ public class Comandos {
 		return false;
 
 	}
-
+	
+	/**
+	 * 
+	 * validaSentenciasFrom(ArrayList<String[]>): boolean
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" es válida o false en caso contrario.
+	 * @param sentencia->lista de sentencias
+	 * @return valida la sentencia
+	 * 
+	 */
 	private boolean validaSentenciasFrom(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
@@ -355,6 +378,13 @@ public class Comandos {
 
 	}
 
+	/**
+	 * validaSentenciasFromWhere(ArrayList<String[]>): boolean
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" y “WHERE” es válida o false en caso contrario.
+	 * @param sentencia->lista de sentencias
+	 * @return vzlida la sentencia
+	 * 
+	 */
 	private boolean validaSentenciasFromWhere(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadLineas(sentencia, 3, 3))) {
@@ -378,6 +408,15 @@ public class Comandos {
 		return false;
 
 	}
+	
+	/**
+	 * 
+	 * validaOperadoresLogicos(ArrayList<String[]>): boolean
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si los operadores lógicos en la sentencia son válidos.
+	 * @param sentencia-> lista de sentencias
+	 * @return valida los operadores logicos de la sentencia
+	 * 
+	 */
 
 	private boolean validaOperadoresLogicos(ArrayList<String[]> sentencia) {
 
