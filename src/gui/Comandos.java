@@ -215,7 +215,7 @@ public class Comandos {
 	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia), dos valores enteros (min y max) que representan los límites de la cantidad de líneas permitidas. El método retorna true si la cantidad de líneas en la sentencia está dentro del rango especificado o false en caso contrario.
 	 * @param sentencia->lista de sentencia
 	 * @param min-> limite minimo de cantidad de lineas
-	 * @param max-> limite maxumo de cantidad de lineas
+	 * @param max-> limite maximo de cantidad de lineas
 	 * @return valida la cantidad de lineas se encuentra dentro del rango especificado
 	 * 
 	 */
