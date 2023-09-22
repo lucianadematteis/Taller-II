@@ -1164,6 +1164,13 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * 
+	 * comandoAvg(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "AVG" para calcular el promedio de los valores de un atributo en una tabla.  El método verifica la validez de la sentencia, el tipo de atributo y la condición antes de realizar el cálculo.
+	 * @param sentencia->lista de sentencias
+	 * 
+	 */
 	private void comandoAvg(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
@@ -1220,6 +1227,14 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * 
+	 * comandoMax(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MAX" para encontrar el valor máximo de un atributo en una tabla.  El método verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor máximo.
+	 * @param sentencia-> lista de sentencias
+	 * 
+	 */
+	
 	private void comandoMax(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
@@ -1263,6 +1278,14 @@ public class Comandos {
 		
 	}
 	
+	
+	/**
+	 * 
+	 * comandoMin(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MIN" para encontrar el valor mínimo de un atributo en una tabla.  El método verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor mínimo.
+	 * @param sentencia->lista de sentencia
+	 * 
+	 */
 	private void comandoMin(ArrayList<String[]> sentencia) {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
@@ -1301,6 +1324,12 @@ public class Comandos {
 		}
 		
 	}
+	
+	/**
+	 * 
+	 * 
+	 * @param sentencia
+	 */
 	
 	private void comandoPrimaryKey(ArrayList<String[]> sentencia) {
 		
