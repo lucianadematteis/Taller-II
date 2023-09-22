@@ -713,23 +713,20 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	private ArrayList<Atributo> obtenerAuxiliar(Tabla tabla1, Tabla tabla2) {
 		
-		ArrayList<Atributo> resultado = new ArrayList< Atributo> ();
-		
-		ArrayList<LinkedHashMap<String, Atributo>> reg1 = new ArrayList<LinkedHashMap<String, Atributo>>();
-		ArrayList<LinkedHashMap<String, Atributo>> reg2 = new ArrayList<LinkedHashMap<String, Atributo>>();
+		ArrayList<Atributo> resultado = new ArrayList<Atributo>();
+		ArrayList<LinkedHashMap<String, Atributo>> reg1;
+		ArrayList<LinkedHashMap<String, Atributo>> reg2;
 		
 		if(tabla1.getRegistros().size() > tabla2.getRegistros().size()) {
-			
-			reg1 = tabla1.getRegistros();
-			reg2 = tabla2.getRegistros();
+			reg1 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla1.getRegistros());
+			reg2 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla2.getRegistros());
 	   
 		}else {
 			
-			 reg2 = tabla1.getRegistros();
-			 reg1 = tabla2.getRegistros();
-			
+			reg1 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla2.getRegistros());
+			reg2 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla1.getRegistros());	
 		}
-		
+		if(reg1.size()>1 && reg2.size()>1) {
 		reg2.remove(0);
 		reg1.remove(0);
 	   
@@ -750,10 +747,11 @@ public class FachadaLogica implements IFachadaLogica {
 	                }
 	            }
 	        }
-	    }
-	    
+	    }}
+		else
 	    return resultado;
-    		
+    	
+		return resultado;
     }
     	
 	public ArrayList<DTOAtributo> joinNatural(String tabla1, String tabla2, String busqueda){
