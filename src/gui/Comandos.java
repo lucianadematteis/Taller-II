@@ -100,7 +100,7 @@ public class Comandos {
 	  * cargarTablaString(ArrayList<String>, String) : void
 	  * Método privado que recibe como parámetros una lista de cadenas y el nombre de la columna y los carga en una tabla en la interfaz gráfica.
 	  * @param datos-> lista de cadenas
-	  * @param nombreColumna-> nombre de la columna
+	  * @param nombreColumna-> nombre de la columna a cargar en una tabla
 	  * 
 	  */
     
@@ -138,11 +138,11 @@ public class Comandos {
     * 
     * validaCantidadArgumentos(ArrayList<String[]>, int, int, int): boolean
     * Método privado que recibe como parámetros una lista de matrices de cadenas de texto (la sentencia), dos índices de posición (inicial y final) y un número entero que representa la cantidad de argumentos.  El método valida si la cantidad de argumentos en las líneas de una sentencia está dentro de un rango específico y retorna true si es válida o false en caso contrario.
-    * @param sentencia-> lista de matrices
+    * @param sentencia-> lista de sentencias
     * @param posInicial->indice
     * @param posFinal->indice
     * @param cantArgumentos->cantidad de argumentos
-    * @return cantidad de argumentos validas para realizar la sentencia
+    * @return valida la cantidad de argumentos validas para realizar la sentencia
     * 
     */
     
@@ -310,7 +310,7 @@ public class Comandos {
 	 * validaSentenciasWhereComun(ArrayList<String[]>): boolean
 	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "WHERE" es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return valida la sentencia 
+	 * @return valida la sentencia de WHERE
 	 * 
 	 */
 
@@ -352,7 +352,7 @@ public class Comandos {
 	 * validaSentenciasFrom(ArrayList<String[]>): boolean
 	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return valida la sentencia
+	 * @return valida la sentencia FROM
 	 * 
 	 */
 	private boolean validaSentenciasFrom(ArrayList<String[]> sentencia) {
@@ -382,7 +382,7 @@ public class Comandos {
 	 * validaSentenciasFromWhere(ArrayList<String[]>): boolean
 	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" y “WHERE” es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return vzlida la sentencia
+	 * @return valida la sentencia del FROM con WHERE
 	 * 
 	 */
 	private boolean validaSentenciasFromWhere(ArrayList<String[]> sentencia) {
@@ -446,6 +446,7 @@ public class Comandos {
 	 * comandoTable(ArrayList<String[]>): void
 	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y valida la estructura de la misma: cantidad de líneas, cantidad de argumentos,  tipos de datos y si existe la tabla en la base de datos para luego crearla con los atributos especificados.
 	 * @param sentencia-> lista de sentencias
+	 * 
 	 */
 	private void comandoTable(ArrayList<String[]> sentencia) {
 		
@@ -498,9 +499,11 @@ public class Comandos {
 	}
 	
 	/**
+	 * 
 	 * comandoDatabase(ArrayList<String[]>): void
 	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DATABASE" para crear una nueva base de datos.  El método verifica la validez de la sentencia, asegura que se haya seleccionado una base de datos y comprueba si la base de datos ya existe antes de crearla.
 	 * @param sentencia->lista de sentencia
+	 * 
 	 */
 	
 	private void comandoDatabase(ArrayList<String[]> sentencia) {
@@ -1327,8 +1330,10 @@ public class Comandos {
 	
 	/**
 	 * 
+	 * comandoPrimaryKey(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "PRIMARY KEY" para especificar un atributo como clave primaria en una tabla. . El método verifica la validez de la sentencia y realiza la operación si es válida.
+	 * @param sentencia->lista de sentencias
 	 * 
-	 * @param sentencia
 	 */
 	
 	private void comandoPrimaryKey(ArrayList<String[]> sentencia) {
@@ -1372,6 +1377,13 @@ public class Comandos {
 		
 	}
 	
+	/**
+	 * 
+	 * comandoDescribe(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DESCRIBE" para mostrar información sobre la estructura de una tabla.  El método verifica si la tabla especificada existe y muestra su descripción.
+	 * @param sentencia->lista de sentencias
+	 */
+	
 	private void comandoDescribe(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
@@ -1390,7 +1402,13 @@ public class Comandos {
     	}
 		
 	}
-	
+	/**
+	 * 
+	 * comandoHelp(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "HELP" para mostrar información de ayuda sobre un comando específico.  El método verifica si el comando especificado existe y muestra su ayuda asociada.
+	 * @param sentencia->lista de sentencia
+	 * 
+	 */
 	private void comandoHelp(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
@@ -1411,6 +1429,15 @@ public class Comandos {
     	}
 		
 	}
+	
+	
+	/**
+	 * 
+	 * comandoJoinNatural(ArrayList<String[]>): void
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "JOIN NATURAL" para realizar un join natural entre dos tablas.  El método verifica la validez de la sentencia y si las tablas especificadas existen
+	 * @param sentencia->lista de sentencias
+	 * 
+	 */
 	
 	private void comandoJoinNatural(ArrayList<String[]> sentencia) {
 		
@@ -1463,6 +1490,15 @@ public class Comandos {
 		
 	}
 	
+	
+	/**
+	 * 
+	 * ejecutarComando(String, ArrayList<String[]>): void
+	 * Método público que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El método ejecuta el comando especificado y las operaciones asociadas, verificando si se seleccionó una base de datos y si el comando es válido. También muestra resultados o mensajes de error en la tabla de depuración.
+	 * @param comando-> comando que se ejeucturá
+	 * @param sentencia->lista de sentencia
+	 * 
+	 */
 	public void ejecutarComando(String comando, ArrayList<String[]> sentencia) {
 		
 	    if (acciones.containsKey(comando)) {
