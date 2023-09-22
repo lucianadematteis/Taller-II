@@ -649,7 +649,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoCreate(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "CREATE" para crear una tabla o una base de datos. El método verifica la validez de la sentencia y el tipo de comando ("TABLE" o "DATABASE") antes de llamar a métodos específicos (comandoTable o comandoDatabase) para ejecutar la acción correspondiente.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "CREATE" para crear una tabla o una base de datos. El metodo verifica la validez de la sentencia y el tipo de comando ("TABLE" o "DATABASE") antes de llamar a metodos específicos (comandoTable o comandoDatabase) para ejecutar la accion correspondiente.
 	 * @param sentencia->lista de sentecias
 	 * 
 	 */
@@ -700,7 +700,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoSelect(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto llamada (sentencia) y procesa el comando "SELECT" para realizar una consulta en una tabla. El método valida la sentencia, el tipo de atributo y la condición. Luego, muestra los resultados de la consulta si es válida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto llamada (sentencia) y procesa el comando "SELECT" para realizar una consulta en una tabla. El metodo valida la sentencia, el tipo de atributo y la condicion. Luego, muestra los resultados de la consulta si es valida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -831,7 +831,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoUse(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "USE" para seleccionar una base de datos. El método verifica si la base de datos especificada existe y la selecciona si es válida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "USE" para seleccionar una base de datos. El metodo verifica si la base de datos especificada existe y la selecciona si es valida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -859,7 +859,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoInsert(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "INSERT" para agregar datos a una tabla.  El método verifica la validez de la sentencia, los argumentos y los datos a insertar. Luego, agrega los datos si son válidos.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "INSERT" para agregar datos a una tabla.  El metodo verifica la validez de la sentencia, los argumentos y los datos a insertar. Luego, agrega los datos si son validos.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -944,7 +944,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoDelete(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DELETE" para eliminar registros de una tabla.  El método valida la sentencia, el tipo de atributo y la condición antes de realizar la eliminación.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DELETE" para eliminar registros de una tabla.  El metodo valida la sentencia, el tipo de atributo y la condicion antes de realizar la eliminacion.
 	 * @param sentencia->lista de sentencia
 	 * 
 	 */
@@ -994,7 +994,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoUpdate(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "UPDATE" para modificar registros en una tabla.  El método valida la sentencia, los argumentos y los datos a actualizar antes de realizar la modificación.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "UPDATE" para modificar registros en una tabla.  El metodo valida la sentencia, los argumentos y los datos a actualizar antes de realizar la modificacion.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1076,7 +1076,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoNotNull(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "NOT NULL" para especificar que un atributo en una tabla no puede ser nulo.  El método valida la sentencia y realiza la operación si es válida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "NOT NULL" para especificar que un atributo en una tabla no puede ser nulo.  El metodo valida la sentencia y realiza la operacion si es valida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1119,7 +1119,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoCount(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "COUNT" para contar la cantidad de registros que cumplen con una consulta en una tabla.  El método verifica la validez de la sentencia, el tipo de atributo y la condición antes de realizar el conteo.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "COUNT" para contar la cantidad de registros que cumplen con una consulta en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condicion antes de realizar el conteo.
 	 * @param sentencia-> lista de sentencias
 	 */
 	
@@ -1170,7 +1170,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoAvg(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "AVG" para calcular el promedio de los valores de un atributo en una tabla.  El método verifica la validez de la sentencia, el tipo de atributo y la condición antes de realizar el cálculo.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "AVG" para calcular el promedio de los valores de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condicion antes de realizar el calculo.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1233,7 +1233,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoMax(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MAX" para encontrar el valor máximo de un atributo en una tabla.  El método verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor máximo.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MAX" para encontrar el valor maximo de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor maximo.
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
@@ -1285,7 +1285,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoMin(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MIN" para encontrar el valor mínimo de un atributo en una tabla.  El método verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor mínimo.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MIN" para encontrar el valor minimo de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor minimo.
 	 * @param sentencia->lista de sentencia
 	 * 
 	 */
@@ -1331,7 +1331,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoPrimaryKey(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "PRIMARY KEY" para especificar un atributo como clave primaria en una tabla. . El método verifica la validez de la sentencia y realiza la operación si es válida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "PRIMARY KEY" para especificar un atributo como clave primaria en una tabla. . El metodo verifica la validez de la sentencia y realiza la operacion si es valida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1380,7 +1380,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoDescribe(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DESCRIBE" para mostrar información sobre la estructura de una tabla.  El método verifica si la tabla especificada existe y muestra su descripción.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DESCRIBE" para mostrar informacion sobre la estructura de una tabla.  El metodo verifica si la tabla especificada existe y muestra su descripcion.
 	 * @param sentencia->lista de sentencias
 	 */
 	
@@ -1405,7 +1405,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoHelp(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "HELP" para mostrar información de ayuda sobre un comando específico.  El método verifica si el comando especificado existe y muestra su ayuda asociada.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "HELP" para mostrar informacion de ayuda sobre un comando especifico.  El metodo verifica si el comando especificado existe y muestra su ayuda asociada.
 	 * @param sentencia->lista de sentencia
 	 * 
 	 */
@@ -1434,7 +1434,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoJoinNatural(ArrayList<String[]>): void
-	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "JOIN NATURAL" para realizar un join natural entre dos tablas.  El método verifica la validez de la sentencia y si las tablas especificadas existen
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "JOIN NATURAL" para realizar un join natural entre dos tablas.  El metodo verifica la validez de la sentencia y si las tablas especificadas existen
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1494,7 +1494,7 @@ public class Comandos {
 	/**
 	 * 
 	 * ejecutarComando(String, ArrayList<String[]>): void
-	 * Método público que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El método ejecuta el comando especificado y las operaciones asociadas, verificando si se seleccionó una base de datos y si el comando es válido. También muestra resultados o mensajes de error en la tabla de depuración.
+	 * Metodo público que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El metodo ejecuta el comando especificado y las operaciones asociadas, verificando si se selecciono una base de datos y si el comando es valido. Tambien muestra resultados o mensajes de error en la tabla de depuracion.
 	 * @param comando-> comando que se ejeucturá
 	 * @param sentencia->lista de sentencia
 	 * 
