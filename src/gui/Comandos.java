@@ -186,7 +186,7 @@ public class Comandos {
 	/**
 	 * 
 	 * validaTiposAtributos(ArrayList<String[]>, int, int): boolean
-	 * Metodo privado que recibe como parametros una lista de matrices de cadenas de texto (sentencia) y dos indices de posición (inicial y final). El metodo retorna true si los tipos de atributos (entero o cadena) en el rango especificado son validos y false en caso contrario.
+	 * Metodo privado que recibe como parametros una lista de matrices de cadenas de texto (sentencia) y dos indices de posicion (inicial y final). El metodo retorna true si los tipos de atributos (entero o cadena) en el rango especificado son validos y false en caso contrario.
 	 * @param sentencia-> lista de sentencias
 	 * @param posInicial->indice
 	 * @param posFinal->indice
@@ -380,7 +380,7 @@ public class Comandos {
 
 	/**
 	 * validaSentenciasFromWhere(ArrayList<String[]>): boolean
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" y “WHERE” es valida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" y "WHERE" es valida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
 	 * @return valida la sentencia del FROM con WHERE
 	 * 
@@ -412,7 +412,7 @@ public class Comandos {
 	/**
 	 * 
 	 * validaOperadoresLogicos(ArrayList<String[]>): boolean
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si los operadores lógicos en la sentencia son validos.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si los operadores lOgicos en la sentencia son validos.
 	 * @param sentencia-> lista de sentencias
 	 * @return valida los operadores logicos de la sentencia
 	 * 
@@ -444,7 +444,7 @@ public class Comandos {
 	
 	/**
 	 * comandoTable(ArrayList<String[]>): void
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y valida la estructura de la misma: cantidad de líneas, cantidad de argumentos,  tipos de datos y si existe la tabla en la base de datos para luego crearla con los atributos especificados.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y valida la estructura de la misma: cantidad de lineas, cantidad de argumentos,  tipos de datos y si existe la tabla en la base de datos para luego crearla con los atributos especificados.
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
@@ -539,7 +539,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoSelectAnd(ArrayList<String[]>): void
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT AND", que realiza una consulta en una tabla con una condición "AND".  El metodo verifica la validez de la sentencia, el tipo de atributo y condicion, y muestra los resultados de la consulta si es valida. 
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT AND", que realiza una consulta en una tabla con una condicion "AND".  El metodo verifica la validez de la sentencia, el tipo de atributo y condicion, y muestra los resultados de la consulta si es valida. 
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
@@ -580,7 +580,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoSelectOr(ArrayList<String[]>): void
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT OR", que realiza una consulta en una tabla con una condición "OR". Verifica la validez de la sentencia, el tipo de atributo y condicion, y muestra los resultados de la consulta si es valida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT OR", que realiza una consulta en una tabla con una condicion "OR". Verifica la validez de la sentencia, el tipo de atributo y condicion, y muestra los resultados de la consulta si es valida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -649,7 +649,7 @@ public class Comandos {
 	/**
 	 * 
 	 * comandoCreate(ArrayList<String[]>): void
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "CREATE" para crear una tabla o una base de datos. El metodo verifica la validez de la sentencia y el tipo de comando ("TABLE" o "DATABASE") antes de llamar a metodos específicos (comandoTable o comandoDatabase) para ejecutar la accion correspondiente.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "CREATE" para crear una tabla o una base de datos. El metodo verifica la validez de la sentencia y el tipo de comando ("TABLE" o "DATABASE") antes de llamar a metodos especificos (comandoTable o comandoDatabase) para ejecutar la accion correspondiente.
 	 * @param sentencia->lista de sentecias
 	 * 
 	 */
@@ -1494,7 +1494,7 @@ public class Comandos {
 	/**
 	 * 
 	 * ejecutarComando(String, ArrayList<String[]>): void
-	 * Metodo público que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El metodo ejecuta el comando especificado y las operaciones asociadas, verificando si se selecciono una base de datos y si el comando es valido. Tambien muestra resultados o mensajes de error en la tabla de depuracion.
+	 * Metodo publico que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El metodo ejecuta el comando especificado y las operaciones asociadas, verificando si se selecciono una base de datos y si el comando es valido. Tambien muestra resultados o mensajes de error en la tabla de depuracion.
 	 * @param comando-> comando que se ejeucturá
 	 * @param sentencia->lista de sentencia
 	 * 
