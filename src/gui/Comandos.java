@@ -15,7 +15,11 @@ import comunicacion.DTOCadena;
 import comunicacion.DTOEntero;
 import comunicacion.DTOTabla;
 import comunicacion.IFachadaLogica;
-
+	/**
+	 * 
+	 * Esta clase maneja las palabras claves de los comandos que se utilizan para realizar las operaciones en las bases de datos.
+	 * 
+	 */
 public class Comandos {
 	
 	private IFachadaLogica logica;
@@ -28,7 +32,12 @@ public class Comandos {
         inicializarAcciones();
         
     }
-
+	/**
+	 * 
+	 * inicializarAcciones(): void
+	 * Método privado que inicializa el mapa de acciones, que asocia comandos con funciones que deben ejecutarse cuando se recibe ese comando. Por ejemplo, cuando se recibe el comando "CREATE", se asocia con la función comandoCreate que procesa la creación de tablas.
+	 * 
+	 */
     private void inicializarAcciones() {
     	
         acciones = new HashMap<>();
@@ -51,7 +60,14 @@ public class Comandos {
         acciones.put("MIN", sentencia -> comandoMin(sentencia));
         }
     }
-	
+	/**
+	 * 
+	 *cargarTablaAtributos(ArrayList<DTOAtributo>, String) : void
+	 *Método privado que recibe como parámetros una lista de DTOAtributo y el nombre de la columna y los carga en una tabla en la interfaz gráfica con los atributos proporcionados.
+	 *@param atributos-> lista de DTOAtributo
+	 *@param nombreAtributo-> nombre de la columna
+	 *
+	 */
     private void cargarTablaAtributos(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
     	
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
@@ -79,6 +95,15 @@ public class Comandos {
     	
     }
     
+	 /**
+	  * 
+	  * cargarTablaString(ArrayList<String>, String) : void
+	  * Método privado que recibe como parámetros una lista de cadenas y el nombre de la columna y los carga en una tabla en la interfaz gráfica.
+	  * @param datos-> lista de cadenas
+	  * @param nombreColumna-> nombre de la columna
+	  * 
+	  */
+    
     private void cargarTablaString(ArrayList<String> datos, String nombreColumna) {
     	
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
@@ -93,7 +118,14 @@ public class Comandos {
     	}
     	
     }
-    	
+	 /**
+	  * 
+	  * insertarDepuracion(String, String) : void
+	  * Método privado que recibe como parámetros dos cadenas de texto que corresponden a mensajes. El método inserta una fila en una tabla de depuración en la interfaz gráfica.
+	  * @param mensaje1->cadena de texto
+	  * @param mensaje2->cadena de texto
+	  * 
+	  */
     private void insertarDepuracion(String mensaje1, String mensaje2) {
 
 		DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.depuracion.getModel();
@@ -102,6 +134,17 @@ public class Comandos {
 		model.insertRow(0, nuevaFila);
 
 	}
+   /**
+    * 
+    * validaCantidadArgumentos(ArrayList<String[]>, int, int, int): boolean
+    * Método privado que recibe como parámetros una lista de matrices de cadenas de texto (la sentencia), dos índices de posición (inicial y final) y un número entero que representa la cantidad de argumentos.  El método valida si la cantidad de argumentos en las líneas de una sentencia está dentro de un rango específico y retorna true si es válida o false en caso contrario.
+    * @param sentencia-> lista de matrices
+    * @param posInicial->indice
+    * @param posFinal->indice
+    * @param cantArgumentos->cantidad de argumentos
+    * @return cantidad de argumentos validas para realizar la sentencia
+    * 
+    */
     
 	private boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
 
@@ -125,13 +168,31 @@ public class Comandos {
 		return true;
 
 	}
-
+	
+	/**
+	 * 
+	 * validaTipoDato(String): boolean
+	 * Método privado que recibe como parámetro una cadena de texto y retorna true si el tipo de dato es válido (cadena o entero) o false en caso contrario.
+	 * @param tipo->cadena de texto
+	 * @return valida que el tipo de dato sea entero o cadena
+	 * 
+	 */
+	
 	private boolean validaTipoDato(String tipo) {
 
 		return ((tipo.toUpperCase().equals("ENTERO")) || (tipo.toUpperCase().equals("CADENA")));
 
 	}
-
+	/**
+	 * 
+	 * validaTiposAtributos(ArrayList<String[]>, int, int): boolean
+	 * Método privado que recibe como parámetros una lista de matrices de cadenas de texto (sentencia) y dos índices de posición (inicial y final). El método retorna true si los tipos de atributos (entero o cadena) en el rango especificado son válidos y false en caso contrario.
+	 * @param sentencia-> lista de sentencias
+	 * @param posInicial->indice
+	 * @param posFinal->indice
+	 * @return valida el tipo de atributo en el rango de indice.
+	 * 
+	 */
 	private boolean validaTiposAtributos(ArrayList<String[]> sentencia, int posInicial, int posFinal) {
 
 		for (int j = posInicial; j < posFinal; j++) {
@@ -147,6 +208,17 @@ public class Comandos {
 		return true;
 
 	}
+	
+	/**
+	 * 
+	 * validaCantidadLineas(ArrayList<String[]>, int, int) : boolean
+	 * Método privado que recibe una lista de matrices de cadenas de texto (sentencia), dos valores enteros (min y max) que representan los límites de la cantidad de líneas permitidas. El método retorna true si la cantidad de líneas en la sentencia está dentro del rango especificado o false en caso contrario.
+	 * @param sentencia->lista de sentencia
+	 * @param min-> limite minimo de cantidad de lineas
+	 * @param max-> limite maxumo de cantidad de lineas
+	 * @return valida la cantidad de lineas se encuentra dentro del rango especificado
+	 * 
+	 */
 
 	private boolean validaCantidadLineas(ArrayList<String[]> sentencia, int min, int max) {
 

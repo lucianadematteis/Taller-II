@@ -1,10 +1,10 @@
 package gui;
 /**
- * @autor Gabriel Bolsi
- * @autor Brandon Cairús
- * @autor Daiana Daguerre
- * @autor Luciana De Matteis
- * @autor Mauricio González
+ * @author Gabriel Bolsi
+ * @author Brandon Cairús
+ * @author Daiana Daguerre
+ * @author Luciana De Matteis
+ * @author Mauricio González
  */
 
 import comunicacion.FachadaLogica;
