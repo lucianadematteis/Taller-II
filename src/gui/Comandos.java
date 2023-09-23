@@ -562,12 +562,12 @@ public class Comandos {
 						
 						logica.liberarMemoriaBaseDatos();
 						VentanaPrincipal.bdActual.setText("Base de datos: ");
-						VentanaPrincipal.cargarTablas(null);
 						
 					}
 					
 					logica.eliminarBD(sentencia.get(1)[1]);
 					VentanaPrincipal.cargarBasesDatos(logica.obtenerBasesNom());
+					VentanaPrincipal.cargarTablas(null);
 					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con exito la base de datos: " + sentencia.get(1)[1]);
 					
 				}else {
