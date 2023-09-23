@@ -117,7 +117,8 @@ public class Comandos {
 	  * @param nombreColumna-> nombre de la columna a cargar en una tabla
 	  * 
 	  */
-    private void cargarTablaString(ArrayList<String> datos, String nombreColumna) {
+    @SuppressWarnings("serial")
+	private void cargarTablaString(ArrayList<String> datos, String nombreColumna) {
 
         DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
         model.setRowCount(0);
@@ -128,10 +129,12 @@ public class Comandos {
         DefaultTableCellRenderer htmlRenderer = new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                JLabel label = new JLabel();
+               
+            	JLabel label = new JLabel();
                 label.setText("<html>" + value.toString() + "</html>");
                 table.setRowHeight(row, label.getPreferredSize().height);
                 return label;
+            
             }
         };
 
@@ -450,9 +453,9 @@ public class Comandos {
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
-private void comandoTable(ArrayList<String[]> sentencia) {
+	private void comandoTable(ArrayList<String[]> sentencia) {
 		
-		if(!(validaCantidadLineas(sentencia, 3, 5))) {
+		if(!(validaCantidadLineas(sentencia, 2, 5))) {
 			
 			insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla");
         	
@@ -559,6 +562,7 @@ private void comandoTable(ArrayList<String[]> sentencia) {
 						
 						logica.liberarMemoriaBaseDatos();
 						VentanaPrincipal.bdActual.setText("Base de datos: ");
+						VentanaPrincipal.cargarTablas(null);
 						
 					}
 					

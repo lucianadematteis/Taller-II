@@ -335,12 +335,15 @@ public class VentanaPrincipal extends JFrame {
 		model.setColumnCount(0);
 		model.addColumn("TABLAS");
 
-		for (int i = 0; i < nTablas.size(); i++) {
+		if(nTablas != null) {
 
-			model.addRow(new Object [] {nTablas.get(i)});
+			for (int i = 0; i < nTablas.size(); i++) {
+	
+				model.addRow(new Object [] {nTablas.get(i)});
+	
+			}
 
 		}
-
 	}
 	
 }
