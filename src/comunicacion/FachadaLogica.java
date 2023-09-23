@@ -564,7 +564,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @param valorCondicion1 ->  valor de la condicion del atributo 1
 	 * @param nombreAtributoCondicion2 -> nombre de la condion del atributo 2
 	 * @param valorCondicion2 ->  valor de la condicion del atributo 2
-	 * @return lista de registros que cumplan ambas condiciones
+	 * @return lista de registros que cumplan con al menos una  condicion
 	 */
 	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2, String operador) {
 		
@@ -621,6 +621,11 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 
+	/**
+	 * Metodo publico que recibe como parametro el nombre de una tabla y retorna true si la misma existe para la base de datos seleccionada y false en caso contrario
+	 * @param nombreTabla-> nombre de la tabla
+	 * @return verifica si existe la tabla
+	 */
 	public boolean existeTabla(String nombreTabla) {
 
 		Tabla tablita = obtenerTabla(nombreTabla);
@@ -636,7 +641,11 @@ public class FachadaLogica implements IFachadaLogica {
 		}
 		
 	}
-
+	
+	/**
+	 * Metodo publico que recibe como parametro un objeto DTOBaseDatos que representa la informacion de la nueva base de datos y la agrega al usuario actual.
+	 * @param base-> DTOBaseDatos 
+	 */
 	public void crearBD(DTOBaseDatos base) {
 		
 		Usuario usuarioActual = obtenerUsuario();
@@ -645,6 +654,11 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametro el nombre de un usuario y retorna true si el usuario existe en la coleccion de usuario y false en caso contrario.
+	 * @param nombreUsuario-> nombre del usuario
+	 * @return verifica si el usuario existe
+	 */
 	public boolean existeUsuario(String nombreUsuario) {
 		
 		if (usuarios.containsKey(nombreUsuario))
@@ -654,6 +668,9 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametro un objeto DTOTabla que representa la informacion de la nueva tabla y un mapa de atributos. El metodo crea una nueva tabla en la base de datos seleccionada y agrega registros con los atributos especificados.
+	 */
 	public void crearTabla(DTOTabla tabla, LinkedHashMap<String, String> atributos) {
 		
 		Tabla tablita = new Tabla(tabla);
@@ -662,14 +679,21 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 	
-	
+	/**
+	 * Metodo publico que retorna una lista de cadenas de caracteres que representa los nombres de todas las tablas en la base de datos seleccionada
+	 * @return lista con los nombres de la tabla
+	 */
 	public ArrayList<String> obtenerTablasNom() {
 		
 		return this.obtenerBaseDatos().obtenerNomTablas();
 		
 	}
 	
-	
+	/**
+	 * Metodo publico que recibe un objeto DTOUsuario que contiene el nombre de usuario y la contrasena a validar. El metodo retorna true si la contrasena ingresada es valida para el usuario especificado y false en caso contrario.
+	 * @param usu->DTOUsuario
+	 * @return valida si la contraseña que se ingreso es compatible con el usuario
+	 */
 	public boolean validarContrasenia (DTOUsuario usu) {
 		
 		String nombre = usu.getNombreUser();
@@ -682,6 +706,16 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametros el nombre de la tabla, el nombre del atributo a consultar, dos nombres de atributos de condicion y dos valores de condicion. El metodo retorna una lista de objetos DTOAtributo que contiene solo aquellos que cumplen simultaneamente ambas condiciones.
+	 *  @param nombreTabla -> nombre de la tabla
+	 * @param nombreAtributo -> nombre del atributo
+	 * @param nombreAtributoCondicion1 -> nombre de la condion del atributo 1
+	 * @param valorCondicion1 ->  valor de la condicion del atributo 1
+	 * @param nombreAtributoCondicion2 -> nombre de la condion del atributo 2
+	 * @param valorCondicion2 ->  valor de la condicion del atributo 2
+	 * @return lista de registros que cumplan ambas condiciones
+	 */
 	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador) {
     	
     	ArrayList <DTOAtributo>  res1= new ArrayList<DTOAtributo>();
@@ -698,6 +732,14 @@ public class FachadaLogica implements IFachadaLogica {
 		
     }
 	
+	/**
+	 * Metodo publico que recibe como parametros el nombre de la tabla, un atributo de condicion y su valor. El metodo retorna la cantidad de registros que cumplen con la condicion
+	 *  @param nombreTabla -> nombre de la tabla
+	 * @param nombreAtributoCondicion -> nombre de la condion del atributo 1
+	 * @param valorCondicion ->  valor de la condicion del atributo 1
+	 * @param nombreAtributoCondicion2 -> nombre de la condion del atributo 2
+	 * @return  la cantidad de registros que cumplan con la condicion
+	 */
 	public int contarRegistros( String nombreTabla, String nombreAtributoCondicion, String valorCondicion, String operador){
 		 
 		ArrayList<LinkedHashMap<String, DTOAtributo>> resultado1 = new ArrayList<LinkedHashMap<String, DTOAtributo>>();
@@ -708,12 +750,25 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	}
 
+	
+	/**
+	 * Metodo publico que recibe como parametro el nombre de un comando y retorna descripcion del mismo como una cadena de caracteres
+	 * @param comando-> comando del cual se requiere la ayuda
+	 * @param la ayuda relacionada con el comando
+	 */
 	public String darAyuda(String comando) {
 	
 		return ayuda.get(comando.toUpperCase());
 
 	}
 
+	
+	/**
+	 * Metodo publico que recibe como parametro el nombre de la tabla y una lista de atributos. El metodo valida si los atributos proporcionados son validos en la tabla especificada segun su tipo y condiciones y retorna true en caso afirmativo, o false si al menos uno de ellos no lo es
+	 * @param nombreTabla-> nombre de la tabla
+	 * @param atributos-> lista de atributos
+	 * @return valida los atributos son los correctos en la tabla
+	 */
 	public boolean validaAtributos(String nombreTabla, ArrayList<String> atributos) {
 		
 		Tabla tablita = this.obtenerTabla(nombreTabla);
@@ -741,6 +796,13 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	
+	/**
+	 * Metodo publico que recibe el nombre de la tabla y una lista de atributos. El metodo valida si la cantidad de atributos proporcionados coincide con la cantidad de atributos en la tabla y retorna true si la cantidad coincide, o false en caso contrario
+	 * @param nombreTabla-> nombre de la tabla
+	 * @param atributos-> lista de atributos
+	 * @return valida si la cantidad de atributos es correcta
+	 */
 	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos) {
 		
 		Tabla tablita = this.obtenerTabla(nombreTabla);
@@ -757,6 +819,13 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	
+	/**
+	 * Metodo publico que recibe como parametro el nombre de la tabla y una lista de atributos. El metodo valida si los atributos que no sean nulos encajan con la definicion de la tabla y retorna true si todos los atributos cumplen con la restriccion, false si al menos uno no lo hace
+	 * @param nombreTabla-> nombre de la tabla
+	 * @param atributos-> lista de atributos
+	 * @return valida si los atributos de la tabla pueden ser notnull
+	 */
 	public boolean validaNotNull(String nombreTabla, ArrayList<String> atributos) {
 		
 		Tabla tablita = this.obtenerTabla(nombreTabla);
@@ -781,6 +850,13 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	
+	/**
+	 * Metodo publico que recibe como parametros el nombre de una tabla y una lista de atributos. El metodo verifica si la tabla tiene una clave primaria definida; si no la tiene, se considera valida y retorna true. Si tiene una clave primaria, el metodo comprueba que ninguno de los atributos de la clave sea 'NULL' y que no se repitan en otros registros. Si alguna de estas condiciones no se cumple, retorna false
+	 *  @param nombreTabla -> nombre de la tabla
+	 * @param atributos -> lista de atributos
+	 * @return valida si los atributos de la tabla pueden ser clave
+	 */
 	public boolean validaClave(String nombreTabla, ArrayList<String> atributos) {
 		
 		Tabla tablita = this.obtenerTabla(nombreTabla);
@@ -824,12 +900,24 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	
+	/**
+	 * Metodo publico que recibe como parametro el nombre de un comando. El metodo verifica si el comando especificado existe en el mapa de ayuda y retorna true en caso afirmativo y false en caso contrario.
+	 * @param comando para verificar si existe
+	 * @return valida la existencia del comando
+	 */
+	
 	public boolean comandoExiste(String comando) {
 		
 		return this.ayuda.containsKey(comando.toUpperCase());
 		
 	}
 	
+	
+	/**
+	 * Metodo publico que retorna una lista de cadenas de caracteres que representa los nombres de todas las bases de datos del usuario actual.
+	 * @return el nombre de las bases de datos de un usuario
+	 */
 	public ArrayList<String> obtenerBasesNom(){
 		
 		ArrayList <String> aux = new ArrayList<String>();
@@ -846,6 +934,13 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	
+	/**
+	 * Metodo publico que recibe el nombre de una tabla y una lista de atributos. El metodo genera un registro a partir de los atributos proporcionados y lo retorna como un mapa de atributos.
+	 * @param nombreTabla -> nombre de la tabla
+	 * @param atributos -> lista de atributos
+	 * @return  mapa de registos a partir del nombre de la tabla y de los atributos
+	 */
 	public LinkedHashMap<String, DTOAtributo> generarArrayListRegistro(String nombreTabla, ArrayList<String> atributos){
 		
 		LinkedHashMap<String, DTOAtributo> registro = new LinkedHashMap<String, DTOAtributo>();
@@ -890,6 +985,12 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo privado que recibe dos objetos Tabla para realizar una comparacion de registros. El metodo compara los registros de ambas tablas y encuentra los atributos que se repiten y retorna una lista de objetos Atributo que representan los atributos repetidos en ambas tablas
+	 * @param tabla1-> Tabla 1 a buscar
+	 * @param tabla2-> Tabla 2 a buscar 
+	 * @return lista de los atributos repetidos en ambas tablas
+	 */
 	private ArrayList<Atributo> obtenerAuxiliar(Tabla tabla1, Tabla tabla2) {
 		
 		ArrayList<Atributo> resultado = new ArrayList<Atributo>();
@@ -933,6 +1034,13 @@ public class FachadaLogica implements IFachadaLogica {
 		return resultado;
     }
     	
+	/**
+	 * Metodo publico que recibe tres parametros: nombre de la primera tabla, nombre de la segunda tabla y el nombre del atributo de busqueda. El metodo realiza una operacion de join natural entre las dos tablas en funcion del atributo de busqueda y retorna una lista de objetos DTOAtributo
+	 * @param tabla1-> Tabla 1 a buscar
+	 * @param tabla2-> Tabla 2 a buscar
+	 * @param busqueda-> atributo a buscar 
+	 * @return Lista que cumplan el JOIN NATURAL de ambas tablas
+	 */
 	public ArrayList<DTOAtributo> joinNatural(String tabla1, String tabla2, String busqueda){
 		
 		Tabla tab1 = obtenerTabla(tabla1);
@@ -1024,6 +1132,12 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo privado que recibe dos parametros: el nombre de un atributo y el nombre de una tabla. El metodo retorna true si dicho atributo existe en la tabla o false en caso contrario.
+	 * @param atributo-> atributo
+	 * @param nombreTabla-> nombre de la tabla
+	 * @return verifica si el atributo se encuentra en la tabla
+	 */
 	private boolean existeAtributo(String atributo, String nombreTabla) {
 		
 		if (usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(atributo) == null) {
@@ -1037,7 +1151,12 @@ public class FachadaLogica implements IFachadaLogica {
 		}
 	}
 
-	// Metodo para verificar si dos registros tienen atributos con el mismo nombre
+	/**
+	 * Metodo privado que recibe dos parametros: un atributo y otro atributo. El metodo verificar si los dos atributos tienen el mismo nombre y, en caso de ser cadenas o enteros, si tienen el mismo valor y retorna true si son iguales o false en caso contrario
+	 * @param atr1-> atributo 1
+	 * @param atr2-> atributo 2
+	 * @return verifica si ambos atributos son iguales
+	 */
 	private boolean repiteAtributo(Atributo atr1, Atributo atr2) {
 		
 		if(atr1.getNombreAtributo().equals(atr2.getNombreAtributo())) {
@@ -1066,7 +1185,11 @@ public class FachadaLogica implements IFachadaLogica {
 		return false;
 		
 	}
-	
+	/**
+	 * Metodo publico que recibe como parametro el nombre de una tabla y retorna una lista de cadenas que describen las caracteristicas de los atributos de la tabla
+	 * @param nombreTabla-> nombre de la tabla
+	 * @return Lista con la descripcion de los atributos de la tabla
+	 */
 	public ArrayList<String> describeTabla (String nombreTabla){
 
 		ArrayList<String> resultado = new ArrayList<String>();
@@ -1105,6 +1228,12 @@ public class FachadaLogica implements IFachadaLogica {
 		return resultado;
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametros los nombres de dos tablas. El metodo busca los atributos de las dos tablas y compara si hay alguno en comun entre ellas. Si encuentra al menos un atributo comun, retorna true de lo contrario retorna false
+	  * @param tabla1-> Tabla 1 a buscar
+	 * @param tabla2-> Tabla 2 a buscar
+	 * @return verifica si las tablas tienen algun atributo en comun
+	 */
 	public boolean validaAtributosJoin (String tabla1, String tabla2) {
 		
 		Tabla tablita1 = this.obtenerTabla(tabla1);
