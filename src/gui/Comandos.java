@@ -6,26 +6,24 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Consumer;
-
 import javax.swing.table.DefaultTableModel;
-
 import comunicacion.DTOAtributo;
 import comunicacion.DTOBaseDatos;
 import comunicacion.DTOCadena;
 import comunicacion.DTOEntero;
 import comunicacion.DTOTabla;
 import comunicacion.IFachadaLogica;
-	/**
-	 * 
-	 * Esta clase maneja las palabras claves de los comandos que se utilizan para realizar las operaciones en las bases de datos.
-	 * @author Brandon
-	 * @author Gabriel
-	 * @author Daiana
-	 * @author Mauricio
-	 * @author Luciana
-	 */
-public class Comandos {
 	
+/**
+ * 
+ * Esta clase maneja las palabras claves de los comandos que se utilizan para realizar las operaciones en las bases de datos.
+ * @author Brandon
+ * @author Gabriel
+ * @author Daiana
+ * @author Mauricio
+ * @author Luciana
+ */
+public class Comandos {
 	
 	private IFachadaLogica logica;
     private int aciertos;
@@ -36,13 +34,13 @@ public class Comandos {
      * Metodo para inicializar las acciones
      * @param fa-> inicializa la logica del programa para inicializar acciones
      */
-    
     public Comandos(IFachadaLogica fa) {
     	
     	logica=fa;
         inicializarAcciones();
         
     }
+    
 	/**
 	 * Metodo privado que inicializa el mapa de acciones, que asocia comandos con funciones que deben ejecutarse cuando se recibe ese comando. Por ejemplo, cuando se recibe el comando "CREATE", se asocia con la funcion comandoCreate que procesa la creacion de tablas.
 	 * 
@@ -51,24 +49,29 @@ public class Comandos {
     	
         acciones = new HashMap<>();
         acciones.put("SELECT", sentencia -> comandoSelect(sentencia));
+       
         if (!(Login.demo)) {
-        acciones.put("CREATE", sentencia -> comandoCreate(sentencia));
-        acciones.put("INSERT", sentencia -> comandoInsert(sentencia));
-        acciones.put("SHOW", sentencia -> comandoShow(sentencia));
-        acciones.put("USE", sentencia -> comandoUse(sentencia));
-        acciones.put("DELETE", sentencia -> comandoDelete(sentencia));
-        acciones.put("UPDATE", sentencia -> comandoUpdate(sentencia));
-        acciones.put("NOTNULL", sentencia -> comandoNotNull(sentencia));
-        acciones.put("COUNT", sentencia -> comandoCount(sentencia));
-        acciones.put("AVG", sentencia -> comandoAvg(sentencia));
-        acciones.put("PRIMARYKEY", sentencia -> comandoPrimaryKey(sentencia));
-        acciones.put("DESCRIBE", sentencia -> comandoDescribe(sentencia));
-        acciones.put("HELP", sentencia -> comandoHelp(sentencia));
-        acciones.put("JOINNATURAL", sentencia -> comandoJoinNatural(sentencia));
-        acciones.put("MAX", sentencia -> comandoMax(sentencia));
-        acciones.put("MIN", sentencia -> comandoMin(sentencia));
+	    
+        	acciones.put("CREATE", sentencia -> comandoCreate(sentencia));
+	        acciones.put("INSERT", sentencia -> comandoInsert(sentencia));
+	        acciones.put("SHOW", sentencia -> comandoShow(sentencia));
+	        acciones.put("USE", sentencia -> comandoUse(sentencia));
+	        acciones.put("DELETE", sentencia -> comandoDelete(sentencia));
+	        acciones.put("UPDATE", sentencia -> comandoUpdate(sentencia));
+	        acciones.put("NOTNULL", sentencia -> comandoNotNull(sentencia));
+	        acciones.put("COUNT", sentencia -> comandoCount(sentencia));
+	        acciones.put("AVG", sentencia -> comandoAvg(sentencia));
+	        acciones.put("PRIMARYKEY", sentencia -> comandoPrimaryKey(sentencia));
+	        acciones.put("DESCRIBE", sentencia -> comandoDescribe(sentencia));
+	        acciones.put("HELP", sentencia -> comandoHelp(sentencia));
+	        acciones.put("JOINNATURAL", sentencia -> comandoJoinNatural(sentencia));
+	        acciones.put("MAX", sentencia -> comandoMax(sentencia));
+	        acciones.put("MIN", sentencia -> comandoMin(sentencia));
+        
         }
+        
     }
+    
 	/**
 	 *Metodo privado que recibe como parametros una lista de DTOAtributo y el nombre de la columna y los carga en una tabla en la interfaz grafica con los atributos proporcionados.
 	 *@param atributos-> lista de DTOAtributo
@@ -108,7 +111,6 @@ public class Comandos {
 	  * @param nombreColumna-> nombre de la columna a cargar en una tabla
 	  * 
 	  */
-    
     private void cargarTablaString(ArrayList<String> datos, String nombreColumna) {
     	
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
@@ -123,6 +125,7 @@ public class Comandos {
     	}
     	
     }
+    
 	 /**
 	  * Metodo privado que recibe como parametros dos cadenas de texto que corresponden a mensajes. El metodo inserta una fila en una tabla de depuracion en la interfaz grafica.
 	  * @param mensaje1->cadena de texto
@@ -137,7 +140,8 @@ public class Comandos {
 		model.insertRow(0, nuevaFila);
 
 	}
-   /**
+    
+    /**
     * 
     * Metodo privado que recibe como parametros una lista de matrices de cadenas de texto (la sentencia), dos indices de posicion (inicial y final) y un numero entero que representa la cantidad de argumentos.  El metodo valida si la cantidad de argumentos en las lineas de una sentencia esta dentro de un rango especifico y retorna true si es valida o false en caso contrario.
     * @param sentencia-> lista de sentencias
@@ -147,7 +151,6 @@ public class Comandos {
     * @return valida la cantidad de argumentos validas para realizar la sentencia
     * 
     */
-    
 	private boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
 
 		if (posInicial == posFinal) {
@@ -177,12 +180,12 @@ public class Comandos {
 	 * @return valida que el tipo de dato sea entero o cadena
 	 * 
 	 */
-	
 	private boolean validaTipoDato(String tipo) {
 
 		return ((tipo.toUpperCase().equals("ENTERO")) || (tipo.toUpperCase().equals("CADENA")));
 
 	}
+	
 	/**
 	 * Metodo privado que recibe como parametros una lista de matrices de cadenas de texto (sentencia) y dos indices de posicion (inicial y final). El metodo retorna true si los tipos de atributos (entero o cadena) en el rango especificado son validos y false en caso contrario.
 	 * @param sentencia-> lista de sentencias
@@ -215,7 +218,6 @@ public class Comandos {
 	 * @return valida la cantidad de lineas se encuentra dentro del rango especificado
 	 * 
 	 */
-
 	private boolean validaCantidadLineas(ArrayList<String[]> sentencia, int min, int max) {
 
 		if (min == max) {
@@ -229,13 +231,13 @@ public class Comandos {
 		}
 
 	}
+	
 	/**
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de una sola linea es valida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
 	 * @return valida si la sentencia es valida
 	 * 
 	 */
-
 	private boolean validaSentenciasUnaLinea(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadLineas(sentencia, 1, 1))) {
@@ -265,7 +267,6 @@ public class Comandos {
 	 * @param sentencia-> lista de sentencias
 	 * @return valida si la sentencia es valida
 	 */
-
 	private boolean validaSentenciasDosLineas(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadLineas(sentencia, 2, 2))) {
@@ -282,8 +283,7 @@ public class Comandos {
 
 				if (!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
 
-					insertarDepuracion("Error #01",
-							"El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+					insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 
 				} else {
 
@@ -298,13 +298,13 @@ public class Comandos {
 		return false;
 
 	}
+	
 	/**
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "WHERE" es valida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
 	 * @return valida la sentencia de WHERE
 	 * 
 	 */
-
 	private boolean validaSentenciasWhereComun(ArrayList<String[]> sentencia) {
 
 		ArrayList<String> operadores = new ArrayList<>(Arrays.asList("=", "<", ">", ">=", "<="));
@@ -403,7 +403,6 @@ public class Comandos {
 	 * @return valida los operadores logicos de la sentencia
 	 * 
 	 */
-
 	private boolean validaOperadoresLogicos(ArrayList<String[]> sentencia) {
 
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 8))) {
@@ -489,7 +488,6 @@ public class Comandos {
 	 * @param sentencia->lista de sentencia
 	 * 
 	 */
-	
 	private void comandoDatabase(ArrayList<String[]> sentencia) {
 		
 		if(!(validaCantidadLineas(sentencia, 2, 2))) {
@@ -526,7 +524,6 @@ public class Comandos {
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
-	
 	private void comandoSelectAnd(ArrayList<String[]> sentencia) {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
@@ -683,7 +680,6 @@ public class Comandos {
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
-	
 	private void comandoSelect(ArrayList<String[]> sentencia) {
 		
 		if(!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
@@ -924,7 +920,6 @@ public class Comandos {
 	 * @param sentencia->lista de sentencia
 	 * 
 	 */
-	
 	private void comandoDelete(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
@@ -973,7 +968,6 @@ public class Comandos {
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
-	
 	private void comandoUpdate(ArrayList<String[]> sentencia) {
 		
 		if(!(validaCantidadLineas(sentencia, 3, 3))) {
@@ -1095,7 +1089,6 @@ public class Comandos {
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "COUNT" para contar la cantidad de registros que cumplen con una consulta en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condicion antes de realizar el conteo.
 	 * @param sentencia-> lista de sentencias
 	 */
-	
 	private void comandoCount(ArrayList<String[]> sentencia) {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
@@ -1205,7 +1198,6 @@ public class Comandos {
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MAX" para encontrar el valor maximo de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor maximo.
 	 * @param sentencia-> lista de sentencias
 	 */
-	
 	private void comandoMax(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
@@ -1248,7 +1240,6 @@ public class Comandos {
         }
 		
 	}
-	
 	
 	/**
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MIN" para encontrar el valor minimo de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor minimo.
@@ -1297,7 +1288,6 @@ public class Comandos {
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "PRIMARY KEY" para especificar un atributo como clave primaria en una tabla. . El metodo verifica la validez de la sentencia y realiza la operacion si es valida.
 	 * @param sentencia->lista de sentencias
 	 */
-	
 	private void comandoPrimaryKey(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasDosLineas(sentencia)) {
@@ -1363,6 +1353,7 @@ public class Comandos {
     	}
 		
 	}
+	
 	/**
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "HELP" para mostrar informacion de ayuda sobre un comando especifico.  El metodo verifica si el comando especificado existe y muestra su ayuda asociada.
 	 * @param sentencia->lista de sentencia
@@ -1388,14 +1379,12 @@ public class Comandos {
 		
 	}
 	
-	
 	/**
 	 * Realiza un join natural entre dos tablas basado en una sentencia.
 	 * 
 	 * Este es un metodo privado que recibe una lista de matrices de cadenas de texto (sentencia)
 	 * y procesa el comando "JOIN NATURAL" para realizar un join natural entre dos tablas.
 	 * El metodo verifica la validez de la sentencia y si las tablas especificadas existen.
-	 * 
 	 * @param sentencia Lista de sentencias a procesar.
 	 */
 	private void comandoJoinNatural(ArrayList<String[]> sentencia) {
@@ -1449,13 +1438,10 @@ public class Comandos {
 		
 	}
 	
-	
 	/**
-	 * 
 	 * Metodo publico que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El metodo ejecuta el comando especificado y las operaciones asociadas, verificando si se selecciono una base de datos y si el comando es valido. Tambien muestra resultados o mensajes de error en la tabla de depuracion.
 	 * @param comando-> comando que se ejeuctura
 	 * @param sentencia->lista de sentencia
-	 * 
 	 */
 	public void ejecutarComando(String comando, ArrayList<String[]> sentencia) {
 		
@@ -1480,8 +1466,10 @@ public class Comandos {
 		    }
 	       
 	    	if(Login.demo) {
+	    		
 		        usos++;
-		    	}
+		    
+	    	}
 	    	
 	    } else {
 	    	
@@ -1491,6 +1479,4 @@ public class Comandos {
 	    
 	}
 
-
-	
 }
