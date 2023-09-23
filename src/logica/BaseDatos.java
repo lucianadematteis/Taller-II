@@ -19,6 +19,7 @@ public class BaseDatos {
 
 	private String nombreBD;
 	private LinkedHashMap<String, Tabla> tablas;
+	
 	/**
 	 * Constructor que recibe como parametro un objeto DTOBaseDatos que contiene informacion sobre la base de datos, inicializa el nombre de la base de datos con el nombre proporcionado en el objeto baseDatos y crea una nueva instancia de LinkedHashMap para almacenar las tablas.
 	 * @param BaseDatos->DTOBaseDatos
