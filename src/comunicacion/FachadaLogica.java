@@ -15,9 +15,15 @@ import logica.Usuario;
 import persistencia.Persistencia;
 
 
+
 /**
  * Esta es una implementación concreta de la interfaz IFachadaLogica.
  * Implementa todas las operaciones de IFachadaLogica.
+ *@author Gabriel Bolsi
+ *@author Brandon Cairus
+ *@author Daiana Daguerre
+ *@author Luciana De Matteis
+ *@author Mauricio Gonzalez
  */
 public class FachadaLogica implements IFachadaLogica {
 
@@ -294,7 +300,7 @@ public class FachadaLogica implements IFachadaLogica {
 		}
 			
 	}
-
+	
 	public void ingresarRegistro(String nombreTabla, LinkedHashMap<String, DTOAtributo> registro) {
 
 		Tabla tabla = this.obtenerTabla(nombreTabla);
@@ -336,6 +342,13 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametro el nombre de una tabla, el nombre de un atributo y un valor de condicion. Valida si el valor de condicion proporcionado es valido para el tipo de atributo especificado en la tabla. Si el atributo es de tipo entero, verifica si puede ser convertido a un numero entero. Retorna: true si la condicion es valida, false si no lo es
+	 * @param nombreTabla-> nombre de la tabla
+	 * @param nombreAtributo-> nombre del atributo
+	 * @param valorCondicion-> valor de la condicion
+	 * @return verifica si la condicion es valida o no
+	 */
 	public boolean validaCondicion(String nombreTabla, String nombreAtributo, String valorCondicion) {
 		
 	    String tipoAtributo = this.obtenerTabla(nombreTabla).obtenerTipo(nombreAtributo);
@@ -359,25 +372,49 @@ public class FachadaLogica implements IFachadaLogica {
 	    
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametro el nombre de una tabla y el nombre de un atributo. Obtiene el tipo del atributo especificado en el nombre del atributo en la tabla y retorna una cadena de texto que representa el tipo de atributo
+	 * @param nombreTabla-> nombre de la tabla
+	 * @param nombreAtributo-> nombre del atributo
+	 * @return el tipo de atribtuo que tiene el atirbuto en la tabla que se recibe
+	 */
 	public String obtenerTipoAtributo(String nombreTabla, String nombreAtributo) {
 		
 		return this.obtenerTabla(nombreTabla).obtenerTipo(nombreAtributo);
 		
 	}
 	
+	/**
+	 * Metodo publico que recibe el nombre de una tabla y verifica si la misma esta vacia, es decir, si no contiene registros. Retorna true si la tabla esta vacia, false si contiene registros.
+	 * @param nombreTabla-> nombre de la tabla
+	 * @return si la tabla es vacia o no
+	 */
 	public boolean esVacia(String nombreTabla) { //retorna true si no tiene
 		
 		return this.obtenerTabla(nombreTabla).esVacia();
 		
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametros el nombre de una tabla, el nombre de un atributo y un valor de condicion. Verifica si existen registros en la tabla que cumplan con la condicion especificada por el nombre del atributo y el valor de condicion. Retorna true si hay registros que cumplen la condicion, false si no los hay
+	 * @param nombreTabla-> nombre de la tabla
+	 * @param nombreAtributo-> nombre del atributo
+	 * @param valorCondicion-> valor de la condicion
+	 * @param operador-> operador de la condicion
+	 * @return verifica si hay registros que correspondan con la condicion
+	 */
 	public boolean hayRegistros(String nombreTabla, String nombreAtributo, String valorCondicion, String operador) {
 		
 		return !(this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributo, valorCondicion, operador).isEmpty());
 		
 	}
 	
-
+	/** 
+	 * Metodo publico que recibe como parametros el nombre de la tabla y el nombre del atributo en los que se buscara el valor minimo. El metodo retorna un entero que es el valor minimo encontrado como entero.
+	 * @param nombreTabla-> nombre de la tabla
+	 * @param nombreAtributo -> nombre del atributo
+	 * @return el valor minimo del atributo
+	 */
 	public int obtenerMinimo(String nombreTabla, String nombreAtributo) {
 		
 	    Integer minimo = null;
@@ -409,6 +446,13 @@ public class FachadaLogica implements IFachadaLogica {
 	    return minimo;
 	}
 
+	/**
+	 * Metodo publico que recibe como parametros el nombre de la tabla y el nombre del atributo en los que se buscara el valor maximo. El metodo retorna el valor maximo encontrado como un entero
+	  * @param nombreTabla-> nombre de la tabla
+	 * @param nombreAtributo -> nombre del atributo
+	 * @return el valor maximo del atributo
+	 */
+	
 	public int obtenerMaximo(String nombreTabla, String nombreAtributo) {
 		
 	    Integer maximo = null;
@@ -438,13 +482,22 @@ public class FachadaLogica implements IFachadaLogica {
 	    return maximo;
 	    
 	}
-
+    /**
+     * Metodo publico que recibe como parametros el nombre de la tabla y el nombre del atributo al que se le establecera la restriccion NOT NULL
+     * @param nombreTabla-> nombre de la tabla
+     * @param nombreAtributo-> nombre del atributo
+     */
 	public void hacerNotNull (String nombreTabla, String nombreAtributo) {
 		
 		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setNulo(true);
 					
 	}
-
+	
+	/**
+	 * Metodo publico que recibe como parametros el nombre de la tabla y el nombre del atributo que se establecera como clave primaria y se aplicara asimismo la restriccion NOT NULL
+	 * @param nombreTabla-> nombre de la Tabla
+	 * @param nombreAtributo-> nombre del atributo
+	 */
 	public void hacerClave (String nombreTabla, String nombreAtributo) {
 		
 		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setClave(true);
@@ -452,6 +505,10 @@ public class FachadaLogica implements IFachadaLogica {
 				
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametro el nombre de la tabla en la que se eliminara la restriccion de clave primaria
+	 * @param nombreTabla-> nombre de la tabla
+	 */
 	public void quitarClave (String nombreTabla) {
 		
 		String clave = this.obtenerTabla(nombreTabla).obtenerClave();
@@ -459,6 +516,15 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametros el nombre de la tabla, el nombre del atributo, el nombre del atributo de condicion y el valor de condicion. El metodo calcula el promedio de los valores de un atributo especifico de registros que cumplan con una condicion dada y retorna el promedio de esos valores como un numero decimal.
+	 * @param nombreTabla-> nombre de la tabla
+	 * @param nombreAtributo-> nombre del atributo
+	 * @param nombreAtributoCondicion-> el nombre de la condicion
+	 * @param valorCondicion-> valor de la condicion
+	 * @param operador-> operador
+	 * @return el promedio de los valores que corresponden a la condicion
+	 */
 	public double calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion, String operador) {
 	    
 		double promedio = 0.0;
@@ -489,6 +555,17 @@ public class FachadaLogica implements IFachadaLogica {
 	    
 	}
 
+	
+	/**
+	 * Metodo publico que recibe como parametros el nombre de la tabla, el nombre del atributo de consulta, dos conjuntos de nombre de atributo y valor de condicion. El metodo realiza una consulta OR en la tabla especificada, buscando registros que cumplan cualquiera de las dos condiciones y retorna una lista de objetos DTOAtributo que representan los registros encontrados despues de aplicar la consulta OR, la que no incluye elementos duplicados.
+	 * @param nombreTabla -> nombre de la tabla
+	 * @param nombreAtributo -> nombre del atributo
+	 * @param nombreAtributoCondicion1 -> nombre de la condion del atributo 1
+	 * @param valorCondicion1 ->  valor de la condicion del atributo 1
+	 * @param nombreAtributoCondicion2 -> nombre de la condion del atributo 2
+	 * @param valorCondicion2 ->  valor de la condicion del atributo 2
+	 * @return lista de registros que cumplan ambas condiciones
+	 */
 	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2, String operador) {
 		
 		ArrayList <DTOAtributo> resultado1 = new ArrayList <DTOAtributo>();
@@ -515,11 +592,20 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo publico que retorna true si el usuario actual existe en la coleccion de usuarios y false en caso contrario.
+	 * @return verifica si el usuario existe
+	 */
 	public boolean existeUsuario() {
 		
 		return usuarios.containsKey(usuario);
 		
 	}
+	
+     /**
+      * Metodo publico que recibe como parametro el nombre de una base de datos y retorna true si la misma existe para el usuario actual y false en caso contrario
+      * @return verifica si existe la base de datos
+      */
 
 	public boolean existeBD(String nombreBD) {
 		
