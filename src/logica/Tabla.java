@@ -12,8 +12,11 @@ import comunicacion.DTOTabla;
 /**
  * Esta clase se relaciona con Registros, mediante una agregacion.
 Esta clase representa una tabla en una base de datos y contiene metodos para gestionar registros y atributos de la misma.
- * @author Brandon
- *
+ *@author Gabriel Bolsi
+ *@author Brandon Cairus
+ *@author Daiana Daguerre
+ *@author Luciana De Matteis
+ *@author Mauricio Gonzalez
  */
 public class Tabla {
 	
