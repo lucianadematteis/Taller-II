@@ -5,6 +5,7 @@ import java.util.Objects;
 
 
 import comunicacion.DTOAtributo;
+
 /**
  * Clase abstracta que mantiene una relacion de herencia con las clases Cadena y Entero.
  * Asimismo se relaciona con la clase Atributos con quien mantiene una relacion de agregacion.
@@ -15,8 +16,8 @@ import comunicacion.DTOAtributo;
  *@author Mauricio Gonzalez
  */
 
-
 public abstract class Atributo {
+	
 	String nombreAtributo;
 	private boolean nulo;
 	private boolean clave;
@@ -39,7 +40,6 @@ public abstract class Atributo {
 	 * @param nulo-> Si es nulo o no
 	 * @param clave-> Si es clave o no
 	 */
-	
 	public Atributo(String nombreAtributo, boolean nulo, boolean clave) {
 		
 		this.nombreAtributo = nombreAtributo;
@@ -51,7 +51,6 @@ public abstract class Atributo {
 	/**
 	 * Constructor sin argumentos que inicializa los atributos de la instancia con valores predeterminados.
 	 */
-	
 	public Atributo() {
 		
 		this.nombreAtributo = "";
@@ -59,7 +58,6 @@ public abstract class Atributo {
 		this.clave = false;
 		
 	}
-	
 	
 	/**
 	 * Metodo publico que retorna un String. Permite recuperar el nombre del atributo. Su proposito es proporcionar acceso controlado a los datos encapsulados dentro de un objeto.
@@ -81,12 +79,10 @@ public abstract class Atributo {
 	
 	}
 	
-	
 	/**
 	 * Metodo publico que retorna true si el atributo Clave es true y false en caso contrario.
 	 * @return si es nulo o no
 	 */
-	
 	public boolean getNulo() {
 		
 		return this.nulo;
@@ -100,6 +96,7 @@ public abstract class Atributo {
 	public void setNulo(boolean nulo) {
 		
 		this.nulo = nulo;
+		
 	}
 	
 	/**
@@ -112,14 +109,23 @@ public abstract class Atributo {
 		
 	}
 	
-	
 	/**
 	 * Metodo publico que recibe como parametro un objeto que es el que se desea comparar. La funcion verifica si el objeto pasado como argumento es la misma instancia que el objeto actual. Si lo es, se consideran iguales y retorna true. En caso contrario retorna false. Finalmente, realiza la comparacion de contenido entre los atributos relevantes de los objetos, segun la logica de igualdad definida para esta clase especifica. Si los objetos son iguales en contenido, el metodo retorna true; en caso contrario, retorna false. 
 	 */
     public boolean equals(Object o) {
     	
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+        	
+        	return true;
+        
+        }
+        
+        if (o == null || getClass() != o.getClass()) {
+        	
+        	return false;
+        
+        }
+        
         Atributo atributo = (Atributo) o;
         
         return nulo == atributo.nulo &&
@@ -131,7 +137,6 @@ public abstract class Atributo {
     /**
      * Metodo publico que no recibe parametros y retorna un valor numerico que representa la instancia de un objeto (valor hash basado en los atributos nombreAtributo, nulo y clave).
      */
-    
     public int hashCode() {
     	
         return Objects.hash(nombreAtributo, nulo, clave);

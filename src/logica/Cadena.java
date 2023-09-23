@@ -3,6 +3,7 @@ package logica;
 import java.util.Objects;
 
 import comunicacion.DTOCadena;
+
 /**
  * Es una clase derivada de la clase Atributo
  *@author Gabriel Bolsi
@@ -15,16 +16,18 @@ import comunicacion.DTOCadena;
 public class Cadena extends Atributo {
 	
 	private String dato;
-/**
- * Metodo publico que recibe un objeto DTOCadena que  inicializa la instancia de Cadena con los valores proporcionados por el objeto, incluyendo el nombre del atributo, si puede ser nulo, si es una clave y el dato de tipo cadena.
- * @param cadena->DTOCadena
- */
+
+	/**
+	 * Metodo publico que recibe un objeto DTOCadena que  inicializa la instancia de Cadena con los valores proporcionados por el objeto, incluyendo el nombre del atributo, si puede ser nulo, si es una clave y el dato de tipo cadena.
+	 * @param cadena->DTOCadena
+	 */
 	public Cadena(DTOCadena cadena) {
 		
 		super(cadena);
 		this.dato = cadena.getDato();
 		
 	}
+	
 	/**
 	 * Metodo pblico que recibe un objeto DTOCadena que  inicializa la instancia de Cadena con los valores proporcionados por el objeto, incluyendo el nombre del atributo, si puede ser nulo, si es una clave y el dato de tipo cadena.
 	 * @param nombreAtributo->nombre del atributo
@@ -49,6 +52,7 @@ public class Cadena extends Atributo {
 		this.dato = dato;
 		
 	}
+	
 	/**
 	 * Metodo publico que retorna un String. Permite recuperar el valor del atributo dato. Su proposito es proporcionar acceso controlado a los datos encapsulados dentro de un objeto.
 	 * @return el valor del dato
@@ -75,14 +79,23 @@ public class Cadena extends Atributo {
 	public boolean equals(Object anObject) {
 		
 	    if (this == anObject) {
+	    	
 	        return true;
+	    
 	    }
+	    
 	    if (anObject == null || getClass() != anObject.getClass()) {
-	        return false;
+	    
+	    	return false;
+	    
 	    }
+	    
 	    if (!super.equals(anObject)) {
-	        return false;
+	    
+	    	return false;
+	    
 	    }
+	    
 	    Cadena cadena = (Cadena) anObject;
 	    
 	    return Objects.equals(dato, cadena.dato);

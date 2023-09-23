@@ -1,6 +1,7 @@
 package logica;
 
 import comunicacion.DTOEntero;
+
 /**
  * Es una clase derivada de la clase Atributo
  *@author Gabriel Bolsi
@@ -13,6 +14,7 @@ import comunicacion.DTOEntero;
 public class Entero extends Atributo {
 	
 	private int valor;
+	
 	/**
 	 * Constructor que recibe un objeto DTOEntero que  inicializa la instancia de Entero con los valores proporcionados por el objeto, incluyendo el nombre del atributo, si puede ser nulo, si es una clave y el valor de tipo entero.
 	 * @param entero->DTOEntero
@@ -37,6 +39,7 @@ public class Entero extends Atributo {
 		this.valor = valor;
 		
 	}
+	
 	/**
 	 * Constructor que recibe solo el valor de tipo entero e inicializa la instancia de Entero con el valor proporcionado y establece los valores predeterminados para el nombre del atributo, nulidad y clave.
 	 * @param valor-> valor del atributo
@@ -47,17 +50,17 @@ public class Entero extends Atributo {
 		this.valor = valor;
 		
 	}
-	 /**
-	  * Metodo publico que retorna un entero.  Permite recuperar el valor del atributo valor. Su proposito es proporcionar acceso controlado a los datos encapsulados dentro de un objeto.
-	  * @return-> el valor del atributo
-	  */
+	
+	/**
+	 * Metodo publico que retorna un entero.  Permite recuperar el valor del atributo valor. Su proposito es proporcionar acceso controlado a los datos encapsulados dentro de un objeto.
+	 * @return-> el valor del atributo
+	 */
 	public int getValor() {
 		
 		return valor;
 		
 	}
 
-	
 	/**
 	 * Metodo publico que recibe como parametro un entero y permite establecer o modificar el valor del atributo privado valor. Su objetivo principal es permitir la asignacion controlada de valores a los atributos encapsulados dentro de un objeto.
 	 * @param valor-> valor del atributo a establecer o modificar
@@ -74,14 +77,23 @@ public class Entero extends Atributo {
 	public boolean equals(Object anObject) {
 		
 	    if (this == anObject) {
+	    	
 	        return true;
+	    
 	    }
+	    
 	    if (anObject == null || getClass() != anObject.getClass()) {
-	        return false;
+	    
+	    	return false;
+	    
 	    }
+	    
 	    if (!super.equals(anObject)) {
-	        return false;
+	    
+	    	return false;
+	    
 	    }
+	    
 	    Entero entero = (Entero) anObject; 
 	    
 	    return valor == entero.valor;
@@ -91,7 +103,6 @@ public class Entero extends Atributo {
 	/**
      * Metodo publico que no recibe parametros y retorna un valor numerico que representa la instancia de un objeto (valor hash basado en los atributos nombreAtributo, nulo y clave).
      */
-    
 	public int hashCode() {
 		
 	    int result = super.hashCode();

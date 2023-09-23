@@ -2,13 +2,13 @@ package comunicacion;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+
 /**
  * Esta es una interfaz donde se encuentran todas las operaciones que "comunican" entre las capas del programa.
  * La implementacion de estas operaciones esta en FachadaLogica.
  */
-public interface IFachadaLogica {
-	
 
+public interface IFachadaLogica {
 	
 	public boolean bdSeleccionada();
 	
@@ -110,5 +110,4 @@ public interface IFachadaLogica {
 	
 	public boolean validaAtributosJoin (String tabla1, String tabla2);
 
-	
 }

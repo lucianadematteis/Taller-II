@@ -58,7 +58,6 @@ public class DTOCadena extends DTOAtributo{
 	
 	}
 	
-	
 	public int hashCode() {
 		
 	    int result = super.hashCode();

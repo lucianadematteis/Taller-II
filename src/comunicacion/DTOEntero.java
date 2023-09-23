@@ -53,6 +53,7 @@ public class DTOEntero extends DTOAtributo{
 	    if (!super.equals(anObject)) {
 	        return false;
 	    }
+	    
 	    DTOEntero entero = (DTOEntero) anObject; 
 	    
 	    return valor == entero.valor;

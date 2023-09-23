@@ -16,6 +16,7 @@ import logica.Cadena;
 import logica.Entero;
 import logica.Tabla;
 import logica.Usuario;
+
 /**
  * En esta clase se definen en los metodos persistirUsuario, persistirBasesDeDatos y persistirTablas los separadores
   *@author Gabriel Bolsi
@@ -87,7 +88,7 @@ public class Persistencia {
         	
             return 1;
             
-        } else if (so.contains("nix") || so.contains("nux") || so.contains("mac")) {
+        } else if (so.contains("nix") || so.contains("nux")) {
         	
             return 0;
             
@@ -179,7 +180,7 @@ public class Persistencia {
 		if (identificarSistema() == 1) { // Si es windows
 
 			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\"
-					+ "BasesDeDatos.txt"; //Se acomodaron el nombre del doc bd
+					+ "BasesDeDatos.txt"; 
 
 		} else if (identificarSistema() == 0) { // Si es linux
 
@@ -254,6 +255,7 @@ public class Persistencia {
 	    }
 	    
 	}
+	
 	/**
 	 * Metodo privado que recibe como parametro un mapa de usuarios y los persiste a todos los usuarios en el archivo de usuarios.
 	 * @param usuarios-> mapa de usuarios
@@ -341,14 +343,9 @@ public class Persistencia {
 		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
 
 			Usuario user = usuario.getValue();
-			
-			//se comenta porque al recuperar si no existe el archivo da error entonces si es vacio lo crea vacio y no da error
-		//	if (!(user.getBasesDatos().isEmpty())) {
 				
-				persistirBasesDeDatos(user.getBasesDatos(), user.getNombreUser());
+			persistirBasesDeDatos(user.getBasesDatos(), user.getNombreUser());
 				
-			//}
-			
 		}
 
 	}
@@ -644,12 +641,13 @@ public class Persistencia {
 
         return usuarios;
     }
-/**
- * Metodo privado que recibe como parametro una cadena de texto que indica la ubicacion del archivo que contiene informacion sobre bases de datos. El metodo lee el archivo de bases de datos, procesa la informacion y crea objetos BaseDatos con sus respectivas tablas y retorna una coleccion que las contiene.
- * @param ruta-> ruta de BaseDeDatos.txt
- * @return un mapa con las bases de datos
- */
-private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
+	
+	/**
+	 * Metodo privado que recibe como parametro una cadena de texto que indica la ubicacion del archivo que contiene informacion sobre bases de datos. El metodo lee el archivo de bases de datos, procesa la informacion y crea objetos BaseDatos con sus respectivas tablas y retorna una coleccion que las contiene.
+	 * @param ruta-> ruta de BaseDeDatos.txt
+	 * @return un mapa con las bases de datos
+	 */
+	private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 		
     	LinkedHashMap <String, BaseDatos> bds = new LinkedHashMap <String, BaseDatos>();
 		
@@ -676,8 +674,11 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
                 		Tabla tab = new Tabla (tabla);
                     	
                 		tabs.put(tabla, tab);
-                	}
-                	primerElemento =true;
+                	
+                		}
+                	
+                		primerElemento =true;
+                	
                 	}
                 	
 	                bd.setTablas(tabs);
@@ -705,14 +706,14 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 		
 	}
    
-/**
- * Metodo privado que recibe los siguientes parametros: cuatro cadenas de texto que representan el nombre del atributo, si puede ser nulo, si es clave primaria y el tipo de dato del atributo. El metodo crea y retorna un objeto Atributo (que puede ser de tipo Cadena o Entero) basado en los parametros recibidos.
- * @param nombre-> nombre del atributo
- * @param nulo-> si es nulo
- * @param pk-> si es priamry key
- * @param tipoDato-> valor del atributo
- * @return el atributo del archivo atributos.txt
- */
+	/**
+	 * Metodo privado que recibe los siguientes parametros: cuatro cadenas de texto que representan el nombre del atributo, si puede ser nulo, si es clave primaria y el tipo de dato del atributo. El metodo crea y retorna un objeto Atributo (que puede ser de tipo Cadena o Entero) basado en los parametros recibidos.
+	 * @param nombre-> nombre del atributo
+	 * @param nulo-> si es nulo
+	 * @param pk-> si es priamry key
+	 * @param tipoDato-> valor del atributo
+	 * @return el atributo del archivo atributos.txt
+	 */
 	private Atributo recuperarAtributo(String nombre, String nulo, String pk, String tipoDato) {
 		
 		Atributo resultado = null;
@@ -856,6 +857,7 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 		return resultado;
 		
 	}
+	
 	/**
 	 * Metodo publico que lee un archivo de ayuda que contiene informacion sobre comandos y sus descripciones. Procesa esta informacion y la almacena en una coleccion donde los comandos son las claves y las descripciones son los valores, que por ultimo se retorna.
 	 * @return realiza un mapa con el archivo ayuda.txt
@@ -888,7 +890,7 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 		
 		String contenidoString = contenidoArchivo.toString();
 		String[] lineas = contenidoString.split("\\|");// separador
-		int cantLineas = lineas.length;// obtener tama�o del arreglo
+		int cantLineas = lineas.length;// obtener tamanioo del arreglo
 
 		LinkedHashMap<String, String> cargado=new LinkedHashMap<String, String>();
 
@@ -902,10 +904,11 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 		return cargado;
 		
 	}
-/**
- * Metodo publico que recibe como parametro una coleccion de usuarios. El metodo coordina la recuperacion de informacion relacionada con usuarios, bases de datos, tablas y registros llamando a otros metodos privados. Recorre los usuarios y sus respectivas bases de datos y tablas para cargar la informacion de manera completa
- * @param usuarios-> mapa de usuarios
- */
+	
+	/**
+	 * Metodo publico que recibe como parametro una coleccion de usuarios. El metodo coordina la recuperacion de informacion relacionada con usuarios, bases de datos, tablas y registros llamando a otros metodos privados. Recorre los usuarios y sus respectivas bases de datos y tablas para cargar la informacion de manera completa
+	 * @param usuarios-> mapa de usuarios
+	 */
 	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
 
 		recuperarUsuarios(usuarios);
@@ -943,7 +946,5 @@ private LinkedHashMap <String,BaseDatos> recuperarBasesDeDatos (String ruta){
 		}
 
 	}
-	
-	
 	
 }

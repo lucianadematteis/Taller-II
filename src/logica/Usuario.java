@@ -3,6 +3,7 @@ package logica;
 import java.util.LinkedHashMap;
 
 import comunicacion.DTOUsuario;
+
 /**
  * Esta clase representa a un usuario con nombre y contrasenia y puede tener acceso a varias bases de datos. La clase se relaciona con BASESDATOS mediante una relacion de agregacion.
   *@author Gabriel Bolsi
@@ -28,6 +29,7 @@ public class Usuario {
 		basesDatos = new LinkedHashMap<String, BaseDatos>();
 
 	}
+	
 	/**
 	 * Constructor especifico que recibe dos cadenas de texto que corresponden al nombre del usuario y la contrasenia que tendra asociada el mismo. Este metodo permite crear un objeto e inicializarlo con esos parametros
 	 * @param nombreUser-> nombre usuario
@@ -70,6 +72,7 @@ public class Usuario {
 		return basesDatos;
 
 	}
+	
 	/**
 	 * Metodo publico que recibe un mapa de bases de datos y establece el mapa de base de datos relacionadas con este usuario con el mapa proporcionado por parametro. Su objetivo principal es permitir la asignacion controlada de valores a los atributos encapsulados dentro de un objeto.
 	 * @param basesDatos-> establece el mapa de bases de datos relacionas con el usuario
@@ -79,6 +82,7 @@ public class Usuario {
 		this.basesDatos = basesDatos;
 
 	}
+	
 	/**
 	 * Metodo publico que recibe un objeto BaseDatos y la agrega al mapa de bases de datos del usuario.
 	 * @param base-> agrega el objeto a las base de datos del usuario

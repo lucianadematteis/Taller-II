@@ -9,6 +9,7 @@ import comunicacion.DTOAtributo;
 import comunicacion.DTOCadena;
 import comunicacion.DTOEntero;
 import comunicacion.DTOTabla;
+
 /**
  * Esta clase se relaciona con Registros, mediante una agregacion.
 Esta clase representa una tabla en una base de datos y contiene metodos para gestionar registros y atributos de la misma.
@@ -22,6 +23,7 @@ public class Tabla {
 	
 	private String nombreTabla;
 	private ArrayList<LinkedHashMap<String, Atributo>> registros;
+	
 	/**
 	 * Constructor especifico que recibe como parametro un String que representa el nombre de la tabla e inicializa la instancia de la misma con el nombre proporcionado y crea una lista vacia de registros.
 	 * @param tabla->DTOTabla
@@ -32,6 +34,7 @@ public class Tabla {
 		registros = new ArrayList<LinkedHashMap<String, Atributo>>();
 		
 	}
+	
 	/**
 	 * "Constructor que recibe como parametro un objeto DTOTabla que inicializa la instancia de la tabla con el nombre proporcionado y crea una lista vacia de registros."
 	 * @param nombreTabla->nombre de la tabla
@@ -64,10 +67,10 @@ public class Tabla {
 		
 	}
 	
-/**
- * Metodo publico que retorna una lista de registros DTO, donde los atributos se convierten en objetos DTOAtributo (DTOEntero o DTOCadena) dependiendo de su tipo.
- * @return lista de registrosDTO
- */
+	/**
+	 * Metodo publico que retorna una lista de registros DTO, donde los atributos se convierten en objetos DTOAtributo (DTOEntero o DTOCadena) dependiendo de su tipo.
+	 * @return lista de registrosDTO
+	 */
 	public ArrayList<LinkedHashMap<String, DTOAtributo>> getRegistrosDTO() {
 		
 	    ArrayList<LinkedHashMap<String, Atributo>> registros = this.getRegistros();
@@ -104,7 +107,6 @@ public class Tabla {
 	    return registrosDTO;
 	}
 	
-	
 	/**
 	 * Metodo publico que recibe como parametro un DTOAtributo lo convierte en un objeto Atributo (Entero o Cadena)
 	 * @param dtoAtributo-> DTOAtributo
@@ -127,7 +129,6 @@ public class Tabla {
 	    return null;
 	    
 	}
-	
 	
 	/**
 	 * Metodo publico que recibe como parametro un mapa de nombres de atributos y sus tipos y retorna un mapa que asocia nombres de atributos con objetos DTOAtributo que representa los atributos generados.
@@ -163,15 +164,16 @@ public class Tabla {
 	}
 	
 	
-/**
- * Metodo publico que recibe una lista de registros y los establece en los registros de la tabla.
- * @param registros->lista de registros
- */
+	/**
+	 * Metodo publico que recibe una lista de registros y los establece en los registros de la tabla.
+	 * @param registros->lista de registros
+	 */
 	public void setRegistros(ArrayList<LinkedHashMap<String, Atributo>> registros) {
 		
 		this.registros = registros;
 		
 	}
+	
 	/**
 	 * Metodo publico que recibe un recibe un mapa que asocia nombres de atributos con objetos DTOAtributo, lo convierte en un registro de atributos (LinkedHashMap) y lo inserta en la lista de registros de la tabla
 	 * @param registro->Mapa que vincula los nombres de atributos con los DTOAtributo
@@ -179,11 +181,9 @@ public class Tabla {
 	public void insertarRegistro(LinkedHashMap<String, DTOAtributo> registro) {
 		
 		LinkedHashMap<String, Atributo> registroConvertido = this.convertirMapa(registro);
-		
 		registros.add(registroConvertido);
 		
 	}
-	
 	
 	/**
 	 * Metodo publico que recibe un mapa que asocia nombres de atributos con objetos DTOAtributo, lo convierte en un registro de atributos (LinkedHashMap) y lo retorna
@@ -246,10 +246,8 @@ public class Tabla {
 				
 				this.registros.add(registroCambiar);
 			}
-		
 		}
     }
-	
 	
 	/**
 	 * Metodo publico que verifica si la tabla tiene un atributo marcado como clave en su primer registro y retorna true o false segun se verifique
@@ -320,7 +318,6 @@ public class Tabla {
 		
 	}
 	
-	
 	/**
 	 * Metodo publico que recibe como parametros dos String que son el nombre del atributo y el valor de la condicion que debe cumplir. El metodo filtra de la tabla aquellos registros donde el valor del atributo especificado coincide con el valor de la condicion y retorna una lista de registros DTO que cumplen con la condicion
 	 * @param nombreAtributo-> nombre del atributo
@@ -350,16 +347,26 @@ public class Tabla {
 				    		DTOEntero entradaEntera = (DTOEntero) entrada.getValue();
 				    		
 				    		if (operador.equals("=") && entradaEntera.getValor() == valorCondicionEntera) {
-			                    registrosObtenidos.add(misRegistros);
-			                } else if (operador.equals("<") && entradaEntera.getValor() < valorCondicionEntera) {
-			                    registrosObtenidos.add(misRegistros);
-			                } else if (operador.equals(">") && entradaEntera.getValor() > valorCondicionEntera) {
-			                    registrosObtenidos.add(misRegistros);
-			                } else if (operador.equals(">=") && entradaEntera.getValor() >= valorCondicionEntera) {
-			                    registrosObtenidos.add(misRegistros);
-			                } else if (operador.equals("<=") && entradaEntera.getValor() <= valorCondicionEntera) {
-			                    registrosObtenidos.add(misRegistros);
-			                }
+			                   
+				    			registrosObtenidos.add(misRegistros);
+			                
+				    		}else if (operador.equals("<") && entradaEntera.getValor() < valorCondicionEntera) {
+			                
+				    			registrosObtenidos.add(misRegistros);
+			                
+				    		}else if (operador.equals(">") && entradaEntera.getValor() > valorCondicionEntera) {
+			                
+				    			registrosObtenidos.add(misRegistros);
+			                
+				    		}else if (operador.equals(">=") && entradaEntera.getValor() >= valorCondicionEntera) {
+			                    
+				    			registrosObtenidos.add(misRegistros);
+			                
+				    		}else if (operador.equals("<=") && entradaEntera.getValor() <= valorCondicionEntera) {
+			                
+				    			registrosObtenidos.add(misRegistros);
+			                
+				    		}
 				    		
 				    	}else if(atributo instanceof DTOCadena){
 				    		
@@ -388,7 +395,6 @@ public class Tabla {
 		
 	}
 
-	
 	/**
 	 * Metodo publico que recibe como parametro el identificador del atributo que se desea agregar al mapa y lo inserta en el mismo.
 	 * @param atributo->Identificador del atributo
@@ -454,7 +460,6 @@ public class Tabla {
 	 * Metodo publico que retorna true si la tabla esta vacia o false en caso contrario.
 	 * @return verifica si la tabla se encuentra vacia o no
 	 */
-	
 	public boolean esVacia() { //retorna true si no tiene
 		
 		return this.getRegistros().size()==1;

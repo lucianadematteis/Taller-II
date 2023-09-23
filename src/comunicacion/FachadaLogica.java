@@ -14,8 +14,6 @@ import logica.Tabla;
 import logica.Usuario;
 import persistencia.Persistencia;
 
-
-
 /**
  * Esta es una implementación concreta de la interfaz IFachadaLogica.
  * Implementa todas las operaciones de IFachadaLogica.
@@ -25,6 +23,7 @@ import persistencia.Persistencia;
  *@author Luciana De Matteis
  *@author Mauricio Gonzalez
  */
+
 public class FachadaLogica implements IFachadaLogica {
 
 	Persistencia persistencia = new Persistencia();
@@ -106,6 +105,7 @@ public class FachadaLogica implements IFachadaLogica {
 		this.usuario = usuario;
 
 	}
+	
 	/**
 	 *Persiste los datos almacenados en la colección de usuarios en la instancia de la clase Persistencia.
 	 */
@@ -125,6 +125,7 @@ public class FachadaLogica implements IFachadaLogica {
 			if(entry.getKey().equalsIgnoreCase(baseDatos)) {
 				
 				return entry.getValue();
+				
 			}
 			
 		}
@@ -132,6 +133,7 @@ public class FachadaLogica implements IFachadaLogica {
 		return null;
 		
 	}
+	
 	/**
 	 *Recupera datos de persistencia y los carga en la colección de usuarios y en la variable ayuda.
 	 */
@@ -141,6 +143,7 @@ public class FachadaLogica implements IFachadaLogica {
 		persistencia.recuperarTodo(usuarios);
 
 	}
+	
 	/**
 	 *Crea una nueva instancia de Usuario a partir de los datos proporcionados y reemplaza la instancia anterior del usuario en la colección de usuarios.
 	 *@param user Representa los datos del usuario a modificar.
@@ -172,11 +175,12 @@ public class FachadaLogica implements IFachadaLogica {
 
 			return usuarios.get(usuario);
 
-		}else{
+		}else {
 
 			return null ;
-		}
 
+		}
+		
 	}
 	
 	/**
@@ -189,7 +193,6 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	
 	/**
 	 *Crea una nueva instancia de Usuario a partir de los datos proporcionados en él y lo agrega a la colección de usuarios.
 	 *@param dto representa los datos del nuevo usuario a insertar.
@@ -200,7 +203,6 @@ public class FachadaLogica implements IFachadaLogica {
 		usuarios.put(dto.getNombreUser(), usuario);
 
 	}
-	
 	
 	/**
 	 *@param nombreTabla nombre de una tabla.
@@ -221,7 +223,6 @@ public class FachadaLogica implements IFachadaLogica {
 		return this.obtenerTabla(nombreTabla).tieneClave();
 
 	}
-	
 	
 	/**
 	 * Realiza una consulta con 1 condición (WHERE)
@@ -257,7 +258,6 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	
 	/**
 	 * Borra los registros de la tabla especificada que cumplan con la condición establecida por el nombreAtributoCondición y el valor de condición.
 	 *@param nombreTabla tabla de la que se borrarán los registros.
@@ -309,14 +309,14 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	//recibe un nombre de tabla, busca en tabla y devuelve la tabla correspondiente
 	private Tabla obtenerTabla(String nombreTabla) {
 		
 		for (Map.Entry<String, Tabla> tabla : this.obtenerBaseDatos().getTablas().entrySet()) {
 			
-			if(tabla.getKey().equalsIgnoreCase(nombreTabla))
+			if(tabla.getKey().equalsIgnoreCase(nombreTabla)) {
 				
 				return tabla.getValue();
+			}
 			
 		}
 		
@@ -335,7 +335,7 @@ public class FachadaLogica implements IFachadaLogica {
 				return entry.getValue();
 				
 			}
-			
+				
 		}
 		
 		return null;
@@ -428,22 +428,21 @@ public class FachadaLogica implements IFachadaLogica {
 	            
 	        	primero = false;  
 	            
-	        } else {
+	        }else {
 	    	
 		    	DTOEntero atributo = (DTOEntero) reg;
 		        int valor = atributo.getValor();
 	
-		        if (minimo == null || valor < minimo) {
+		        if (minimo == null || valor < minimo)
 		        
 		        	minimo = valor;
-		        
-		        }
 	        
 		   }
 	    
 	    }
 
 	    return minimo;
+	    
 	}
 
 	/**
@@ -452,7 +451,6 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @param nombreAtributo -> nombre del atributo
 	 * @return el valor maximo del atributo
 	 */
-	
 	public int obtenerMaximo(String nombreTabla, String nombreAtributo) {
 		
 	    Integer maximo = null;
@@ -482,6 +480,7 @@ public class FachadaLogica implements IFachadaLogica {
 	    return maximo;
 	    
 	}
+	
     /**
      * Metodo publico que recibe como parametros el nombre de la tabla y el nombre del atributo al que se le establecera la restriccion NOT NULL
      * @param nombreTabla-> nombre de la tabla
@@ -489,7 +488,7 @@ public class FachadaLogica implements IFachadaLogica {
      */
 	public void hacerNotNull (String nombreTabla, String nombreAtributo) {
 		
-		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setNulo(true);
+		this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombreAtributo).setNulo(true);
 					
 	}
 	
@@ -500,7 +499,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public void hacerClave (String nombreTabla, String nombreAtributo) {
 		
-		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(nombreAtributo).setClave(true);
+		this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombreAtributo).setClave(true);
 		hacerNotNull (nombreTabla, nombreAtributo);
 				
 	}
@@ -512,7 +511,7 @@ public class FachadaLogica implements IFachadaLogica {
 	public void quitarClave (String nombreTabla) {
 		
 		String clave = this.obtenerTabla(nombreTabla).obtenerClave();
-		usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(clave).setClave(false);
+		this.obtenerTabla(nombreTabla).getRegistros().get(0).get(clave).setClave(false);
 		
 	}
 	
@@ -545,7 +544,7 @@ public class FachadaLogica implements IFachadaLogica {
             
 	    }
 
-	    if (cantidadValores > 0) {
+	    if (cantidadValores > 0){
 	      
 	    	promedio = (double) suma / cantidadValores;
 	    
@@ -554,7 +553,6 @@ public class FachadaLogica implements IFachadaLogica {
 	    return promedio;
 	    
 	}
-
 	
 	/**
 	 * Metodo publico que recibe como parametros el nombre de la tabla, el nombre del atributo de consulta, dos conjuntos de nombre de atributo y valor de condicion. El metodo realiza una consulta OR en la tabla especificada, buscando registros que cumplan cualquiera de las dos condiciones y retorna una lista de objetos DTOAtributo que representan los registros encontrados despues de aplicar la consulta OR, la que no incluye elementos duplicados.
@@ -574,7 +572,6 @@ public class FachadaLogica implements IFachadaLogica {
 		resultado1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1, operador);
 		resultado2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondcion2, valorCondicion2, operador);
 	
-		
         HashSet<DTOAtributo> elementosUnicos = new HashSet<>(resultado1);
 
         for (DTOAtributo elemento : resultado2) {
@@ -585,8 +582,8 @@ public class FachadaLogica implements IFachadaLogica {
                 elementosUnicos.add(elemento);
                 
             }
+            
         }
-        
         
 		return resultado1;
 		
@@ -602,18 +599,19 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
-     /**
-      * Metodo publico que recibe como parametro el nombre de una base de datos y retorna true si la misma existe para el usuario actual y false en caso contrario
-      * @return verifica si existe la base de datos
-      */
-
+	/**
+	  * Metodo publico que recibe como parametro el nombre de una base de datos y retorna true si la misma existe para el usuario actual y false en caso contrario
+	  * @return verifica si existe la base de datos
+	  */
 	public boolean existeBD(String nombreBD) {
 		
 		for (String nombre : this.obtenerUsuario().getBasesDatos().keySet()) {
 			
-	        if (nombre.equalsIgnoreCase(nombreBD)) 
+	        if (nombre.equalsIgnoreCase(nombreBD)) {
 	           
 	        	return true;
+	        
+	        }
 	        
 	    }
 
@@ -630,11 +628,11 @@ public class FachadaLogica implements IFachadaLogica {
 
 		Tabla tablita = obtenerTabla(nombreTabla);
 	
-		if (tablita != null) {
+		if (tablita != null){ 
 			
 			return true;
 			
-		} else {
+		}else {
 			
 			return false;
 		
@@ -661,10 +659,15 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public boolean existeUsuario(String nombreUsuario) {
 		
-		if (usuarios.containsKey(nombreUsuario))
+		if (usuarios.containsKey(nombreUsuario)) {
+			
 			return true;
-		else
+		
+		}else {
+			
 			return false;
+		
+		}
 		
 	}
 	
@@ -692,17 +695,22 @@ public class FachadaLogica implements IFachadaLogica {
 	/**
 	 * Metodo publico que recibe un objeto DTOUsuario que contiene el nombre de usuario y la contrasena a validar. El metodo retorna true si la contrasena ingresada es valida para el usuario especificado y false en caso contrario.
 	 * @param usu->DTOUsuario
-	 * @return valida si la contrase�a que se ingreso es compatible con el usuario
+	 * @return valida si la contrase�a que se ingreso es compatible con el usuario
 	 */
 	public boolean validarContrasenia (DTOUsuario usu) {
 		
 		String nombre = usu.getNombreUser();
 		String contrasenia = usu.getContrasenia();
 		
-		if(usuarios.get(nombre).getContrasenia().equals(contrasenia))
+		if(usuarios.get(nombre).getContrasenia().equals(contrasenia)) {
+			
 			return true;
-		else
+		
+		}else {
+			
 			return false;
+		
+		}
 		
 	}
 	
@@ -750,7 +758,6 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	}
 
-	
 	/**
 	 * Metodo publico que recibe como parametro el nombre de un comando y retorna descripcion del mismo como una cadena de caracteres
 	 * @param comando-> comando del cual se requiere la ayuda
@@ -762,7 +769,6 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
-	
 	/**
 	 * Metodo publico que recibe como parametro el nombre de la tabla y una lista de atributos. El metodo valida si los atributos proporcionados son validos en la tabla especificada segun su tipo y condiciones y retorna true en caso afirmativo, o false si al menos uno de ellos no lo es
 	 * @param nombreTabla-> nombre de la tabla
@@ -780,12 +786,11 @@ public class FachadaLogica implements IFachadaLogica {
 			
 			if(!(atributos.get(i).equals("NULL"))) {
 			
-				if((!(validaCondicion(nombreTabla, atriGuia.getKey(), atributos.get(i))))){
+				if((!(validaCondicion(nombreTabla, atriGuia.getKey(), atributos.get(i))))) {
 					
 					return false;
-					
 				}
-			
+				
 			}
 			
 			i++;
@@ -795,7 +800,6 @@ public class FachadaLogica implements IFachadaLogica {
 		return true;
 		
 	}
-	
 	
 	/**
 	 * Metodo publico que recibe el nombre de la tabla y una lista de atributos. El metodo valida si la cantidad de atributos proporcionados coincide con la cantidad de atributos en la tabla y retorna true si la cantidad coincide, o false en caso contrario
@@ -812,14 +816,14 @@ public class FachadaLogica implements IFachadaLogica {
 			
 			return false;
 			
-		}
+		}else {
 			
+			return true;
 		
-		return true;
+		}
 		
 	}
-	
-	
+
 	/**
 	 * Metodo publico que recibe como parametro el nombre de la tabla y una lista de atributos. El metodo valida si los atributos que no sean nulos encajan con la definicion de la tabla y retorna true si todos los atributos cumplen con la restriccion, false si al menos uno no lo hace
 	 * @param nombreTabla-> nombre de la tabla
@@ -849,7 +853,6 @@ public class FachadaLogica implements IFachadaLogica {
 		return true;
 		
 	}
-	
 	
 	/**
 	 * Metodo publico que recibe como parametros el nombre de una tabla y una lista de atributos. El metodo verifica si la tabla tiene una clave primaria definida; si no la tiene, se considera valida y retorna true. Si tiene una clave primaria, el metodo comprueba que ninguno de los atributos de la clave sea 'NULL' y que no se repitan en otros registros. Si alguna de estas condiciones no se cumple, retorna false
@@ -900,19 +903,16 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
-	
 	/**
 	 * Metodo publico que recibe como parametro el nombre de un comando. El metodo verifica si el comando especificado existe en el mapa de ayuda y retorna true en caso afirmativo y false en caso contrario.
 	 * @param comando para verificar si existe
 	 * @return valida la existencia del comando
 	 */
-	
 	public boolean comandoExiste(String comando) {
 		
 		return this.ayuda.containsKey(comando.toUpperCase());
 		
 	}
-	
 	
 	/**
 	 * Metodo publico que retorna una lista de cadenas de caracteres que representa los nombres de todas las bases de datos del usuario actual.
@@ -933,7 +933,6 @@ public class FachadaLogica implements IFachadaLogica {
 		return aux;
 		
 	}
-	
 	
 	/**
 	 * Metodo publico que recibe el nombre de una tabla y una lista de atributos. El metodo genera un registro a partir de los atributos proporcionados y lo retorna como un mapa de atributos.
@@ -998,6 +997,7 @@ public class FachadaLogica implements IFachadaLogica {
 		ArrayList<LinkedHashMap<String, Atributo>> reg2;
 		
 		if(tabla1.getRegistros().size() > tabla2.getRegistros().size()) {
+			
 			reg1 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla1.getRegistros());
 			reg2 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla2.getRegistros());
 	   
@@ -1005,33 +1005,37 @@ public class FachadaLogica implements IFachadaLogica {
 			
 			reg1 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla2.getRegistros());
 			reg2 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla1.getRegistros());	
+		
 		}
+		
 		if(reg1.size()>1 && reg2.size()>1) {
-		reg2.remove(0);
-		reg1.remove(0);
-	   
-	    for (int i=0; i<reg1.size(); i++) {
-	    	
-	    	for (int j=0; j<reg2.size(); j++) {
-	    	
-	    		for(Map.Entry<String, Atributo> entry1 : reg1.get(i).entrySet()) {
-	    		
-	    			for(Map.Entry<String, Atributo> entry2 : reg2.get(j).entrySet()) {
-	    				
-	    				if (repiteAtributo(entry1.getValue(), entry2.getValue())) {
-	    					
-	    					resultado.add(entry2.getValue());
-	                
-	    				}
-	             
-	                }
-	            }
-	        }
-	    }}
-		else
-	    return resultado;
+			
+			reg2.remove(0);
+			reg1.remove(0);
+		   
+		    for (int i=0; i<reg1.size(); i++) {
+		    	
+		    	for (int j=0; j<reg2.size(); j++) {
+		    	
+		    		for(Map.Entry<String, Atributo> entry1 : reg1.get(i).entrySet()) {
+		    		
+		    			for(Map.Entry<String, Atributo> entry2 : reg2.get(j).entrySet()) {
+		    				
+		    				if (repiteAtributo(entry1.getValue(), entry2.getValue())) {
+		    					
+		    					resultado.add(entry2.getValue());
+		                
+		    				}
+		             
+		                }
+		            }
+		        }
+		    }
+		    
+		}
     	
 		return resultado;
+		
     }
     	
 	/**
@@ -1093,6 +1097,7 @@ public class FachadaLogica implements IFachadaLogica {
 							yaAgregado=true;
 							
 						}
+						
 					}
 					
 				}else{
@@ -1120,12 +1125,11 @@ public class FachadaLogica implements IFachadaLogica {
 								yaAgregado=true;
 								
 							}
-						}		
-						
+							
+						}
 					}
 				}
-			}
-					
+			}		
 		}
 
 		return resultado;
@@ -1149,6 +1153,7 @@ public class FachadaLogica implements IFachadaLogica {
 			return true;
 			
 		}
+		
 	}
 
 	/**
@@ -1176,15 +1181,13 @@ public class FachadaLogica implements IFachadaLogica {
 				return (entero1.getValor()==entero2.getValor());
 				
 			}
-		}else {
-			
-			return false;
 			
 		}
 		
 		return false;
 		
 	}
+	
 	/**
 	 * Metodo publico que recibe como parametro el nombre de una tabla y retorna una lista de cadenas que describen las caracteristicas de los atributos de la tabla
 	 * @param nombreTabla-> nombre de la tabla
@@ -1205,27 +1208,42 @@ public class FachadaLogica implements IFachadaLogica {
 			String tipo="";
 			String notNull="";
 
-			if(entry.getValue().getClave()==true)
+			if(entry.getValue().getClave()==true) {
+				
 				clave = "Clave primaria";
-			else
+			
+			}else {
+			
 				clave = "No es clave primaria";
-
-			if (entry.getValue() instanceof Cadena)
+			
+			}
+			
+			if (entry.getValue() instanceof Cadena) {
+				
 				tipo="Cadena";
-			else
+			
+			}else {
+			
 				tipo="Entero";
-
-			if(entry.getValue().getNulo()==true)
+			
+			}
+			
+			if(entry.getValue().getNulo()==true) {
+			
 				notNull="No es nulo";
-			else
+			
+			}else {
+			
 				notNull="Nulo";
-
+			}
+			
 			insertar = nombre + " - " + tipo + " - " + clave + " - " + notNull;
 			resultado.add(insertar);
 
 		}
 		
 		return resultado;
+		
 	}
 	
 	/**
@@ -1252,10 +1270,12 @@ public class FachadaLogica implements IFachadaLogica {
 	            	
 	            	Atributo atributoGuia2 = entry2.getValue();
 	            	
-	            		if(atributoGuia2.equals(atributoGuia1))
-	            			
-	            			return true;
-	            	
+            		if(atributoGuia2.equals(atributoGuia1)) {
+            			
+            			return true;
+            		
+            		}
+            		
 	            }
 	            
 	        }

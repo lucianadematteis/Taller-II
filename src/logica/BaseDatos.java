@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import comunicacion.DTOBaseDatos;
+
 /**
  * Esta clase representa una base de datos y contiene metodos para administrar las tablas en la misma. 
 Se relaciona con TABLAS mediante una relacion de agregacion
@@ -15,6 +16,7 @@ Se relaciona con TABLAS mediante una relacion de agregacion
  *@author Luciana De Matteis
  *@author Mauricio Gonzalez
  */
+
 public class BaseDatos {
 
 	private String nombreBD;
@@ -118,6 +120,7 @@ public class BaseDatos {
 		return tablasNom;
 		
 	}
+	
 	/**
 	 * Metodo publico que recibe por parametro un objeto del tipo Tabla que representa la tabla que sera agregada al mapa de tablas de la base de datos.
 	 * @param tabla -> tabla que sera aregada a mapa de tabla de la base de datos
