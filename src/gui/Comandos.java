@@ -1,11 +1,16 @@
 package gui;
 
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Consumer;
+
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import comunicacion.DTOAtributo;
 import comunicacion.DTOBaseDatos;
@@ -113,19 +118,31 @@ public class Comandos {
 	  * 
 	  */
     private void cargarTablaString(ArrayList<String> datos, String nombreColumna) {
-    	
-    	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
-    	model.setRowCount(0);
-    	model.setColumnCount(0);
-    	model.addColumn(nombreColumna.toUpperCase());
 
-    	for(String dato : datos) {
-    		
-			model.addRow(new Object [] {dato});
-				
-    	}
-    	
+        DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
+        model.setRowCount(0);
+        model.setColumnCount(0);
+        model.addColumn(nombreColumna.toUpperCase());
+
+        // Crea un TableCellRenderer personalizado para interpretar HTML y ajustar la altura
+        DefaultTableCellRenderer htmlRenderer = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                JLabel label = new JLabel();
+                label.setText("<html>" + value.toString() + "</html>");
+                table.setRowHeight(row, label.getPreferredSize().height);
+                return label;
+            }
+        };
+
+        // Asigna el TableCellRenderer personalizado a la columna
+        VentanaPrincipal.salida.getColumnModel().getColumn(0).setCellRenderer(htmlRenderer);
+
+        for (String dato : datos) {
+            model.addRow(new Object[]{dato});
+        }
     }
+
     
 	 /**
 	  * Metodo privado que recibe como parametros dos cadenas de texto que corresponden a mensajes. El metodo inserta una fila en una tabla de depuracion en la interfaz grafica.
