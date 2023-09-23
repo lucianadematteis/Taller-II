@@ -1,13 +1,10 @@
 package gui;
 
 import java.awt.Color;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import comunicacion.IFachadaLogica;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -18,16 +15,16 @@ public class UsuarioRegistroCorrecto extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	@SuppressWarnings("unused")
 	private IFachadaLogica fa;
 
 	public UsuarioRegistroCorrecto(IFachadaLogica fa) {
+		
 		this.fa = fa;
 		setType(Type.POPUP);
 
 		Color fondoPrincipal = new Color (66,141,138);
-		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
-		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,12 +37,16 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		
 		JButton aceptar = new JButton("ACEPTAR");
 		aceptar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+			
 				VentanaPrincipal frame = new VentanaPrincipal(fa);
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 				dispose();
+			
 			}
+			
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
@@ -60,4 +61,5 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 	}
+	
 }

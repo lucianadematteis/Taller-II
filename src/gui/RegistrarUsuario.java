@@ -6,10 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
 import comunicacion.DTOUsuario;
 import comunicacion.IFachadaLogica;
-
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -25,6 +23,7 @@ public class RegistrarUsuario extends JFrame {
 	private JTextField usuario;
 	private JPasswordField pass;
 	private JPasswordField pass2;
+	@SuppressWarnings("unused")
 	private IFachadaLogica fa;
 
 	public RegistrarUsuario(IFachadaLogica fa) {
@@ -32,9 +31,7 @@ public class RegistrarUsuario extends JFrame {
 		this.fa = fa;
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
-		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
-		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,7 +86,9 @@ public class RegistrarUsuario extends JFrame {
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
 		aceptar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+			
 				System.out.println(usuario.getText());
 				char [] c = pass.getPassword();
 				String contra = new String (c); 
@@ -133,7 +132,9 @@ public class RegistrarUsuario extends JFrame {
 					camp.setLocationRelativeTo(null);
 				
 				}
+				
 			}
+			
 		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		aceptar.setBounds(401, 285, 104, 23);
@@ -142,12 +143,16 @@ public class RegistrarUsuario extends JFrame {
 		
 		JButton btnCancelar = new JButton("CANCELAR");
 		btnCancelar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+			
 				Login frame = new Login(fa);
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 				dispose();
+			
 			}
+		
 		});
 		btnCancelar.setForeground(Color.WHITE);
 		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 11));

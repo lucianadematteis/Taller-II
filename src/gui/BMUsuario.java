@@ -26,6 +26,7 @@ public class BMUsuario extends JFrame {
 	private JPasswordField pass;
 	private JPasswordField pass2;
 	private JPasswordField passActual;
+	@SuppressWarnings("unused")
 	private IFachadaLogica fa;
 
 	public BMUsuario(IFachadaLogica fa) {
@@ -34,9 +35,7 @@ public class BMUsuario extends JFrame {
 		
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
-		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
-		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024,700);
@@ -69,7 +68,9 @@ public class BMUsuario extends JFrame {
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
 		aceptar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+			
 				char []c1 =pass.getPassword();
 				String contra1 = new String (c1);
 				char[] c2 = pass2.getPassword();
@@ -107,6 +108,7 @@ public class BMUsuario extends JFrame {
 				}
 
 			}
+			
 		});
 		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
 		aceptar.setBounds(316, 302, 104, 23);
@@ -163,11 +165,14 @@ public class BMUsuario extends JFrame {
 				char [] c3 = passActual.getPassword();
 				String passA = new String (c3);
 				DTOUsuario auxUs = new DTOUsuario(fa.getUsuario(),passA);
+				
 				if (fa.validarContrasenia(auxUs)){
+				
 					ConfirmarEliminarUsuario frame = new ConfirmarEliminarUsuario(fa,auxUs);
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 					dispose();
+				
 				}
 				
 			}
@@ -204,12 +209,16 @@ public class BMUsuario extends JFrame {
 		
 		JButton btnCancelar = new JButton("CANCELAR");
 		btnCancelar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+			
 				VentanaPrincipal ven = new VentanaPrincipal(fa);
 				ven.setVisible(true);
 				ven.setLocationRelativeTo(null);
 				dispose();
+			
 			}
+		
 		});
 		btnCancelar.setForeground(Color.WHITE);
 		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 11));
@@ -218,6 +227,6 @@ public class BMUsuario extends JFrame {
 		btnCancelar.setBounds(865, 579, 104, 23);
 		contentPane.add(btnCancelar);
 		
-		
 	}
+	
 }

@@ -1,8 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,20 +12,20 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import comunicacion.DTOUsuario;
-import comunicacion.FachadaLogica;
 import comunicacion.IFachadaLogica;
 
 public class ConfirmarEliminarUsuario extends JFrame {
 
+	private static final long serialVersionUID = 3227640129070275096L;
 	private JPanel contentPane;
+	@SuppressWarnings("unused")
 	private IFachadaLogica fa;
 
 	public ConfirmarEliminarUsuario(IFachadaLogica fa, DTOUsuario us) {
+		
 		this.fa =fa;
 		Color fondoPrincipal = new Color (66,141,138);
-		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
-		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,7 +38,9 @@ public class ConfirmarEliminarUsuario extends JFrame {
 
 		JButton confirmar = new JButton("CONFIRMAR");
 		confirmar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+				
 				fa.eliminarusuario(us);
 				fa.persistirDatos();
 				fa.recuperarDatos();
@@ -50,7 +50,9 @@ public class ConfirmarEliminarUsuario extends JFrame {
 				log.setVisible(true);
 				log.setLocationRelativeTo(null);
 				dispose();
+				
 			}
+			
 		});
 		confirmar.setForeground(fuentePrincipal);
 		confirmar.setBackground(botones);
@@ -67,18 +69,23 @@ public class ConfirmarEliminarUsuario extends JFrame {
 
 		JButton btnCancelar = new JButton("CANCELAR");
 		btnCancelar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+			
 				BMUsuario frame = new BMUsuario(fa);
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 				dispose();
+			
 			}
+
 		});
 		btnCancelar.setForeground(Color.WHITE);
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
 		btnCancelar.setBounds(242, 203, 144, 35);
 		contentPane.add(btnCancelar);
+		
 	}
 
 }

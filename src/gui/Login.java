@@ -1,8 +1,6 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -14,21 +12,17 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.awt.Toolkit;
-
 import javax.swing.border.LineBorder;
-
 import comunicacion.DTOUsuario;
 import comunicacion.IFachadaLogica;
-
 import javax.swing.JSeparator;
-
 
 public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField user;
+	@SuppressWarnings("unused")
 	private IFachadaLogica fa;
 	static boolean demo;
 
@@ -82,7 +76,9 @@ public class Login extends JFrame {
 		inicioSesion.setForeground(fuentePrincipal);
 		inicioSesion.setBackground(botones);
 		inicioSesion.addActionListener(new ActionListener() {
+		
 			public void actionPerformed(ActionEvent e) {
+			
 				char[] arrayC = pass_1.getPassword();
 				String contra = new String (arrayC);
 				DTOUsuario usuario = new DTOUsuario (user.getText(),contra);
@@ -112,7 +108,9 @@ public class Login extends JFrame {
 					frame.setLocationRelativeTo(null);
 				
 				}
+			
 			}
+		
 		});
 		inicioSesion.setBounds(252, 269, 152, 30);
 		inicioSesion.setFocusPainted(false);
@@ -121,12 +119,16 @@ public class Login extends JFrame {
 		JButton btnRegistrarse = new JButton("REGISTRARSE");
 		btnRegistrarse.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		btnRegistrarse.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+			
 				RegistrarUsuario frame= new RegistrarUsuario(fa);
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 				dispose();
+			
 			}
+	
 		});
 		btnRegistrarse.setForeground(Color.WHITE);
 		btnRegistrarse.setFocusPainted(false);
@@ -159,7 +161,9 @@ public class Login extends JFrame {
 		
 		JButton btnIniciarDemo = new JButton("INICIAR DEMO");
 		btnIniciarDemo.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+			
 				DTOUsuario prueba = new DTOUsuario ("demo","demo");
 				fa.seleccionarUsuario(prueba.getNombreUser());
 				fa.seleccionarBaseDatos("base de prueba");
@@ -170,6 +174,7 @@ public class Login extends JFrame {
 				dispose();	
 				
 			}
+			
 		});
 		btnIniciarDemo.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		btnIniciarDemo.setForeground(Color.WHITE);
@@ -178,9 +183,12 @@ public class Login extends JFrame {
 		btnIniciarDemo.setBounds(796, 568, 146, 47);
 		contentPane.add(btnIniciarDemo);
 
-		   if (Comandos.usos >= 4 ) {
-		    	btnIniciarDemo.setEnabled(false);
-		    	demo = false;
-		    }
+	   if (Comandos.usos >= 4 ) {
+		   
+	    	btnIniciarDemo.setEnabled(false);
+	    	demo = false;
+	    }
+	   
 	}
+	
 }

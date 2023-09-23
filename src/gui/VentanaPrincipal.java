@@ -13,7 +13,6 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 import comunicacion.IFachadaLogica;
-
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -28,6 +27,7 @@ public class VentanaPrincipal extends JFrame {
 	static JTable salida;
 	static JTable depuracion;
 	static JLabel bdActual;
+	@SuppressWarnings("unused")
 	private IFachadaLogica fa;
 	static JTable guiaTabla;
 	
@@ -134,7 +134,9 @@ public class VentanaPrincipal extends JFrame {
 		JButton cerrarSesion = new JButton("CERRAR SESI\u00D3N");
 		cerrarSesion.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		cerrarSesion.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+			
 				Login frame = new Login(fa);
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
@@ -142,7 +144,9 @@ public class VentanaPrincipal extends JFrame {
 				fa.liberarMemoriaBaseDatos();
 				fa.liberarMemoriaUsuario();
 				dispose();
+			
 			}
+			
 		});
 		cerrarSesion.setBounds(843, 619, 143, 31);
 		cerrarSesion.setBackground(botones);
@@ -159,10 +163,15 @@ public class VentanaPrincipal extends JFrame {
 		guia.setForeground(escritura);
 		guia.setBackground(fondoVentana);
 		guia.setModel(new DefaultTableModel(
+			
 			new Object[][] {
+	
 			},
+		
 			new String[] {
+		
 			}
+				
 		));
 		scrollPane_3.setViewportView(guia);
 		
@@ -177,12 +186,17 @@ public class VentanaPrincipal extends JFrame {
 		depuracion.setBackground(fondoVentana);
 		depuracion.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		depuracion.setModel(new DefaultTableModel(
+			
 			new Object[][] {
-		//		{null, null},
+				
 			},
+				
 			new String[] {
+				
 				"NUMERO", "MENSAJE"
+			
 			}
+			
 		));
 		depuracion.getColumnModel().getColumn(0).setPreferredWidth(89);
 		depuracion.getColumnModel().getColumn(1).setPreferredWidth(725);
@@ -201,11 +215,16 @@ public class VentanaPrincipal extends JFrame {
 		salida.setBackground(fondoVentana);
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		salida.setModel(new DefaultTableModel(
+			
 			new Object[][] {
+		
 			},
+		
 			new String[] {
-				
+			
+		
 			}
+				
 		));
 		scrollPane_1.setViewportView(salida);
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -217,29 +236,27 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				Comandos comandos = new Comandos(fa);
-				
 				ArrayList<String[]> arregloLinea = administraSentencia(entrada.getText());
-		        
 		        String comando=arregloLinea.get(0)[0].toUpperCase();
-		        	
 		        comandos.ejecutarComando(comando, arregloLinea);
-		        
 		        fa.persistirDatos();
 		        
-		        
 		        if (Login.demo && Comandos.usos == 4 ){
+		        	
 		        	fa.liberarMemoriaBaseDatos();
 		        	fa.liberarMemoriaUsuario();
 		        	LimiteAlcanzado li = new LimiteAlcanzado(fa);
 		        	li.setVisible(true);
 		        	dispose();
+		        
 		        }
 		        
 		        if(fa.bdSeleccionada()) {
-					cargarTablas(fa.obtenerTablasNom());
-				}
+				
+		        	cargarTablas(fa.obtenerTablasNom());
+				
+		        }
 
-		         
 			} 
 			
 		});
@@ -259,12 +276,16 @@ public class VentanaPrincipal extends JFrame {
 		btnConfigUsuario.setForeground(fuentePrincipal);
 		btnConfigUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		btnConfigUsuario.addActionListener(new ActionListener() {
+		
 			public void actionPerformed(ActionEvent e) {
+			
 				BMUsuario frame = new BMUsuario(fa);
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 				dispose();	
+			
 			}
+			
 		});
 		btnConfigUsuario.setBounds(24, 620, 248, 30);
 		btnConfigUsuario.setFocusPainted(false);
@@ -285,7 +306,9 @@ public class VentanaPrincipal extends JFrame {
 		cargarBasesDatos(fa.obtenerBasesNom());
 		
 		if(Login.demo) {
+			
 			VentanaPrincipal.bdActual.setText("Base de datos: base de prueba");
+		
 		}
 		
 	}
@@ -319,4 +342,5 @@ public class VentanaPrincipal extends JFrame {
 		}
 
 	}
+	
 }

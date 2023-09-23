@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,17 +17,27 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 	private JPanel contentPane;
 
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
+		
 			public void run() {
+			
 				try {
+				
 					UsuarioRegistroErrorContrasenia frame = new UsuarioRegistroErrorContrasenia();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
+				
 				} catch (Exception e) {
+				
 					e.printStackTrace();
+				
 				}
+			
 			}
+		
 		});
+	
 	}
 
 	public UsuarioRegistroErrorContrasenia() {
@@ -36,9 +45,7 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		setType(Type.POPUP);
 		
 		Color fondoPrincipal = new Color (66,141,138);
-		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
-		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,9 +58,13 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		
 		JButton aceptar = new JButton("ACEPTAR");
 		aceptar.addActionListener(new ActionListener() {
+		
 			public void actionPerformed(ActionEvent e) {
+			
 				dispose();
+			
 			}
+	
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
