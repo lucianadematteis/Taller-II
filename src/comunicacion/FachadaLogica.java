@@ -1285,5 +1285,23 @@ public class FachadaLogica implements IFachadaLogica {
         return false;
 		
 	}
+	
+	public String getBaseDatos() {
+		
+		return this.baseDatos;
+		
+	}
+	
+	public void eliminarBD(String nombreBD) {
+		
+		this.obtenerUsuario().eliminarBD(nombreBD);
+		
+	}
+	
+	public void eliminarTabla(String nombreTabla) {
+		
+		this.obtenerBaseDatos().eliminarTabla(nombreTabla);
+		
+	}
 
 }

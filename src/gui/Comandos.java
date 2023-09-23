@@ -473,6 +473,7 @@ private void comandoTable(ArrayList<String[]> sentencia) {
 						DTOTabla tabla = new DTOTabla(sentencia.get(1)[1]);
 						
 						logica.crearTabla(tabla, atributos);
+						VentanaPrincipal.cargarTablas(logica.obtenerTablasNom());
 						aciertos++;
 						insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con exito la tabla: " +  sentencia.get(1)[1]);
 			        	
@@ -483,8 +484,11 @@ private void comandoTable(ArrayList<String[]> sentencia) {
 				
 				if(logica.existeTabla(sentencia.get(1)[1])) {
 					
-					
-					
+					logica.eliminarTabla(sentencia.get(1)[1]);
+					VentanaPrincipal.cargarTablas(logica.obtenerTablasNom());
+					aciertos++;
+					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con exito la tabla: " +  sentencia.get(1)[1]);
+		        	
 				}else {
 					
 					insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
@@ -534,7 +538,16 @@ private void comandoTable(ArrayList<String[]> sentencia) {
 				
 				if(logica.existeBD(sentencia.get(1)[1])) {
 					
+					if(logica.getBaseDatos().equalsIgnoreCase(sentencia.get(1)[1])) {
+						
+						logica.liberarMemoriaBaseDatos();
+						VentanaPrincipal.bdActual.setText("Base de datos: ");
+						
+					}
 					
+					logica.eliminarBD(sentencia.get(1)[1]);
+					VentanaPrincipal.cargarBasesDatos(logica.obtenerBasesNom());
+					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con exito la base de datos: " + sentencia.get(1)[1]);
 					
 				}else {
 					
@@ -1477,7 +1490,7 @@ private void comandoTable(ArrayList<String[]> sentencia) {
 		
 	    if (acciones.containsKey(comando)) {
 	    	
-	    	if ((comando.equals("USE")) || (comando.equals("HELP") || (comando.equals("CREATE")))) {
+	    	if ((comando.equals("USE")) || (comando.equals("HELP") || (comando.equals("CREATE") || (comando.equals("DROP"))))) {
 		    	
 		        acciones.get(comando).accept(sentencia);
 		        

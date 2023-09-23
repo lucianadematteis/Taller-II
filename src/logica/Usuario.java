@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.LinkedHashMap;
+import java.util.Map.Entry;
 
 import comunicacion.DTOUsuario;
 
@@ -90,6 +91,29 @@ public class Usuario {
 	public void agregarBD(BaseDatos base) {
 		
 		this.basesDatos.put(base.getNombreBD(), base);
+		
+	}
+	
+	private BaseDatos obtenerBD(String nombreBD) {
+		
+		for (Entry<String, BaseDatos> bd : this.basesDatos.entrySet()) {
+
+			if(bd.getKey().equalsIgnoreCase(nombreBD)) {
+				
+				return bd.getValue();
+				
+			}
+				
+		}
+		
+		return null;
+		
+	}
+	
+	public void eliminarBD(String nombreBD) {
+		
+		BaseDatos bd = this.obtenerBD(nombreBD);
+		this.basesDatos.remove(bd.getNombreBD());
 		
 	}
 

@@ -90,17 +90,15 @@ public class BaseDatos {
 	 * @return la tabla
 	 */
 	public Tabla obtenerTabla(String nombreTabla) {
-		
-	    if (tablas.containsKey(nombreTabla)) {
-	    	
-	        return tablas.get(nombreTabla);
-	        
-	    }else{
-	      
-	        return null;
-	        
-	    }
-	    
+			
+		for (Entry<String, Tabla> tabla : this.tablas.entrySet()) {
+
+			return tabla.getValue();
+			
+		}
+			
+		return null;
+			
 	}
 	
 	/**
@@ -130,5 +128,12 @@ public class BaseDatos {
 		this.tablas.put(tabla.getNombreTabla(), tabla);
 		
 	}
-
+	
+	public void eliminarTabla(String nombreTabla) {
+		
+		Tabla tabla = this.obtenerTabla(nombreTabla);
+		this.tablas.remove(tabla.getNombreTabla());
+		
+	}
+	
 }

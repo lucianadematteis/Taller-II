@@ -109,5 +109,11 @@ public interface IFachadaLogica {
 	public ArrayList<DTOAtributo> realizarConsultaSinWhere(String nombreTabla, String nombreAtributo);
 	
 	public boolean validaAtributosJoin (String tabla1, String tabla2);
+	
+	public String getBaseDatos();
+	
+	public void eliminarBD(String nombreBD);
+	
+	public void eliminarTabla(String nombreTabla);
 
 }
