@@ -22,7 +22,7 @@ public class LoginError extends JFrame {
 		Color fuentePrincipal = new Color (255,255,255);
 		Color botones = new Color (3,60,88);
 		
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(fondoPrincipal);

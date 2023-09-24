@@ -22,7 +22,7 @@ public class UsuarioCambioContraseniaCorrecto extends JFrame {
 		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
 		contentPane = new JPanel();
