@@ -2,10 +2,12 @@ package persistencia;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;//escritura
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -868,7 +870,7 @@ public class Persistencia {
 		
 		StringBuilder contenidoArchivo = new StringBuilder();
 	
-		try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+		try (BufferedReader br =new BufferedReader(new InputStreamReader(new FileInputStream(ruta),"UTF-8"))) {
 			
 			String linea;
 		
