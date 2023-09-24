@@ -85,30 +85,33 @@ public class Comandos {
 	 *
 	 */
     private void cargarTablaAtributos(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
-    	
+
     	DefaultTableModel model = (DefaultTableModel) VentanaPrincipal.salida.getModel();
     	model.setRowCount(0);
     	model.setColumnCount(0);
     	model.addColumn(nombreAtributo.toUpperCase());
 
+    	// Establece la altura de todas las filas a 20
+    	VentanaPrincipal.salida.setRowHeight(22);
+
     	for(DTOAtributo atr : atributos) {
-    		
-			if (atr instanceof DTOCadena) {
-				
-				DTOCadena cadena = (DTOCadena) atr;
-				String dato = cadena.getDato();
-				model.addRow(new Object [] {dato});
-			
-			} else if (atr instanceof DTOEntero) {
-			
-				DTOEntero entero = (DTOEntero) atr;
-				int valor = entero.getValor();
-				model.addRow(new Object [] {valor});
-			
-			}
-    			
+
+    		if (atr instanceof DTOCadena) {
+
+    			DTOCadena cadena = (DTOCadena) atr;
+    			String dato = cadena.getDato();
+    			model.addRow(new Object [] {dato});
+
+    		} else if (atr instanceof DTOEntero) {
+
+    			DTOEntero entero = (DTOEntero) atr;
+    			int valor = entero.getValor();
+    			model.addRow(new Object [] {valor});
+
+    		}
+
     	}
-    	
+
     }
     
 	 /**
