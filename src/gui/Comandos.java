@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -435,13 +436,15 @@ public class Comandos {
 	 */
 	private boolean validaOperadoresLogicos(ArrayList<String[]> sentencia) {
 
+		 List<String> operadores = Arrays.asList("=", "<", ">", "<=", ">=");
+		
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 8))) {
 
 			insertarDepuracion("Error #03", "Cantidad de argumentos no valida en la linea 3");
 
 		} else {
 
-			if (!(sentencia.get(2)[2].toUpperCase().equals("=")) || !(sentencia.get(2)[6].toUpperCase().equals("="))) {
+			if (!(operadores.contains(sentencia.get(2)[2])) || !(operadores.contains(sentencia.get(2)[6]))) {
 
 				insertarDepuracion("Error #05", "Operador/es de igualdad no valido en la linea 3");
 
