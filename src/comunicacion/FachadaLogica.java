@@ -301,7 +301,7 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	/**
-	 * Método público que inserta un nuevo registro en la tabla especificada en nombre de Tabla con los atributos y valores proporcionados en el mapa registro
+	 * Metodo publico que inserta un nuevo registro en la tabla especificada en nombre de Tabla con los atributos y valores proporcionados en el mapa registro
 	 * @param nombreTabla-> nombre de la tabla
 	 * @param registro -> mapa correspondiente al nuevo registro a ingresar
 	 */
@@ -314,7 +314,7 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 
 	/**
-	 * Método privado que, dado el nombre de una tabla, retorna tabla (en caso de encontrarla) o null si no se encuentra ninguna tabla con el nombre especificado
+	 * Metodo privado que, dado el nombre de una tabla, retorna tabla (en caso de encontrarla) o null si no se encuentra ninguna tabla con el nombre especificado
 	 * @param nombreTabla
 	 * @return objeto tabla encontrado
 	 */
@@ -334,7 +334,7 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 
 	/**
-	 * Método público que recibe como parámetro el nombre de un atributo y el nombre de una tabla. Obtiene el valor del atributo especificado en la tabla nombreTabla y lo retorna como un objeto DTOAtributo.
+	 * Metodo publico que recibe como parametro el nombre de un atributo y el nombre de una tabla. Obtiene el valor del atributo especificado en la tabla nombreTabla y lo retorna como un objeto DTOAtributo.
 	 * @param nombreTabla -> nombre de la tabla que contiene el atributo a buscar
 	 * @param nombreAtributo -> nombre del atributo a buscar
 	 * @return obtejo de tipo DTOAtributo correspondiente al nombreAtributo proporcionado
@@ -1321,7 +1321,7 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	/**
-	 * Método público que, dado un nombre de una tabla, obtiene el nombre de la tabla correspondiente tal cual esta en el programa almacenado.
+	 * Metodo publico que, dado un nombre de una tabla, obtiene el nombre de la tabla correspondiente tal cual esta en el programa almacenado.
 	 * @param nombreTabla -> El nombre de la tabla cuyo nombre se desea obtener.
 	 * @return El nombre de la tabla correspondiente como esta almacenado.
 	 */

@@ -29,7 +29,7 @@ public class Cadena extends Atributo {
 	}
 	
 	/**
-	 * Metodo pblico que recibe un objeto DTOCadena que  inicializa la instancia de Cadena con los valores proporcionados por el objeto, incluyendo el nombre del atributo, si puede ser nulo, si es una clave y el dato de tipo cadena.
+	 * Metodo publico que recibe un objeto DTOCadena que  inicializa la instancia de Cadena con los valores proporcionados por el objeto, incluyendo el nombre del atributo, si puede ser nulo, si es una clave y el dato de tipo cadena.
 	 * @param nombreAtributo->nombre del atributo
 	 * @param nulo->si es nulo o no
 	 * @param clave-> si es clave o no

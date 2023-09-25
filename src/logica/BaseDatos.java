@@ -9,8 +9,8 @@ import comunicacion.DTOBaseDatos;
 
 /**
  * Esta clase representa una base de datos y contiene metodos para administrar las tablas en la misma. 
-Se relaciona con TABLAS mediante una relacion de agregacion
-  *@author Gabriel Bolsi
+ * Se relaciona con TABLAS mediante una relacion de agregacion
+ *@author Gabriel Bolsi
  *@author Brandon Cairus
  *@author Daiana Daguerre
  *@author Luciana De Matteis

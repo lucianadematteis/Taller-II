@@ -36,7 +36,7 @@ public class Tabla {
 	}
 	
 	/**
-	 * "Constructor que recibe como parametro un objeto DTOTabla que inicializa la instancia de la tabla con el nombre proporcionado y crea una lista vacia de registros."
+	 * Constructor que recibe como parametro un objeto DTOTabla que inicializa la instancia de la tabla con el nombre proporcionado y crea una lista vacia de registros.
 	 * @param nombreTabla->nombre de la tabla
 	 */
 	public Tabla(String nombreTabla) {
