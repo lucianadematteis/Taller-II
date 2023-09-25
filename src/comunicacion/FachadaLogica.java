@@ -1319,5 +1319,17 @@ public class FachadaLogica implements IFachadaLogica {
 		this.obtenerBaseDatos().eliminarTabla(nombreTabla);
 		
 	}
+	
+	/**
+	 * Método público que, dado un nombre de una tabla, obtiene el nombre de la tabla correspondiente tal cual esta en el programa almacenado.
+	 * @param nombreTabla -> El nombre de la tabla cuyo nombre se desea obtener.
+	 * @return El nombre de la tabla correspondiente como esta almacenado.
+	 */
+	public String obtenerNomTabla (String nombreTabla) {
+		
+		Tabla tablita = this.obtenerTabla(nombreTabla);
+		return tablita.getNombreTabla();
+		
+	}
 
 }

@@ -115,5 +115,7 @@ public interface IFachadaLogica {
 	public void eliminarBD(String nombreBD);
 	
 	public void eliminarTabla(String nombreTabla);
+	
+	public String obtenerNomTabla (String nombreTabla);
 
 }

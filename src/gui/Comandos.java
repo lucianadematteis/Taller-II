@@ -1409,7 +1409,8 @@ public class Comandos {
 	private void comandoDescribe(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
-			String nombreTabla = sentencia.get(0)[1];
+			
+			String nombreTabla = logica.obtenerNomTabla(sentencia.get(0)[1]);
 			
 			if(logica.existeTabla(nombreTabla)) {
 			
