@@ -213,7 +213,7 @@ public class Comandos {
 	 */
 	private boolean validaTipoDato(String tipo) {
 
-		return ((tipo.toUpperCase().equals("ENTERO")) || (tipo.toUpperCase().equals("CADENA")));
+		return ((tipo.equalsIgnoreCase("ENTERO")) || (tipo.equalsIgnoreCase("CADENA")));
 
 	}
 	
@@ -312,7 +312,7 @@ public class Comandos {
 
 			} else {
 
-				if (!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
+				if (!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
 
 					insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 
@@ -346,7 +346,7 @@ public class Comandos {
 
 		} else {
 
-			if (!(sentencia.get(2)[0].toUpperCase().equals("WHERE"))) {
+			if (!(sentencia.get(2)[0].equalsIgnoreCase("WHERE"))) {
 
 				insertarDepuracion("Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es valido");
 
@@ -383,7 +383,7 @@ public class Comandos {
 
 		} else {
 
-			if (!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
+			if (!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
 
 				insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 
@@ -683,7 +683,7 @@ public class Comandos {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
-    		if(!(sentencia.get(0)[1].toUpperCase().equals("TABLES"))) {
+    		if(!(sentencia.get(0)[1].equalsIgnoreCase("TABLES"))) {
             			
 	        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(0)[1].toUpperCase() + " no es valido");
 	        	
@@ -720,9 +720,7 @@ public class Comandos {
 	        
         	}else {
     			
-        		String comando2=sentencia.get(1)[0].toUpperCase();
-        		
-        		if(comando2.equals("TABLE")) { //TABLE
+        		if(sentencia.get(1)[0].equalsIgnoreCase("TABLE")) { //TABLE
         			
         			if(logica.bdSeleccionada()) {
         			
@@ -734,7 +732,7 @@ public class Comandos {
         				
         			}
         			
-        		}else if(comando2.equals("DATABASE")) { //DATABASE
+        		}else if(sentencia.get(1)[0].equalsIgnoreCase("DATABASE")) { //DATABASE
         			
         			comandoDatabase(sentencia);
         			
@@ -852,13 +850,11 @@ public class Comandos {
 			            		
 		            		if(validaOperadoresLogicos(sentencia)) {
 		            			
-			            		String operador=sentencia.get(2)[4].toUpperCase();
-			            		
-			            		if(operador.equalsIgnoreCase("AND")) {
+			            		if(sentencia.get(2)[4].equalsIgnoreCase("AND")) {
 			            			
 			            			comandoSelectAnd(sentencia);
 			            			
-			            		} else if(operador.equalsIgnoreCase("OR")) {
+			            		} else if(sentencia.get(2)[4].equalsIgnoreCase("OR")) {
 			            			
 			            			comandoSelectOr(sentencia);
 			            			
@@ -926,7 +922,7 @@ public class Comandos {
 	        	
         	}else { 
         		
-        		if(!(sentencia.get(1)[0].toUpperCase().equals("VALUES"))) {
+        		if(!(sentencia.get(1)[0].equalsIgnoreCase("VALUES"))) {
             			
 		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 		        	
@@ -1064,7 +1060,7 @@ public class Comandos {
 		        	
             	}else {
             		
-            		if(!(sentencia.get(1)[0].toUpperCase().equals("SET"))) {
+            		if(!(sentencia.get(1)[0].equalsIgnoreCase("SET"))) {
             			
 			        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 			        	
@@ -1481,7 +1477,7 @@ public class Comandos {
 	        	
     		}else {
     			
-    			if(!(sentencia.get(1)[0].toUpperCase().equals("FROM"))) {
+    			if(!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
     				
 		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
 		        	
