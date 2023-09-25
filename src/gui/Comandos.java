@@ -1408,7 +1408,7 @@ public class Comandos {
         	
 			if(logica.existeTabla(sentencia.get(0)[1])) {
 			
-				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "INFORMACION");
+				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "INFORMACION de la tabla " + sentencia.get(0)[1]);
 				aciertos++;
 				insertarDepuracion("Acierto #" + aciertos, "Se muestra la informacion de la tabla: " + sentencia.get(0)[1]);
         	
