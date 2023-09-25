@@ -333,10 +333,10 @@ public class Tabla {
 		
 		for (LinkedHashMap<String, DTOAtributo> misRegistros : this.getRegistrosDTO()) { 
 			
-		    for (Map.Entry<String, DTOAtributo> entrada : misRegistros.entrySet()) {
-		    	
-		    	if (!primero) {
-		    		
+			if (!primero) {
+			
+			    for (Map.Entry<String, DTOAtributo> entrada : misRegistros.entrySet()) {
+			    	
 		    		DTOAtributo atributo = entrada.getValue();
 		    		
 		    		if(entrada.getKey().equalsIgnoreCase(nombreAtributo)){
@@ -380,15 +380,15 @@ public class Tabla {
 				    	}
 		    		
 		    		}
-	    		
-	    		}else {
-	    			
-		    		primero=false;
-	    			
-	    		}
-	    		
-		    }
+		    		
+			    }
 		    
+			}else {
+				
+				primero=false;
+				
+			}
+	    	
 		}
 	     
 		return registrosObtenidos;
@@ -414,10 +414,8 @@ public class Tabla {
 	public ArrayList<DTOAtributo> seleccionarAtributo(ArrayList<LinkedHashMap<String, DTOAtributo>> registros, String nombreAtributo){
 		
 		ArrayList<DTOAtributo> registrosFinales = new ArrayList<DTOAtributo>();
-		ArrayList<LinkedHashMap<String, DTOAtributo>> registrosSinGuia = new ArrayList<LinkedHashMap<String, DTOAtributo>>(registros);
-		registrosSinGuia.remove(0);
 		
-		for (LinkedHashMap<String, DTOAtributo> misRegistros : registrosSinGuia) { 
+		for (LinkedHashMap<String, DTOAtributo> misRegistros : registros) { 
 			
 		    for (Map.Entry<String, DTOAtributo> entrada : misRegistros.entrySet()) {
 		    	
@@ -429,9 +427,9 @@ public class Tabla {
 		    	}
 		    	
 		    }
-		    
+			 	
 		}
-		
+		 
 		return registrosFinales;
 		
 	}
