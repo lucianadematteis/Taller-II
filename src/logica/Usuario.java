@@ -94,6 +94,11 @@ public class Usuario {
 		
 	}
 	
+	/**
+	 * Metodo privado que retorna un objeto de tipo BaseDatos que corresponde al nombre de la base de datos especificada
+	 * @param nombreBD -> nombre de la base de datos a buscar
+	 * @return objeto de tipo BaseDatos correspondiente al nombre indicado
+	 */
 	private BaseDatos obtenerBD(String nombreBD) {
 		
 		for (Entry<String, BaseDatos> bd : this.basesDatos.entrySet()) {
@@ -110,6 +115,10 @@ public class Usuario {
 		
 	}
 	
+	/**
+	 * Metodo publico que dado un nombre de una base de datos la elimina del mapa de bases de datos de la presente clase
+	 * @param nombreBD -> nombre de la base de datos a eliminar
+	 */
 	public void eliminarBD(String nombreBD) {
 		
 		BaseDatos bd = this.obtenerBD(nombreBD);

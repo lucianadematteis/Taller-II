@@ -301,6 +301,11 @@ public class FachadaLogica implements IFachadaLogica {
 			
 	}
 	
+	/**
+	 * Método público que inserta un nuevo registro en la tabla especificada en nombre de Tabla con los atributos y valores proporcionados en el mapa registro
+	 * @param nombreTabla-> nombre de la tabla
+	 * @param registro -> mapa correspondiente al nuevo registro a ingresar
+	 */
 	public void ingresarRegistro(String nombreTabla, LinkedHashMap<String, DTOAtributo> registro) {
 
 		Tabla tabla = this.obtenerTabla(nombreTabla);
@@ -309,6 +314,11 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
+	/**
+	 * Método privado que, dado el nombre de una tabla, retorna tabla (en caso de encontrarla) o null si no se encuentra ninguna tabla con el nombre especificado
+	 * @param nombreTabla
+	 * @return objeto tabla encontrado
+	 */
 	private Tabla obtenerTabla(String nombreTabla) {
 		
 		for (Map.Entry<String, Tabla> tabla : this.obtenerBaseDatos().getTablas().entrySet()) {
@@ -324,6 +334,12 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
+	/**
+	 * Método público que recibe como parámetro el nombre de un atributo y el nombre de una tabla. Obtiene el valor del atributo especificado en la tabla nombreTabla y lo retorna como un objeto DTOAtributo.
+	 * @param nombreTabla -> nombre de la tabla que contiene el atributo a buscar
+	 * @param nombreAtributo -> nombre del atributo a buscar
+	 * @return obtejo de tipo DTOAtributo correspondiente al nombreAtributo proporcionado
+	 */
 	public DTOAtributo obtenerAtributo(String nombreAtributo, String nombreTabla) {
 
 		LinkedHashMap<String, DTOAtributo> guia = this.obtenerTabla(nombreTabla).getRegistrosDTO().get(0);
@@ -1237,7 +1253,7 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	/**
 	 * Metodo publico que recibe como parametros los nombres de dos tablas. El metodo busca los atributos de las dos tablas y compara si hay alguno en comun entre ellas. Si encuentra al menos un atributo comun, retorna true de lo contrario retorna false
-	  * @param tabla1-> Tabla 1 a buscar
+	 * @param tabla1-> Tabla 1 a buscar
 	 * @param tabla2-> Tabla 2 a buscar
 	 * @return verifica si las tablas tienen algun atributo en comun
 	 */
@@ -1275,18 +1291,30 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo publico que  retorna el valor almacenado en la variable baseDatos de la presente clase
+	 * @return Valor almacenado en la variable baseDatos de la clase FachadaLogica
+	 */
 	public String getBaseDatos() {
 		
 		return this.baseDatos;
 		
 	}
 	
+	/**
+	 * Metodo publico que, dado un nombre de una base de datos, la elimina del mapa correspondiente
+	 * @param nombreBD -> nombre de la base de datos a eliminar
+	 */
 	public void eliminarBD(String nombreBD) {
 		
 		this.obtenerUsuario().eliminarBD(nombreBD);
 		
 	}
 	
+	/**
+	 * Metodo publico que, dado un nombre de una tabla, la elimina del mapa correspondiente
+	 * @param nombreTabla -> nombre de la tabla a eliminar
+	 */
 	public void eliminarTabla(String nombreTabla) {
 		
 		this.obtenerBaseDatos().eliminarTabla(nombreTabla);

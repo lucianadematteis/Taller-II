@@ -129,6 +129,10 @@ public class BaseDatos {
 		
 	}
 	
+	/**
+	 * Metodo publico que dado un nombre de una tabla, la elimina del mapa de tablas de la presente clase
+	 * @param nombreTabla -> nombre de la tabla a eliminar
+	 */
 	public void eliminarTabla(String nombreTabla) {
 		
 		Tabla tabla = this.obtenerTabla(nombreTabla);
