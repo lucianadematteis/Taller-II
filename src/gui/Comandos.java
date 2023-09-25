@@ -1405,12 +1405,13 @@ public class Comandos {
 	private void comandoDescribe(ArrayList<String[]> sentencia) {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
-        	
-			if(logica.existeTabla(sentencia.get(0)[1])) {
+			String nombreTabla = sentencia.get(0)[1];
 			
-				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "INFORMACION de la tabla " + sentencia.get(0)[1]);
+			if(logica.existeTabla(nombreTabla)) {
+			
+				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "INFORMACION de la tabla " + nombreTabla);
 				aciertos++;
-				insertarDepuracion("Acierto #" + aciertos, "Se muestra la informacion de la tabla: " + sentencia.get(0)[1]);
+				insertarDepuracion("Acierto #" + aciertos, "Se muestra la informacion de la tabla: " + nombreTabla);
         	
 			}else {
 				
@@ -1420,6 +1421,9 @@ public class Comandos {
     	}
 		
 	}
+	
+
+
 	
 	/**
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "HELP" para mostrar informacion de ayuda sobre un comando especifico.  El metodo verifica si el comando especificado existe y muestra su ayuda asociada.
