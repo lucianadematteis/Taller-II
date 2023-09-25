@@ -197,21 +197,32 @@ public class VentanaPrincipal extends JFrame {
 		depuracion.setBackground(fondoVentana);
 		depuracion.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		depuracion.setModel(new DefaultTableModel(
-			
-			new Object[][] {
-				
-			},
-				
-			new String[] {
-				
-				"<html><b>NUMERO</b></html>", "<html><b>MENSAJE</b></html>"
-			
-			}
-			
-		));
+		  
+		  new Object[][] {
+		    
+		  },
+		    
+		  new String[] {
+		    
+		    "<html><b>NUMERO</b></html>", "<html><b>MENSAJE</b></html>"
+		  
+		  }
+		  
+		) {
+		  /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+		public boolean isCellEditable(int rowIndex, int columnIndex) {
+		    return false; // Ninguna celda es editable
+		  }
+		});
+		depuracion.setCellSelectionEnabled(false); // Desactiva la selección de celdas
 		depuracion.getColumnModel().getColumn(0).setPreferredWidth(89);
 		depuracion.getColumnModel().getColumn(1).setPreferredWidth(725);
 		scrollPane_2.setViewportView(depuracion);
+
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(170, 185, 815, 288);
