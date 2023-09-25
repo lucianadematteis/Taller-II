@@ -158,22 +158,32 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane_3.getViewport().setBackground(fondoVentana);
 		contentPane.add(scrollPane_3);
 		
-		guia = new JTable();
 
+		guia = new JTable();
+		guia.setCellSelectionEnabled(false);
 		guia.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		guia.setForeground(escritura);
 		guia.setBackground(fondoVentana);
 		guia.setModel(new DefaultTableModel(
-			
-			new Object[][] {
-	
-			},
-		
-			new String[] {
-		
-			}
-				
-		));
+		  
+		  new Object[][] {
+
+		  },
+
+		  new String[] {
+
+		  }
+		    
+		) {
+		  /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+		public boolean isCellEditable(int rowIndex, int columnIndex) {
+		    return false; // Ninguna celda es editable
+		  }
+		});
 		scrollPane_3.setViewportView(guia);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
