@@ -868,32 +868,21 @@ public class FachadaLogica implements IFachadaLogica {
 		if(tablita.tieneClave()) {
 		
 			String clave = tablita.obtenerClave();
+			int posClave = 0;
 			
 			for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
-				
-				for (int i = 0; i < atributos.size(); i++) {
+			
+				if(atriGuia.getKey().equals(clave)) { //Si la clave es nula o se repite
 					
-					if((atriGuia.getKey().equals(clave))) { //SI la clave es nula
+					if((atributos.get(posClave).equals("NULL")) || (!(tablita.obtenerRegistros(clave, atributos.get(posClave), "=").isEmpty()))) {
 						
-						if((atributos.get(i).equals("NULL"))) {
-							
-							return false;
-						
-						}
-						
-						if(!(tablita.obtenerRegistros(atriGuia.getKey(), atributos.get(i), "=").isEmpty())) { //Si la clave se repite
-							
-							return false;
-							
-						}else {
-							
-							return true;
-							
-						}
-						
+						return false;
+					
 					}
 					
 				}
+				
+				posClave++;
 				
 			}
 			
