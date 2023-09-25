@@ -237,19 +237,30 @@ public class VentanaPrincipal extends JFrame {
 		salida.setBackground(fondoVentana);
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		salida.setModel(new DefaultTableModel(
-			
-			new Object[][] {
-		
-			},
-		
-			new String[] {
-			
-		
-			}
-				
-		));
+		  
+		  new Object[][] {
+		    
+		  },
+		  
+		  new String[] {
+		    
+		  
+		  }
+		    
+		) {
+		  /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+		public boolean isCellEditable(int rowIndex, int columnIndex) {
+		    return false; // Ninguna celda es editable
+		  }
+		});
+		salida.setCellSelectionEnabled(false); // Desactiva la selección de celdas
 		scrollPane_1.setViewportView(salida);
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+
     	
 		JButton ejecutar = new JButton("EJECUTAR");
 		ejecutar.setFont(new Font("Segoe UI", Font.BOLD, 13));
