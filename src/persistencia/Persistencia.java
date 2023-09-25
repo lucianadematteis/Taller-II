@@ -827,13 +827,13 @@ public class Persistencia {
 	                    if (guiaa.getValue() instanceof Cadena) {
 	                    	
 	                        // Crear y agregar un atributo de tipo Cadena al registro
-	                        Cadena atri = new Cadena(palabra);
+	                        Cadena atri = new Cadena(guiaa.getKey(), guiaa.getValue().getNulo(), guiaa.getValue().getClave(), palabra);
 	                        registro.put(guiaa.getKey(), atri);
 	                        
 	                    } else if (guiaa.getValue() instanceof Entero) {
 	                    	
 	                        // Crear y agregar un atributo de tipo Entero al registro
-	                        Entero atri = new Entero(Integer.parseInt(palabra));
+	                        Entero atri = new Entero(guiaa.getKey(), guiaa.getValue().getNulo(), guiaa.getValue().getClave(), Integer.parseInt(palabra));
 	                        registro.put(guiaa.getKey(), atri);
 	                        
 	                    }
