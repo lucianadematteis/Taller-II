@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Component;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -127,13 +128,15 @@ public class Comandos {
         model.setRowCount(0);
         model.setColumnCount(0);
         model.addColumn("<html><b>" + nombreColumna.toUpperCase() + "</b></html>");
-       
+       Font customFont = new Font("SansSerif", Font.PLAIN, 17);
+        
         // Crea un TableCellRenderer personalizado para interpretar HTML y ajustar la altura
         DefaultTableCellRenderer htmlRenderer = new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                
             	JLabel label = new JLabel();
+            	label.setFont(customFont);
                 label.setText("<html>" + value.toString() + "</html>");
                 table.setRowHeight(row, label.getPreferredSize().height);
                 return label;
