@@ -31,7 +31,7 @@ import comunicacion.IFachadaLogica;
 public class Comandos {
 	
 	private IFachadaLogica logica;
-    private int aciertos;
+    static int aciertos;
     private Map<String, Consumer<ArrayList<String[]>>> acciones; //es una funcion que toma un valor y realiza algun tipo de accion con el, pero no produce ningun resultado como salida.
     static int usos;
     
