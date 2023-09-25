@@ -1494,10 +1494,18 @@ public class Comandos {
         					
         					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) || (logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[2])!=null)) {
         						
-        						cargarTablaAtributos(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]), sentencia.get(0)[1]);
-            					aciertos++;
-            					insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados del join natural entre las tablas:" + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
-    			        	
+        						if(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]).isEmpty()){
+        							
+        							insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
+		            				
+        						}else {
+        						
+	        						cargarTablaAtributos(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]), sentencia.get(0)[1]);
+	            					aciertos++;
+	            					insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados del join natural entre las tablas: " + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
+	    			        	
+        						}
+        						
         					}else {
         	        			
                 				insertarDepuracion("Error #23", "El atributo no existe en ninguna de las tablas ingresadas");
