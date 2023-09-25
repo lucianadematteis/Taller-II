@@ -194,7 +194,7 @@ public class VentanaPrincipal extends JFrame {
 				
 			new String[] {
 				
-				"NUMERO", "MENSAJE"
+				"<html><b>NUMERO</b></html>", "<html><b>MENSAJE</b></html>"
 			
 			}
 			
