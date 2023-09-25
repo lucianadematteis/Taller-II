@@ -158,21 +158,32 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane_3.getViewport().setBackground(fondoVentana);
 		contentPane.add(scrollPane_3);
 		
+
 		guia = new JTable();
-		guia.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		guia.setCellSelectionEnabled(false);
+		guia.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		guia.setForeground(escritura);
 		guia.setBackground(fondoVentana);
 		guia.setModel(new DefaultTableModel(
-			
-			new Object[][] {
-	
-			},
-		
-			new String[] {
-		
-			}
-				
-		));
+		  
+		  new Object[][] {
+
+		  },
+
+		  new String[] {
+
+		  }
+		    
+		) {
+		  /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+		public boolean isCellEditable(int rowIndex, int columnIndex) {
+		    return false; // Ninguna celda es editable
+		  }
+		});
 		scrollPane_3.setViewportView(guia);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -193,7 +204,7 @@ public class VentanaPrincipal extends JFrame {
 				
 			new String[] {
 				
-				"NUMERO", "MENSAJE"
+				"<html><b>NUMERO</b></html>", "<html><b>MENSAJE</b></html>"
 			
 			}
 			
@@ -210,7 +221,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(scrollPane_1);
 		
 		salida = new JTable();
-		salida.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		salida.setFont(new Font("SansSerif", Font.PLAIN, 17));
 		salida.setForeground(escritura);
 		salida.setBackground(fondoVentana);
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -300,7 +311,7 @@ public class VentanaPrincipal extends JFrame {
 		guiaTabla = new JTable();
 		scrollPane_4.setViewportView(guiaTabla);
 		guiaTabla.setForeground(escritura);
-		guiaTabla.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		guiaTabla.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		guiaTabla.setBackground(fondoVentana);
 		
 		cargarBasesDatos(fa.obtenerBasesNom());
@@ -318,7 +329,7 @@ public class VentanaPrincipal extends JFrame {
 		DefaultTableModel model = (DefaultTableModel) guia.getModel();
 		model.setRowCount(0);
     	model.setColumnCount(0);
-		model.addColumn("BASES DE DATOS");
+    	model.addColumn("<html><b>BASES DE DATOS</b></html>");
 		
 		for (int i = 0; i < nBD.size(); i++) {
 		
@@ -333,8 +344,8 @@ public class VentanaPrincipal extends JFrame {
 		DefaultTableModel model = (DefaultTableModel) guiaTabla.getModel();
 		model.setRowCount(0);
 		model.setColumnCount(0);
-		model.addColumn("TABLAS");
-
+		model.addColumn("<html><b>TABLAS</b></html>");
+		
 		if(nTablas != null) {
 
 			for (int i = 0; i < nTablas.size(); i++) {
@@ -344,6 +355,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 
 		}
+		
 	}
 	
 }
