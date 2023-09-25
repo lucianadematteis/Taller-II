@@ -414,22 +414,32 @@ public class Tabla {
 	public ArrayList<DTOAtributo> seleccionarAtributo(ArrayList<LinkedHashMap<String, DTOAtributo>> registros, String nombreAtributo){
 		
 		ArrayList<DTOAtributo> registrosFinales = new ArrayList<DTOAtributo>();
+		boolean primero=true;
 		
 		for (LinkedHashMap<String, DTOAtributo> misRegistros : registros) { 
 			
 		    for (Map.Entry<String, DTOAtributo> entrada : misRegistros.entrySet()) {
 		    	
-		    	if(entrada.getKey().equalsIgnoreCase(nombreAtributo)) { 
-		    		
-		    		DTOAtributo atributo = (DTOAtributo) entrada.getValue();
+		    	if(!primero) {
 		    	
-		    		registrosFinales.add(atributo);
+			    	if(entrada.getKey().equalsIgnoreCase(nombreAtributo)) { 
+			    		
+			    		DTOAtributo atributo = (DTOAtributo) entrada.getValue();
+			    	
+			    		registrosFinales.add(atributo);
+			    		
+			    	}
+		    	
+		    	}else {
+		    		
+		    		primero=false;
 		    		
 		    	}
-		    	
 		    }
 		    
 		}
+		
+
 		
 		return registrosFinales;
 		
