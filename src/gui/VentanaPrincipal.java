@@ -318,22 +318,43 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane_4.setBackground(fondoVentana);
 		scrollPane_4.setBounds(27, 329, 133, 266);
 		contentPane.add(scrollPane_4);
-
+		
 		guiaTabla = new JTable();
 		scrollPane_4.setViewportView(guiaTabla);
 		guiaTabla.setForeground(escritura);
 		guiaTabla.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		guiaTabla.setBackground(fondoVentana);
-		
+		guiaTabla.setModel(new DefaultTableModel(
+		  
+		  new Object[][] {
+		    
+		  },
+		    
+		  new String[] {
+		    
+		  }
+		  
+		) {
+		  /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+		public boolean isCellEditable(int rowIndex, int columnIndex) {
+		    return false; // Ninguna celda es editable
+		  }
+		});
+		guiaTabla.setCellSelectionEnabled(false); // Desactiva la selección de celdas
+
 		cargarBasesDatos(fa.obtenerBasesNom());
-		
+
 		if(Login.demo) {
-			
-			VentanaPrincipal.bdActual.setText("Base de datos: base de prueba");
-		
+
+		  VentanaPrincipal.bdActual.setText("Base de datos: base de prueba");
+
 		}
-		
 	}
+
 	
 	public static void cargarBasesDatos(ArrayList<String> nBD) {
 		
