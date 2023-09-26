@@ -949,6 +949,7 @@ public class Persistencia {
 		}
 
 	}
+	
 	private String obtenerRutaDemo() {
 		
 		String nombreArchivo="";
@@ -967,7 +968,7 @@ public class Persistencia {
 		
 	}
 	
-public int recuperarDemo() {
+	public int recuperarDemo() {
 		
 		String ruta = obtenerRutaDemo();
 		
@@ -994,20 +995,26 @@ public int recuperarDemo() {
         }
 		
 		String contenidoDemo = contenidoArchivo.toString();
-		 int demo = Integer.parseInt(contenidoDemo);
+		int demo = Integer.parseInt(contenidoDemo);
     
 		return demo;
 		
 	}
 
 	public  void PersistirDemo(int value) {
-	    String ruta = obtenerRutaDemo();  // Ruta del archivo
+	   
+		String ruta = obtenerRutaDemo();  // Ruta del archivo
 	
 	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
-	        writer.write(String.valueOf(value));
+	   
+	    	writer.write(String.valueOf(value));
+	   
 	    } catch (IOException e) {
-	        System.err.println("Error al escribir en el archivo: " + e.getMessage());
+	   
+	    	System.err.println("Error al escribir en el archivo: " + e.getMessage());
+	   
 	    }
 	
-}
+	}
+	
 }
