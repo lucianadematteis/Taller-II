@@ -80,7 +80,7 @@ public class Comandos {
     }
     
 	/**
-	 *Metodo privado que recibe como parametros una lista de DTOAtributo y el nombre de la columna y los carga en una tabla en la interfaz grafica con los atributos proporcionados.
+	 *Metodo privado que recibe como parámetros una lista de DTOAtributo y el nombre de la columna y los carga en una tabla en la interfaz grafica con los atributos proporcionados.
 	 *@param atributos-> lista de DTOAtributo
 	 *@param nombreAtributo-> nombre de la columna
 	 *
@@ -116,7 +116,7 @@ public class Comandos {
     }
     
 	 /**
-	  * Metodo privado que recibe como parametros una lista de cadenas y el nombre de la columna y los carga en una tabla en la interfaz grafica.
+	  * Metodo privado que recibe como parámetros una lista de cadenas y el nombre de la columna y los carga en una tabla en la interfaz grafica.
 	  * @param datos-> lista de cadenas
 	  * @param nombreColumna-> nombre de la columna a cargar en una tabla
 	  * 
@@ -157,7 +157,7 @@ public class Comandos {
     }
     
 	 /**
-	  * Metodo privado que recibe como parametros dos cadenas de texto que corresponden a mensajes. El metodo inserta una fila en una tabla de depuracion en la interfaz grafica.
+	  * Metodo privado que recibe como parámetros dos cadenas de texto que corresponden a mensajes. El metodo inserta una fila en una tabla de depuracion en la interfaz grafica.
 	  * @param mensaje1->cadena de texto
 	  * @param mensaje2->cadena de texto
 	  * 
@@ -173,15 +173,15 @@ public class Comandos {
     
     /**
     * 
-    * Metodo privado que recibe como parametros una lista de matrices de cadenas de texto (la sentencia), dos indices de posicion (inicial y final) y un numero entero que representa la cantidad de argumentos.  El metodo valida si la cantidad de argumentos en las lineas de una sentencia esta dentro de un rango especifico y retorna true si es valida o false en caso contrario.
+    * Metodo privado que recibe como parámetros una lista de matrices de cadenas de texto (la sentencia), dos indices de posicion (inicial y final) y un numero entero que representa la cantidad de argumentos.  El metodo válida si la cantidad de argumentos en las líneas de una sentencia esta dentro de un rango especifico y retorna true si es válida o false en caso contrario.
     * @param sentencia-> lista de sentencias
     * @param posInicial->indice
     * @param posFinal->indice
     * @param cantArgumentos->cantidad de argumentos
-    * @return valida la cantidad de argumentos validas para realizar la sentencia
+    * @return válida la cantidad de argumentos válidas para realizar la sentencia
     * 
     */
-	private boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
+	private boolean válidaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
 
 		if (posInicial == posFinal) {
 
@@ -205,30 +205,30 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe como parametro una cadena de texto y retorna true si el tipo de dato es valido (cadena o entero) o false en caso contrario.
+	 * Metodo privado que recibe como parametro una cadena de texto y retorna true si el tipo de dato es válido (cadena o entero) o false en caso contrario.
 	 * @param tipo->cadena de texto
-	 * @return valida que el tipo de dato sea entero o cadena
+	 * @return válida que el tipo de dato sea entero o cadena
 	 * 
 	 */
-	private boolean validaTipoDato(String tipo) {
+	private boolean válidaTipoDato(String tipo) {
 
 		return ((tipo.equalsIgnoreCase("ENTERO")) || (tipo.equalsIgnoreCase("CADENA")));
 
 	}
 	
 	/**
-	 * Metodo privado que recibe como parametros una lista de matrices de cadenas de texto (sentencia) y dos indices de posicion (inicial y final). El metodo retorna true si los tipos de atributos (entero o cadena) en el rango especificado son validos y false en caso contrario.
+	 * Metodo privado que recibe como parámetros una lista de matrices de cadenas de texto (sentencia) y dos indices de posicion (inicial y final). El metodo retorna true si los tipos de atributos (entero o cadena) en el rango especificado son válidos y false en caso contrario.
 	 * @param sentencia-> lista de sentencias
 	 * @param posInicial->indice
 	 * @param posFinal->indice
-	 * @return valida el tipo de atributo en el rango de indice.
+	 * @return válida el tipo de atributo en el rango de indice.
 	 * 
 	 */
-	private boolean validaTiposAtributos(ArrayList<String[]> sentencia, int posInicial, int posFinal) {
+	private boolean válidaTiposAtributos(ArrayList<String[]> sentencia, int posInicial, int posFinal) {
 
 		for (int j = posInicial; j < posFinal; j++) {
 
-			if (!(validaTipoDato(sentencia.get(j)[1]))) {
+			if (!(válidaTipoDato(sentencia.get(j)[1]))) {
 
 				return false;
 
@@ -241,14 +241,14 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia), dos valores enteros (min y max) que representan los limites de la cantidad de lineas permitidas. El metodo retorna true si la cantidad de lineas en la sentencia esta dentro del rango especificado o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia), dos valores enteros (min y max) que representan los limites de la cantidad de líneas permitidas. El metodo retorna true si la cantidad de líneas en la sentencia esta dentro del rango especificado o false en caso contrario.
 	 * @param sentencia->lista de sentencia
-	 * @param min-> limite minimo de cantidad de lineas
-	 * @param max-> limite maximo de cantidad de lineas
-	 * @return valida la cantidad de lineas se encuentra dentro del rango especificado
+	 * @param min-> limite mínimo de cantidad de líneas
+	 * @param max-> limite máximo de cantidad de líneas
+	 * @return válida la cantidad de líneas se encuentra dentro del rango especificado
 	 * 
 	 */
-	private boolean validaCantidadLineas(ArrayList<String[]> sentencia, int min, int max) {
+	private boolean válidaCantidadlíneas(ArrayList<String[]> sentencia, int min, int max) {
 
 		if (min == max) {
 
@@ -263,22 +263,22 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de una sola linea es valida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de una sola línea es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return valida si la sentencia es valida
+	 * @return válida si la sentencia es válida
 	 * 
 	 */
-	private boolean validaSentenciasUnaLinea(ArrayList<String[]> sentencia) {
+	private boolean válidaSentenciasUnalínea(ArrayList<String[]> sentencia) {
 
-		if (!(validaCantidadLineas(sentencia, 1, 1))) {
+		if (!(válidaCantidadlíneas(sentencia, 1, 1))) {
 
-			insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
 
 		} else {
 
-			if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
+			if (!(válidaCantidadArgumentos(sentencia, 0, 0, 2))) {
 
-				insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
+				insertarDepuracion("Error #03", "Cantidad de argumentos no válida");
 
 			} else {
 
@@ -293,27 +293,27 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de dos lineas es valida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de dos líneas es válida o false en caso contrario.
 	 * @param sentencia-> lista de sentencias
-	 * @return valida si la sentencia es valida
+	 * @return válida si la sentencia es válida
 	 */
-	private boolean validaSentenciasDosLineas(ArrayList<String[]> sentencia) {
+	private boolean válidaSentenciasDoslíneas(ArrayList<String[]> sentencia) {
 
-		if (!(validaCantidadLineas(sentencia, 2, 2))) {
+		if (!(válidaCantidadlíneas(sentencia, 2, 2))) {
 
-			insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
 
 		} else {
 
-			if (!(validaCantidadArgumentos(sentencia, 0, sentencia.size(), 2))) {
+			if (!(válidaCantidadArgumentos(sentencia, 0, sentencia.size(), 2))) {
 
-				insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
+				insertarDepuracion("Error #03", "Cantidad de argumentos no válida");
 
 			} else {
 
 				if (!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
 
-					insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+					insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 
 				} else {
 
@@ -330,30 +330,30 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "WHERE" es valida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "WHERE" es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return valida la sentencia de WHERE
+	 * @return válida la sentencia de WHERE
 	 * 
 	 */
-	private boolean validaSentenciasWhereComun(ArrayList<String[]> sentencia) {
+	private boolean válidaSentenciasWhereComun(ArrayList<String[]> sentencia) {
 
 		ArrayList<String> operadores = new ArrayList<>(Arrays.asList("=", "<", ">", ">=", "<="));
 
-		if (!(validaCantidadArgumentos(sentencia, 2, 2, 4))) {
+		if (!(válidaCantidadArgumentos(sentencia, 2, 2, 4))) {
 
-			insertarDepuracion("Error #03", "Cantidad de argumentos no valida en linea 3");
+			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 3");
 
 		} else {
 
 			if (!(sentencia.get(2)[0].equalsIgnoreCase("WHERE"))) {
 
-				insertarDepuracion("Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es valido");
+				insertarDepuracion("Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es válido");
 
 			} else {
 
 				if (!(operadores.contains(sentencia.get(2)[2]))) {
 
-					insertarDepuracion("Error #05", "El operador: " + sentencia.get(2)[2] + " no es valido");
+					insertarDepuracion("Error #05", "El operador: " + sentencia.get(2)[2] + " no es válido");
 
 				} else {
 
@@ -369,22 +369,22 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" es valida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return valida la sentencia FROM
+	 * @return válida la sentencia FROM
 	 * 
 	 */
-	private boolean validaSentenciasFrom(ArrayList<String[]> sentencia) {
+	private boolean válidaSentenciasFrom(ArrayList<String[]> sentencia) {
 
-		if (!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
+		if (!(válidaCantidadArgumentos(sentencia, 1, 1, 2))) {
 
-			insertarDepuracion("Error #03", "Cantidad de argumentos no valida en la linea 2");
+			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en la línea 2");
 
 		} else {
 
 			if (!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
 
-				insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+				insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 
 			} else {
 
@@ -398,22 +398,22 @@ public class Comandos {
 	}
 
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" y "WHERE" es valida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" y "WHERE" es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return valida la sentencia del FROM con WHERE
+	 * @return válida la sentencia del FROM con WHERE
 	 * 
 	 */
-	private boolean validaSentenciasFromWhere(ArrayList<String[]> sentencia) {
+	private boolean válidaSentenciasFromWhere(ArrayList<String[]> sentencia) {
 
-		if (!(validaCantidadLineas(sentencia, 3, 3))) {
+		if (!(válidaCantidadlíneas(sentencia, 3, 3))) {
 
-			insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
 
 		} else {
 
-			if (validaSentenciasFrom(sentencia)) {
+			if (válidaSentenciasFrom(sentencia)) {
 
-				if (validaSentenciasWhereComun(sentencia)) {
+				if (válidaSentenciasWhereComun(sentencia)) {
 
 					return true;
 
@@ -428,24 +428,24 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si los operadores lOgicos en la sentencia son validos.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si los operadores lOgicos en la sentencia son válidos.
 	 * @param sentencia-> lista de sentencias
-	 * @return valida los operadores logicos de la sentencia
+	 * @return válida los operadores logicos de la sentencia
 	 * 
 	 */
-	private boolean validaOperadoresLogicos(ArrayList<String[]> sentencia) {
+	private boolean válidaOperadoresLogicos(ArrayList<String[]> sentencia) {
 
 		 List<String> operadores = Arrays.asList("=", "<", ">", "<=", ">=");
 		
-		if (!(validaCantidadArgumentos(sentencia, 2, 2, 8))) {
+		if (!(válidaCantidadArgumentos(sentencia, 2, 2, 8))) {
 
-			insertarDepuracion("Error #03", "Cantidad de argumentos no valida en la linea 3");
+			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en la línea 3");
 
 		} else {
 
 			if (!(operadores.contains(sentencia.get(2)[2])) || !(operadores.contains(sentencia.get(2)[6]))) {
 
-				insertarDepuracion("Error #05", "Operador/es de igualdad no valido en la linea 3");
+				insertarDepuracion("Error #05", "Operador/es de igualdad no válido en la línea 3");
 
 			} else {
 
@@ -460,25 +460,25 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y valida la estructura de la misma: cantidad de lineas, cantidad de argumentos,  tipos de datos y si existe la tabla en la base de datos para luego crearla con los atributos especificados.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y válida la estructura de la misma: cantidad de líneas, cantidad de argumentos,  tipos de datos y si existe la tabla en la base de datos para luego crearla con los atributos especificados.
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
 	private void comandoTable(ArrayList<String[]> sentencia) {
 		
-		if(!(validaCantidadLineas(sentencia, 2, 5))) {
+		if(!(válidaCantidadlíneas(sentencia, 2, 5))) {
 			
-			insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla");
+			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla");
         	
 		}else {
 			
-		    if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 2))) {
+		    if(!(válidaCantidadArgumentos(sentencia, 1, sentencia.size(), 2))) {
 			
-		    	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las lineas 2 y " + sentencia.size());
+		    	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las líneas 2 y " + sentencia.size());
 	        	
 			}else if(sentencia.get(0)[0].equalsIgnoreCase("CREATE")){ //SI QUIERE CREAR UNA TABLA
 				
-				if(!(validaTiposAtributos(sentencia, 2, sentencia.size()))) {
+				if(!(válidaTiposAtributos(sentencia, 2, sentencia.size()))) {
 					
 					insertarDepuracion("Error #04", "Tipos de datos incorrectos, recuerde que solo se admiten datos de tipo entero o cadena");
 		        	
@@ -506,7 +506,7 @@ public class Comandos {
 						logica.crearTabla(tabla, atributos);
 						VentanaPrincipal.cargarTablas(logica.obtenerTablasNom());
 						aciertos++;
-						insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con exito la tabla: " +  sentencia.get(1)[1]);
+						insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con éxito la tabla: " +  sentencia.get(1)[1]);
 			        	
 					}
 				}
@@ -518,7 +518,7 @@ public class Comandos {
 					logica.eliminarTabla(sentencia.get(1)[1]);
 					VentanaPrincipal.cargarTablas(logica.obtenerTablasNom());
 					aciertos++;
-					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con exito la tabla: " +  sentencia.get(1)[1]);
+					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con éxito la tabla: " +  sentencia.get(1)[1]);
 		        	
 				}else {
 					
@@ -539,15 +539,15 @@ public class Comandos {
 	 */
 	private void comandoDatabase(ArrayList<String[]> sentencia) {
 		
-		if(!(validaCantidadLineas(sentencia, 2, 2))) {
+		if(!(válidaCantidadlíneas(sentencia, 2, 2))) {
 			
-        	insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+        	insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
         	
 		}else {
 		
-			if(!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
+			if(!(válidaCantidadArgumentos(sentencia, 1, 1, 2))) {
 				
-	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en la linea 2");
+	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en la línea 2");
 	        	
 			}else if(sentencia.get(0)[0].equalsIgnoreCase("CREATE")){ //SI QUIERE CREAR UNA BD
 				
@@ -561,7 +561,7 @@ public class Comandos {
 					logica.crearBD(bd);
 					VentanaPrincipal.cargarBasesDatos(logica.obtenerBasesNom());
 					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con exito la base de datos: " + sentencia.get(1)[1]);
+		        	insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con éxito la base de datos: " + sentencia.get(1)[1]);
 					
 				}
 			
@@ -579,7 +579,7 @@ public class Comandos {
 					logica.eliminarBD(sentencia.get(1)[1]);
 					VentanaPrincipal.cargarBasesDatos(logica.obtenerBasesNom());
 					VentanaPrincipal.cargarTablas(null);
-					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con exito la base de datos: " + sentencia.get(1)[1]);
+					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con éxito la base de datos: " + sentencia.get(1)[1]);
 					
 				}else {
 					
@@ -595,7 +595,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT AND", que realiza una consulta en una tabla con una condicion "AND".  El metodo verifica la validez de la sentencia, el tipo de atributo y condicion, y muestra los resultados de la consulta si es valida. 
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT AND", que realiza una consulta en una tabla con una condición "AND".  El metodo verifica la validez de la sentencia, el tipo de atributo y condición, y muestra los resultados de la consulta si es válida. 
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
@@ -603,24 +603,24 @@ public class Comandos {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
-			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //Valido que el tipo de atributo y condicion coincidan
+			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condición coincidan
 				
-				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 					
-					insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
+					insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 					
 				}else {
 					
 					ArrayList<DTOAtributo> atributos=logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]);
 		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+		        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 		        	
 				}
 				
 			}else {
 				
-				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
+				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
 				
 			}
 		
@@ -634,7 +634,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT OR", que realiza una consulta en una tabla con una condicion "OR". Verifica la validez de la sentencia, el tipo de atributo y condicion, y muestra los resultados de la consulta si es valida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT OR", que realiza una consulta en una tabla con una condición "OR". Verifica la validez de la sentencia, el tipo de atributo y condición, y muestra los resultados de la consulta si es válida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -642,24 +642,24 @@ public class Comandos {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
-			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //Valido que el tipo de atributo y condicion coincidan
+			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condición coincidan
 				
-				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 						
-					insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
+					insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 					
 				}else {
 					
 					ArrayList<DTOAtributo> atributos=logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]);
 		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+		        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 		        	
 				}
 				
 			}else {
 				
-				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
+				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
 				
 			}
 		
@@ -674,24 +674,24 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SHOW", que verifica la validez de la sentencia y muestra las tablas si es valida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SHOW", que verifica la validez de la sentencia y muestra las tablas si es válida.
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
 	private void comandoShow(ArrayList<String[]> sentencia) {
 		
-		if(validaSentenciasUnaLinea(sentencia)){
+		if(válidaSentenciasUnalínea(sentencia)){
         	
     		if(!(sentencia.get(0)[1].equalsIgnoreCase("TABLES"))) {
             			
-	        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(0)[1].toUpperCase() + " no es valido");
+	        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(0)[1].toUpperCase() + " no es válido");
 	        	
             }else {
             	
             	ArrayList<String> tablas = logica.obtenerTablasNom();
             	cargarTablaString(tablas, "tablas");
             	aciertos++;
-            	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, se muestran las tablas para la base de datos seleccionada");
+            	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, se muestran las tablas para la base de datos seleccionada");
             	
             }
         	
@@ -709,13 +709,13 @@ public class Comandos {
 		
 		if(!(sentencia.size()>1)){
 			
-    		insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+    		insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
         	
 		}else {
 			
-        	if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { //no tiene mas nada alado del create
+        	if (!(válidaCantidadArgumentos(sentencia, 0, 0, 1))) { //no tiene mas nada alado del create
         		
-        		insertarDepuracion("Error #03", "Demasiados argumentos en linea 1");
+        		insertarDepuracion("Error #03", "Demasiados argumentos en línea 1");
 	        
         	}else {
     			
@@ -737,7 +737,7 @@ public class Comandos {
         			
         		}else {
         			
-        			insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+        			insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 		        	
         		}
         		
@@ -749,27 +749,27 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto llamada (sentencia) y procesa el comando "SELECT" para realizar una consulta en una tabla. El metodo valida la sentencia, el tipo de atributo y la condicion. Luego, muestra los resultados de la consulta si es valida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto llamada (sentencia) y procesa el comando "SELECT" para realizar una consulta en una tabla. El metodo válida la sentencia, el tipo de atributo y la condición. Luego, muestra los resultados de la consulta si es válida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
 	private void comandoSelect(ArrayList<String[]> sentencia) {
 		
-		if(!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
+		if(!(válidaCantidadArgumentos(sentencia, 0, 0, 2))) {
     		
-        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
+        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
         	
     	}else {
     		
-    		if(!(validaCantidadLineas(sentencia, 2, 3))) {
+    		if(!(válidaCantidadlíneas(sentencia, 2, 3))) {
     			
-	        	insertarDepuracion("Error #02", "Cantidad de lineas incorrecta");
+	        	insertarDepuracion("Error #02", "Cantidad de líneas incorrecta");
 	        	
     		}else {
     		
-    			if(validaSentenciasFrom(sentencia)) {
+    			if(válidaSentenciasFrom(sentencia)) {
     				
-    				if(validaCantidadLineas(sentencia, 2, 2)) { //SI ES SIN WHERE
+    				if(válidaCantidadlíneas(sentencia, 2, 2)) { //SI ES SIN WHERE
     					
     					if(logica.existeTabla(sentencia.get(1)[1])) {
 	            			
@@ -780,7 +780,7 @@ public class Comandos {
 			    					ArrayList<DTOAtributo> atributos=logica.realizarConsultaSinWhere(sentencia.get(1)[1], sentencia.get(0)[1]);
 						        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 						        	aciertos++;
-						        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+						        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 		            			
 	            				}else {
 		    	        			
@@ -804,15 +804,15 @@ public class Comandos {
     			
 	            		if(sentencia.get(2).length==4) { //SI ES WHERE COMUN
 	            	
-			            	if(validaSentenciasWhereComun(sentencia)) {
+			            	if(válidaSentenciasWhereComun(sentencia)) {
 			            		
 			            		if(logica.existeTabla(sentencia.get(1)[1])) {
 			            			
 			            			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
 			                			
-					            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+					            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condición coincidan
 					            			
-					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]).isEmpty()) { //Valido que hayan registros que mostrar para la condicion dada
+					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 					            				
 					            				insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
 					            				
@@ -821,13 +821,13 @@ public class Comandos {
 					            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 									        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					            				aciertos++;
-									        	insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+									        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 									        	
 					            			}
 					            			
 					            		}else {
 					            			
-					            			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
+					            			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
 				            				
 					            		}
 					            		
@@ -847,7 +847,7 @@ public class Comandos {
 			            	
 			            }else {
 			            		
-		            		if(validaOperadoresLogicos(sentencia)) {
+		            		if(válidaOperadoresLogicos(sentencia)) {
 		            			
 			            		if(sentencia.get(2)[4].equalsIgnoreCase("AND")) {
 			            			
@@ -859,7 +859,7 @@ public class Comandos {
 			            			
 			            		}else {
 			            			
-			            			insertarDepuracion("Error #5", "El operador " + sentencia.get(2)[4] + " no es valido");
+			            			insertarDepuracion("Error #5", "El operador " + sentencia.get(2)[4] + " no es válido");
 			                    	
 			            		}
 			            		
@@ -876,13 +876,13 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "USE" para seleccionar una base de datos. El metodo verifica si la base de datos especificada existe y la selecciona si es valida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "USE" para seleccionar una base de datos. El metodo verifica si la base de datos especificada existe y la selecciona si es válida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
 	private void comandoUse(ArrayList<String[]> sentencia) {
 		
-		if(validaSentenciasUnaLinea(sentencia)){
+		if(válidaSentenciasUnalínea(sentencia)){
         	
 			if(logica.existeBD(sentencia.get(0)[1])) {
 				
@@ -903,27 +903,27 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "INSERT" para agregar datos a una tabla.  El metodo verifica la validez de la sentencia, los argumentos y los datos a insertar. Luego, agrega los datos si son validos.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "INSERT" para agregar datos a una tabla.  El metodo verifica la validez de la sentencia, los argumentos y los datos a insertar. Luego, agrega los datos si son válidos.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
 	private void comandoInsert(ArrayList<String[]> sentencia) {
 		
-		if (!(validaCantidadLineas(sentencia, 2, 2))){
+		if (!(válidaCantidadlíneas(sentencia, 2, 2))){
 			
-        	insertarDepuracion("Error #02", "Cantidad de lineas no valida");
+        	insertarDepuracion("Error #02", "Cantidad de líneas no válida");
     		
     	}else {
     		
-    		if ((!(sentencia.get(1).length>1)) || (!(validaCantidadArgumentos(sentencia, 0, 0, 2)))) {
+    		if ((!(sentencia.get(1).length>1)) || (!(válidaCantidadArgumentos(sentencia, 0, 0, 2)))) {
         		
-	        	insertarDepuracion("Error #03", "Cantidad de argumentos no valida");
+	        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida");
 	        	
         	}else { 
         		
         		if(!(sentencia.get(1)[0].equalsIgnoreCase("VALUES"))) {
             			
-		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 		        	
             	}else {
             		
@@ -948,7 +948,7 @@ public class Comandos {
 	            						LinkedHashMap<String, DTOAtributo> registro=logica.generarArrayListRegistro(sentencia.get(0)[1], atributos);
 	            			        	logica.ingresarRegistro(sentencia.get(0)[1], registro);
 	            			        	aciertos++;
-	            			        	insertarDepuracion("Acierto #" + aciertos, "Se ingresaron los datos con exito, en la tabla: " + sentencia.get(0)[1]);
+	            			        	insertarDepuracion("Acierto #" + aciertos, "Se ingresaron los datos con éxito, en la tabla: " + sentencia.get(0)[1]);
 	            			        	
 	            					}else {
 	            						
@@ -987,39 +987,39 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DELETE" para eliminar registros de una tabla.  El metodo valida la sentencia, el tipo de atributo y la condicion antes de realizar la eliminacion.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DELETE" para eliminar registros de una tabla.  El metodo válida la sentencia, el tipo de atributo y la condición antes de realizar la eliminacion.
 	 * @param sentencia->lista de sentencia
 	 * 
 	 */
 	private void comandoDelete(ArrayList<String[]> sentencia) {
 		
-		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
+		if (!(válidaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
-        	insertarDepuracion("Error #03", "Demasiados argumentos en linea 1");
+        	insertarDepuracion("Error #03", "Demasiados argumentos en línea 1");
         	
     	}else {
     	
-        	if(validaSentenciasFromWhere(sentencia)) {
+        	if(válidaSentenciasFromWhere(sentencia)) {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
-	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condición coincidan
 	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //Valido que hayan registros que mostrar para la condicion dada
+	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condición dada
 	        				
 	        				logica.borrarRegistro(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 	        				aciertos++;
-	        	        	insertarDepuracion("Acierto #" + aciertos, "Se eliminaron los datos con exito, en la tabla: " + sentencia.get(1)[1]);
+	        	        	insertarDepuracion("Acierto #" + aciertos, "Se eliminaron los datos con éxito, en la tabla: " + sentencia.get(1)[1]);
 	        	        	
 	        			}else {
 	        				
-	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
+	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 	        				
 	        			}
 	        			
 	        		}else {
 	        			
-	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
+	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
 	    				
 	        		}
 	        		
@@ -1035,41 +1035,41 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "UPDATE" para modificar registros en una tabla.  El metodo valida la sentencia, los argumentos y los datos a actualizar antes de realizar la modificacion.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "UPDATE" para modificar registros en una tabla.  El metodo válida la sentencia, los argumentos y los datos a actualizar antes de realizar la modificacion.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
 	private void comandoUpdate(ArrayList<String[]> sentencia) {
 		
-		if(!(validaCantidadLineas(sentencia, 3, 3))) {
+		if(!(válidaCantidadlíneas(sentencia, 3, 3))) {
     		
-        	insertarDepuracion("Error #02", "La cantidad de lineas ingresada es incorrecta");
+        	insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
         	
     	}else {
     	
-        	if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
+        	if (!(válidaCantidadArgumentos(sentencia, 0, 0, 2))) { 
         		
-	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
+	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
 	        	
         	}else {
         	
-            	if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 4))) {
+            	if(!(válidaCantidadArgumentos(sentencia, 1, sentencia.size(), 4))) {
             		
-		        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las lineas 2 y 3");
+		        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las líneas 2 y 3");
 		        	
             	}else {
             		
             		if(!(sentencia.get(1)[0].equalsIgnoreCase("SET"))) {
             			
-			        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+			        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 			        	
             		}else {
             			
-	            		if(validaSentenciasWhereComun(sentencia)) {
+	            		if(válidaSentenciasWhereComun(sentencia)) {
 	            			
 	            			if(!(sentencia.get(1)[2].equals("="))){
 	            				
-					        	insertarDepuracion("Error #05", "El operador: " + sentencia.get(1)[2] + " no es valido");
+					        	insertarDepuracion("Error #05", "El operador: " + sentencia.get(1)[2] + " no es válido");
 					        	
 	            			}else {
 	            		
@@ -1085,17 +1085,17 @@ public class Comandos {
 				            				
 			            					logica.cambiarRegistro(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(1)[3], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 				            				aciertos++;
-				            				insertarDepuracion("Acierto #" + aciertos, "Se modificaron los datos con exito, en la tabla: " + sentencia.get(0)[1]);
+				            				insertarDepuracion("Acierto #" + aciertos, "Se modificaron los datos con éxito, en la tabla: " + sentencia.get(0)[1]);
 				            				
 			            				}else {
 			            					
-			            					insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
+			            					insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 			            					
 			            				}
 			            				
 			            			}else {
 			            				
-			            				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
+			            				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
 			            				
 			            			}
 		            				
@@ -1115,13 +1115,13 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "NOT NULL" para especificar que un atributo en una tabla no puede ser nulo.  El metodo valida la sentencia y realiza la operacion si es valida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "NOT NULL" para especificar que un atributo en una tabla no puede ser nulo.  El metodo válida la sentencia y realiza la operación si es válida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
 	private void comandoNotNull(ArrayList<String[]> sentencia) {
 		
-		if(validaSentenciasDosLineas(sentencia)) {
+		if(válidaSentenciasDoslíneas(sentencia)) {
     		
 			if(logica.existeTabla(sentencia.get(1)[1])) {
 			
@@ -1135,13 +1135,13 @@ public class Comandos {
 						
 						logica.hacerNotNull(sentencia.get(1)[1], sentencia.get(0)[1]);
 						aciertos++;
-			        	insertarDepuracion("Acierto #" + aciertos, "Se indico como no nulo con exito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+			        	insertarDepuracion("Acierto #" + aciertos, "Se indico como no nulo con éxito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
 			        	
 					}
 		        	
 				}else {
 				
-					insertarDepuracion("Error #24", "La tabla no debe de tener registros para la operacion a realizar");
+					insertarDepuracion("Error #24", "La tabla no debe de tener registros para la operación a realizar");
 					
 				}
 			
@@ -1157,24 +1157,24 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "COUNT" para contar la cantidad de registros que cumplen con una consulta en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condicion antes de realizar el conteo.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "COUNT" para contar la cantidad de registros que cumplen con una consulta en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condición antes de realizar el conteo.
 	 * @param sentencia-> lista de sentencias
 	 */
 	private void comandoCount(ArrayList<String[]> sentencia) {
 		
-		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
+		if (!(válidaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
-        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
+        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
         	
     	}else {
     	
-        	if(validaSentenciasFromWhere(sentencia)) {
+        	if(válidaSentenciasFromWhere(sentencia)) {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
-	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condición coincidan
 	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //Valido que hayan registros que mostrar para la condicion dada
+	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condición dada
 	        				
 	        				aciertos++;
 	        	        	insertarDepuracion("Acierto #" + aciertos, "La cantidad de registros que cumplen con la consulta es: " + logica.contarRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]));
@@ -1182,13 +1182,13 @@ public class Comandos {
 	        				
 	        			}else {
 	        				
-	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
+	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 	        				
 	        			}
 	        			
 	        		}else {
 	        			
-	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
+	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
 	    				
 	        		}
 	        		
@@ -1205,27 +1205,27 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "AVG" para calcular el promedio de los valores de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condicion antes de realizar el calculo.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "AVG" para calcular el promedio de los valores de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condición antes de realizar el calculo.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
 	private void comandoAvg(ArrayList<String[]> sentencia) {
 		
-		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
+		if (!(válidaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
-        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en linea 1");
+        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
         	
     	}else {
     	
-        	if(validaSentenciasFromWhere(sentencia)) {
+        	if(válidaSentenciasFromWhere(sentencia)) {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
         			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
         			
-		        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //Valido que el tipo de atributo y condicion coincidan
+		        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condición coincidan
 		        			
-		        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //Valido que hayan registros que mostrar para la condicion dada
+		        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condición dada
 		        				
 		        				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
 		                					
@@ -1234,19 +1234,19 @@ public class Comandos {
 		                            
 	            				}else {
 	            					
-	            					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
+	            					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operación");
 	            					
 	            				}
 		                				
 	            			}else {
 	            				
-	            				insertarDepuracion("Error #13", "No hay registros que coincidan con los parametros de la busqueda");
+	            				insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 	            				
 	            			}
 	            		
 	        			}else {
 		        			
-		        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condicion no coinciden");
+		        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
 		    				
 		        		}
 		        		
@@ -1266,12 +1266,12 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MAX" para encontrar el valor maximo de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor maximo.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MAX" para encontrar el valor máximo de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor máximo.
 	 * @param sentencia-> lista de sentencias
 	 */
 	private void comandoMax(ArrayList<String[]> sentencia) {
 		
-		if(validaSentenciasDosLineas(sentencia)) {
+		if(válidaSentenciasDoslíneas(sentencia)) {
     		
 			if(logica.existeTabla(sentencia.get(1)[1])) {
 				
@@ -1286,13 +1286,13 @@ public class Comandos {
 		    			}else {
 						
 	    					aciertos++; 
-	        				insertarDepuracion("Acierto #" + aciertos, "El valor maximo de los registros consultados es: " + logica.obtenerMaximo(sentencia.get(1)[1], sentencia.get(0)[1]));
+	        				insertarDepuracion("Acierto #" + aciertos, "El valor máximo de los registros consultados es: " + logica.obtenerMaximo(sentencia.get(1)[1], sentencia.get(0)[1]));
 	        				
 		    			}
 						
 					}else {
 						
-						insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
+						insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operación");
 						
 					}
 				
@@ -1313,7 +1313,7 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MIN" para encontrar el valor minimo de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor minimo.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "MIN" para encontrar el valor mínimo de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la presencia de registros antes de buscar el valor mínimo.
 	 * @param sentencia->lista de sentencia
 	 */
 	private void comandoMin(ArrayList<String[]> sentencia) {
@@ -1331,14 +1331,14 @@ public class Comandos {
 					}else {
 				
 	    				aciertos++;
-	    				insertarDepuracion("Acierto #" + aciertos, "El valor minimo de los registros consultados es: " + logica.obtenerMinimo(sentencia.get(1)[1], sentencia.get(0)[1]));
+	    				insertarDepuracion("Acierto #" + aciertos, "El valor mínimo de los registros consultados es: " + logica.obtenerMinimo(sentencia.get(1)[1], sentencia.get(0)[1]));
 	    		        
 	        				
 	        		}
 		        	
 				}else {
 					
-					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operacion");
+					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operación");
 					
 				}
 				
@@ -1356,12 +1356,12 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "PRIMARY KEY" para especificar un atributo como clave primaria en una tabla. . El metodo verifica la validez de la sentencia y realiza la operacion si es valida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "PRIMARY KEY" para especificar un atributo como clave primaria en una tabla. . El metodo verifica la validez de la sentencia y realiza la operación si es válida.
 	 * @param sentencia->lista de sentencias
 	 */
 	private void comandoPrimaryKey(ArrayList<String[]> sentencia) {
 		
-		if(validaSentenciasDosLineas(sentencia)) {
+		if(válidaSentenciasDoslíneas(sentencia)) {
     		
 			if(logica.existeTabla(sentencia.get(1)[1])) {
 			
@@ -1377,7 +1377,7 @@ public class Comandos {
 						
 						logica.hacerClave(sentencia.get(1)[1], sentencia.get(0)[1]);
 						aciertos++;
-			        	insertarDepuracion("Acierto #" + aciertos, "Se hizo clave primaria con exito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+			        	insertarDepuracion("Acierto #" + aciertos, "Se hizo clave primaria con éxito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
 						
 					}else {
 	        			
@@ -1386,7 +1386,7 @@ public class Comandos {
 						
 				}else {
 				
-					insertarDepuracion("Error #24", "La tabla no debe de tener registros para la operacion a realizar");
+					insertarDepuracion("Error #24", "La tabla no debe de tener registros para la operación a realizar");
 					
 				}
 				
@@ -1402,21 +1402,21 @@ public class Comandos {
 	
 	/**
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y 
-	 * procesa el comando "DESCRIBE" para mostrar informacion sobre la estructura de una tabla.  
+	 * procesa el comando "DESCRIBE" para mostrar información sobre la estructura de una tabla.  
 	 * El metodo verifica si la tabla especificada existe y muestra su descripcion.
 	 * @param sentencia->lista de sentencias
 	 */
 	private void comandoDescribe(ArrayList<String[]> sentencia) {
 		
-		if(validaSentenciasUnaLinea(sentencia)){
+		if(válidaSentenciasUnalínea(sentencia)){
 			
 			String nombreTabla = logica.obtenerNomTabla(sentencia.get(0)[1]);
 			
 			if(logica.existeTabla(nombreTabla)) {
 			
-				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "INFORMACION de la tabla " + nombreTabla);
+				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "información de la tabla " + nombreTabla);
 				aciertos++;
-				insertarDepuracion("Acierto #" + aciertos, "Se muestra la informacion de la tabla: " + nombreTabla);
+				insertarDepuracion("Acierto #" + aciertos, "Se muestra la información de la tabla: " + nombreTabla);
         	
 			}else {
 				
@@ -1431,12 +1431,12 @@ public class Comandos {
 
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "HELP" para mostrar informacion de ayuda sobre un comando especifico.  El metodo verifica si el comando especificado existe y muestra su ayuda asociada.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "HELP" para mostrar información de ayuda sobre un comando especifico.  El metodo verifica si el comando especificado existe y muestra su ayuda asociada.
 	 * @param sentencia->lista de sentencia
 	 */
 	private void comandoHelp(ArrayList<String[]> sentencia) {
 		
-		if(validaSentenciasUnaLinea(sentencia)){
+		if(válidaSentenciasUnalínea(sentencia)){
         	
 			if(logica.comandoExiste(sentencia.get(0)[1])) {
 					
@@ -1465,27 +1465,27 @@ public class Comandos {
 	 */
 	private void comandoJoinNatural(ArrayList<String[]> sentencia) {
 		
-		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
+		if (!(válidaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
-        	insertarDepuracion("Error #03", "Demasiados argumentos en linea 1");
+        	insertarDepuracion("Error #03", "Demasiados argumentos en línea 1");
         	
     	}else {
     		
-    		if(!(validaCantidadLineas(sentencia, 2, 2))) {
+    		if(!(válidaCantidadlíneas(sentencia, 2, 2))) {
     			
-	        	insertarDepuracion("Error #02", "Cantidad de lineas no valida");
+	        	insertarDepuracion("Error #02", "Cantidad de líneas no válida");
 	        	
     		}else {
     			
     			if(!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
     				
-		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es valido");
+		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 		        	
     			}else {
     			
-        			if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 3))) {
+        			if(!(válidaCantidadArgumentos(sentencia, 1, sentencia.size(), 3))) {
         				
-			        	insertarDepuracion("Error #03", "Cantidad de argumentos no valida en linea 2, recuerde que el join natural se realiza entre dos tablas");
+			        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 2, recuerde que el join natural se realiza entre dos tablas");
 			        	
         			}else {
         				
@@ -1501,13 +1501,13 @@ public class Comandos {
         						
 	        						cargarTablaAtributos(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]), sentencia.get(0)[1]);
 	            					aciertos++;
-	            					insertarDepuracion("Acierto #" + aciertos, "Consulta exitosa, mostrando resultados del join natural entre las tablas: " + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
+	            					insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados del join natural entre las tablas: " + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
 	    			        	
         						}
         						
         					}else {
         	        			
-                				insertarDepuracion("Error #23", "El atributo no existe en ninguna de las tablas ingresadas");
+                				insertarDepuracion("Error #23", "El atributo no existe en ningúna de las tablas ingresadas");
         	        		}
         					
         				}else {
@@ -1523,7 +1523,7 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo publico que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El metodo ejecuta el comando especificado y las operaciones asociadas, verificando si se selecciono una base de datos y si el comando es valido. Tambien muestra resultados o mensajes de error en la tabla de depuracion.
+	 * Metodo publico que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El metodo ejecuta el comando especificado y las operaciones asociadas, verificando si se selecciono una base de datos y si el comando es válido. Tambien muestra resultados o mensajes de error en la tabla de depuracion.
 	 * @param comando-> comando que se ejeuctura
 	 * @param sentencia->lista de sentencia
 	 */
@@ -1557,7 +1557,7 @@ public class Comandos {
 	    	
 	    } else {
 	    	
-	        insertarDepuracion("Error #01", "El comando " + comando + " no es valido");
+	        insertarDepuracion("Error #01", "El comando " + comando + " no es válido");
 	        
 	    }
 	    
