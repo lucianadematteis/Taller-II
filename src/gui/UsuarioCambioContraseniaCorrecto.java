@@ -48,7 +48,7 @@ public class UsuarioCambioContraseniaCorrecto extends JFrame {
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("La contrase\u00F1a se ha cambiado con \u00E9xito");
+		JLabel lblNewLabel = new JLabel("La contrasenia se ha cambiado con exito");
 		lblNewLabel.setForeground(escritura);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(38, 49, 485, 155);

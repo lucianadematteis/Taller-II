@@ -52,13 +52,13 @@ public class BMUsuario extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("Ingrese nueva contrase\u00F1a");
+		JLabel lblNewLabel_1 = new JLabel("Ingrese nueva contrasenia");
 		lblNewLabel_1.setForeground(fuentePrincipal);
 		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(92, 102, 250, 39);
 		panel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Repita la contrase\u00F1a");
+		JLabel lblNewLabel_2 = new JLabel("Repita la contrasenia");
 		lblNewLabel_2.setForeground(fuentePrincipal);
 		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel_2.setBounds(92, 202, 205, 26);
@@ -115,7 +115,7 @@ public class BMUsuario extends JFrame {
 		aceptar.setFocusPainted(false);
 		panel.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("CAMBIAR CONTRASE\u00D1A");
+		JLabel lblNewLabel = new JLabel("CAMBIAR CONTRASENIA");
 		lblNewLabel.setFont(new Font("SansSerif", Font.BOLD, 24));
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(70, 11, 328, 55);
@@ -135,7 +135,7 @@ public class BMUsuario extends JFrame {
 		panel.add(pass2);
 		pass2.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("MODIFICACI\u00D3N DE USUARIO");
+		JLabel lblNewLabel_3 = new JLabel("MODIFICACION DE USUARIO");
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("SansSerif", Font.BOLD, 36));
 		lblNewLabel_3.setBounds(276, 11, 545, 99);
@@ -152,7 +152,7 @@ public class BMUsuario extends JFrame {
 		panel_1.setBounds(513, 156, 456, 353);
 		contentPane.add(panel_1);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Ingrese su contrase\u00F1a actual");
+		JLabel lblNewLabel_2_1 = new JLabel("Ingrese su contrasenia actual");
 		lblNewLabel_2_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel_2_1.setBounds(102, 201, 266, 26);
@@ -203,7 +203,7 @@ public class BMUsuario extends JFrame {
 		txtrAtencinElSiguiente.setForeground(Color.YELLOW);
 		txtrAtencinElSiguiente.setFont(new Font("SansSerif", Font.BOLD, 13));
 		txtrAtencinElSiguiente.setBackground(recuadro);
-		txtrAtencinElSiguiente.setText("ATENCI\u00D3N: El siguiente cambio dar\u00E1 de baja el usuario pero\r\nno realizar\u00E1 la eliminaci\u00F3n total del mismo. La cuenta podr\u00E1 \r\nser reactivada registr\u00E1ndose nuevamente.");
+		txtrAtencinElSiguiente.setText("ATENCION: El siguiente cambio dara de baja al usuario pero no realizara la eliminacion total del mismo. La cuenta podra ser reactivada registrandose nuevamente");
 		txtrAtencinElSiguiente.setBounds(22, 99, 398, 92);
 		panel_1.add(txtrAtencinElSiguiente);
 		
