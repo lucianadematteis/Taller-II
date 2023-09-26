@@ -52,7 +52,7 @@ public class UsuarioRegistroErrorNombre extends JFrame {
 		lblNewLabel.setBounds(81, 36, 485, 155);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Codigo de error 6");
+		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 6");
 		lblNewLabel_1.setBounds(322, 236, 102, 14);
 		contentPane.add(lblNewLabel_1);
 	

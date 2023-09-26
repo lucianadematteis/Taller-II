@@ -70,13 +70,13 @@ public class RegistrarUsuario extends JFrame {
 		lblNewLabel.setBounds(21, 82, 287, 20);
 		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nueva contrasenia");
+		JLabel lblNewLabel_1 = new JLabel("Nueva contrase\u00F1a");
 		lblNewLabel_1.setForeground(fuentePrincipal);
 		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(128, 143, 225, 17);
 		panel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Confirmar contrasenia");
+		JLabel lblNewLabel_2 = new JLabel("Confirmar contrase\u00F1a");
 		lblNewLabel_2.setForeground(fuentePrincipal);
 		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel_2.setBounds(98, 208, 199, 17);

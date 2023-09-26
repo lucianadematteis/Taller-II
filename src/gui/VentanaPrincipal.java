@@ -110,7 +110,7 @@ public class VentanaPrincipal extends JFrame {
 		entrada.setForeground(escritura);
 		entrada.setBackground(fondoVentana);
 		entrada.setFont(new Font("SansSerif", Font.PLAIN, 17));
-		entrada.setToolTipText("Inserte sentencias aqui");
+		entrada.setToolTipText("Inserte sentencias aqu\u00ED");
 		scrollPane.setViewportView(entrada);
 		contentPane.setLayout(null);
 		contentPane.add(saludo);
@@ -131,7 +131,7 @@ public class VentanaPrincipal extends JFrame {
 		limpiar.setForeground(fuentePrincipal);
         limpiar.setFocusPainted(false); 
         
-		JButton cerrarSesion = new JButton("CERRAR SESION");
+		JButton cerrarSesion = new JButton("CERRAR SESI\u00D3N");
 		cerrarSesion.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		cerrarSesion.addActionListener(new ActionListener() {
 			
@@ -208,21 +208,22 @@ public class VentanaPrincipal extends JFrame {
 		  
 		  }
 		  
-		) 
-		
-		{
-		  
-		private static final long serialVersionUID = 1L;
+		) {
+		  /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 
 		public boolean isCellEditable(int rowIndex, int columnIndex) {
 		    return false; // Ninguna celda es editable
 		  }
 		});
-		depuracion.setCellSelectionEnabled(false); // Desactiva la seleccion de celdas
+		depuracion.setCellSelectionEnabled(false); // Desactiva la selección de celdas
 		depuracion.getColumnModel().getColumn(0).setPreferredWidth(89);
 		depuracion.getColumnModel().getColumn(1).setPreferredWidth(725);
 		scrollPane_2.setViewportView(depuracion);
 
+		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(170, 185, 815, 288);
 		scrollPane_1.getViewport().setBackground(fondoVentana);
@@ -247,17 +248,20 @@ public class VentanaPrincipal extends JFrame {
 		  }
 		    
 		) {
-		  
+		  /**
+			 * 
+			 */
 			private static final long serialVersionUID = 1L;
 
 		public boolean isCellEditable(int rowIndex, int columnIndex) {
 		    return false; // Ninguna celda es editable
 		  }
 		});
-		salida.setCellSelectionEnabled(false); // Desactiva la seleccion de celdas
+		salida.setCellSelectionEnabled(false); // Desactiva la selección de celdas
 		scrollPane_1.setViewportView(salida);
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
+    	
 		JButton ejecutar = new JButton("EJECUTAR");
 		ejecutar.setFont(new Font("Segoe UI", Font.BOLD, 13));
 		ejecutar.addActionListener(new ActionListener() {
@@ -300,7 +304,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(cerrarSesion);
 		contentPane.add(separator);
 		
-		JButton btnConfigUsuario = new JButton("CONFIGURACION DE USUARIO");
+		JButton btnConfigUsuario = new JButton("CONFIGURACI\u00D3N DE USUARIO");
 		btnConfigUsuario.setBackground(botones);
 		btnConfigUsuario.setForeground(fuentePrincipal);
 		btnConfigUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
@@ -342,14 +346,16 @@ public class VentanaPrincipal extends JFrame {
 		  }
 		  
 		) {
-		  
+		  /**
+			 * 
+			 */
 			private static final long serialVersionUID = 1L;
 
 		public boolean isCellEditable(int rowIndex, int columnIndex) {
 		    return false; // Ninguna celda es editable
 		  }
 		});
-		guiaTabla.setCellSelectionEnabled(false); // Desactiva la seleccion de celdas
+		guiaTabla.setCellSelectionEnabled(false); // Desactiva la selección de celdas
 
 		cargarBasesDatos(fa.obtenerBasesNom());
 
@@ -358,9 +364,9 @@ public class VentanaPrincipal extends JFrame {
 		  VentanaPrincipal.bdActual.setText("Base de datos: base de prueba");
 
 		}
-		
 	}
 
+	
 	public static void cargarBasesDatos(ArrayList<String> nBD) {
 		
 		DefaultTableModel model = (DefaultTableModel) guia.getModel();

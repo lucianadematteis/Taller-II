@@ -61,7 +61,7 @@ public class ConfirmarEliminarUsuario extends JFrame {
 		contentPane.add(confirmar);
 
 
-		JLabel lblNewLabel = new JLabel("¿Confirma que desea eliminar el usuario?");
+		JLabel lblNewLabel = new JLabel("\u00BFConfirma que desea eliminar el usuario?");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(38, 37, 485, 155);
