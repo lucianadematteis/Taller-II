@@ -222,6 +222,12 @@ public class Persistencia {
 	    return nombreArchivo;
 	}
 	
+	/**
+	 * Este metodo privado cifra o descifra una cadena de texto utilizando un cifrado Cesar con un desplazamiento de 5 caracteres.
+	 * @param cadena   La cadena de texto a cifrar o descifrar.
+	 * @param accion   Indica si se debe cifrar (true) o descifrar (false) la cadena.
+	 * @return         La cadena cifrada o descifrada.
+	 */
 	private String metodoCifrarDescifrar(String cadena, boolean accion) { 
 		
 		List<Character> abecedario = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
@@ -1008,6 +1014,10 @@ public class Persistencia {
 
 	}
 	
+	/**
+	 * Metodo privado que obtiene la ruta del archivo "demo.txt" en el escritorio del usuario, dependiendo del sistema operativo (Windows o Linux).
+	 * @return La ruta completa del archivo "demo.txt".
+	 */
 	private String obtenerRutaDemo() {
 		
 		String nombreArchivo="";
@@ -1026,6 +1036,11 @@ public class Persistencia {
 		
 	}
 	
+	/**
+	 * Metodo publico que recupera un valor numerico almacenado en el archivo "demo.txt" ubicado en el escritorio del usuario.
+	 * @return El valor numerico recuperado del archivo.
+	 * @throws NumberFormatException Si el archivo no contiene un valor numerico valido.
+	 */
 	public int recuperarDemo() {
 		
 		String ruta = obtenerRutaDemo();
@@ -1059,6 +1074,10 @@ public class Persistencia {
 		
 	}
 
+	/**
+	 * Metodo publico que guarda un valor numerico en el archivo "demo.txt" ubicado en el escritorio del usuario, sobrescribiendo cualquier contenido existente en el archivo.
+	 * @param value El valor numerico que se desea guardar en el archivo.
+	 */
 	public  void PersistirDemo(int value) {
 	   
 		String ruta = obtenerRutaDemo();  // Ruta del archivo
