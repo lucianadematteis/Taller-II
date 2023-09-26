@@ -1001,9 +1001,9 @@ public int recuperarDemo() {
 	}
 
 	public  void PersistirDemo(int value) {
-	    String filePath = "archivo.txt";  // Ruta del archivo
+	    String ruta = obtenerRutaDemo();  // Ruta del archivo
 	
-	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
 	        writer.write(String.valueOf(value));
 	    } catch (IOException e) {
 	        System.err.println("Error al escribir en el archivo: " + e.getMessage());
