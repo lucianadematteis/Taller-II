@@ -10,7 +10,9 @@ import java.io.FileWriter;//escritura
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import logica.Atributo;
@@ -219,7 +221,61 @@ public class Persistencia {
 	     
 	    return nombreArchivo;
 	}
+	
+	private String metodoCifrarDescifrar(String cadena, boolean accion) { 
+		
+		List<Character> abecedario = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
+				'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'); 
 
+		String cadenaFinal = ""; 
+		
+        for (int i = 0; i < cadena.length(); i++) {
+        	
+            char caracter = cadena.charAt(i); 
+            
+            if(Character.isLetter(caracter)) { 
+            	
+            	int indiceViejo = abecedario.indexOf(Character.toLowerCase(caracter)); //La transforma en minuscula
+            	int indiceNuevo = 0;
+            	
+            	if(accion) { //Si quiere cifrar
+            		
+            		indiceNuevo = (indiceViejo + 5) % abecedario.size(); 
+            		
+            	}else {//Si quiere descifrar
+            		
+            		indiceNuevo = (indiceViejo - 5) % abecedario.size(); 
+            		
+            	}
+            	
+                if (indiceNuevo < 0) { //Si es negativo
+                	
+                    indiceNuevo += abecedario.size(); 
+                    
+                }
+            	
+                if(Character.isUpperCase(caracter)) { 
+                	
+                	cadenaFinal += Character.toUpperCase(abecedario.get(indiceNuevo)); //Reemplaza la letra vieja por la nueva
+                	
+                }else {
+                	
+                	cadenaFinal += abecedario.get(indiceNuevo);
+                	
+                }
+                	
+            }else {
+            
+            	cadenaFinal += caracter;
+            
+            }
+            
+        }
+        
+		return cadenaFinal;
+		
+	}
+	
 	/**
 	 * Metodo privado que recibe los siguientes parametros: un objeto de la clase Usuario que contiene la informacion del usuario y un objeto FileWriter asociado al archivo donde se guardaran los usuarios. El metodo escribe la informacion del usuario en el archivo de usuarios
 	 * @param usuario-> informacion del usuario
@@ -227,7 +283,8 @@ public class Persistencia {
 	 */
 	private void persistirUsuario(Usuario usuario, FileWriter archivo) {
 		
-	    String infoUsuario = usuario.getNombreUser() + ":" + usuario.getContrasenia();
+		String contraCifrada = this.metodoCifrarDescifrar(usuario.getContrasenia(), true);
+	    String infoUsuario = usuario.getNombreUser() + ":" + contraCifrada;
 	    
 	    if(identificarSistema()==1) {
 			 
@@ -625,7 +682,8 @@ public class Persistencia {
                         
                     }
 
-                    Usuario usuario = new Usuario(nombreUsuario, contrasenia);
+                    String contraDecifrada = this.metodoCifrarDescifrar(contrasenia, false);
+                    Usuario usuario = new Usuario(nombreUsuario, contraDecifrada);
                     usuarios.put(nombreUsuario, usuario);
                     
                 }
