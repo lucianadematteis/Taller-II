@@ -948,5 +948,55 @@ public class Persistencia {
 		}
 
 	}
+	private String obtenerRutaDemo() {
+		
+		String nombreArchivo="";
+	    
+		if (identificarSistema() == 1) { // Si es Windows
+        	
+            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\demo.txt";
+        
+        } else if (identificarSistema() == 0) { // Si es Linux
+            
+        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//demo.txt";
+       
+        }
+	     
+	    return nombreArchivo;
+		
+	}
+	
+public int recuperarDemo() {
+		
+		String ruta = obtenerRutaDemo();
+		
+		StringBuilder contenidoArchivo = new StringBuilder();
+	
+		try (BufferedReader br =new BufferedReader(new InputStreamReader(new FileInputStream(ruta),"UTF-8"))) {
+			
+			String linea;
+		
+			while ((linea = br.readLine()) != null) {
+			
+				contenidoArchivo.append(linea);
+		
+			}
+		
+		} catch (FileNotFoundException e) {
+        	
+        	System.err.println("El archivo no se encontro: " + e.getMessage());
+        	
+        } catch (IOException g) {
+        	
+        	System.err.println("Error de lectura del archivo: " + g.getMessage());
+        	
+        }
+		
+		String contenidoDemo = contenidoArchivo.toString();
+		 int demo = Integer.parseInt(contenidoDemo);
+    
+		return demo;
+		
+	}
 	
 }
