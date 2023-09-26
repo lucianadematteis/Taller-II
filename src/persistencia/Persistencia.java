@@ -224,9 +224,9 @@ public class Persistencia {
 	
 	/**
 	 * Este metodo privado cifra o descifra una cadena de texto utilizando un cifrado Cesar con un desplazamiento de 5 caracteres.
-	 * @param cadena   La cadena de texto a cifrar o descifrar.
-	 * @param accion   Indica si se debe cifrar (true) o descifrar (false) la cadena.
-	 * @return         La cadena cifrada o descifrada.
+	 * @param cadena -> La cadena de texto a cifrar o descifrar.
+	 * @param accion -> Indica si se debe cifrar (true) o descifrar (false) la cadena.
+	 * @return La cadena cifrada o descifrada.
 	 */
 	private String metodoCifrarDescifrar(String cadena, boolean accion) { 
 		
@@ -1076,9 +1076,9 @@ public class Persistencia {
 
 	/**
 	 * Metodo publico que guarda un valor numerico en el archivo "demo.txt" ubicado en el escritorio del usuario, sobrescribiendo cualquier contenido existente en el archivo.
-	 * @param value El valor numerico que se desea guardar en el archivo.
+	 * @param value -> El valor numerico que se desea guardar en el archivo.
 	 */
-	public  void PersistirDemo(int value) {
+	public void PersistirDemo(int value) {
 	   
 		String ruta = obtenerRutaDemo();  // Ruta del archivo
 	
