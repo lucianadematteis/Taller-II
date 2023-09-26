@@ -181,7 +181,7 @@ public class Comandos {
     * @return válida la cantidad de argumentos válidas para realizar la sentencia
     * 
     */
-	private boolean válidaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
+	private boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
 
 		if (posInicial == posFinal) {
 
@@ -210,7 +210,7 @@ public class Comandos {
 	 * @return válida que el tipo de dato sea entero o cadena
 	 * 
 	 */
-	private boolean válidaTipoDato(String tipo) {
+	private boolean validaTipoDato(String tipo) {
 
 		return ((tipo.equalsIgnoreCase("ENTERO")) || (tipo.equalsIgnoreCase("CADENA")));
 
@@ -224,11 +224,11 @@ public class Comandos {
 	 * @return válida el tipo de atributo en el rango de indice.
 	 * 
 	 */
-	private boolean válidaTiposAtributos(ArrayList<String[]> sentencia, int posInicial, int posFinal) {
+	private boolean validaTiposAtributos(ArrayList<String[]> sentencia, int posInicial, int posFinal) {
 
 		for (int j = posInicial; j < posFinal; j++) {
 
-			if (!(válidaTipoDato(sentencia.get(j)[1]))) {
+			if (!(validaTipoDato(sentencia.get(j)[1]))) {
 
 				return false;
 
@@ -248,7 +248,7 @@ public class Comandos {
 	 * @return válida la cantidad de líneas se encuentra dentro del rango especificado
 	 * 
 	 */
-	private boolean válidaCantidadlíneas(ArrayList<String[]> sentencia, int min, int max) {
+	private boolean validaCantidadLineas(ArrayList<String[]> sentencia, int min, int max) {
 
 		if (min == max) {
 
@@ -268,15 +268,15 @@ public class Comandos {
 	 * @return válida si la sentencia es válida
 	 * 
 	 */
-	private boolean válidaSentenciasUnalínea(ArrayList<String[]> sentencia) {
+	private boolean validaSentenciasUnaLinea(ArrayList<String[]> sentencia) {
 
-		if (!(válidaCantidadlíneas(sentencia, 1, 1))) {
+		if (!(validaCantidadLineas(sentencia, 1, 1))) {
 
 			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
 
 		} else {
 
-			if (!(válidaCantidadArgumentos(sentencia, 0, 0, 2))) {
+			if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
 
 				insertarDepuracion("Error #03", "Cantidad de argumentos no válida");
 
@@ -297,15 +297,15 @@ public class Comandos {
 	 * @param sentencia-> lista de sentencias
 	 * @return válida si la sentencia es válida
 	 */
-	private boolean válidaSentenciasDoslíneas(ArrayList<String[]> sentencia) {
+	private boolean validaSentenciasDosLineas(ArrayList<String[]> sentencia) {
 
-		if (!(válidaCantidadlíneas(sentencia, 2, 2))) {
+		if (!(validaCantidadLineas(sentencia, 2, 2))) {
 
 			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
 
 		} else {
 
-			if (!(válidaCantidadArgumentos(sentencia, 0, sentencia.size(), 2))) {
+			if (!(validaCantidadArgumentos(sentencia, 0, sentencia.size(), 2))) {
 
 				insertarDepuracion("Error #03", "Cantidad de argumentos no válida");
 
@@ -335,11 +335,11 @@ public class Comandos {
 	 * @return válida la sentencia de WHERE
 	 * 
 	 */
-	private boolean válidaSentenciasWhereComun(ArrayList<String[]> sentencia) {
+	private boolean  validaSentenciasWhereComun(ArrayList<String[]> sentencia) {
 
 		ArrayList<String> operadores = new ArrayList<>(Arrays.asList("=", "<", ">", ">=", "<="));
 
-		if (!(válidaCantidadArgumentos(sentencia, 2, 2, 4))) {
+		if (!(validaCantidadArgumentos(sentencia, 2, 2, 4))) {
 
 			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 3");
 
@@ -374,9 +374,9 @@ public class Comandos {
 	 * @return válida la sentencia FROM
 	 * 
 	 */
-	private boolean válidaSentenciasFrom(ArrayList<String[]> sentencia) {
+	private boolean  validaSentenciasFrom(ArrayList<String[]> sentencia) {
 
-		if (!(válidaCantidadArgumentos(sentencia, 1, 1, 2))) {
+		if (!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 
 			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en la línea 2");
 
@@ -403,17 +403,17 @@ public class Comandos {
 	 * @return válida la sentencia del FROM con WHERE
 	 * 
 	 */
-	private boolean válidaSentenciasFromWhere(ArrayList<String[]> sentencia) {
+	private boolean  validaSentenciasFromWhere(ArrayList<String[]> sentencia) {
 
-		if (!(válidaCantidadlíneas(sentencia, 3, 3))) {
+		if (!(validaCantidadLineas(sentencia, 3, 3))) {
 
 			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
 
 		} else {
 
-			if (válidaSentenciasFrom(sentencia)) {
+			if ( validaSentenciasFrom(sentencia)) {
 
-				if (válidaSentenciasWhereComun(sentencia)) {
+				if ( validaSentenciasWhereComun(sentencia)) {
 
 					return true;
 
@@ -433,11 +433,11 @@ public class Comandos {
 	 * @return válida los operadores logicos de la sentencia
 	 * 
 	 */
-	private boolean válidaOperadoresLogicos(ArrayList<String[]> sentencia) {
+	private boolean validaOperadoresLogicos(ArrayList<String[]> sentencia) {
 
 		 List<String> operadores = Arrays.asList("=", "<", ">", "<=", ">=");
 		
-		if (!(válidaCantidadArgumentos(sentencia, 2, 2, 8))) {
+		if (!(validaCantidadArgumentos(sentencia, 2, 2, 8))) {
 
 			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en la línea 3");
 
@@ -466,19 +466,19 @@ public class Comandos {
 	 */
 	private void comandoTable(ArrayList<String[]> sentencia) {
 		
-		if(!(válidaCantidadlíneas(sentencia, 2, 5))) {
+		if(!(validaCantidadLineas(sentencia, 2, 5))) {
 			
 			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla");
         	
 		}else {
 			
-		    if(!(válidaCantidadArgumentos(sentencia, 1, sentencia.size(), 2))) {
+		    if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 2))) {
 			
 		    	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las líneas 2 y " + sentencia.size());
 	        	
 			}else if(sentencia.get(0)[0].equalsIgnoreCase("CREATE")){ //SI QUIERE CREAR UNA TABLA
 				
-				if(!(válidaTiposAtributos(sentencia, 2, sentencia.size()))) {
+				if(!(validaTiposAtributos(sentencia, 2, sentencia.size()))) {
 					
 					insertarDepuracion("Error #04", "Tipos de datos incorrectos, recuerde que solo se admiten datos de tipo entero o cadena");
 		        	
@@ -539,13 +539,13 @@ public class Comandos {
 	 */
 	private void comandoDatabase(ArrayList<String[]> sentencia) {
 		
-		if(!(válidaCantidadlíneas(sentencia, 2, 2))) {
+		if(!(validaCantidadLineas(sentencia, 2, 2))) {
 			
         	insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
         	
 		}else {
 		
-			if(!(válidaCantidadArgumentos(sentencia, 1, 1, 2))) {
+			if(!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 				
 	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en la línea 2");
 	        	
@@ -680,7 +680,7 @@ public class Comandos {
 	 */
 	private void comandoShow(ArrayList<String[]> sentencia) {
 		
-		if(válidaSentenciasUnalínea(sentencia)){
+		if(validaSentenciasUnaLinea(sentencia)){
         	
     		if(!(sentencia.get(0)[1].equalsIgnoreCase("TABLES"))) {
             			
@@ -713,7 +713,7 @@ public class Comandos {
         	
 		}else {
 			
-        	if (!(válidaCantidadArgumentos(sentencia, 0, 0, 1))) { //no tiene mas nada alado del create
+        	if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { //no tiene mas nada alado del create
         		
         		insertarDepuracion("Error #03", "Demasiados argumentos en línea 1");
 	        
@@ -755,21 +755,21 @@ public class Comandos {
 	 */
 	private void comandoSelect(ArrayList<String[]> sentencia) {
 		
-		if(!(válidaCantidadArgumentos(sentencia, 0, 0, 2))) {
+		if(!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
     		
         	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
         	
     	}else {
     		
-    		if(!(válidaCantidadlíneas(sentencia, 2, 3))) {
+    		if(!(validaCantidadLineas(sentencia, 2, 3))) {
     			
 	        	insertarDepuracion("Error #02", "Cantidad de líneas incorrecta");
 	        	
     		}else {
     		
-    			if(válidaSentenciasFrom(sentencia)) {
+    			if( validaSentenciasFrom(sentencia)) {
     				
-    				if(válidaCantidadlíneas(sentencia, 2, 2)) { //SI ES SIN WHERE
+    				if(validaCantidadLineas(sentencia, 2, 2)) { //SI ES SIN WHERE
     					
     					if(logica.existeTabla(sentencia.get(1)[1])) {
 	            			
@@ -804,7 +804,7 @@ public class Comandos {
     			
 	            		if(sentencia.get(2).length==4) { //SI ES WHERE COMUN
 	            	
-			            	if(válidaSentenciasWhereComun(sentencia)) {
+			            	if( validaSentenciasWhereComun(sentencia)) {
 			            		
 			            		if(logica.existeTabla(sentencia.get(1)[1])) {
 			            			
@@ -847,7 +847,7 @@ public class Comandos {
 			            	
 			            }else {
 			            		
-		            		if(válidaOperadoresLogicos(sentencia)) {
+		            		if(validaOperadoresLogicos(sentencia)) {
 		            			
 			            		if(sentencia.get(2)[4].equalsIgnoreCase("AND")) {
 			            			
@@ -882,7 +882,7 @@ public class Comandos {
 	 */
 	private void comandoUse(ArrayList<String[]> sentencia) {
 		
-		if(válidaSentenciasUnalínea(sentencia)){
+		if(validaSentenciasUnaLinea(sentencia)){
         	
 			if(logica.existeBD(sentencia.get(0)[1])) {
 				
@@ -909,13 +909,13 @@ public class Comandos {
 	 */
 	private void comandoInsert(ArrayList<String[]> sentencia) {
 		
-		if (!(válidaCantidadlíneas(sentencia, 2, 2))){
+		if (!(validaCantidadLineas(sentencia, 2, 2))){
 			
         	insertarDepuracion("Error #02", "Cantidad de líneas no válida");
     		
     	}else {
     		
-    		if ((!(sentencia.get(1).length>1)) || (!(válidaCantidadArgumentos(sentencia, 0, 0, 2)))) {
+    		if ((!(sentencia.get(1).length>1)) || (!(validaCantidadArgumentos(sentencia, 0, 0, 2)))) {
         		
 	        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida");
 	        	
@@ -993,13 +993,13 @@ public class Comandos {
 	 */
 	private void comandoDelete(ArrayList<String[]> sentencia) {
 		
-		if (!(válidaCantidadArgumentos(sentencia, 0, 0, 1))) { 
+		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
         	insertarDepuracion("Error #03", "Demasiados argumentos en línea 1");
         	
     	}else {
     	
-        	if(válidaSentenciasFromWhere(sentencia)) {
+        	if( validaSentenciasFromWhere(sentencia)) {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
@@ -1041,19 +1041,19 @@ public class Comandos {
 	 */
 	private void comandoUpdate(ArrayList<String[]> sentencia) {
 		
-		if(!(válidaCantidadlíneas(sentencia, 3, 3))) {
+		if(!(validaCantidadLineas(sentencia, 3, 3))) {
     		
         	insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
         	
     	}else {
     	
-        	if (!(válidaCantidadArgumentos(sentencia, 0, 0, 2))) { 
+        	if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
         		
 	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
 	        	
         	}else {
         	
-            	if(!(válidaCantidadArgumentos(sentencia, 1, sentencia.size(), 4))) {
+            	if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 4))) {
             		
 		        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las líneas 2 y 3");
 		        	
@@ -1065,7 +1065,7 @@ public class Comandos {
 			        	
             		}else {
             			
-	            		if(válidaSentenciasWhereComun(sentencia)) {
+	            		if( validaSentenciasWhereComun(sentencia)) {
 	            			
 	            			if(!(sentencia.get(1)[2].equals("="))){
 	            				
@@ -1121,7 +1121,7 @@ public class Comandos {
 	 */
 	private void comandoNotNull(ArrayList<String[]> sentencia) {
 		
-		if(válidaSentenciasDoslíneas(sentencia)) {
+		if(validaSentenciasDosLineas(sentencia)) {
     		
 			if(logica.existeTabla(sentencia.get(1)[1])) {
 			
@@ -1162,13 +1162,13 @@ public class Comandos {
 	 */
 	private void comandoCount(ArrayList<String[]> sentencia) {
 		
-		if (!(válidaCantidadArgumentos(sentencia, 0, 0, 1))) { 
+		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
         	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
         	
     	}else {
     	
-        	if(válidaSentenciasFromWhere(sentencia)) {
+        	if( validaSentenciasFromWhere(sentencia)) {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
@@ -1211,13 +1211,13 @@ public class Comandos {
 	 */
 	private void comandoAvg(ArrayList<String[]> sentencia) {
 		
-		if (!(válidaCantidadArgumentos(sentencia, 0, 0, 2))) { 
+		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
         	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
         	
     	}else {
     	
-        	if(válidaSentenciasFromWhere(sentencia)) {
+        	if( validaSentenciasFromWhere(sentencia)) {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
@@ -1271,7 +1271,7 @@ public class Comandos {
 	 */
 	private void comandoMax(ArrayList<String[]> sentencia) {
 		
-		if(válidaSentenciasDoslíneas(sentencia)) {
+		if(validaSentenciasDosLineas(sentencia)) {
     		
 			if(logica.existeTabla(sentencia.get(1)[1])) {
 				
@@ -1361,7 +1361,7 @@ public class Comandos {
 	 */
 	private void comandoPrimaryKey(ArrayList<String[]> sentencia) {
 		
-		if(válidaSentenciasDoslíneas(sentencia)) {
+		if(validaSentenciasDosLineas(sentencia)) {
     		
 			if(logica.existeTabla(sentencia.get(1)[1])) {
 			
@@ -1408,7 +1408,7 @@ public class Comandos {
 	 */
 	private void comandoDescribe(ArrayList<String[]> sentencia) {
 		
-		if(válidaSentenciasUnalínea(sentencia)){
+		if(validaSentenciasUnaLinea(sentencia)){
 			
 			String nombreTabla = logica.obtenerNomTabla(sentencia.get(0)[1]);
 			
@@ -1436,7 +1436,7 @@ public class Comandos {
 	 */
 	private void comandoHelp(ArrayList<String[]> sentencia) {
 		
-		if(válidaSentenciasUnalínea(sentencia)){
+		if(validaSentenciasUnaLinea(sentencia)){
         	
 			if(logica.comandoExiste(sentencia.get(0)[1])) {
 					
@@ -1465,13 +1465,13 @@ public class Comandos {
 	 */
 	private void comandoJoinNatural(ArrayList<String[]> sentencia) {
 		
-		if (!(válidaCantidadArgumentos(sentencia, 0, 0, 2))) { 
+		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
         	insertarDepuracion("Error #03", "Demasiados argumentos en línea 1");
         	
     	}else {
     		
-    		if(!(válidaCantidadlíneas(sentencia, 2, 2))) {
+    		if(!(validaCantidadLineas(sentencia, 2, 2))) {
     			
 	        	insertarDepuracion("Error #02", "Cantidad de líneas no válida");
 	        	
@@ -1483,7 +1483,7 @@ public class Comandos {
 		        	
     			}else {
     			
-        			if(!(válidaCantidadArgumentos(sentencia, 1, sentencia.size(), 3))) {
+        			if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 3))) {
         				
 			        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 2, recuerde que el join natural se realiza entre dos tablas");
 			        	
