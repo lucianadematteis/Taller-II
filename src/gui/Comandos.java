@@ -1444,7 +1444,7 @@ public class Comandos {
 				ayuda.add(logica.darAyuda(sentencia.get(0)[1]));
 				cargarTablaString(ayuda, "AYUDA " + sentencia.get(0)[1].toUpperCase());
 				aciertos++;
-				insertarDepuracion("Acierto #" + aciertos, "Mostrando ayuda para el comando: " + sentencia.get(0)[1]);
+				insertarDepuracion("Acierto #" + aciertos, "Mostrando ayuda para el comando: " + sentencia.get(0)[1].toUpperCase());
         	
 			}else {
 				
