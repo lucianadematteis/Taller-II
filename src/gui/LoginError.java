@@ -45,13 +45,13 @@ public class LoginError extends JFrame {
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Usuario o contrase�a inv�lidos");
+		JLabel lblNewLabel = new JLabel("Usuario o contrasenia invalidos");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(75, 36, 485, 155);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 8");
+		JLabel lblNewLabel_1 = new JLabel("Codigo de error 8");
 		lblNewLabel_1.setBounds(322, 236, 102, 14);
 		contentPane.add(lblNewLabel_1);
 		
