@@ -1,6 +1,7 @@
 package persistencia;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -998,5 +999,15 @@ public int recuperarDemo() {
 		return demo;
 		
 	}
+
+	public  void PersistirDemo(int value) {
+	    String filePath = "archivo.txt";  // Ruta del archivo
 	
+	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+	        writer.write(String.valueOf(value));
+	    } catch (IOException e) {
+	        System.err.println("Error al escribir en el archivo: " + e.getMessage());
+	    }
+	
+}
 }
