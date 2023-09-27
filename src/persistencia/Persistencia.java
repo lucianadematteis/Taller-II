@@ -701,7 +701,7 @@ public class Persistencia {
 		persistirBasesDatosTotales(usuarios);
 		persistirTablasTotales(usuarios);
 		persistirRegistrosTotales(usuarios);
-		persisitrDemo(demo);
+		persistirDemo(demo);
 							
 	}
 
