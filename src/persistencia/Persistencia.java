@@ -24,7 +24,7 @@ import logica.Usuario;
 
 /**
  * En esta clase se definen en los metodos persistirUsuario, persistirBasesDeDatos y persistirTablas los separadores
-  *@author Gabriel Bolsi
+ *@author Gabriel Bolsi
  *@author Brandon Cairus
  *@author Daiana Daguerre
  *@author Luciana De Matteis
@@ -250,58 +250,59 @@ public class Persistencia {
 	 * @param accion -> Indica si se debe cifrar (true) o descifrar (false) la cadena.
 	 * @return La cadena cifrada o descifrada.
 	 */
-	private String metodoCifrarDescifrar(String cadena, boolean accion) { 
-		
-		List<Character> abecedario = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
-				'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'); 
+	private String metodoCifrarDescifrar(String cadena, boolean accion) {
 
-		String cadenaFinal = ""; 
-		
-        for (int i = 0; i < cadena.length(); i++) {
-        	
-            char caracter = cadena.charAt(i); 
-            
-            if(Character.isLetter(caracter)) { 
-            	
-            	int indiceViejo = abecedario.indexOf(Character.toLowerCase(caracter)); //La transforma en minuscula
-            	int indiceNuevo = 0;
-            	
-            	if(accion) { //Si quiere cifrar
-            		
-            		indiceNuevo = (indiceViejo + 5) % abecedario.size(); 
-            		
-            	}else {//Si quiere descifrar
-            		
-            		indiceNuevo = (indiceViejo - 5) % abecedario.size(); 
-            		
-            	}
-            	
-                if (indiceNuevo < 0) { //Si es negativo
-                	
-                    indiceNuevo += abecedario.size(); 
-                    
-                }
-            	
-                if(Character.isUpperCase(caracter)) { 
-                	
-                	cadenaFinal += Character.toUpperCase(abecedario.get(indiceNuevo)); //Reemplaza la letra vieja por la nueva
-                	
-                }else {
-                	
-                	cadenaFinal += abecedario.get(indiceNuevo);
-                	
-                }
-                	
-            }else {
-            
-            	cadenaFinal += caracter;
-            
-            }
-            
-        }
-        
-		return cadenaFinal;
-		
+	    List<Character> abecedario = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+	            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0',
+	            '1', '2', '3', '4', '5', '6', '7', '8', '9');
+
+	    String cadenaFinal = "";
+
+	    for (int i = 0; i < cadena.length(); i++) {
+
+	        char caracter = cadena.charAt(i);
+
+	        int indiceViejo = abecedario.indexOf(Character.toLowerCase(caracter));
+	        int indiceNuevo = 0;
+
+	        if (indiceViejo != -1) { // Verifica si el carácter esta en el abecedario
+
+	            if (accion) { // Si quiere cifrar
+
+	                indiceNuevo = (indiceViejo + 5) % abecedario.size();
+
+	            } else { // Si quiere descifrar
+
+	                indiceNuevo = (indiceViejo - 5) % abecedario.size();
+
+	            }
+
+	            if (indiceNuevo < 0) {
+	            	
+	                indiceNuevo += abecedario.size();
+	                
+	            }
+
+	            if (Character.isUpperCase(caracter)) {
+	            	
+	                cadenaFinal += Character.toUpperCase(abecedario.get(indiceNuevo));
+	           
+	            } else {
+	               
+	            	cadenaFinal += abecedario.get(indiceNuevo);
+	            
+	            }
+
+	        } else {
+	        	
+	            cadenaFinal += caracter; // Si el caracter no esta en el abecedario, lo aniade tal como esta
+	        
+	        }
+	        
+	    }
+
+	    return cadenaFinal;
+	    
 	}
 	
 	/**
