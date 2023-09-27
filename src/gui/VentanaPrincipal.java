@@ -362,6 +362,7 @@ public class VentanaPrincipal extends JFrame {
 		if(Login.demo) {
 
 		  VentanaPrincipal.bdActual.setText("Base de datos: base de prueba");
+		  cargarTablas(fa.obtenerTablasNom());
 
 		}
 	}
