@@ -1049,7 +1049,7 @@ public class Persistencia {
 		
 		String contenidoDemo = contenidoArchivo.toString();
 		int demo = Integer.parseInt(contenidoDemo);
-    
+  
 		return demo;
 		
 	}
@@ -1062,7 +1062,6 @@ public class Persistencia {
 
 		recuperarUsuarios(usuarios);
 		String ruta = "";
-		
 		
 		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
 
@@ -1096,11 +1095,5 @@ public class Persistencia {
 		}
 
 	}
-	
-		
-	
-	
-
-
 	
 }

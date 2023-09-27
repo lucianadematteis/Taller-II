@@ -187,6 +187,7 @@ public class Login extends JFrame {
 		   
 	    	btnIniciarDemo.setEnabled(false);
 	    	demo = false;
+	    	
 	    }
 	   
 	}
