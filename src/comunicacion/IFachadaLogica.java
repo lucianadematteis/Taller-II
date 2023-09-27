@@ -117,5 +117,9 @@ public interface IFachadaLogica {
 	public void eliminarTabla(String nombreTabla);
 	
 	public String obtenerNomTabla (String nombreTabla);
+	
+	public int getDemoHabilitada();
+	
+	public void setDemoHabilitada(int demoHabilitada);
 
 }

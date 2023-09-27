@@ -272,7 +272,7 @@ public class VentanaPrincipal extends JFrame {
 				ArrayList<String[]> arregloLinea = administraSentencia(entrada.getText());
 		        String comando=arregloLinea.get(0)[0].toUpperCase();
 		        comandos.ejecutarComando(comando, arregloLinea);
-		        fa.persistirDatos();
+		      
 		        
 		        if (Login.demo && Comandos.usos == 4 ){
 		        	
@@ -281,6 +281,7 @@ public class VentanaPrincipal extends JFrame {
 		        	LimiteAlcanzado li = new LimiteAlcanzado(fa);
 		        	li.setVisible(true);
 		        	dispose();
+		        	fa.setDemoHabilitada(0);
 		        
 		        }
 		        
@@ -289,6 +290,8 @@ public class VentanaPrincipal extends JFrame {
 		        	cargarTablas(fa.obtenerTablasNom());
 				
 		        }
+		        
+		        fa.persistirDatos();
 
 			} 
 			

@@ -31,7 +31,7 @@ public class FachadaLogica implements IFachadaLogica {
 	private String usuario;
 	private LinkedHashMap<String, Usuario> usuarios;
 	private LinkedHashMap<String, String> ayuda;
-	private int demo;
+	private int demoHabilitada;
 
 	public FachadaLogica() {
 
@@ -112,7 +112,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public void persistirDatos() {
 
-		persistencia.persistirTodo(usuarios, demo);
+		persistencia.persistirTodo(usuarios, demoHabilitada);
 
 	}
 	
@@ -142,7 +142,7 @@ public class FachadaLogica implements IFachadaLogica {
 
 		ayuda=persistencia.recuperarAyuda();
 		persistencia.recuperarTodo(usuarios);
-		demo=persistencia.recuperarDemo();
+		demoHabilitada=persistencia.recuperarDemo();
 
 	}
 	
@@ -1301,6 +1301,20 @@ public class FachadaLogica implements IFachadaLogica {
 		return this.baseDatos;
 		
 	}
+	
+	public int getDemoHabilitada() {
+
+		return this.demoHabilitada;
+
+	}
+
+	public void setDemoHabilitada(int demoHabilitada) {
+
+		this.demoHabilitada = demoHabilitada;
+
+	}
+
+	
 	
 	/**
 	 * Metodo publico que, dado un nombre de una base de datos, la elimina del mapa correspondiente

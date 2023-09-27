@@ -183,12 +183,12 @@ public class Login extends JFrame {
 		btnIniciarDemo.setBounds(796, 568, 146, 47);
 		contentPane.add(btnIniciarDemo);
 
-	   if (Comandos.usos >= 4 ) {
-		   
-	    	btnIniciarDemo.setEnabled(false);
-	    	demo = false;
-	    	
-	    }
+		  if (fa.getDemoHabilitada() == 0 ) {
+			   
+		    	btnIniciarDemo.setEnabled(false);
+		    	demo = false;
+		    	
+		    }
 	   
 	}
 	
