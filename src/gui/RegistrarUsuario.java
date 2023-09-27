@@ -89,7 +89,6 @@ public class RegistrarUsuario extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 			
-				System.out.println(usuario.getText());
 				char [] c = pass.getPassword();
 				String contra = new String (c); 
 				char [] b = pass2.getPassword();
