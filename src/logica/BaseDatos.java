@@ -93,7 +93,11 @@ public class BaseDatos {
 			
 		for (Entry<String, Tabla> tabla : this.tablas.entrySet()) {
 
-			return tabla.getValue();
+			if(tabla.getKey().equalsIgnoreCase(nombreTabla)) {
+			
+				return tabla.getValue();
+			
+			}
 			
 		}
 			
