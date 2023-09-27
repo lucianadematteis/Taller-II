@@ -223,6 +223,28 @@ public class Persistencia {
 	}
 	
 	/**
+	 * Metodo privado que obtiene la ruta del archivo "demo.txt" en el escritorio del usuario, dependiendo del sistema operativo (Windows o Linux).
+	 * @return La ruta completa del archivo "demo.txt".
+	 */
+	private String obtenerRutaDemo() {
+		
+		String nombreArchivo="";
+	    
+		if (identificarSistema() == 1) { // Si es Windows
+        	
+            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\demo.txt";
+        
+        } else if (identificarSistema() == 0) { // Si es Linux
+            
+        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//demo.txt";
+       
+        }
+	     
+	    return nombreArchivo;
+		
+	}
+
+	/**
 	 * Este metodo privado cifra o descifra una cadena de texto utilizando un cifrado Cesar con un desplazamiento de 5 caracteres.
 	 * @param cadena -> La cadena de texto a cifrar o descifrar.
 	 * @param accion -> Indica si se debe cifrar (true) o descifrar (false) la cadena.
@@ -649,16 +671,37 @@ public class Persistencia {
 	}
 	
 	/**
+	 * Metodo publico que guarda un valor numerico en el archivo "demo.txt" ubicado en el escritorio del usuario, sobrescribiendo cualquier contenido existente en el archivo.
+	 * @param value -> El valor numerico que se desea guardar en el archivo.
+	 */
+	public void persistirDemo(int value) {
+	   
+		String ruta = obtenerRutaDemo();  // Ruta del archivo
+	
+	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
+	   
+	    	writer.write(String.valueOf(value));
+	   
+	    } catch (IOException e) {
+	   
+	    	System.err.println("Error al escribir en el archivo: " + e.getMessage());
+	   
+	    }
+	
+	}
+	
+	/**
 	 * Metodo publico que recibe como parametro un mapa de usuarios. El metodo realiza una serie de llamadas a otros metodos privados para persistir informacion relacionada con usuarios, bases de datos, tablas y registros.
 	 * @param usuarios-> mapa de usuarios
 	 */
-	public void persistirTodo(LinkedHashMap<String, Usuario> usuarios) {
+	public void persistirTodo(LinkedHashMap<String, Usuario> usuarios, int demo) {
 		
 		crearCarpetaInicial();
 		persistirUsuariosTotales(usuarios);
 		persistirBasesDatosTotales(usuarios);
 		persistirTablasTotales(usuarios);
 		persistirRegistrosTotales(usuarios);
+		persisitrDemo(demo);
 							
 	}
 
@@ -973,70 +1016,6 @@ public class Persistencia {
 	}
 	
 	/**
-	 * Metodo publico que recibe como parametro una coleccion de usuarios. El metodo coordina la recuperacion de informacion relacionada con usuarios, bases de datos, tablas y registros llamando a otros metodos privados. Recorre los usuarios y sus respectivas bases de datos y tablas para cargar la informacion de manera completa
-	 * @param usuarios-> mapa de usuarios
-	 */
-	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
-
-		recuperarUsuarios(usuarios);
-		String ruta = "";
-		
-		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
-
-			Usuario user = usuario.getValue();
-			ruta = obtenerRutaBD(user.getNombreUser());
-			user.setBasesDatos(recuperarBasesDeDatos(ruta));
-			
-			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
-
-				BaseDatos base = bd.getValue();
-				
-				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
-
-					Tabla tablita = tabla.getValue();
-					
-					String rutaTabla= obtenerRutaTabla(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
-
-					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty() || tablita.getNombreTabla().isEmpty())) {
-
-						ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
-						LinkedHashMap<String, Atributo> guia = recuperarTabla(tablita.getNombreTabla(), rutaTabla);
-
-						tablita.setRegistros(recuperarRegistros(ruta, guia));
-
-					}
-
-				}
-
-			}
-
-		}
-
-	}
-	
-	/**
-	 * Metodo privado que obtiene la ruta del archivo "demo.txt" en el escritorio del usuario, dependiendo del sistema operativo (Windows o Linux).
-	 * @return La ruta completa del archivo "demo.txt".
-	 */
-	private String obtenerRutaDemo() {
-		
-		String nombreArchivo="";
-	    
-		if (identificarSistema() == 1) { // Si es Windows
-        	
-            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\demo.txt";
-        
-        } else if (identificarSistema() == 0) { // Si es Linux
-            
-        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//demo.txt";
-       
-        }
-	     
-	    return nombreArchivo;
-		
-	}
-	
-	/**
 	 * Metodo publico que recupera un valor numerico almacenado en el archivo "demo.txt" ubicado en el escritorio del usuario.
 	 * @return El valor numerico recuperado del archivo.
 	 * @throws NumberFormatException Si el archivo no contiene un valor numerico valido.
@@ -1075,23 +1054,52 @@ public class Persistencia {
 	}
 
 	/**
-	 * Metodo publico que guarda un valor numerico en el archivo "demo.txt" ubicado en el escritorio del usuario, sobrescribiendo cualquier contenido existente en el archivo.
-	 * @param value -> El valor numerico que se desea guardar en el archivo.
+	 * Metodo publico que recibe como parametro una coleccion de usuarios. El metodo coordina la recuperacion de informacion relacionada con usuarios, bases de datos, tablas y registros llamando a otros metodos privados. Recorre los usuarios y sus respectivas bases de datos y tablas para cargar la informacion de manera completa
+	 * @param usuarios-> mapa de usuarios
 	 */
-	public void PersistirDemo(int value) {
-	   
-		String ruta = obtenerRutaDemo();  // Ruta del archivo
-	
-	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
-	   
-	    	writer.write(String.valueOf(value));
-	   
-	    } catch (IOException e) {
-	   
-	    	System.err.println("Error al escribir en el archivo: " + e.getMessage());
-	   
-	    }
-	
+	public void recuperarTodo(LinkedHashMap<String, Usuario> usuarios) {
+
+		recuperarUsuarios(usuarios);
+		String ruta = "";
+		
+		
+		for (Map.Entry<String, Usuario> usuario : usuarios.entrySet()) {
+
+			Usuario user = usuario.getValue();
+			ruta = obtenerRutaBD(user.getNombreUser());
+			user.setBasesDatos(recuperarBasesDeDatos(ruta));
+			
+			for (Map.Entry<String, BaseDatos> bd : user.getBasesDatos().entrySet()) {
+
+				BaseDatos base = bd.getValue();
+				
+				for (Map.Entry<String, Tabla> tabla : base.getTablas().entrySet()) {
+
+					Tabla tablita = tabla.getValue();
+					
+					String rutaTabla= obtenerRutaTabla(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
+
+					if (!(user.getNombreUser().isEmpty() || base.getNombreBD().isEmpty() || tablita.getNombreTabla().isEmpty())) {
+
+						ruta = obtenerRutaRegistro(user.getNombreUser(), base.getNombreBD(), tablita.getNombreTabla());
+						LinkedHashMap<String, Atributo> guia = recuperarTabla(tablita.getNombreTabla(), rutaTabla);
+
+						tablita.setRegistros(recuperarRegistros(ruta, guia));
+
+					}
+
+				}
+
+			}
+
+		}
+
 	}
+	
+		
+	
+	
+
+
 	
 }

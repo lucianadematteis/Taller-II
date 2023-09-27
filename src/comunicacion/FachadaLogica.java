@@ -31,6 +31,7 @@ public class FachadaLogica implements IFachadaLogica {
 	private String usuario;
 	private LinkedHashMap<String, Usuario> usuarios;
 	private LinkedHashMap<String, String> ayuda;
+	private int demo;
 
 	public FachadaLogica() {
 
@@ -111,7 +112,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public void persistirDatos() {
 
-		persistencia.persistirTodo(usuarios);
+		persistencia.persistirTodo(usuarios, demo);
 
 	}
 	
@@ -141,6 +142,7 @@ public class FachadaLogica implements IFachadaLogica {
 
 		ayuda=persistencia.recuperarAyuda();
 		persistencia.recuperarTodo(usuarios);
+		demo=persistencia.recuperarDemo();
 
 	}
 	
