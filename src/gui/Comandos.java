@@ -35,7 +35,6 @@ public class Comandos {
     static int aciertos;
     private Map<String, Consumer<ArrayList<String[]>>> acciones; //es una funcion que toma un valor y realiza algun tipo de accion con el, pero no produce ningun resultado como salida.
     static int usos;
-    private VentanaPrincipal ven = new VentanaPrincipal(logica);
     
     /**
      * Metodo para inicializar las acciones
@@ -179,6 +178,8 @@ public class Comandos {
 	 * 
 	 */
 	private boolean validaSentenciasUnaLinea(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 
 		if (!(validaCantidadLineas(sentencia, 1, 1))) {
 
@@ -208,6 +209,8 @@ public class Comandos {
 	 * @return v�lida si la sentencia es v�lida
 	 */
 	private boolean validaSentenciasDosLineas(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 
 		if (!(validaCantidadLineas(sentencia, 2, 2))) {
 
@@ -246,6 +249,8 @@ public class Comandos {
 	 * 
 	 */
 	private boolean  validaSentenciasWhereComun(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 
 		ArrayList<String> operadores = new ArrayList<>(Arrays.asList("=", "<", ">", ">=", "<="));
 
@@ -285,6 +290,8 @@ public class Comandos {
 	 * 
 	 */
 	private boolean  validaSentenciasFrom(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 
 		if (!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 
@@ -314,6 +321,8 @@ public class Comandos {
 	 * 
 	 */
 	private boolean  validaSentenciasFromWhere(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 
 		if (!(validaCantidadLineas(sentencia, 3, 3))) {
 
@@ -344,6 +353,8 @@ public class Comandos {
 	 * 
 	 */
 	private boolean validaOperadoresLogicos(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 
 		 List<String> operadores = Arrays.asList("=", "<", ">", "<=", ">=");
 		
@@ -375,6 +386,8 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoTable(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(!(validaCantidadLineas(sentencia, 2, 5))) {
 			
@@ -448,6 +461,9 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoDatabase(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
+		
 		if(!(validaCantidadLineas(sentencia, 2, 2))) {
 			
         	ven.insertarDepuracion("Error #02", "La cantidad de l�neas ingresada es incorrecta");
@@ -511,6 +527,8 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoSelectAnd(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
@@ -592,6 +610,8 @@ public class Comandos {
 	 */
 	private void comandoShow(ArrayList<String[]> sentencia) {
 		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
+		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
     		if(!(sentencia.get(0)[1].equalsIgnoreCase("TABLES"))) {
@@ -618,6 +638,8 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoCreateDrop(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(!(sentencia.size()>1)){
 			
@@ -666,6 +688,8 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoSelect(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
     		
@@ -794,6 +818,8 @@ public class Comandos {
 	 */
 	private void comandoUse(ArrayList<String[]> sentencia) {
 		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
+		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
 			if(logica.existeBD(sentencia.get(0)[1])) {
@@ -820,6 +846,8 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoInsert(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if (!(validaCantidadLineas(sentencia, 2, 2))){
 			
@@ -905,6 +933,8 @@ public class Comandos {
 	 */
 	private void comandoDelete(ArrayList<String[]> sentencia) {
 		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
+		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
 			ven.insertarDepuracion("Error #03", "Demasiados argumentos en l�nea 1");
@@ -952,6 +982,8 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoUpdate(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(!(validaCantidadLineas(sentencia, 3, 3))) {
     		
@@ -1033,6 +1065,8 @@ public class Comandos {
 	 */
 	private void comandoNotNull(ArrayList<String[]> sentencia) {
 		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
+		
 		if(validaSentenciasDosLineas(sentencia)) {
     		
 			if(logica.existeTabla(sentencia.get(1)[1])) {
@@ -1073,6 +1107,8 @@ public class Comandos {
 	 * @param sentencia-> lista de sentencias
 	 */
 	private void comandoCount(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
@@ -1122,6 +1158,8 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoAvg(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
@@ -1183,6 +1221,8 @@ public class Comandos {
 	 */
 	private void comandoMax(ArrayList<String[]> sentencia) {
 		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
+		
 		if(validaSentenciasDosLineas(sentencia)) {
     		
 			if(logica.existeTabla(sentencia.get(1)[1])) {
@@ -1230,6 +1270,8 @@ public class Comandos {
 	 */
 	private void comandoMin(ArrayList<String[]> sentencia) {
 		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
+		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
 			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
@@ -1272,6 +1314,8 @@ public class Comandos {
 	 * @param sentencia->lista de sentencias
 	 */
 	private void comandoPrimaryKey(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(validaSentenciasDosLineas(sentencia)) {
     		
@@ -1320,6 +1364,8 @@ public class Comandos {
 	 */
 	private void comandoDescribe(ArrayList<String[]> sentencia) {
 		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
+		
 		if(validaSentenciasUnaLinea(sentencia)){
 			
 			String nombreTabla = logica.obtenerNomTabla(sentencia.get(0)[1]);
@@ -1347,6 +1393,8 @@ public class Comandos {
 	 * @param sentencia->lista de sentencia
 	 */
 	private void comandoHelp(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
@@ -1376,6 +1424,8 @@ public class Comandos {
 	 * @param sentencia Lista de sentencias a procesar.
 	 */
 	private void comandoJoinNatural(ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
@@ -1440,6 +1490,8 @@ public class Comandos {
 	 * @param sentencia->lista de sentencia
 	 */
 	public void ejecutarComando(String comando, ArrayList<String[]> sentencia) {
+		
+		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 	    if (acciones.containsKey(comando)) {
 	    	
