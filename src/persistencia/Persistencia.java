@@ -233,11 +233,11 @@ public class Persistencia {
 	    
 		if (identificarSistema() == 1) { // Si es Windows
         	
-            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\demo.txt";
+            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\intentosDemo.txt";
         
         } else if (identificarSistema() == 0) { // Si es Linux
             
-        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//demo.txt";
+        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//intentosDemo.txt";
        
         }
 	     
@@ -1022,7 +1022,6 @@ public class Persistencia {
 	 * @return El valor numerico recuperado del archivo.
 	 * @throws NumberFormatException Si el archivo no contiene un valor numerico valido.
 	 */
-	
 	public int recuperarDemo() {
 		
 	    String ruta = obtenerRutaDemo();
@@ -1030,7 +1029,8 @@ public class Persistencia {
 	    StringBuilder contenidoArchivo = new StringBuilder();
 	
 	    try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(ruta), "UTF-8"))) {
-	        String linea;
+	       
+	    	String linea;
 	
 	        while ((linea = br.readLine()) != null) {
 	        	
@@ -1042,9 +1042,8 @@ public class Persistencia {
 	        System.err.println("El archivo no se encontro: " + e.getMessage());
 	
 	        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ruta), "UTF-8"))) {
-	            bw.write("1");
-	            
-	            
+	           
+	        	bw.write("1");
 	            
 	        } catch (IOException ex) {
 	        	
@@ -1052,6 +1051,7 @@ public class Persistencia {
 	            
 	           
 	        }
+	        
 	    } catch (IOException g) {
 	    	
 	        System.err.println("Error de lectura del archivo: " + g.getMessage());
@@ -1063,10 +1063,9 @@ public class Persistencia {
 	    int demo = Integer.parseInt(contenidoDemo);
 	
 	    return demo;
+	    
 	}
 	
-	 
-
 	/**
 	 * Metodo publico que recibe como parametro una coleccion de usuarios. El metodo coordina la recuperacion de informacion relacionada con usuarios, bases de datos, tablas y registros llamando a otros metodos privados. Recorre los usuarios y sus respectivas bases de datos y tablas para cargar la informacion de manera completa
 	 * @param usuarios-> mapa de usuarios

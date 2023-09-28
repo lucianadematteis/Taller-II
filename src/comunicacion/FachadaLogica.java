@@ -1302,20 +1302,26 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo publico que  retorna el valor almacenado en la variable demoHabilitada de la presente clase
+	 * @return Valor almacenado en la variable demoHabilitada de la clase FachadaLogica
+	 */
 	public int getDemoHabilitada() {
 
 		return this.demoHabilitada;
 
 	}
 
+	/**
+	 * Metodo publico que establece el valor de la variable demoHabilitada en la clase FachadaLogica.
+	 * @param demoHabilitada El nuevo valor que se desea asignar a la variable demoHabilitada.
+	 */
 	public void setDemoHabilitada(int demoHabilitada) {
 
 		this.demoHabilitada = demoHabilitada;
 
 	}
 
-	
-	
 	/**
 	 * Metodo publico que, dado un nombre de una base de datos, la elimina del mapa correspondiente
 	 * @param nombreBD -> nombre de la base de datos a eliminar
