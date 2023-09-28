@@ -26,7 +26,7 @@ public class VentanaPrincipal extends JFrame {
 	static JTable guia;
 	static JTable salida;
 	static JTable depuracion;
-	static JLabel bdActual;
+	private JLabel bdActual;
 	@SuppressWarnings("unused")
 	private IFachadaLogica fa;
 	static JTable guiaTabla;
@@ -364,7 +364,7 @@ public class VentanaPrincipal extends JFrame {
 
 		if(Login.demo) {
 
-		  VentanaPrincipal.bdActual.setText("Base de datos: base de prueba");
+		 bdActual.setText("Base de datos: base de prueba");
 		  cargarTablas(fa.obtenerTablasNom());
 
 		}
@@ -403,6 +403,14 @@ public class VentanaPrincipal extends JFrame {
 
 		}
 		
+	}
+	
+	public void liberarBDActual() {
+		bdActual.setText("Base de datos: ");
+	}
+	
+	public void cargarBDActual() {
+		bdActual.setText("Base de datos: " + fa.getBaseDatos());
 	}
 	
 }

@@ -43,6 +43,7 @@ public class Comandos {
     public Comandos(IFachadaLogica fa) {
     	
     	logica=fa;
+    	VentanaPrincipal ven = new VentanaPrincipal(fa);
         inicializarAcciones();
         
     }
@@ -570,9 +571,9 @@ public class Comandos {
 				if(logica.existeBD(sentencia.get(1)[1])) {
 					
 					if(logica.getBaseDatos().equalsIgnoreCase(sentencia.get(1)[1])) {
-						
+						VentanaPrincipal ven = new VentanaPrincipal(logica);
 						logica.liberarMemoriaBaseDatos();
-						VentanaPrincipal.bdActual.setText("Base de datos: ");
+						ven.liberarBDActual();
 						
 					}
 					
@@ -887,7 +888,8 @@ public class Comandos {
 			if(logica.existeBD(sentencia.get(0)[1])) {
 				
 				logica.seleccionarBaseDatos(sentencia.get(0)[1]);
-				VentanaPrincipal.bdActual.setText("Base de datos: " + logica.getBaseDatos());
+				VentanaPrincipal ven = new VentanaPrincipal(logica);
+				ven.cargarBDActual();
 	    		aciertos++;
 	        	insertarDepuracion("Acierto #" + aciertos, "Se selecciono la base de datos: " + logica.getBaseDatos());
 	        	
