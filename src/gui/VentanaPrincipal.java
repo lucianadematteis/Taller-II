@@ -412,11 +412,11 @@ public class VentanaPrincipal extends JFrame {
 		
 	}
 	
-	public void liberarBDActual() {
+	protected void liberarBDActual() {
 		bdActual.setText("Base de datos: ");
 	}
 	
-	public void cargarBDActual() {
+	protected void cargarBDActual() {
 		bdActual.setText("Base de datos: " + fa.getBaseDatos());
 	}
 	
