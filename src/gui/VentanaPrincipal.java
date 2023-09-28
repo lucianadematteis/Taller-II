@@ -38,7 +38,7 @@ public class VentanaPrincipal extends JFrame {
 	private IFachadaLogica fa;
 	private JTable guiaTabla;
 	
-	public ArrayList<String[]> administraSentencia(String sentencia) {
+	protected ArrayList<String[]> administraSentencia(String sentencia) {
 
 		// Se pretende generar un arreglo de arreglos. Donde en cada posici�n del
 		// arreglo principal
