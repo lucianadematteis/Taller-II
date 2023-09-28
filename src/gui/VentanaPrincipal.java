@@ -1,8 +1,6 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Component;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -13,12 +11,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
-import comunicacion.DTOAtributo;
-import comunicacion.DTOCadena;
-import comunicacion.DTOEntero;
 import comunicacion.IFachadaLogica;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -30,13 +23,13 @@ public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable guia;
-	private JTable salida;
-	private JTable depuracion;
+	static JTable guia;
+	static JTable salida;
+	static JTable depuracion;
 	private JLabel bdActual;
 	@SuppressWarnings("unused")
 	private IFachadaLogica fa;
-	private JTable guiaTabla;
+	static JTable guiaTabla;
 	
 	protected ArrayList<String[]> administraSentencia(String sentencia) {
 
@@ -378,7 +371,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	
-	protected void cargarBasesDatos(ArrayList<String> nBD) {
+	public static void cargarBasesDatos(ArrayList<String> nBD) {
 		
 		DefaultTableModel model = (DefaultTableModel) guia.getModel();
 		model.setRowCount(0);
@@ -393,7 +386,7 @@ public class VentanaPrincipal extends JFrame {
 		
 	}
 
-	protected void cargarTablas(ArrayList<String> nTablas) {
+	public static void cargarTablas(ArrayList<String> nTablas) {
 
 		DefaultTableModel model = (DefaultTableModel) guiaTabla.getModel();
 		model.setRowCount(0);
@@ -419,101 +412,5 @@ public class VentanaPrincipal extends JFrame {
 	protected void cargarBDActual() {
 		bdActual.setText("Base de datos: " + fa.getBaseDatos());
 	}
-	
-    
-	 /**
-	  * Metodo privado que recibe como par�metros una lista de cadenas y el nombre de la columna y los carga en una tabla en la interfaz grafica.
-	  * @param datos-> lista de cadenas
-	  * @param nombreColumna-> nombre de la columna a cargar en una tabla
-	  * 
-	  */
-    @SuppressWarnings("serial")
-	protected void cargarTablaString(ArrayList<String> datos, String nombreColumna) {
-
-        DefaultTableModel model = (DefaultTableModel) salida.getModel();
-        model.setRowCount(0);
-        model.setColumnCount(0);
-        model.addColumn("<html><b>" + nombreColumna.toUpperCase() + "</b></html>");
-       Font customFont = new Font("SansSerif", Font.PLAIN, 17);
-        
-        // Crea un TableCellRenderer personalizado para interpretar HTML y ajustar la altura
-        DefaultTableCellRenderer htmlRenderer = new DefaultTableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-               
-            	JLabel label = new JLabel();
-            	label.setFont(customFont);
-                label.setText("<html>" + value.toString() + "</html>");
-                table.setRowHeight(row, label.getPreferredSize().height);
-                return label;
-            
-            }
-            
-        };
-
-        // Asigna el TableCellRenderer personalizado a la columna
-        salida.getColumnModel().getColumn(0).setCellRenderer(htmlRenderer);
-
-        for (String dato : datos) {
-        	
-            model.addRow(new Object[]{dato});
-            
-        }
-        
-    }
-    
-
-    
-	 /**
-	  * Metodo privado que recibe como par�metros dos cadenas de texto que corresponden a mensajes. El metodo inserta una fila en una tabla de depuracion en la interfaz grafica.
-	  * @param mensaje1->cadena de texto
-	  * @param mensaje2->cadena de texto
-	  * 
-	  */
-   protected void insertarDepuracion(String mensaje1, String mensaje2) {
-
-		DefaultTableModel model = (DefaultTableModel) depuracion.getModel();
-
-		Object[] nuevaFila = { mensaje1, mensaje2 };
-		model.insertRow(0, nuevaFila);
-
-	}
-   
-   
-  	/**
-  	 *Metodo privado que recibe como par�metros una lista de DTOAtributo y el nombre de la columna y los carga en una tabla en la interfaz grafica con los atributos proporcionados.
-  	 *@param atributos-> lista de DTOAtributo
-  	 *@param nombreAtributo-> nombre de la columna
-  	 *
-  	 */
-      protected void cargarTablaAtributos(ArrayList<DTOAtributo> atributos, String nombreAtributo) {
-
-      	DefaultTableModel model = (DefaultTableModel) salida.getModel();
-      	model.setRowCount(0);
-      	model.setColumnCount(0);
-      	model.addColumn("<html><b>" + nombreAtributo.toUpperCase() + "</b></html>");
-      
-      	// Establece la altura de todas las filas a 20
-      	salida.setRowHeight(22);
-
-      	for(DTOAtributo atr : atributos) {
-
-      		if (atr instanceof DTOCadena) {
-
-      			DTOCadena cadena = (DTOCadena) atr;
-      			String dato = cadena.getDato();
-      			model.addRow(new Object [] {dato});
-
-      		} else if (atr instanceof DTOEntero) {
-
-      			DTOEntero entero = (DTOEntero) atr;
-      			int valor = entero.getValor();
-      			model.addRow(new Object [] {valor});
-
-      		}
-
-      	}
-
-      }
 	
 }
