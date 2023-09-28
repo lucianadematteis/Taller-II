@@ -44,7 +44,6 @@ public class Comandos {
     public Comandos(IFachadaLogica fa) {
     	
     	logica=fa;
-    	VentanaPrincipal ven = new VentanaPrincipal(fa);
         inicializarAcciones();
         
     }
@@ -449,7 +448,6 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoDatabase(ArrayList<String[]> sentencia) {
-		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		if(!(validaCantidadLineas(sentencia, 2, 2))) {
 			
         	ven.insertarDepuracion("Error #02", "La cantidad de l�neas ingresada es incorrecta");
@@ -513,7 +511,6 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoSelectAnd(ArrayList<String[]> sentencia) {
-		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
@@ -594,7 +591,6 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoShow(ArrayList<String[]> sentencia) {
-		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(validaSentenciasUnaLinea(sentencia)){
         	
@@ -622,7 +618,6 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoCreateDrop(ArrayList<String[]> sentencia) {
-		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(!(sentencia.size()>1)){
 			
@@ -671,7 +666,6 @@ public class Comandos {
 	 * 
 	 */
 	private void comandoSelect(ArrayList<String[]> sentencia) {
-		VentanaPrincipal ven = new VentanaPrincipal(logica);
 		
 		if(!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
     		
@@ -805,7 +799,6 @@ public class Comandos {
 			if(logica.existeBD(sentencia.get(0)[1])) {
 				
 				logica.seleccionarBaseDatos(sentencia.get(0)[1]);
-				VentanaPrincipal ven = new VentanaPrincipal(logica);
 				ven.cargarBDActual();
 	    		aciertos++;
 	    		ven.insertarDepuracion("Acierto #" + aciertos, "Se selecciono la base de datos: " + logica.getBaseDatos());
