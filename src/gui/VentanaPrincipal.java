@@ -26,12 +26,12 @@ public class VentanaPrincipal extends JFrame {
 	static JTable guia;
 	static JTable salida;
 	static JTable depuracion;
-	private JLabel bdActual;
+	static JLabel bdActual;
 	@SuppressWarnings("unused")
 	private IFachadaLogica fa;
 	static JTable guiaTabla;
 	
-	protected ArrayList<String[]> administraSentencia(String sentencia) {
+	public ArrayList<String[]> administraSentencia(String sentencia) {
 
 		// Se pretende generar un arreglo de arreglos. Donde en cada posici�n del
 		// arreglo principal
@@ -272,7 +272,7 @@ public class VentanaPrincipal extends JFrame {
 				ArrayList<String[]> arregloLinea = administraSentencia(entrada.getText());
 		        String comando=arregloLinea.get(0)[0].toUpperCase();
 		        comandos.ejecutarComando(comando, arregloLinea);
-		      
+		        fa.persistirDatos();
 		        
 		        if (Login.demo && Comandos.usos == 4 ){
 		        	
@@ -281,7 +281,6 @@ public class VentanaPrincipal extends JFrame {
 		        	LimiteAlcanzado li = new LimiteAlcanzado(fa);
 		        	li.setVisible(true);
 		        	dispose();
-		        	fa.setDemoHabilitada(0);
 		        
 		        }
 		        
@@ -290,8 +289,6 @@ public class VentanaPrincipal extends JFrame {
 		        	cargarTablas(fa.obtenerTablasNom());
 				
 		        }
-		        
-		        fa.persistirDatos();
 
 			} 
 			
@@ -364,7 +361,7 @@ public class VentanaPrincipal extends JFrame {
 
 		if(Login.demo) {
 
-		 bdActual.setText("Base de datos: base de prueba");
+		  VentanaPrincipal.bdActual.setText("Base de datos: base de prueba");
 		  cargarTablas(fa.obtenerTablasNom());
 
 		}
@@ -403,14 +400,6 @@ public class VentanaPrincipal extends JFrame {
 
 		}
 		
-	}
-	
-	protected void liberarBDActual() {
-		bdActual.setText("Base de datos: ");
-	}
-	
-	protected void cargarBDActual() {
-		bdActual.setText("Base de datos: " + fa.getBaseDatos());
 	}
 	
 }
