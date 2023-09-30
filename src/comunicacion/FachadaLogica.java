@@ -994,11 +994,11 @@ public class FachadaLogica implements IFachadaLogica {
 	 * Metodo privado que recibe dos objetos Tabla para realizar una comparacion de registros. El metodo compara los registros de ambas tablas y encuentra los atributos que se repiten y retorna una lista de objetos Atributo que representan los atributos repetidos en ambas tablas
 	 * @param tabla1-> Tabla 1 a buscar
 	 * @param tabla2-> Tabla 2 a buscar 
-	 * @return lista de los atributos repetidos en ambas tablas
+	 * @return tablas registros de ambas tablas combinados (solo cuando se logra el join)
 	 */
-	private ArrayList<Atributo> obtenerAuxiliar(Tabla tabla1, Tabla tabla2) {
+	private ArrayList<LinkedHashMap<String, Atributo>> obtenerAuxiliar(Tabla tabla1, Tabla tabla2) {
 		
-		ArrayList<Atributo> resultado = new ArrayList<Atributo>();
+		ArrayList<LinkedHashMap<String, Atributo>> resultado = new ArrayList<LinkedHashMap<String, Atributo>>();
 		ArrayList<LinkedHashMap<String, Atributo>> reg1;
 		ArrayList<LinkedHashMap<String, Atributo>> reg2;
 		
@@ -1029,7 +1029,13 @@ public class FachadaLogica implements IFachadaLogica {
 		    				
 		    				if (repiteAtributo(entry1.getValue(), entry2.getValue())) {
 		    					
-		    					resultado.add(entry2.getValue());
+		    					
+		    					LinkedHashMap<String, Atributo> regCombinado = new LinkedHashMap<String, Atributo>();
+		    					
+		    						regCombinado.putAll(reg1.get(i));
+		    						regCombinado.putAll(reg2.get(j));
+		    						resultado.add(regCombinado);
+		    						
 		                
 		    				}
 		             
@@ -1055,92 +1061,34 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		Tabla tab1 = obtenerTabla(tabla1);
 		Tabla tab2 = obtenerTabla(tabla2);
-		ArrayList<Atributo> buscar = new ArrayList<Atributo>();
+		ArrayList<LinkedHashMap<String, Atributo>> buscar = new ArrayList<LinkedHashMap<String, Atributo>>();
 		ArrayList<DTOAtributo> resultado = new ArrayList<DTOAtributo>();
+		
+		
 		buscar = obtenerAuxiliar(tab1, tab2);
 		
-		ArrayList<LinkedHashMap<String, Atributo>> reg = new ArrayList<LinkedHashMap<String, Atributo>>();
-		
-		if (existeAtributo(busqueda, tab1.getNombreTabla())) {
-			
-			reg = tab1.getRegistros();
-			
-		}
-		
-		if (existeAtributo(busqueda, tab2.getNombreTabla())) {
-			
-			reg = tab2.getRegistros();
-		}
-		
-		for (int i=0; i<buscar.size(); i++) {
-			
-			boolean yaAgregado = false;
-			Atributo atr = buscar.get(i);
-			
-			for(LinkedHashMap<String, Atributo> registro : reg) {
+		for (LinkedHashMap<String, Atributo> bus : buscar) {//Recorre el buscar
 					
-				if (registro.get(atr.getNombreAtributo()) instanceof Cadena) {
+				if (bus.get(busqueda) instanceof Cadena) {
 					
-					Cadena cadena1 = (Cadena) registro.get(atr.getNombreAtributo());
-					Cadena cad = (Cadena) atr;
-						
-					if(cad.getDato().equals(cadena1.getDato()) && yaAgregado==false) {
-											
-						if (registro.get(busqueda) instanceof Cadena) {
-							
-							Cadena ing = (Cadena)registro.get(busqueda);
-							DTOCadena dto = new DTOCadena (ing);
+							Cadena cadena1 = (Cadena) bus.get(busqueda);
+							DTOCadena dto = new DTOCadena (cadena1);
 							resultado.add(dto);
-							yaAgregado=true;
-							
 						}
 						
-						if (registro.get(busqueda) instanceof Entero) {
+				if (bus.get(busqueda) instanceof Entero) {
 							
-							Entero ing = (Entero)registro.get(busqueda);
-							DTOEntero dto = new DTOEntero (ing);
+							Entero entero1 = (Entero) bus.get(busqueda);
+							DTOEntero dto = new DTOEntero (entero1);
 							resultado.add(dto);
-							yaAgregado=true;
-							
 						}
 						
 					}
-					
-				}else{
-					
-					if (registro.get(atr.getNombreAtributo()) instanceof Entero) {
-						Entero entero1 = (Entero) registro.get(atr.getNombreAtributo());
-						Entero ent = (Entero) atr;
-						
-						if (ent.getValor() == entero1.getValor() && yaAgregado==false) {
-							
-							if (registro.get(busqueda) instanceof Cadena) {
-								
-								Cadena ing = (Cadena)registro.get(busqueda);
-								DTOCadena dto = new DTOCadena (ing);
-								resultado.add(dto);
-								yaAgregado=true;
-								
-							}
-							
-							if (registro.get(busqueda) instanceof Entero) {
-							
-								Entero ing = (Entero)registro.get(busqueda);
-								DTOEntero dto = new DTOEntero (ing);
-								resultado.add(dto);
-								yaAgregado=true;
-								
-							}
-							
-						}
-					}
-				}
-			}		
-		}
 
 		return resultado;
 		
 	}
+
 	
 	/**
 	 * Metodo privado que recibe dos parametros: el nombre de un atributo y el nombre de una tabla. El metodo retorna true si dicho atributo existe en la tabla o false en caso contrario.
