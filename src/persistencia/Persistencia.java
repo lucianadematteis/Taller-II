@@ -1047,7 +1047,7 @@ public class Persistencia {
 	            
 	        } catch (IOException ex) {
 	        	
-	            System.err.println("Error al crear el archivo: " + ex.getMessage());
+	            System.out.println("");
 	            
 	           
 	        }
