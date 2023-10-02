@@ -982,6 +982,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @return Lista que cumplan el JOIN NATURAL de ambas tablas
 	 */
 	public ArrayList<DTOAtributo> joinNatural(String tabla1, String tabla2, String busqueda){
+		
 		BaseDatos bd = new BaseDatos ("baseDatos");
 		bd = usuarios.get(usuario).getBasesDatos().get(baseDatos);
 		return bd.joinNatural(tabla1, tabla2, busqueda);
