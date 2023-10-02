@@ -61,6 +61,13 @@ public class Persistencia {
 		
 	}
 	
+	/**
+	 * Metodo publico que elimina una carpeta de usuario, base de datos o tabla (opcionalmente).
+	 * La ubicacion de la carpeta se basa en el nombre de usuario, el nombre de la base de datos y el nombre de la tabla (si se proporcionan).
+	 * @param nombreUsuario -> El nombre del usuario.
+	 * @param nombreBD -> El nombre de la base de datos (puede ser null si no se proporciona).
+	 * @param nombreTabla -> El nombre de la tabla (puede ser null si no se proporciona).
+	 */
 	public void eliminarCarpetaUsuarioBaseTabla(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
 		String separador = System.getProperty("file.separator");
