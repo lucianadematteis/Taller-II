@@ -51,7 +51,7 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(165, 209, 108, 28);
+		aceptar.setBounds(165, 197, 108, 40);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		

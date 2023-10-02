@@ -42,7 +42,7 @@ public class UsuarioRegistroErrorNombre extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(166, 210, 102, 28);
+		aceptar.setBounds(166, 202, 102, 36);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
