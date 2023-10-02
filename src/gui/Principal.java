@@ -1,6 +1,7 @@
 package gui;
 
 import comunicacion.FachadaLogica;
+import comunicacion.IFachadaLogica;
 
 /**
  * Clase principal
@@ -11,7 +12,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
-		FachadaLogica fa = new FachadaLogica();
+		IFachadaLogica fa = new FachadaLogica();
 		fa.recuperarDatos();
 		Login log = new Login(fa);
 		log.setLocationRelativeTo(null);
