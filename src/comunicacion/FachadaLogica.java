@@ -1254,6 +1254,7 @@ public class FachadaLogica implements IFachadaLogica {
 	public void eliminarBD(String nombreBD) {
 		
 		this.obtenerUsuario().eliminarBD(nombreBD);
+		persistencia.eliminarCarpetaBDTabla(usuario, nombreBD, null);
 		
 	}
 	
@@ -1264,6 +1265,7 @@ public class FachadaLogica implements IFachadaLogica {
 	public void eliminarTabla(String nombreTabla) {
 		
 		this.obtenerBaseDatos().eliminarTabla(nombreTabla);
+		persistencia.eliminarCarpetaBDTabla(usuario, baseDatos, nombreTabla);
 		
 	}
 	

@@ -32,6 +32,7 @@ import logica.Usuario;
  *@author Mauricio Gonzalez
  *
  */
+
 public class Persistencia {
 
 	/**
@@ -60,50 +61,49 @@ public class Persistencia {
 		
 	}
 	
-	/*
-	 * Metodo privado que crea una carpeta inicial llamada 'Sistema' en el escritorio del usuario.
-	 */
-	private void crearCarpetaInicial() {
+	public void eliminarCarpetaBDTabla(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
-		String nombreArchivo="";
-		int sistema = identificarSistema();
-	    
-		if (sistema == 1) { // Si es Windows
-        	
-            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\";
-            
-        } else if (sistema == 0) { // Si es Linux
-            
-        	nombreArchivo = System.getProperty("user.home") + "//Desktop//";
-       
-        }
-	    
-		crearCarpeta("Sistema", nombreArchivo);
+		String separador = System.getProperty("file.separator");
+	    String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + nombreUsuario + separador + nombreBD + separador;
+	
+		if(nombreTabla != null) {
+			
+			ruta = ruta + nombreTabla;
+			
+		}
+		
+		File carpeta = new File(ruta);
+		eliminarCarpeta(carpeta);
 		
 	}
 	
-	/**
-	 * Metodo privado que identifica el sistema operativo en el que se esta ejecutando la aplicacion. 
-	 * @return segun el sistema operativo, 0-> Linux, 1-> Windows
-	 */
-	private int identificarSistema() {
+	private void eliminarCarpeta(File carpeta) {
 		
-		String so = System.getProperty("os.name").toLowerCase();
-        
-        if (so.contains("win")) {
-        	
-            return 1;
+		if (carpeta.isDirectory()) {
             
-        } else if (so.contains("nix") || so.contains("nux")) {
-        	
-            return 0;
+            for (File contenido : carpeta.listFiles()) {
+            	
+                if(contenido.isDirectory()){
+                	
+                	eliminarCarpeta(contenido);
+                    
+                } else {
+                	
+                    contenido.delete();
+                    
+                }
+                
+            }
             
-        } else {
+            carpeta.delete();
+            
+        } else if (carpeta.isFile()) {
         	
-        	return -1;
+        	carpeta.delete();
+            
         }
 		
-	}
+    }
 	
 	/**
 	 * Metodo privado que retorna en una cadena de caracteres la ruta completa del archivo de ayuda en funcion del sistema operativo detectado.
@@ -111,19 +111,10 @@ public class Persistencia {
 	 */
 	private String obtenerRutaAyuda() {
 		
-		String nombreArchivo="";
-	    
-		if (identificarSistema() == 1) { // Si es Windows
-        	
-            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\Ayuda.txt";
-        
-        } else if (identificarSistema() == 0) { // Si es Linux
-            
-        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//Ayuda.txt";
-       
-        }
-	     
-	    return nombreArchivo;
+		String separador = System.getProperty("file.separator");
+		String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + "Ayuda.txt";
+		
+	    return ruta;
 		
 	}
 	
@@ -136,19 +127,10 @@ public class Persistencia {
 	 */
 	private String obtenerRutaRegistro(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
-		String nombreArchivo="";
-	    
-		if (identificarSistema() == 1) { // Si es Windows
-        	
-            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBD + "\\" + nombreTabla + "\\" + "Registros.txt";
-        
-        } else if (identificarSistema() == 0) { // Si es Linux
-            
-        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBD + "//" + nombreTabla + "//" + "Registros.txt";
-       
-        }
-	     
-	    return nombreArchivo;
+		String separador = System.getProperty("file.separator");
+		String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + nombreUsuario + separador + nombreBD + separador + nombreTabla + separador + "Registros.txt";
+		
+		return ruta;
 	    
 	}
 	
@@ -158,20 +140,11 @@ public class Persistencia {
 	 */
 	private String obtenerRutaUsuarios() {
 		
-		String nombreArchivo = "";
-
-		if (identificarSistema() == 1) { // Si es Windows
-			
-			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\Usuarios.txt";
-			
-		} else if (identificarSistema() == 0) { // Si es Linux
-			
-			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//Usuarios.txt";
-			
-		}
-
-		return nombreArchivo;
+		String separador = System.getProperty("file.separator");
+		String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + "Usuarios.txt";
 		
+		return ruta;
+
 	}
 	
 	/**
@@ -181,21 +154,10 @@ public class Persistencia {
 	 */
 	private String obtenerRutaBD(String nombreUsuario) {
 
-		String nombreArchivo = "";
-
-		if (identificarSistema() == 1) { // Si es windows
-
-			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\"
-					+ "BasesDeDatos.txt"; 
-
-		} else if (identificarSistema() == 0) { // Si es linux
-
-			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//"
-					+ "BasesDeDatos.txt";
-
-		}
-
-		return nombreArchivo;
+		String separador = System.getProperty("file.separator");
+		String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + nombreUsuario + separador + "BasesDeDatos.txt";
+		
+		return ruta;
 
 	}
 	
@@ -208,19 +170,11 @@ public class Persistencia {
 	 */
 	private String obtenerRutaTabla(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
-		String nombreArchivo="";
-	    
-		if (identificarSistema() == 1) { // Si es Windows
-        	
-            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBD + "\\" + "Tablas.txt";
-        
-        } else if (identificarSistema() == 0) { // Si es Linux
-            
-        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBD + "//" + "Tablas.txt";
-       
-        }
-	     
-	    return nombreArchivo;
+		String separador = System.getProperty("file.separator");
+		String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + nombreUsuario + separador + nombreBD + separador + "Tablas.txt";
+		
+		return ruta;
+
 	}
 	
 	/**
@@ -229,22 +183,14 @@ public class Persistencia {
 	 */
 	private String obtenerRutaDemo() {
 		
-		String nombreArchivo="";
-	    
-		if (identificarSistema() == 1) { // Si es Windows
-        	
-            nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\intentosDemo.txt";
-        
-        } else if (identificarSistema() == 0) { // Si es Linux
-            
-        	nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//intentosDemo.txt";
-       
-        }
-	     
-	    return nombreArchivo;
+		String separador = System.getProperty("file.separator");
+		String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + "intentosDemo.txt";
+		
+		return ruta;
+
 		
 	}
-
+	
 	/**
 	 * Este metodo privado cifra o descifra una cadena de texto utilizando un cifrado Cesar con un desplazamiento de 5 caracteres.
 	 * @param cadena -> La cadena de texto a cifrar o descifrar.
@@ -316,16 +262,10 @@ public class Persistencia {
 		String contraCifrada = this.metodoCifrarDescifrar(usuario.getContrasenia(), true);
 	    String infoUsuario = usuario.getNombreUser() + ":" + contraCifrada;
 	    
-	    if(identificarSistema()==1) {
-			 
-            crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "\\Desktop\\Sistema\\" );
-          
-		 } else {
-			 
-            crearCarpeta(usuario.getNombreUser(), System.getProperty("user.home") + "//Desktop//Sistema//" );
-            
-		 }
-	    
+	    String separador = System.getProperty("file.separator");
+	    String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador;
+	    crearCarpeta(usuario.getNombreUser(), ruta);
+
 	    for (Map.Entry<String, BaseDatos> bdEntry : usuario.getBasesDatos().entrySet()) {
 	    	
 	        infoUsuario += ":" + bdEntry.getValue().getNombreBD(); // Agregar nombres de las bases de datos
@@ -390,15 +330,9 @@ public class Persistencia {
 				Map<String, Tabla> tablas = baseDatos.getTablas();
 				insertar.append(nombreBase);
 				
-				if (identificarSistema() == 1) {
-					
-					crearCarpeta(nombreBase, System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario);
-				
-				} else {
-					
-					crearCarpeta(nombreBase, System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario);
-				
-				}
+				String separador = System.getProperty("file.separator");
+				String rutaBase = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + nombreUsuario;
+				crearCarpeta(nombreBase, rutaBase);
 
 				for (Map.Entry<String, Tabla> entry2 : tablas.entrySet()) {
 
@@ -448,22 +382,11 @@ public class Persistencia {
 	 */
 	private void persistirTablas(Map<String, Tabla> tablas, String nombreBase, String nombreUsuario){
 		
-		String nombreArchivo="";
-		String ruta="";
 		StringBuilder insertar = new StringBuilder();
-		
-		if (identificarSistema()==1) { //Si es windows
-			
-			nombreArchivo = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBase + "\\" + "Tablas.txt";
-			ruta = System.getProperty("user.home") + "\\Desktop\\Sistema\\" + nombreUsuario + "\\" + nombreBase;
-		
-		}else if(identificarSistema()==0){ //Si es linux
-			
-			nombreArchivo = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBase + "//" + "Tablas.txt";
-			ruta = System.getProperty("user.home") + "//Desktop//Sistema//" + nombreUsuario + "//" + nombreBase;
-		
-		}
-		
+		String separador = System.getProperty("file.separator");
+		String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + nombreUsuario + separador + nombreBase;
+		String nombreArchivo = ruta + separador + "Tablas.txt";
+
         try (FileWriter archivo = new FileWriter(nombreArchivo)) {
         	
             for (Map.Entry<String, Tabla> entry : tablas.entrySet()) {
@@ -698,7 +621,6 @@ public class Persistencia {
 	 */
 	public void persistirTodo(LinkedHashMap<String, Usuario> usuarios, int demo) {
 		
-		crearCarpetaInicial();
 		persistirUsuariosTotales(usuarios);
 		persistirBasesDatosTotales(usuarios);
 		persistirTablasTotales(usuarios);
