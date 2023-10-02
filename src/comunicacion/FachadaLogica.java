@@ -1029,14 +1029,12 @@ public class FachadaLogica implements IFachadaLogica {
 		    				
 		    				if (repiteAtributo(entry1.getValue(), entry2.getValue())) {
 		    					
-		    					
 		    					LinkedHashMap<String, Atributo> regCombinado = new LinkedHashMap<String, Atributo>();
 		    					
-		    						regCombinado.putAll(reg1.get(i));
-		    						regCombinado.putAll(reg2.get(j));
-		    						resultado.add(regCombinado);
-		    						
-		                
+	    						regCombinado.putAll(reg1.get(i));
+	    						regCombinado.putAll(reg2.get(j));
+	    						resultado.add(regCombinado);
+		    					
 		    				}
 		             
 		                }
@@ -1063,50 +1061,29 @@ public class FachadaLogica implements IFachadaLogica {
 		Tabla tab2 = obtenerTabla(tabla2);
 		ArrayList<LinkedHashMap<String, Atributo>> buscar = new ArrayList<LinkedHashMap<String, Atributo>>();
 		ArrayList<DTOAtributo> resultado = new ArrayList<DTOAtributo>();
-		
-		
 		buscar = obtenerAuxiliar(tab1, tab2);
 		
 		for (LinkedHashMap<String, Atributo> bus : buscar) {//Recorre el buscar
 					
 				if (bus.get(busqueda) instanceof Cadena) {
 					
-							Cadena cadena1 = (Cadena) bus.get(busqueda);
-							DTOCadena dto = new DTOCadena (cadena1);
-							resultado.add(dto);
-						}
+					Cadena cadena1 = (Cadena) bus.get(busqueda);
+					DTOCadena dto = new DTOCadena (cadena1);
+					resultado.add(dto);
+							
+				}
 						
 				if (bus.get(busqueda) instanceof Entero) {
 							
-							Entero entero1 = (Entero) bus.get(busqueda);
-							DTOEntero dto = new DTOEntero (entero1);
-							resultado.add(dto);
-						}
+					Entero entero1 = (Entero) bus.get(busqueda);
+					DTOEntero dto = new DTOEntero (entero1);
+					resultado.add(dto);
+							
+				}
 						
-					}
+		}
 
 		return resultado;
-		
-	}
-
-	
-	/**
-	 * Metodo privado que recibe dos parametros: el nombre de un atributo y el nombre de una tabla. El metodo retorna true si dicho atributo existe en la tabla o false en caso contrario.
-	 * @param atributo-> atributo
-	 * @param nombreTabla-> nombre de la tabla
-	 * @return verifica si el atributo se encuentra en la tabla
-	 */
-	private boolean existeAtributo(String atributo, String nombreTabla) {
-		
-		if (usuarios.get(usuario).getBasesDatos().get(baseDatos).getTablas().get(nombreTabla).getRegistros().get(0).get(atributo) == null) {
-		
-			return false;
-			
-		}else {
-			
-			return true;
-			
-		}
 		
 	}
 

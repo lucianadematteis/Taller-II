@@ -1022,44 +1022,48 @@ public class Persistencia {
 	 * @return El valor numerico recuperado del archivo.
 	 * @throws NumberFormatException Si el archivo no contiene un valor numerico valido.
 	 */
-
-
 	public int recuperarDemo() {
+		
 	    String ruta = obtenerRutaDemo();
 	    StringBuilder contenidoArchivo = new StringBuilder();
 	    
 	    try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ruta), "UTF-8"))) {
-            bw.write("1");
+          
+	    	bw.write("1");
+            
         } catch (IOException ex) {
         	
             System.err.println("Error al crear el archivo: " + ex.getMessage());
+      
         }
 
 	    try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(ruta), "UTF-8"))) {
-	        String linea;
+	       
+	    	String linea;
 
 	        while ((linea = br.readLine()) != null) {
+	        	
 	            contenidoArchivo.append(linea);
+	        
 	        }
 
 	    } catch (FileNotFoundException e) {
+	    	
 	        System.err.println("El archivo no se encontró: " + e.getMessage());
 
-	        
-
 	    } catch (IOException g) {
+	    	
 	        System.err.println("Error de lectura del archivo: " + g.getMessage());
+	    
 	    }
 
 	    String contenidoDemo = contenidoArchivo.toString();
 	    int demo = Integer.parseInt(contenidoDemo);
 
 	    return demo;
+	    
 	}
 
-	
-
-	
 	/**
 	 * Metodo publico que recibe como parametro una coleccion de usuarios. El metodo coordina la recuperacion de informacion relacionada con usuarios, bases de datos, tablas y registros llamando a otros metodos privados. Recorre los usuarios y sus respectivas bases de datos y tablas para cargar la informacion de manera completa
 	 * @param usuarios-> mapa de usuarios
