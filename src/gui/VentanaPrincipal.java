@@ -31,6 +31,14 @@ public class VentanaPrincipal extends JFrame {
 	private IFachadaLogica fa;
 	static JTable guiaTabla;
 	
+	/**
+	 * Metodo publico que se utiliza para procesar una sentencia y generar un arreglo de arreglos.
+	 * Cada arreglo secundario contiene las palabras de una linea de la sentencia, donde las palabras
+	 * pueden estar entre comillas o separadas por espacios. Elimina las comillas de las palabras entre comillas.
+	 *
+	 * @param sentencia -> La sentencia a procesar.
+	 * @return Un ArrayList de arreglos de cadenas, donde cada arreglo contiene las palabras de una linea de la sentencia.
+	 */
 	public ArrayList<String[]> administraSentencia(String sentencia) {
 
 		// Se pretende generar un arreglo de arreglos. Donde en cada posici�n del
@@ -158,7 +166,6 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane_3.getViewport().setBackground(fondoVentana);
 		contentPane.add(scrollPane_3);
 		
-
 		guia = new JTable();
 		guia.setCellSelectionEnabled(false);
 		guia.setFont(new Font("SansSerif", Font.PLAIN, 15));
@@ -261,7 +268,6 @@ public class VentanaPrincipal extends JFrame {
 		scrollPane_1.setViewportView(salida);
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
-    	
 		JButton ejecutar = new JButton("EJECUTAR");
 		ejecutar.setFont(new Font("Segoe UI", Font.BOLD, 13));
 		ejecutar.addActionListener(new ActionListener() {
@@ -369,7 +375,11 @@ public class VentanaPrincipal extends JFrame {
 		}
 	}
 
-	
+	/**
+	 * Carga las bases de datos en una tabla GUI.
+	 *
+	 * @param nBD -> ArrayList que contiene los nombres de las bases de datos.
+	 */
 	public static void cargarBasesDatos(ArrayList<String> nBD) {
 		
 		DefaultTableModel model = (DefaultTableModel) guia.getModel();
@@ -385,6 +395,11 @@ public class VentanaPrincipal extends JFrame {
 		
 	}
 
+	/**
+	 * Carga las tablas en una tabla GUI.
+	 *
+	 * @param nTablas -> ArrayList que contiene los nombres de las tablas.
+	 */
 	public static void cargarTablas(ArrayList<String> nTablas) {
 
 		DefaultTableModel model = (DefaultTableModel) guiaTabla.getModel();
