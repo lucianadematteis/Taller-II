@@ -973,63 +973,6 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
-	/**
-	 * Metodo privado que recibe dos objetos Tabla para realizar una comparacion de registros. El metodo compara los registros de ambas tablas y encuentra los atributos que se repiten y retorna una lista de objetos Atributo que representan los atributos repetidos en ambas tablas
-	 * @param tabla1-> Tabla 1 a buscar
-	 * @param tabla2-> Tabla 2 a buscar 
-	 * @return tablas registros de ambas tablas combinados (solo cuando se logra el join)
-	 */
-	private ArrayList<LinkedHashMap<String, Atributo>> obtenerAuxiliar(Tabla tabla1, Tabla tabla2) {
-		
-		ArrayList<LinkedHashMap<String, Atributo>> resultado = new ArrayList<LinkedHashMap<String, Atributo>>();
-		ArrayList<LinkedHashMap<String, Atributo>> reg1;
-		ArrayList<LinkedHashMap<String, Atributo>> reg2;
-		
-		if(tabla1.getRegistros().size() > tabla2.getRegistros().size()) {
-			
-			reg1 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla1.getRegistros());
-			reg2 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla2.getRegistros());
-	   
-		}else {
-			
-			reg1 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla2.getRegistros());
-			reg2 = new ArrayList<LinkedHashMap<String, Atributo>>(tabla1.getRegistros());	
-		
-		}
-		
-		if(reg1.size()>1 && reg2.size()>1) {
-			
-			reg2.remove(0);
-			reg1.remove(0);
-		   
-		    for (int i=0; i<reg1.size(); i++) {
-		    	
-		    	for (int j=0; j<reg2.size(); j++) {
-		    	
-		    		for(Map.Entry<String, Atributo> entry1 : reg1.get(i).entrySet()) {
-		    		
-		    			for(Map.Entry<String, Atributo> entry2 : reg2.get(j).entrySet()) {
-		    				
-		    				if (repiteAtributo(entry1.getValue(), entry2.getValue())) {
-		    					
-		    					LinkedHashMap<String, Atributo> regCombinado = new LinkedHashMap<String, Atributo>();
-		    					
-	    						regCombinado.putAll(reg1.get(i));
-	    						regCombinado.putAll(reg2.get(j));
-	    						resultado.add(regCombinado);
-		    					
-		    				}
-		             
-		                }
-		            }
-		        }
-		    }
-		    
-		}
-    	
-		return resultado;
-		
-    }
     	
 	/**
 	 * Metodo publico que recibe tres parametros: nombre de la primera tabla, nombre de la segunda tabla y el nombre del atributo de busqueda. El metodo realiza una operacion de join natural entre las dos tablas en funcion del atributo de busqueda y retorna una lista de objetos DTOAtributo
@@ -1039,66 +982,9 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @return Lista que cumplan el JOIN NATURAL de ambas tablas
 	 */
 	public ArrayList<DTOAtributo> joinNatural(String tabla1, String tabla2, String busqueda){
-		
-		Tabla tab1 = obtenerTabla(tabla1);
-		Tabla tab2 = obtenerTabla(tabla2);
-		ArrayList<LinkedHashMap<String, Atributo>> buscar = new ArrayList<LinkedHashMap<String, Atributo>>();
-		ArrayList<DTOAtributo> resultado = new ArrayList<DTOAtributo>();
-		buscar = obtenerAuxiliar(tab1, tab2);
-		
-		for (LinkedHashMap<String, Atributo> bus : buscar) {//Recorre el buscar
-					
-			if (bus.get(busqueda) instanceof Cadena) {
-				
-				Cadena cadena1 = (Cadena) bus.get(busqueda);
-				DTOCadena dto = new DTOCadena (cadena1);
-				resultado.add(dto);
-						
-			}
-					
-			if (bus.get(busqueda) instanceof Entero) {
-						
-				Entero entero1 = (Entero) bus.get(busqueda);
-				DTOEntero dto = new DTOEntero (entero1);
-				resultado.add(dto);
-						
-			}
-						
-		}
-
-		return resultado;
-		
-	}
-
-	/**
-	 * Metodo privado que recibe dos parametros: un atributo y otro atributo. El metodo verificar si los dos atributos tienen el mismo nombre y, en caso de ser cadenas o enteros, si tienen el mismo valor y retorna true si son iguales o false en caso contrario
-	 * @param atr1-> atributo 1
-	 * @param atr2-> atributo 2
-	 * @return verifica si ambos atributos son iguales
-	 */
-	private boolean repiteAtributo(Atributo atr1, Atributo atr2) {
-		
-		if(atr1.getNombreAtributo().equals(atr2.getNombreAtributo())) {
-		
-			if (atr1 instanceof Cadena && atr2 instanceof Cadena) {
-				
-				Cadena cadena1 = (Cadena) atr1;
-				Cadena cadena2 = (Cadena) atr2;
-				
-				return (cadena1.getDato().equals(cadena2.getDato()));
-				
-			}else if (atr1 instanceof Entero && atr2 instanceof Entero) {
-			
-				Entero entero1 = (Entero) atr1;
-				Entero entero2 = (Entero) atr2;
-				
-				return (entero1.getValor()==entero2.getValor());
-				
-			}
-			
-		}
-		
-		return false;
+		BaseDatos bd = new BaseDatos ("baseDatos");
+		bd = usuarios.get(usuario).getBasesDatos().get(baseDatos);
+		return bd.joinNatural(tabla1, tabla2, busqueda);
 		
 	}
 	
