@@ -185,16 +185,7 @@ public class FachadaLogica implements IFachadaLogica {
 		}
 		
 	}
-	
-	/**
-	 *@param valores Lista de valores enteros.
-	 *@return Cantidad de elementos en la lista.
-	 */
-	public int obtenerCantidad(ArrayList<Integer> valores) {
 
-		return valores.size();
-
-	}
 
 	/**
 	 *Crea una nueva instancia de Usuario a partir de los datos proporcionados en él y lo agrega a la colección de usuarios.
@@ -607,15 +598,6 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
-	/**
-	 * Metodo publico que retorna true si el usuario actual existe en la coleccion de usuarios y false en caso contrario.
-	 * @return verifica si el usuario existe
-	 */
-	public boolean existeUsuario() {
-		
-		return usuarios.containsKey(usuario);
-		
-	}
 	
 	/**
 	  * Metodo publico que recibe como parametro el nombre de una base de datos y retorna true si la misma existe para el usuario actual y false en caso contrario
