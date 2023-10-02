@@ -61,15 +61,23 @@ public class Persistencia {
 		
 	}
 	
-	public void eliminarCarpetaBDTabla(String nombreUsuario, String nombreBD, String nombreTabla) {
+	public void eliminarCarpetaUsuarioBaseTabla(String nombreUsuario, String nombreBD, String nombreTabla) {
 		
 		String separador = System.getProperty("file.separator");
-	    String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + nombreUsuario + separador + nombreBD + separador;
-	
-		if(nombreTabla != null) {
-			
-			ruta = ruta + nombreTabla;
-			
+		String ruta = System.getProperty("user.home") + separador + "Desktop" + separador + "Sistema" + separador + nombreUsuario + separador;
+		
+		if(nombreTabla != null || nombreBD != null) { //Si no se quiere eliminar una carpeta de usuario
+		
+		    if(nombreTabla == null) { //Si se quiere eliminar una carpeta de una base de datos
+				
+		    	ruta = ruta + nombreBD + separador;
+		    	
+			}else{ //Si se quiere eliminar una carpeta de una tabla
+				
+				ruta = ruta + nombreBD + separador + nombreTabla + separador;
+		    	
+			}
+		
 		}
 		
 		File carpeta = new File(ruta);
@@ -77,6 +85,13 @@ public class Persistencia {
 		
 	}
 	
+	/**
+	 * Metodo privado que elimina una carpeta y su contenido de manera recursiva.
+	 * Si la carpeta es un directorio, elimina su contenido y luego elimina la carpeta.
+	 * Si la carpeta es un archivo, simplemente lo elimina.
+	 *
+	 * @param carpeta -> La carpeta que se va a eliminar.
+	 */
 	private void eliminarCarpeta(File carpeta) {
 		
 		if (carpeta.isDirectory()) {
