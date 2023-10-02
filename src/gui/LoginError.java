@@ -46,7 +46,7 @@ public class LoginError extends JFrame {
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Usuario o contrase\u00F1a invalidos");
+		JLabel lblNewLabel = new JLabel("Usuario o contrase\u00F1a inv\u00E1lidos");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(75, 36, 349, 155);
