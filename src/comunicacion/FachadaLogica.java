@@ -1048,21 +1048,21 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		for (LinkedHashMap<String, Atributo> bus : buscar) {//Recorre el buscar
 					
-				if (bus.get(busqueda) instanceof Cadena) {
-					
-					Cadena cadena1 = (Cadena) bus.get(busqueda);
-					DTOCadena dto = new DTOCadena (cadena1);
-					resultado.add(dto);
-							
-				}
+			if (bus.get(busqueda) instanceof Cadena) {
+				
+				Cadena cadena1 = (Cadena) bus.get(busqueda);
+				DTOCadena dto = new DTOCadena (cadena1);
+				resultado.add(dto);
 						
-				if (bus.get(busqueda) instanceof Entero) {
-							
-					Entero entero1 = (Entero) bus.get(busqueda);
-					DTOEntero dto = new DTOEntero (entero1);
-					resultado.add(dto);
-							
-				}
+			}
+					
+			if (bus.get(busqueda) instanceof Entero) {
+						
+				Entero entero1 = (Entero) bus.get(busqueda);
+				DTOEntero dto = new DTOEntero (entero1);
+				resultado.add(dto);
+						
+			}
 						
 		}
 
