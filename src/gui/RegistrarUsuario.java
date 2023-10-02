@@ -50,36 +50,39 @@ public class RegistrarUsuario extends JFrame {
 		panel.setLayout(null);
 		
 		usuario = new JTextField();
-		usuario.setBounds(307, 82, 198, 20);
+		usuario.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 14));
+		usuario.setBounds(307, 90, 209, 20);
 		panel.add(usuario);
 		usuario.setColumns(10);
 		
 		pass = new JPasswordField();
-		pass.setBounds(307, 145, 198, 20);
+		pass.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 14));
+		pass.setBounds(307, 145, 209, 20);
 		panel.add(pass);
 		pass.setColumns(10);
 		
 		pass2 = new JPasswordField();
-		pass2.setBounds(307, 205, 198, 20);
+		pass2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 14));
+		pass2.setBounds(307, 201, 209, 20);
 		panel.add(pass2);
 		pass2.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Ingrese documento de usuario");
 		lblNewLabel.setForeground(fuentePrincipal);
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(21, 82, 287, 20);
+		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblNewLabel.setBounds(10, 82, 291, 28);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nueva contrase\u00F1a");
 		lblNewLabel_1.setForeground(fuentePrincipal);
-		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(128, 143, 225, 17);
+		lblNewLabel_1.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblNewLabel_1.setBounds(126, 145, 171, 20);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Confirmar contrase\u00F1a");
 		lblNewLabel_2.setForeground(fuentePrincipal);
-		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(98, 208, 199, 17);
+		lblNewLabel_2.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblNewLabel_2.setBounds(92, 201, 209, 20);
 		panel.add(lblNewLabel_2);
 		
 		JButton aceptar = new JButton("ACEPTAR");
@@ -135,8 +138,8 @@ public class RegistrarUsuario extends JFrame {
 			}
 			
 		});
-		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
-		aceptar.setBounds(401, 285, 104, 23);
+		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		aceptar.setBounds(386, 285, 130, 28);
 		aceptar.setFocusPainted(false);
 		panel.add(aceptar);
 		
@@ -154,16 +157,16 @@ public class RegistrarUsuario extends JFrame {
 		
 		});
 		btnCancelar.setForeground(Color.WHITE);
-		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 11));
+		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
-		btnCancelar.setBounds(274, 285, 104, 23);
+		btnCancelar.setBounds(244, 285, 130, 28);
 		panel.add(btnCancelar);
 		
 		JLabel lblNewLabel_3 = new JLabel("REGISTRO DE USUARIO");
 		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setFont(new Font("SansSerif", Font.PLAIN, 36));
-		lblNewLabel_3.setBounds(276, 11, 545, 99);
+		lblNewLabel_3.setFont(new Font("SansSerif", Font.BOLD, 42));
+		lblNewLabel_3.setBounds(266, 11, 506, 99);
 		contentPane.add(lblNewLabel_3);
 		
 		JSeparator separator_1 = new JSeparator();

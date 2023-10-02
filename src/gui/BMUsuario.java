@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,10 +12,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
 import comunicacion.DTOUsuario;
 import comunicacion.IFachadaLogica;
-
 import javax.swing.JTextArea;
 
 public class BMUsuario extends JFrame {
@@ -54,14 +51,14 @@ public class BMUsuario extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Ingrese nueva contrase\u00F1a");
 		lblNewLabel_1.setForeground(fuentePrincipal);
-		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(92, 102, 250, 39);
+		lblNewLabel_1.setFont(new Font("SansSerif", Font.BOLD, 20));
+		lblNewLabel_1.setBounds(92, 115, 250, 26);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Repita la contrase\u00F1a");
 		lblNewLabel_2.setForeground(fuentePrincipal);
-		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(92, 202, 205, 26);
+		lblNewLabel_2.setFont(new Font("SansSerif", Font.BOLD, 20));
+		lblNewLabel_2.setBounds(92, 203, 205, 26);
 		panel.add(lblNewLabel_2);
 		
 		JButton aceptar = new JButton("CONFIRMAR");
@@ -110,8 +107,8 @@ public class BMUsuario extends JFrame {
 			}
 			
 		});
-		aceptar.setFont(new Font("SansSerif", Font.PLAIN, 11));
-		aceptar.setBounds(316, 302, 104, 23);
+		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		aceptar.setBounds(287, 302, 133, 26);
 		aceptar.setFocusPainted(false);
 		panel.add(aceptar);
 		
@@ -126,12 +123,14 @@ public class BMUsuario extends JFrame {
 		panel.add(separator);
 		
 		pass = new JPasswordField();
-		pass.setBounds(92, 152, 235, 20);
+		pass.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 17));
+		pass.setBounds(92, 152, 250, 26);
 		panel.add(pass);
 		pass.setColumns(10);
 		
 		pass2 = new JPasswordField();
-		pass2.setBounds(92, 234, 229, 20);
+		pass2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 17));
+		pass2.setBounds(92, 240, 250, 26);
 		panel.add(pass2);
 		pass2.setColumns(10);
 		
@@ -154,8 +153,8 @@ public class BMUsuario extends JFrame {
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Ingrese su contrase\u00F1a actual");
 		lblNewLabel_2_1.setForeground(Color.WHITE);
-		lblNewLabel_2_1.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel_2_1.setBounds(102, 201, 266, 26);
+		lblNewLabel_2_1.setFont(new Font("SansSerif", Font.BOLD, 20));
+		lblNewLabel_2_1.setBounds(104, 188, 289, 26);
 		panel_1.add(lblNewLabel_2_1);
 		
 		JButton aceptar_1 = new JButton("ELIMINAR CUENTA");
@@ -178,10 +177,10 @@ public class BMUsuario extends JFrame {
 			}
 		});
 		aceptar_1.setForeground(Color.WHITE);
-		aceptar_1.setFont(new Font("SansSerif", Font.PLAIN, 11));
+		aceptar_1.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		aceptar_1.setFocusPainted(false);
 		aceptar_1.setBackground(new Color(3, 60, 88));
-		aceptar_1.setBounds(275, 302, 145, 23);
+		aceptar_1.setBounds(257, 300, 162, 26);
 		panel_1.add(aceptar_1);
 		
 		JLabel lblEliminarUsuario = new JLabel("ELIMINAR USUARIO");
@@ -195,8 +194,9 @@ public class BMUsuario extends JFrame {
 		panel_1.add(separator_2);
 		
 		passActual = new JPasswordField();
+		passActual.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 17));
 		passActual.setColumns(10);
-		passActual.setBounds(111, 238, 229, 20);
+		passActual.setBounds(104, 238, 274, 26);
 		panel_1.add(passActual);
 		
 		JTextArea txtrAtencinElSiguiente = new JTextArea();
@@ -221,10 +221,10 @@ public class BMUsuario extends JFrame {
 		
 		});
 		btnCancelar.setForeground(Color.WHITE);
-		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 11));
+		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
-		btnCancelar.setBounds(865, 579, 104, 23);
+		btnCancelar.setBounds(853, 587, 116, 28);
 		contentPane.add(btnCancelar);
 		
 	}

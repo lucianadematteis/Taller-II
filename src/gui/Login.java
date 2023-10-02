@@ -31,7 +31,6 @@ public class Login extends JFrame {
 		this.fa = fa;
 		Color recuadro = new Color (3,90,88);
 		Color fondoPrincipal = new Color (66,141,138);
-		Color fondoVentana = new Color (187,218,219);
 		Color fuentePrincipal = new Color (255,255,255);
 		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
@@ -67,7 +66,7 @@ public class Login extends JFrame {
 		pass_1.setBounds(64, 196, 340, 26);
 		panel.add(pass_1);
 		pass_1.setForeground(escritura);
-		pass_1.setBackground(fondoVentana);
+		pass_1.setBackground(Color.WHITE);
 		pass_1.setColumns(10);
 		pass_1.setHorizontalAlignment(JTextField.CENTER);
 		
@@ -141,7 +140,7 @@ public class Login extends JFrame {
 		user.setBounds(64, 92, 340, 26);
 		panel.add(user);
 		user.setForeground(escritura);
-		user.setBackground(fondoVentana);
+		user.setBackground(Color.WHITE);
 		user.setColumns(10);
 		user.setHorizontalAlignment(JTextField.CENTER);
 		
