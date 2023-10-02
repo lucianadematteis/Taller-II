@@ -801,28 +801,7 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
-	/**
-	 * Metodo publico que recibe el nombre de la tabla y una lista de atributos. El metodo valida si la cantidad de atributos proporcionados coincide con la cantidad de atributos en la tabla y retorna true si la cantidad coincide, o false en caso contrario
-	 * @param nombreTabla-> nombre de la tabla
-	 * @param atributos-> lista de atributos
-	 * @return valida si la cantidad de atributos es correcta
-	 */
-	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos) {
-		
-		Tabla tablita = this.obtenerTabla(nombreTabla);
-		int cantidadAtributos = tablita.getRegistros().get(0).size();
-
-		if(atributos.size() != cantidadAtributos) {
-			
-			return false;
-			
-		}else {
-			
-			return true;
-		
-		}
-		
-	}
+	
 
 	/**
 	 * Metodo publico que recibe como parametro el nombre de la tabla y una lista de atributos. El metodo valida si los atributos que no sean nulos encajan con la definicion de la tabla y retorna true si todos los atributos cumplen con la restriccion, false si al menos uno no lo hace
