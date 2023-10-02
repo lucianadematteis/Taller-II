@@ -29,6 +29,7 @@ import comunicacion.IFachadaLogica;
  * @author Mauricio
  * @author Luciana
  */
+
 public class Comandos {
 	
 	private IFachadaLogica logica;
@@ -1467,7 +1468,7 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
-        	insertarDepuracion("Error #03", "Demasiados argumentos en línea 1");
+        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 1");
         	
     	}else {
     		
@@ -1493,22 +1494,31 @@ public class Comandos {
         					
         					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) || (logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[2])!=null)) {
         						
-        						if(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]).isEmpty()){
-        							
-        							insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
-		            				
-        						}else {
+        						if(logica.validaAtributosJoin(sentencia.get(1)[1], sentencia.get(1)[2])) {
         						
-	        						cargarTablaAtributos(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]), sentencia.get(0)[1]);
-	            					aciertos++;
-	            					insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados del join natural entre las tablas: " + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
-	    			        	
+	        						if(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]).isEmpty()){
+	        							
+	        							insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
+			            			
+	        						}else {
+        						
+		        						cargarTablaAtributos(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]), sentencia.get(0)[1]);
+		            					aciertos++;
+		            					insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados del join natural entre las tablas: " + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
+		    			        	
+	        						}
+        						
+        						}else {
+        							
+        							insertarDepuracion("Error #23", "Las tablas ingresadas no poseen ningún atributo en común");
+                	        		
         						}
         						
         					}else {
         	        			
-                				insertarDepuracion("Error #23", "El atributo no existe en ningúna de las tablas ingresadas");
-        	        		}
+                				insertarDepuracion("Error #23", "El atributo no existe en ninguna de las tablas ingresadas");
+        	        		
+        					}
         					
         				}else {
         					
