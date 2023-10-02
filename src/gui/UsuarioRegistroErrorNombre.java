@@ -30,6 +30,7 @@ public class UsuarioRegistroErrorNombre extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		aceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -41,7 +42,7 @@ public class UsuarioRegistroErrorNombre extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(173, 215, 89, 23);
+		aceptar.setBounds(166, 210, 102, 28);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
@@ -49,7 +50,7 @@ public class UsuarioRegistroErrorNombre extends JFrame {
 		JLabel lblNewLabel = new JLabel("Nombre de usuario incorrecto");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(81, 36, 485, 155);
+		lblNewLabel.setBounds(81, 36, 314, 155);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 6");

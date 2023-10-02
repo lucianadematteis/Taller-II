@@ -19,7 +19,6 @@ public class UsuarioCambioContraseniaCorrecto extends JFrame {
 		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fuentePrincipal = new Color (255,255,255);
-		Color escritura = new Color (0,0,0);
 		Color botones = new Color (3,60,88);
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -31,6 +30,7 @@ public class UsuarioCambioContraseniaCorrecto extends JFrame {
 		contentPane.setBackground(fondoPrincipal);
 		
 		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		aceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -44,14 +44,14 @@ public class UsuarioCambioContraseniaCorrecto extends JFrame {
 		
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(173, 215, 89, 23);
+		aceptar.setBounds(166, 203, 104, 35);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
 		JLabel lblNewLabel = new JLabel("La contrase\u00F1a se ha cambiado con \u00E9xito");
-		lblNewLabel.setForeground(escritura);
+		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(38, 49, 485, 155);
+		lblNewLabel.setBounds(38, 40, 386, 155);
 		contentPane.add(lblNewLabel);
 		
 	}

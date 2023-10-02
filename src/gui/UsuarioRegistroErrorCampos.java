@@ -30,6 +30,7 @@ public class UsuarioRegistroErrorCampos extends JFrame {
 		contentPane.setBackground(fondoPrincipal);
 		
 		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		aceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -43,7 +44,7 @@ public class UsuarioRegistroErrorCampos extends JFrame {
 		
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(173, 215, 89, 23);
+		aceptar.setBounds(167, 200, 100, 37);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		

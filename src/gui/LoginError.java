@@ -31,6 +31,7 @@ public class LoginError extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		aceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -41,14 +42,14 @@ public class LoginError extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(173, 215, 89, 23);
+		aceptar.setBounds(164, 202, 114, 36);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Usuario o contrasenia invalidos");
+		JLabel lblNewLabel = new JLabel("Usuario o contrase\u00F1a invalidos");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		lblNewLabel.setBounds(75, 36, 485, 155);
+		lblNewLabel.setBounds(75, 36, 349, 155);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Codigo de error 8");

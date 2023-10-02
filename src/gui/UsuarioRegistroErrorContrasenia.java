@@ -33,6 +33,7 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		aceptar.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {
@@ -44,11 +45,11 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(173, 215, 89, 23);
+		aceptar.setBounds(173, 202, 102, 36);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Error. Las contrase�as no coinciden");
+		JLabel lblNewLabel = new JLabel("Error. Las contrase\u00F1as no coinciden");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(59, 36, 485, 155);

@@ -37,6 +37,7 @@ public class LimiteAlcanzado extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton aceptar = new JButton("ACEPTAR");
+		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		
 		aceptar.addActionListener(new ActionListener() {
 		
@@ -53,12 +54,12 @@ public class LimiteAlcanzado extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(173, 215, 89, 23);
+		aceptar.setBounds(166, 202, 110, 37);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
 		JLabel lblNewLabel = new JLabel("<html> Se ha alcanzado el límite de usos. <br> Adquiera un usuario para continuar </html>");
-		lblNewLabel.setForeground(fuentePrincipal);
+		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		lblNewLabel.setBounds(64, 36, 344, 155);
 		contentPane.add(lblNewLabel);
