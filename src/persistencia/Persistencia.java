@@ -219,7 +219,7 @@ public class Persistencia {
 	 * @param accion -> Indica si se debe cifrar (true) o descifrar (false) la cadena.
 	 * @return La cadena cifrada o descifrada.
 	 */
-	private String metodoCifrarDescifrar(String cadena, boolean accion) {
+	public String metodoCifrarDescifrar(String cadena, boolean accion) {
 
 	    List<Character> abecedario = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
 	            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0',

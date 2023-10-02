@@ -77,11 +77,10 @@ public class BMUsuario extends JFrame {
 					
 					if (contra1.equals(contra2)) {
 						
-						DTOUsuario aux = new DTOUsuario(fa.getUsuario(),contra1);
-						fa.modificarUsuario(aux);
+						fa.modificarUsuario(contra1);
 						fa.persistirDatos();
 						fa.recuperarDatos();
-						fa.seleccionarUsuario(aux.getNombreUser());
+						fa.seleccionarUsuario(fa.getUsuario());
 						VentanaPrincipal ven = new VentanaPrincipal(fa);
 						ven.setVisible(true);
 						ven.setLocationRelativeTo(null);

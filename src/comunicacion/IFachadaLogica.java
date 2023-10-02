@@ -100,7 +100,7 @@ public interface IFachadaLogica {
 	
 	public void recuperarDatos();
 	
-	public void modificarUsuario(DTOUsuario user);
+	public void modificarUsuario(String contrasenia);
 	
 	public ArrayList<String> describeTabla(String nombreTabla);
 	

@@ -15,7 +15,7 @@ import logica.Usuario;
 import persistencia.Persistencia;
 
 /**
- * Esta es una implementación concreta de la interfaz IFachadaLogica.
+ * Esta es una implementacion concreta de la interfaz IFachadaLogica.
  * Implementa todas las operaciones de IFachadaLogica.
  *@author Gabriel Bolsi
  *@author Brandon Cairus
@@ -39,7 +39,7 @@ public class FachadaLogica implements IFachadaLogica {
 		usuario = "";
 		usuarios = new LinkedHashMap<String, Usuario>();
 		ayuda = new LinkedHashMap<String, String>();
-
+		
 	}
 
 	/**
@@ -148,18 +148,18 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	/**
 	 *Crea una nueva instancia de Usuario a partir de los datos proporcionados y reemplaza la instancia anterior del usuario en la colección de usuarios.
-	 *@param user Representa los datos del usuario a modificar.
+	 *@param user -> Representa los datos del usuario a modificar.
 	 */
-	public void modificarUsuario(DTOUsuario user) {
+	public void modificarUsuario(String contrasenia) {
 
-		Usuario usAux = new Usuario(user);
-		usuarios.replace(usAux.getNombreUser(), usAux);
+		Usuario usuario = this.obtenerUsuario();
+		usuario.setContrasenia(contrasenia);
 
 	}
 	
 	/**
-	 *Lo elimina de la colección de usuarios.
-	 *@param user Representa al usuario a eliminar.
+	 *Lo elimina de la coleccion de usuarios.
+	 *@param user -> Representa al usuario a eliminar.
 	 */
 	public void eliminarusuario(DTOUsuario user) {
 

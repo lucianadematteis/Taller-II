@@ -63,6 +63,17 @@ public class Usuario {
 		return contrasenia;
 
 	}
+	
+	/**
+	 * Establece la contrasenia del usuario.
+	 *
+	 * @param contra -> La nueva contraseña a establecer.
+	 */
+	public void setContrasenia(String contra) {
+
+		this.contrasenia=contra;
+
+	}
 
 	/**
 	 * Metodo publico que retorna la coleccion que contiene las bases de datos relacionadas con el usuario. Su proposito es proporcionar acceso controlado a los datos encapsulados dentro de un objeto.
