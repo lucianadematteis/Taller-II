@@ -81,7 +81,7 @@ public class Comandos {
     }
     
 	/**
-	 *Metodo privado que recibe como parámetros una lista de DTOAtributo y el nombre de la columna y los carga en una tabla en la interfaz grafica con los atributos proporcionados.
+	 *Metodo privado que recibe como parametros una lista de DTOAtributo y el nombre de la columna y los carga en una tabla en la interfaz grafica con los atributos proporcionados.
 	 *@param atributos-> lista de DTOAtributo
 	 *@param nombreAtributo-> nombre de la columna
 	 *
