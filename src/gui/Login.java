@@ -78,37 +78,46 @@ public class Login extends JFrame {
 		
 			public void actionPerformed(ActionEvent e) {
 			
+
 				char[] arrayC = pass_1.getPassword();
 				String contra = new String (arrayC);
 				DTOUsuario usuario = new DTOUsuario (user.getText(),contra);
-			
-				if (fa.existeUsuario(user.getText())){
 
-					if (fa.validarContrasenia(usuario)){
-						
-						fa.seleccionarUsuario(user.getText());
-						VentanaPrincipal frame = new VentanaPrincipal(fa);
-						frame.setVisible(true);
-				        frame.setLocationRelativeTo(null);
-						dispose();	
-						
-					} else {
-				
+				if(!(user.getText().isEmpty())&&!(contra.isEmpty())) {
+
+					if (fa.existeUsuario(user.getText())){
+
+						if (fa.validarContrasenia(usuario)){
+
+							fa.seleccionarUsuario(user.getText());
+							VentanaPrincipal frame = new VentanaPrincipal(fa);
+							frame.setVisible(true);
+							frame.setLocationRelativeTo(null);
+							dispose();	
+
+						} else {
+
+							UsuarioErrorContrasenia frame = new UsuarioErrorContrasenia();
+							frame.setVisible(true);	
+							frame.setLocationRelativeTo(null);
+
+						}
+
+					}else {
+
 						LoginError frame = new LoginError();
-						frame.setVisible(true);	
+						frame.setVisible(true);
 						frame.setLocationRelativeTo(null);
-					
+
 					}
-				
-				}else {
-				
-					LoginError frame = new LoginError();
-					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
-				
+				} else {
+					UsuarioRegistroErrorCampos aux = new UsuarioRegistroErrorCampos();
+					aux.setVisible(true);
+					aux.setLocationRelativeTo(null);
 				}
-			
+
 			}
+			
 		
 		});
 		inicioSesion.setBounds(252, 269, 152, 30);

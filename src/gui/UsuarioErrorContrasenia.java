@@ -1,22 +1,44 @@
 package gui;
 
+import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import javax.swing.SwingConstants;
 
-public class LoginError extends JFrame {
+public class UsuarioErrorContrasenia extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public LoginError() {
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					UsuarioErrorContrasenia frame = new UsuarioErrorContrasenia();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public UsuarioErrorContrasenia() {
+	setType(Type.POPUP);
 		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fuentePrincipal = new Color (255,255,255);
@@ -27,36 +49,35 @@ public class LoginError extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(fondoPrincipal);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JButton aceptar = new JButton("ACEPTAR");
 		aceptar.setFont(new Font("Verdana", Font.BOLD, 14));
 		aceptar.addActionListener(new ActionListener() {
-			
+		
 			public void actionPerformed(ActionEvent e) {
 			
 				dispose();
 			
 			}
+	
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(164, 202, 114, 36);
+		aceptar.setBounds(164, 199, 112, 36);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("<html> <center>EL USUARIO NO SE ENCUENTRA <br> REGISTRADO </center> </html>");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblNewLabel = new JLabel("ERROR CONTRASE\u00D1A INV\u00C1LIDA");
 		lblNewLabel.setForeground(Color.YELLOW);
 		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 17));
-		lblNewLabel.setBounds(21, 36, 403, 155);
+		lblNewLabel.setBounds(59, 33, 365, 155);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Codigo de error 8");
+		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 7");
 		lblNewLabel_1.setFont(new Font("Verdana", Font.PLAIN, 11));
-		lblNewLabel_1.setBounds(310, 236, 114, 14);
+		lblNewLabel_1.setBounds(312, 236, 112, 14);
 		contentPane.add(lblNewLabel_1);
 		
 	}
