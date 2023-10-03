@@ -76,13 +76,13 @@ public class RegistrarUsuario extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Ingrese una contraseña:");
 		lblNewLabel_1.setForeground(fuentePrincipal);
 		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblNewLabel_1.setBounds(58, 150, 365, 20);
+		lblNewLabel_1.setBounds(58, 142, 365, 28);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Repita la contraseña:");
 		lblNewLabel_2.setForeground(fuentePrincipal);
 		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblNewLabel_2.setBounds(58, 242, 281, 20);
+		lblNewLabel_2.setBounds(58, 235, 281, 42);
 		panel.add(lblNewLabel_2);
 		
 		JButton aceptar = new JButton("ACEPTAR");
