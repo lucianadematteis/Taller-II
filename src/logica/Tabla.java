@@ -254,6 +254,7 @@ public class Tabla {
 				        valorCadena = valorNuevo;
 				        
 				    }
+				    
 				    ((Cadena) atributo).setDato(valorCadena);
 				    
 				}

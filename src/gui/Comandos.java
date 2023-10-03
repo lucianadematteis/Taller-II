@@ -1092,18 +1092,26 @@ public class Comandos {
 	            			}else {
 	            		
 	            				if(logica.existeTabla(sentencia.get(0)[1])) {
-	            				
+		            				
 		            				if((logica.tieneClave(sentencia.get(0)[1])) && (logica.obtenerClave(sentencia.get(0)[1]).equalsIgnoreCase((sentencia.get(1)[1])))) {
 		            					
 			            				insertarDepuracion("Error #22", "No es posible cambiar la clave primaria de un registro");
 			            					
-			            			}else if(logica.validaCondicion(sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3])){
+			            			}else if((logica.validaCondicion(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(1)[3]) && (logica.validaCondicion(sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3])))){
 			            				
 			            				if(logica.hayRegistros(sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])){	
 				            				
-			            					logica.cambiarRegistro(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(1)[3], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
-				            				aciertos++;
-				            				insertarDepuracion("Acierto #" + aciertos, "Se modificaron los datos con éxito, en la tabla: " + sentencia.get(0)[1]);
+			            					if(sentencia.get(1)[3].equalsIgnoreCase("NULL") && logica.esNotNull(sentencia.get(0)[1],sentencia.get(1)[1])) {
+			            						
+			            						insertarDepuracion("Error #19", "Ingresó como nulos atributos no permitidos");
+				                				
+			            					}else {
+			            						
+			            						logica.cambiarRegistro(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(1)[3], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
+					            				aciertos++;
+					            				insertarDepuracion("Acierto #" + aciertos, "Se modificaron los datos con éxito, en la tabla: " + sentencia.get(0)[1]);
+					            				
+			            					}
 				            				
 			            				}else {
 			            					
