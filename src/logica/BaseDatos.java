@@ -78,16 +78,6 @@ public class BaseDatos {
 	}
 	
 	/**
-	 * "Metodo publico que recibe como parametro un objeto del tipo Tabla y lo inserta en el mapa de tablas de la base de datos
-	 * @param tabla-> Tabla a insertar en el mapa de tablas
-	 */
-	public void insertarTabla(Tabla tabla) {
-        
-       tablas.put(tabla.getNombreTabla(), tabla);
-       
-    }
-	
-	/**
 	 * Metodo publico que recibe por parametro una cadena de texto que corresponde al nombre de la tabla, la busca en la coleccion y retorna la tabla correspondiente al nombre proporcionado
 	 * @param nombreTabla -> nombre de la tabla
 	 * @return la tabla
@@ -130,7 +120,7 @@ public class BaseDatos {
 	 * Metodo publico que recibe por parametro un objeto del tipo Tabla que representa la tabla que sera agregada al mapa de tablas de la base de datos.
 	 * @param tabla -> tabla que sera aregada a mapa de tabla de la base de datos
 	 */
-	public void agregarTabla(Tabla tabla) {
+	public void insertarTabla(Tabla tabla) {
 		
 		this.tablas.put(tabla.getNombreTabla(), tabla);
 		

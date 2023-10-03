@@ -1,7 +1,6 @@
 package comunicacion;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -210,7 +209,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 *@return Retorna true si la tabla tiene una clave primaria, false si no la tiene.
 	 */
 	public boolean tieneClave (String nombreTabla) {
-
+		
 		return this.obtenerTabla(nombreTabla).tieneClave();
 
 	}
@@ -488,7 +487,8 @@ public class FachadaLogica implements IFachadaLogica {
      */
 	public void hacerNotNull (String nombreTabla, String nombreAtributo) {
 		
-		this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombreAtributo).setNulo(true);
+		String nombre = this.obtenerAtributo(nombreAtributo, nombreTabla).getNombreAtributo();
+		this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombre).setNulo(true);
 					
 	}
 	
@@ -499,8 +499,9 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @return true si el atributo no es nulo en la primera fila de registros, false de lo contrario.
 	 */
 	public boolean esNotNull (String nombreTabla, String nombreAtributo) {
-		System.out.println(this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombreAtributo).getNulo());
-		return this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombreAtributo).getNulo();
+		
+		String nombre = this.obtenerAtributo(nombreAtributo, nombreTabla).getNombreAtributo();
+		return this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombre).getNulo();
 					
 	}
 	
@@ -511,8 +512,9 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public void hacerClave (String nombreTabla, String nombreAtributo) {
 		
-		this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombreAtributo).setClave(true);
-		hacerNotNull (nombreTabla, nombreAtributo);
+		String nombre = this.obtenerAtributo(nombreAtributo, nombreTabla).getNombreAtributo();
+		this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombre).setClave(true);
+		hacerNotNull(nombreTabla, nombre);
 				
 	}
 	
@@ -586,7 +588,6 @@ public class FachadaLogica implements IFachadaLogica {
 		return obtenerTabla(nombreTabla).consultaOr(nombreAtributo, nombreAtributoCondicion1, valorCondicion1, nombreAtributoCondicion2, valorCondicion2, operador);
 		
 	}
-	
 	
 	/**
 	  * Metodo publico que recibe como parametro el nombre de una base de datos y retorna true si la misma existe para el usuario actual y false en caso contrario
@@ -666,7 +667,7 @@ public class FachadaLogica implements IFachadaLogica {
 	public void crearTabla(DTOTabla tabla, LinkedHashMap<String, String> atributos) {
 		
 		Tabla tablita = new Tabla(tabla);
-		this.obtenerBaseDatos().agregarTabla(tablita);
+		this.obtenerBaseDatos().insertarTabla(tablita);
 		tablita.insertarRegistro(tablita.generarAtributos(atributos));
 
 	}
@@ -937,7 +938,9 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @return  validacion de la cantidad de atributos
 	 */
 	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos) {
+		
 		return this.obtenerTabla(nombreTabla).validaCantidadAtributos(atributos);
+	
 	}
 
 	/**
