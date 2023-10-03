@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 public class UsuarioRegistroErrorContrasenia extends JFrame {
 
@@ -33,7 +34,7 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton aceptar = new JButton("ACEPTAR");
-		aceptar.setFont(new Font("Verdana", Font.BOLD, 14));
+		aceptar.setFont(new Font("Verdana", Font.BOLD, 16));
 		aceptar.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {
@@ -45,14 +46,15 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(173, 202, 102, 36);
+		aceptar.setBounds(157, 191, 139, 47);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Error. Las contrase\u00F1as no coinciden");
+		JLabel lblNewLabel = new JLabel("<HTML> <CENTER> ERROR <BR> <BR>\r\nLAS CONTRASEÑAS NO <BR> COINCIDEN </CENTER> </HTML>");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
-		lblNewLabel.setBounds(59, 36, 365, 155);
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblNewLabel.setBounds(10, 25, 414, 155);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 7");
