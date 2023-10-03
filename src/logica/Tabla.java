@@ -248,7 +248,7 @@ public class Tabla {
 				    
 				} else if (atributo instanceof Cadena) {
 					
-				    String valorCadena = null;
+				    String valorCadena = "";
 				    if (!valorNuevo.equalsIgnoreCase("NULL")) {
 				    	
 				        valorCadena = valorNuevo;
