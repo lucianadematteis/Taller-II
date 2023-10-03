@@ -903,55 +903,16 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	/**
-	 * Metodo publico que recibe el nombre de una tabla y una lista de atributos. El metodo genera un registro a partir de los atributos proporcionados y lo retorna como un mapa de atributos.
+	 * Metodo publico que recibe el nombre de una tabla y una lista de atributos. El metodo llama al metodo en tabla que genera un registro a partir de los atributos proporcionados y lo retorna como un mapa de atributos.
 	 * @param nombreTabla -> nombre de la tabla
 	 * @param atributos -> lista de atributos
 	 * @return  mapa de registos a partir del nombre de la tabla y de los atributos
 	 */
 	public LinkedHashMap<String, DTOAtributo> generarArrayListRegistro(String nombreTabla, ArrayList<String> atributos){
 		
-		LinkedHashMap<String, DTOAtributo> registro = new LinkedHashMap<String, DTOAtributo>();
-		LinkedHashMap<String, Atributo> guia = obtenerTabla(nombreTabla).getRegistros().get(0);
-		int i=0;
-		
-		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
-			
-			if(atriGuia.getValue() instanceof Entero) {
-				
-				Entero atributoE = (Entero) atriGuia.getValue();
-				DTOEntero atrE =  new DTOEntero(atributoE);
-				
-				if(!(atributos.get(i).equals("NULL"))) {
-					
-					atrE.setValor(Integer.parseInt(atributos.get(i)));
-					
-				}
-				
-				registro.put(atriGuia.getKey(), atrE);
-				
-			}else if(atriGuia.getValue() instanceof Cadena){
-
-				Cadena atributoC = (Cadena) atriGuia.getValue();
-				DTOCadena atrC = new DTOCadena(atributoC);
-				
-				if(!(atributos.get(i).equals("NULL"))) {
-					
-					atrC.setDato(atributos.get(i));
-					
-				}
-				
-				registro.put(atriGuia.getKey(), atrC);
-				
-			}
-				
-			i++;
-			
-		}
-		
-		return registro;
+		return this.obtenerTabla(nombreTabla).generarArrayListRegistro(atributos);
 		
 	}
-	
     	
 	/**
 	 * Metodo publico que recibe tres parametros: nombre de la primera tabla, nombre de la segunda tabla y el nombre del atributo de busqueda. El metodo realiza una operacion de join natural entre las dos tablas en funcion del atributo de busqueda y retorna una lista de objetos DTOAtributo
@@ -973,54 +934,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public ArrayList<String> describeTabla (String nombreTabla){
 
-		ArrayList<String> resultado = new ArrayList<String>();
-		Tabla tablita = this.obtenerTabla(nombreTabla);
-
-		LinkedHashMap <String, Atributo> atributos = tablita.getRegistros().get(0);
-
-		for (Map.Entry<String, Atributo> entry : atributos.entrySet()) {
-
-			String insertar="";
-			String nombre = entry.getKey();
-			String clave="";
-			String tipo="";
-			String notNull="";
-
-			if(entry.getValue().getClave()==true) {
-				
-				clave = "Clave primaria";
-			
-			}else {
-			
-				clave = "No es clave primaria";
-			
-			}
-			
-			if (entry.getValue() instanceof Cadena) {
-				
-				tipo="Cadena";
-			
-			}else {
-			
-				tipo="Entero";
-			
-			}
-			
-			if(entry.getValue().getNulo()==true) {
-			
-				notNull="No es nulo";
-			
-			}else {
-			
-				notNull="Nulo";
-			}
-			
-			insertar = nombre + " - " + tipo + " - " + clave + " - " + notNull;
-			resultado.add(insertar);
-
-		}
-		
-		return resultado;
+		return this.obtenerTabla(nombreTabla).describeTabla();
 		
 	}
 	

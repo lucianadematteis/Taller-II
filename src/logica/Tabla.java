@@ -488,4 +488,108 @@ public class Tabla {
 		
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametro el nombre de una tabla y retorna una lista de cadenas que describen las caracteristicas de los atributos de la tabla
+	 * @return Lista con la descripcion de los atributos de la tabla
+	 */
+	public ArrayList<String> describeTabla (){
+
+		ArrayList<String> resultado = new ArrayList<String>();
+		LinkedHashMap <String, Atributo> atributos = this.getRegistros().get(0);
+
+		for (Map.Entry<String, Atributo> entry : atributos.entrySet()) {
+
+			String insertar="";
+			String nombre = entry.getKey();
+			String clave="";
+			String tipo="";
+			String notNull="";
+
+			if(entry.getValue().getClave()==true) {
+				
+				clave = "Clave primaria";
+			
+			}else {
+			
+				clave = "No es clave primaria";
+			
+			}
+			
+			if (entry.getValue() instanceof Cadena) {
+				
+				tipo="Cadena";
+			
+			}else {
+			
+				tipo="Entero";
+			
+			}
+			
+			if(entry.getValue().getNulo()==true) {
+			
+				notNull="No es nulo";
+			
+			}else {
+			
+				notNull="Nulo";
+			}
+			
+			insertar = nombre + " - " + tipo + " - " + clave + " - " + notNull;
+			resultado.add(insertar);
+
+		}
+		
+		return resultado;
+		
+	}
+	
+	/**
+	 * Metodo publico que recibe el nombre de una tabla y una lista de atributos. El metodo genera un registro a partir de los atributos proporcionados y lo retorna como un mapa de atributos.
+	 * @param atributos -> lista de atributos
+	 * @return  mapa de registos a partir del nombre de la tabla y de los atributos
+	 */
+	public LinkedHashMap<String, DTOAtributo> generarArrayListRegistro(ArrayList<String> atributos){
+		
+		LinkedHashMap<String, DTOAtributo> registro = new LinkedHashMap<String, DTOAtributo>();
+		LinkedHashMap<String, Atributo> guia = this.getRegistros().get(0);
+		int i=0;
+		
+		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
+			
+			if(atriGuia.getValue() instanceof Entero) {
+				
+				Entero atributoE = (Entero) atriGuia.getValue();
+				DTOEntero atrE =  new DTOEntero(atributoE);
+				
+				if(!(atributos.get(i).equals("NULL"))) {
+					
+					atrE.setValor(Integer.parseInt(atributos.get(i)));
+					
+				}
+				
+				registro.put(atriGuia.getKey(), atrE);
+				
+			}else if(atriGuia.getValue() instanceof Cadena){
+
+				Cadena atributoC = (Cadena) atriGuia.getValue();
+				DTOCadena atrC = new DTOCadena(atributoC);
+				
+				if(!(atributos.get(i).equals("NULL"))) {
+					
+					atrC.setDato(atributos.get(i));
+					
+				}
+				
+				registro.put(atriGuia.getKey(), atrC);
+				
+			}
+				
+			i++;
+			
+		}
+		
+		return registro;
+		
+	}
+	
 }

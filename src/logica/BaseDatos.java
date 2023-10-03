@@ -264,4 +264,44 @@ public class BaseDatos {
 		
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametros los nombres de dos tablas. El metodo busca los atributos de las dos tablas y compara si hay alguno en comun entre ellas. Si encuentra al menos un atributo comun, retorna true de lo contrario retorna false
+	 * @param tabla1-> Tabla 1 a buscar
+	 * @param tabla2-> Tabla 2 a buscar
+	 * @return verifica si las tablas tienen algun atributo en comun
+	 */
+	public boolean validaAtributosJoin (String tabla1, String tabla2) {
+		
+		Tabla tablita1 = this.obtenerTabla(tabla1);
+		Tabla tablita2 = this.obtenerTabla(tabla2);
+		
+		if (tablita1.getRegistros().size()>0 && tablita2.getRegistros().size()>0) {
+			
+			LinkedHashMap <String, Atributo> guia1 = tablita1.getRegistros().get(0);
+			LinkedHashMap <String, Atributo> guia2 = tablita2.getRegistros().get(0);
+			
+	        for (Map.Entry<String, Atributo> entry : guia1.entrySet()) {
+	        	
+	            Atributo atributoGuia1 = entry.getValue();
+	            	
+	            for (Map.Entry<String, Atributo> entry2 : guia2.entrySet()) {
+	            	
+	            	Atributo atributoGuia2 = entry2.getValue();
+	            	
+            		if(atributoGuia2.equals(atributoGuia1)) {
+            			
+            			return true;
+            		
+            		}
+            		
+	            }
+	            
+	        }
+	        
+	    }
+		
+        return false;
+		
+	}
+	
 }
