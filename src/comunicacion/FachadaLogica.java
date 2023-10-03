@@ -991,7 +991,7 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	public boolean validaClave(String nombreTabla, ArrayList<String> atributos) {
-	return this.obtenerTabla(nombreTabla).validaClave(nombreTabla, atributos);
+	return this.obtenerTabla(nombreTabla).validaClave(atributos);
 	
 }
 }
