@@ -58,9 +58,9 @@ public class LimiteAlcanzado extends JFrame {
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("<html> Se ha alcanzado el límite de usos. <br> Adquiera un usuario para continuar </html>");
+		JLabel lblNewLabel = new JLabel("<html> Se ha alcanzado el lï¿½mite de usos. <br> Adquiera un usuario para continuar </html>");
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
 		lblNewLabel.setBounds(64, 36, 344, 155);
 		contentPane.add(lblNewLabel);
 	

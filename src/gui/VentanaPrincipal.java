@@ -101,12 +101,12 @@ public class VentanaPrincipal extends JFrame {
 		JLabel saludo = new JLabel("Bienvenido " + fa.getUsuario());
 		saludo.setForeground(fuentePrincipal);
 		saludo.setBounds(29, 25, 223, 23);
-		saludo.setFont(new Font("SansSerif", Font.BOLD, 20));
+		saludo.setFont(new Font("Verdana", Font.BOLD, 20));
 		
 		bdActual = new JLabel("Base de datos: ");
 		bdActual.setForeground(fuentePrincipal);
 		bdActual.setBounds(564, 26, 429, 23);
-		bdActual.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		bdActual.setFont(new Font("Verdana", Font.PLAIN, 18));
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(15, 55, 978, 10);
@@ -117,7 +117,7 @@ public class VentanaPrincipal extends JFrame {
 		JTextArea entrada = new JTextArea();
 		entrada.setForeground(escritura);
 		entrada.setBackground(fondoVentana);
-		entrada.setFont(new Font("SansSerif", Font.PLAIN, 17));
+		entrada.setFont(new Font("Verdana", Font.PLAIN, 17));
 		entrada.setToolTipText("Inserte sentencias aqu\u00ED");
 		scrollPane.setViewportView(entrada);
 		contentPane.setLayout(null);
@@ -168,7 +168,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		guia = new JTable();
 		guia.setCellSelectionEnabled(false);
-		guia.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		guia.setFont(new Font("Verdana", Font.PLAIN, 15));
 		guia.setForeground(escritura);
 		guia.setBackground(fondoVentana);
 		guia.setRowHeight(22);
@@ -200,7 +200,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(scrollPane_2);
 		
 		depuracion = new JTable();
-		depuracion.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		depuracion.setFont(new Font("Verdana", Font.PLAIN, 14));
 		depuracion.setForeground(escritura);
 		depuracion.setBackground(fondoVentana);
 		depuracion.setRowHeight(22);
@@ -241,7 +241,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(scrollPane_1);
 		
 		salida = new JTable();
-		salida.setFont(new Font("SansSerif", Font.PLAIN, 17));
+		salida.setFont(new Font("Verdana", Font.PLAIN, 17));
 		salida.setForeground(escritura);
 		salida.setBackground(fondoVentana);
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -343,7 +343,7 @@ public class VentanaPrincipal extends JFrame {
 		guiaTabla = new JTable();
 		scrollPane_4.setViewportView(guiaTabla);
 		guiaTabla.setForeground(escritura);
-		guiaTabla.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		guiaTabla.setFont(new Font("Verdana", Font.PLAIN, 15));
 		guiaTabla.setBackground(fondoVentana);
 		guiaTabla.setRowHeight(22);
 		guiaTabla.setModel(new DefaultTableModel(

@@ -49,7 +49,7 @@ public class UsuarioRegistroErrorNombre extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Nombre de usuario incorrecto");
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
 		lblNewLabel.setBounds(81, 36, 314, 155);
 		contentPane.add(lblNewLabel);
 		

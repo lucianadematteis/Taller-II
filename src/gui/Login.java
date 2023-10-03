@@ -46,7 +46,7 @@ public class Login extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("MANEJADOR DE BASES DE DATOS");
 		lblNewLabel_1.setForeground(fuentePrincipal);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("SansSerif", Font.BOLD, 48));
+		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 48));
 		lblNewLabel_1.setBounds(10, 49, 988, 94);
 		contentPane.add(lblNewLabel_1);
 		
@@ -156,14 +156,14 @@ public class Login extends JFrame {
 		JLabel lblNewLabel = new JLabel("Usuario");
 		lblNewLabel.setBounds(153, 45, 160, 26);
 		panel.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.WHITE);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 		lblContrasea.setBounds(153, 148, 160, 26);
 		panel.add(lblContrasea);
-		lblContrasea.setFont(new Font("SansSerif", Font.BOLD, 20));
+		lblContrasea.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContrasea.setForeground(Color.WHITE);
 		

@@ -57,7 +57,7 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("El usuario se ha registrado correctamente");
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
 		lblNewLabel.setBounds(32, 31, 392, 155);
 		contentPane.add(lblNewLabel);
 		

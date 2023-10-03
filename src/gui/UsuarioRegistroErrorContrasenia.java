@@ -51,7 +51,7 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Error. Las contrase\u00F1as no coinciden");
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
 		lblNewLabel.setBounds(59, 36, 365, 155);
 		contentPane.add(lblNewLabel);
 		

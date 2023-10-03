@@ -50,7 +50,7 @@ public class UsuarioRegistroErrorCampos extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Error. Debe completar todos los campos");
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
 		lblNewLabel.setBounds(34, 34, 485, 155);
 		contentPane.add(lblNewLabel);
 		
