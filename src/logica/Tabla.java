@@ -663,7 +663,7 @@ public class Tabla {
 	
 
 	/**
-	 * Metodo publico que recibe como parametros la tabla, el nombre del atributo a consultar, dos nombres de atributos de condicion y dos valores de condicion. El metodo retorna una lista de objetos DTOAtributo que contiene solo aquellos que cumplen simultaneamente ambas condiciones.
+	 * Metodo publico que recibe como parametros el nombre del atributo a consultar, dos nombres de atributos de condicion y dos valores de condicion. El metodo retorna una lista de objetos DTOAtributo que contiene solo aquellos que cumplen simultaneamente ambas condiciones.
 	 * @param nombreAtributo -> nombre del atributo
 	 * @param nombreAtributoCondicion1 -> nombre de la condion del atributo 1
 	 * @param valorCondicion1 ->  valor de la condicion del atributo 1
@@ -689,7 +689,7 @@ public class Tabla {
     }
 	
 	/**
-	 * Metodo publico que recibe como parametros la tabla, el nombre del atributo de consulta, dos conjuntos de nombre de atributo y valor de condicion. El metodo realiza una consulta OR en la tabla especificada, buscando registros que cumplan cualquiera de las dos condiciones y retorna una lista de objetos DTOAtributo que representan los registros encontrados despues de aplicar la consulta OR, la que no incluye elementos duplicados.
+	 * Metodo publico que recibe como parametros el nombre del atributo de consulta, dos conjuntos de nombre de atributo y valor de condicion. El metodo realiza una consulta OR en la tabla especificada, buscando registros que cumplan cualquiera de las dos condiciones y retorna una lista de objetos DTOAtributo que representan los registros encontrados despues de aplicar la consulta OR, la que no incluye elementos duplicados.
 	 * @param nombreAtributo -> nombre del atributo
 	 * @param nombreAtributoCondicion1 -> nombre de la condion del atributo 1
 	 * @param valorCondicion1 ->  valor de la condicion del atributo 1
@@ -701,7 +701,6 @@ public class Tabla {
 		
 		ArrayList <DTOAtributo> resultado1 = new ArrayList <DTOAtributo>();
 		ArrayList <DTOAtributo> resultado2 = new ArrayList <DTOAtributo>();
-		
 		
 		ArrayList<LinkedHashMap<String, DTOAtributo>> registros1 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion1, valorCondicion1, operador));
 		resultado1= this.seleccionarAtributo(registros1, nombreAtributo);
@@ -726,7 +725,7 @@ public class Tabla {
 	}
 	
 	/**
-	 * Metodo publico que recibe como parametro una tabla, el nombre de un atributo y un valor de condicion. Valida si el valor de condicion proporcionado es valido para el tipo de atributo especificado en la tabla. Si el atributo es de tipo entero, verifica si puede ser convertido a un numero entero. Retorna: true si la condicion es valida, false si no lo es
+	 * Metodo publico que recibe como parametro el nombre de un atributo y un valor de condicion. Valida si el valor de condicion proporcionado es valido para el tipo de atributo especificado en la tabla. Si el atributo es de tipo entero, verifica si puede ser convertido a un numero entero. Retorna: true si la condicion es valida, false si no lo es
 	 * @param nombreAtributo-> nombre del atributo
 	 * @param valorCondicion-> valor de la condicion
 	 * @return verifica si la condicion es valida o no

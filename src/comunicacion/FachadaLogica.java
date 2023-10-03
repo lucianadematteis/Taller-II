@@ -585,7 +585,11 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2, String valorCondicion2, String operador) {
 		
-		return obtenerTabla(nombreTabla).consultaOr(nombreAtributo, nombreAtributoCondicion1, valorCondicion1, nombreAtributoCondicion2, valorCondicion2, operador);
+		String nomTabla = this.obtenerTabla(nombreTabla).getNombreTabla();
+		String nomAtr1 = obtenerAtributo(nombreAtributoCondicion1, nomTabla).getNombreAtributo();
+		String nomAtr2 = obtenerAtributo(nombreAtributoCondicion2, nomTabla).getNombreAtributo();
+		
+		return obtenerTabla(nombreTabla).consultaOr(nombreAtributo, nomAtr1, valorCondicion1, nomAtr2, valorCondicion2, operador);
 		
 	}
 	
@@ -715,7 +719,12 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @return lista de registros que cumplan ambas condiciones
 	 */
 	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador) {
-    	return obtenerTabla(nombreTabla).consultaAnd(nombreAtributo, nombreAtributoCondicion1, valorCondicion1, nombreAtributoCondicion2, valorCondicion2, operador);
+    	
+		String nomTabla = this.obtenerTabla(nombreTabla).getNombreTabla();
+		String nomAtr1 = obtenerAtributo(nombreAtributoCondicion1, nomTabla).getNombreAtributo();
+		String nomAtr2 = obtenerAtributo(nombreAtributoCondicion2, nomTabla).getNombreAtributo();
+		
+		return obtenerTabla(nombreTabla).consultaAnd(nombreAtributo, nomAtr1, valorCondicion1, nomAtr2, valorCondicion2, operador);
 		
     }
 	
