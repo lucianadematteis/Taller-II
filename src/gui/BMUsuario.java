@@ -52,13 +52,13 @@ public class BMUsuario extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Ingrese nueva contrase\u00F1a");
 		lblNewLabel_1.setForeground(fuentePrincipal);
 		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblNewLabel_1.setBounds(70, 115, 306, 26);
+		lblNewLabel_1.setBounds(92, 115, 250, 26);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Repita la contrase\u00F1a");
 		lblNewLabel_2.setForeground(fuentePrincipal);
 		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblNewLabel_2.setBounds(115, 203, 307, 26);
+		lblNewLabel_2.setBounds(92, 203, 205, 26);
 		panel.add(lblNewLabel_2);
 		
 		JButton aceptar = new JButton("CONFIRMAR");
@@ -107,14 +107,14 @@ public class BMUsuario extends JFrame {
 			
 		});
 		aceptar.setFont(new Font("Verdana", Font.BOLD, 14));
-		aceptar.setBounds(287, 294, 143, 34);
+		aceptar.setBounds(287, 302, 133, 26);
 		aceptar.setFocusPainted(false);
 		panel.add(aceptar);
 		
 		JLabel lblNewLabel = new JLabel("CAMBIAR CONTRASE\u00D1A");
 		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 24));
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(70, 24, 328, 55);
+		lblNewLabel.setBounds(70, 11, 328, 55);
 		panel.add(lblNewLabel);
 		
 		JSeparator separator = new JSeparator();
@@ -123,20 +123,20 @@ public class BMUsuario extends JFrame {
 		
 		pass = new JPasswordField();
 		pass.setFont(new Font("Verdana", Font.PLAIN, 17));
-		pass.setBounds(52, 152, 346, 26);
+		pass.setBounds(92, 152, 250, 26);
 		panel.add(pass);
 		pass.setColumns(10);
 		
 		pass2 = new JPasswordField();
 		pass2.setFont(new Font("Verdana", Font.PLAIN, 17));
-		pass2.setBounds(52, 240, 346, 26);
+		pass2.setBounds(92, 240, 250, 26);
 		panel.add(pass2);
 		pass2.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("MODIFICACI\u00D3N DE USUARIO");
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("Verdana", Font.BOLD, 36));
-		lblNewLabel_3.setBounds(178, 11, 686, 99);
+		lblNewLabel_3.setBounds(276, 11, 545, 99);
 		contentPane.add(lblNewLabel_3);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -153,7 +153,7 @@ public class BMUsuario extends JFrame {
 		JLabel lblNewLabel_2_1 = new JLabel("Ingrese su contrase\u00F1a actual");
 		lblNewLabel_2_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblNewLabel_2_1.setBounds(42, 191, 371, 26);
+		lblNewLabel_2_1.setBounds(104, 188, 289, 26);
 		panel_1.add(lblNewLabel_2_1);
 		
 		JButton aceptar_1 = new JButton("ELIMINAR CUENTA");
@@ -179,13 +179,13 @@ public class BMUsuario extends JFrame {
 		aceptar_1.setFont(new Font("Verdana", Font.BOLD, 14));
 		aceptar_1.setFocusPainted(false);
 		aceptar_1.setBackground(new Color(3, 60, 88));
-		aceptar_1.setBounds(234, 293, 196, 33);
+		aceptar_1.setBounds(257, 300, 162, 26);
 		panel_1.add(aceptar_1);
 		
 		JLabel lblEliminarUsuario = new JLabel("ELIMINAR USUARIO");
 		lblEliminarUsuario.setForeground(Color.WHITE);
 		lblEliminarUsuario.setFont(new Font("Verdana", Font.BOLD, 24));
-		lblEliminarUsuario.setBounds(99, 24, 328, 55);
+		lblEliminarUsuario.setBounds(102, 11, 328, 55);
 		panel_1.add(lblEliminarUsuario);
 		
 		JSeparator separator_2 = new JSeparator();
@@ -195,15 +195,15 @@ public class BMUsuario extends JFrame {
 		passActual = new JPasswordField();
 		passActual.setFont(new Font("Verdana", Font.PLAIN, 17));
 		passActual.setColumns(10);
-		passActual.setBounds(83, 240, 274, 26);
+		passActual.setBounds(104, 238, 274, 26);
 		panel_1.add(passActual);
 		
 		JTextArea txtrAtencinElSiguiente = new JTextArea();
 		txtrAtencinElSiguiente.setForeground(Color.YELLOW);
 		txtrAtencinElSiguiente.setFont(new Font("Verdana", Font.BOLD, 13));
 		txtrAtencinElSiguiente.setBackground(recuadro);
-		txtrAtencinElSiguiente.setText("ATENCIÓN: El siguiente cambio dará de baja \r\nel usuario y sus datos de manera permantente.\r\n Si desea volver a usarlo deberá registrase\r\n nuevamente.");
-		txtrAtencinElSiguiente.setBounds(42, 101, 424, 92);
+		txtrAtencinElSiguiente.setText("ATENCI\u00D3N: El siguiente cambio dar\u00E1 de baja el usuario pero\r\nno realizar\u00E1 la eliminaci\u00F3n total del mismo. La cuenta podr\u00E1 \r\nser reactivada registr\u00E1ndose nuevamente.");
+		txtrAtencinElSiguiente.setBounds(22, 99, 398, 92);
 		panel_1.add(txtrAtencinElSiguiente);
 		
 		JButton btnCancelar = new JButton("CANCELAR");
@@ -223,7 +223,7 @@ public class BMUsuario extends JFrame {
 		btnCancelar.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
-		btnCancelar.setBounds(826, 578, 143, 37);
+		btnCancelar.setBounds(853, 587, 116, 28);
 		contentPane.add(btnCancelar);
 		
 	}
