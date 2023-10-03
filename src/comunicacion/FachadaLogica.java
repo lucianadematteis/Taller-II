@@ -1041,5 +1041,9 @@ public class FachadaLogica implements IFachadaLogica {
 		return tablita.getNombreTabla();
 		
 	}
+	
+	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos) {
+		return this.obtenerTabla(nombreTabla).validaCantidadAtributos(nombreTabla, atributos);
+	}
 
 }
