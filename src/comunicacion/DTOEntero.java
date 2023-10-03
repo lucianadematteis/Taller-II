@@ -16,7 +16,7 @@ public class DTOEntero extends DTOAtributo{
 	public DTOEntero() {
 		
 		super();
-		this.valor=(Integer) null;
+		this.valor = null;
 		
 	}
 	

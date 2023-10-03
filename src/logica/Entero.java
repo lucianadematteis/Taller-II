@@ -44,7 +44,7 @@ public class Entero extends Atributo {
 	 * Constructor que recibe solo el valor de tipo entero e inicializa la instancia de Entero con el valor proporcionado y establece los valores predeterminados para el nombre del atributo, nulidad y clave.
 	 * @param valor-> valor del atributo
 	 */
-	public Entero(int valor) {
+	public Entero(Integer valor) {
 		
 		super();
 		this.valor = valor;
