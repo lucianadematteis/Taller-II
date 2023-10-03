@@ -50,6 +50,7 @@ public class UsuarioErrorContrasenia extends JFrame {
 		contentPane.setBackground(fondoPrincipal);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		setLocationRelativeTo(null);
 		contentPane.setLayout(null);
 		
 		JButton aceptar = new JButton("ACEPTAR");
@@ -76,7 +77,7 @@ public class UsuarioErrorContrasenia extends JFrame {
 		lblNewLabel.setBounds(10, 33, 414, 155);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 7");
+		JLabel lblNewLabel_1 = new JLabel("Código de error 28");
 		lblNewLabel_1.setFont(new Font("Verdana", Font.PLAIN, 11));
 		lblNewLabel_1.setBounds(312, 236, 112, 14);
 		contentPane.add(lblNewLabel_1);
