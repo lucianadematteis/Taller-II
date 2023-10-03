@@ -171,6 +171,7 @@ public class VentanaPrincipal extends JFrame {
 		guia.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		guia.setForeground(escritura);
 		guia.setBackground(fondoVentana);
+		guia.setRowHeight(22);
 		guia.setModel(new DefaultTableModel(
 		  
 		  new Object[][] {
@@ -202,6 +203,7 @@ public class VentanaPrincipal extends JFrame {
 		depuracion.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		depuracion.setForeground(escritura);
 		depuracion.setBackground(fondoVentana);
+		depuracion.setRowHeight(22);
 		depuracion.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		depuracion.setModel(new DefaultTableModel(
 		  
@@ -343,6 +345,7 @@ public class VentanaPrincipal extends JFrame {
 		guiaTabla.setForeground(escritura);
 		guiaTabla.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		guiaTabla.setBackground(fondoVentana);
+		guiaTabla.setRowHeight(22);
 		guiaTabla.setModel(new DefaultTableModel(
 		  
 		  new Object[][] {
