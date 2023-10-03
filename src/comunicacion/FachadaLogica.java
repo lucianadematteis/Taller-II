@@ -406,36 +406,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public Integer obtenerMinimo(String nombreTabla, String nombreAtributo) {
 		
-	    Integer minimo = null;
-	    boolean primero=true;
-	    Tabla tabla = this.obtenerTabla(nombreTabla);
-	    ArrayList<DTOAtributo> registros = tabla.seleccionarAtributo(tabla.getRegistrosDTO(), nombreAtributo);
-
-	    for (DTOAtributo reg : registros) {
-	    
-	    	if (primero) {
-	            
-	        	primero = false;  
-	            
-	        }else {
-	    	
-		    	DTOEntero atributo = (DTOEntero) reg;
-		        Integer valor = atributo.getValor();
-	
-		        if(valor != null) {
-		        
-			        if (minimo == null || valor < minimo) {
-			        
-			        	minimo = valor;
-			        }
-		        
-		        }
-		   }
-	    
-	    }
-
-	    return minimo;
-	    
+	return this.obtenerTabla(nombreTabla).obtenerMinimo(nombreAtributo);
 	}
 
 	/**
@@ -445,38 +416,8 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @return el valor maximo del atributo
 	 */
 	public Integer obtenerMaximo(String nombreTabla, String nombreAtributo) {
-		
-	    Integer maximo = null;
-	    boolean primero = true; 
-	    Tabla tablita = this.obtenerTabla(nombreTabla);
-	    ArrayList<DTOAtributo> registros = tablita.seleccionarAtributo(tablita.getRegistrosDTO(), nombreAtributo);
 
-	    for (DTOAtributo reg : registros) {
-	    	
-	        if (primero) {
-	            
-	        	primero = false;  
-	            
-	        } else {
-	        
-	        	DTOEntero atributo = (DTOEntero) reg;
-	            Integer valor = atributo.getValor();
-
-	            if(valor != null) {
-	            
-	            	if (maximo == null || valor > maximo) {
-	              
-	            		maximo = valor;
-	            
-	            	}
-	            
-	            }
-	            
-	        }
-	        
-	    }
-
-	    return maximo;
+		return this.obtenerTabla(nombreTabla).obtenerMaximo(nombreAtributo);
 	    
 	}
 	
