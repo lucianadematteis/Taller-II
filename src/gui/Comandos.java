@@ -500,6 +500,7 @@ public class Comandos {
 						    	atributos.put(sentencia.get(i)[0], sentencia.get(i)[1]);
 						    
 						    }
+						    
 						}
 
 						DTOTabla tabla = new DTOTabla(sentencia.get(1)[1]);
@@ -720,27 +721,35 @@ public class Comandos {
 	        
         	}else {
     			
-        		if(sentencia.get(1)[0].equalsIgnoreCase("TABLE")) { //TABLE
-        			
-        			if(logica.bdSeleccionada()) {
-        			
-        				comandoTable(sentencia);
-        			
-        			}else {
-        				
-        				insertarDepuracion("Error #15", "Debe seleccionar la base de datos sobre la cual operar");
-        				
-        			}
-        			
-        		}else if(sentencia.get(1)[0].equalsIgnoreCase("DATABASE")) { //DATABASE
-        			
-        			comandoDatabase(sentencia);
-        			
-        		}else {
-        			
-        			insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
+				if(sentencia.get(1)[1].matches("[a-zA-Z\\d\\-_]*")) {
+        		
+	        		if(sentencia.get(1)[0].equalsIgnoreCase("TABLE")) { //TABLE
+	        			
+	        			if(logica.bdSeleccionada()) {
+	        			
+	        				comandoTable(sentencia);
+	        			
+	        			}else {
+	        				
+	        				insertarDepuracion("Error #15", "Debe seleccionar la base de datos sobre la cual operar");
+	        				
+	        			}
+	        			
+	        		}else if(sentencia.get(1)[0].equalsIgnoreCase("DATABASE")) { //DATABASE
+	        			
+	        			comandoDatabase(sentencia);
+	        			
+	        		}else {
+	        			
+	        			insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
+			        	
+	        		}
+	        	
+				}else {
+					
+					insertarDepuracion("Error #28", "Se han ingresado caracteres no permitidos");
 		        	
-        		}
+				}
         		
         	}
         	
