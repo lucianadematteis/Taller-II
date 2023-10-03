@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 public class UsuarioRegistroErrorCampos extends JFrame {
 
@@ -44,14 +45,15 @@ public class UsuarioRegistroErrorCampos extends JFrame {
 		
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(167, 200, 100, 37);
+		aceptar.setBounds(139, 189, 161, 43);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Error. Debe completar todos los campos");
+		JLabel lblNewLabel = new JLabel("<HTML> <CENTER> ERROR <BR> <BR>\r\nDEBE COMPLETAR TODOS <BR> LOS CAMPOS </CENTER> </HTML>");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
-		lblNewLabel.setBounds(34, 34, 485, 155);
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblNewLabel.setBounds(10, 25, 414, 155);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Codigo de error 10");
