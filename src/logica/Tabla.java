@@ -277,21 +277,17 @@ public class Tabla {
 	 */
 	public String obtenerClave() {
 		
-		String clave="";
-		
-		LinkedHashMap<String, Atributo> guia=registros.get(0);
-		
-		for (Entry<String, Atributo> atributo : guia.entrySet()) {
+		for (Entry<String, Atributo> atributo : registros.get(0).entrySet()) {
 			
-			if(atributo.getValue().getClave()) {
+			if(atributo.getValue().getClave() == true) {
 				
-				clave=atributo.getValue().getNombreAtributo();
+				return atributo.getKey();
 				
 			}
 			
 		}
 		
-		return clave;
+		return null;
 		
 	}
 	
@@ -473,8 +469,7 @@ public class Tabla {
 	 */
 	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos) {
 		
-		Tabla tablita = this.obtenerTabla(nombreTabla);
-		int cantidadAtributos = tablita.getRegistros().get(0).size();
+		int cantidadAtributos = this.getRegistros().get(0).size();
 
 		if(atributos.size() != cantidadAtributos) {
 			
