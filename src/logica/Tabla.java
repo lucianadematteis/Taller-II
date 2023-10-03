@@ -467,14 +467,13 @@ public class Tabla {
 	
 	/**
 	 * Metodo publico que recibe el nombre de la tabla y una lista de atributos. El metodo valida si la cantidad de atributos proporcionados coincide con la cantidad de atributos en la tabla y retorna true si la cantidad coincide, o false en caso contrario
-	 * @param nombreTabla-> nombre de la tabla
 	 * @param atributos-> lista de atributos
 	 * @return valida si la cantidad de atributos es correcta
 	 */
-	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos) {
+	public boolean validaCantidadAtributos( ArrayList<String> atributos) {
 		
-		Tabla tablita = this.obtenerTabla(nombreTabla);
-		int cantidadAtributos = tablita.getRegistros().get(0).size();
+	//	Tabla tablita = obtenerTabla(getNombreTabla);
+		int cantidadAtributos = this.getRegistros().get(0).size();
 
 		if(atributos.size() != cantidadAtributos) {
 			
