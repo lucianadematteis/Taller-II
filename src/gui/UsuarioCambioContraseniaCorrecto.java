@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 public class UsuarioCambioContraseniaCorrecto extends JFrame {
 
@@ -44,14 +45,15 @@ public class UsuarioCambioContraseniaCorrecto extends JFrame {
 		
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(166, 203, 104, 35);
+		aceptar.setBounds(166, 193, 129, 45);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("La contrase\u00F1a se ha cambiado con \u00E9xito");
+		JLabel lblNewLabel = new JLabel("<HTML> <CENTER> LA CONTRASEÑA HA SIDO <BR> CAMBIADA CON ÉXITO </CENTER> </HTML>");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
-		lblNewLabel.setBounds(38, 40, 386, 155);
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblNewLabel.setBounds(10, 40, 414, 155);
 		contentPane.add(lblNewLabel);
 		
 	}
