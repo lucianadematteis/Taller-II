@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 public class UsuarioErrorContrasenia extends JFrame {
 
@@ -64,14 +65,15 @@ public class UsuarioErrorContrasenia extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(164, 199, 112, 36);
+		aceptar.setBounds(144, 180, 138, 49);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("ERROR CONTRASE\u00D1A INV\u00C1LIDA");
+		JLabel lblNewLabel = new JLabel("<HTML> <CENTER> ERROR CONTRASEÑA <BR> INCORRECTA </CENTER> </HTML>");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 17));
-		lblNewLabel.setBounds(59, 33, 365, 155);
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblNewLabel.setBounds(10, 33, 414, 155);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 7");
