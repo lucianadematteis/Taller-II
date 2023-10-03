@@ -894,4 +894,47 @@ public class Tabla {
 	    
 	}
 	
+	/**
+	 * Metodo publico que recibe como parametros el nombre del atributo, el nombre del atributo de condicion y el valor de condicion. El metodo calcula el promedio de los valores de un atributo especifico de registros que cumplan con una condicion dada y retorna el promedio de esos valores como un numero decimal.
+	 * @param nombreAtributo-> nombre del atributo
+	 * @param nombreAtributoCondicion-> el nombre de la condicion
+	 * @param valorCondicion-> valor de la condicion
+	 * @param operador-> operador
+	 * @return el promedio de los valores que corresponden a la condicion
+	 */
+	public double calcularPromedioRegistros(String nombreAtributo, String nombreAtributoCondicion, String valorCondicion, String operador) {
+	    
+		double promedio = 0.0;
+	    int suma = 0;
+	    ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerRegistros(nombreAtributoCondicion, valorCondicion, operador);
+	    ArrayList<DTOAtributo> seleccion = this.seleccionarAtributo(registros, nombreAtributo);
+	    int cantidadValores = seleccion.size(); 
+
+	    for (DTOAtributo dato : seleccion) {
+			
+            if (dato instanceof DTOEntero) {
+            
+            	DTOEntero atributo = (DTOEntero) dato;
+                Integer valor = atributo.getValor();
+                
+                if(valor != null) {
+                
+                	suma += valor;
+                
+                }
+            
+            }
+            
+	    }
+
+	    if (cantidadValores > 0){
+	      
+	    	promedio = (double) suma / cantidadValores;
+	    
+	    }
+	    
+	    return promedio;
+	    
+	}
+	
 }

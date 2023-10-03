@@ -481,36 +481,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public double calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion, String operador) {
 	    
-		double promedio = 0.0;
-	    int suma = 0;
-	    ArrayList<LinkedHashMap<String, DTOAtributo>> registros = this.obtenerTabla(nombreTabla).obtenerRegistros(nombreAtributoCondicion, valorCondicion, operador);
-	    ArrayList<DTOAtributo> seleccion = this.obtenerTabla(nombreTabla).seleccionarAtributo(registros, nombreAtributo);
-	    int cantidadValores = seleccion.size(); 
-
-	    for (DTOAtributo dato : seleccion) {
-			
-            if (dato instanceof DTOEntero) {
-            
-            	DTOEntero atributo = (DTOEntero) dato;
-                Integer valor = atributo.getValor();
-                
-                if(valor != null) {
-                
-                	suma += valor;
-                
-                }
-            
-            }
-            
-	    }
-
-	    if (cantidadValores > 0){
-	      
-	    	promedio = (double) suma / cantidadValores;
-	    
-	    }
-	    
-	    return promedio;
+	return this.obtenerTabla(nombreTabla).calcularPromedioRegistros(nombreAtributo, nombreAtributoCondicion, valorCondicion, operador);
 	    
 	}
 	
