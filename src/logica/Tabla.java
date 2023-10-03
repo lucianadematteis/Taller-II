@@ -117,12 +117,14 @@ public class Tabla {
 	    if (dtoAtributo instanceof DTOEntero) {
 	    	
 	        DTOEntero dtoEntero = (DTOEntero) dtoAtributo;
-	        return new Entero(dtoEntero.getValor());
+	        Entero entero = new Entero(dtoEntero);
+	        return entero;
 	        
 	    } else if (dtoAtributo instanceof DTOCadena) {
 	    	
 	        DTOCadena dtoCadena = (DTOCadena) dtoAtributo;
-	        return new Cadena(dtoCadena.getDato());
+	        Cadena cadena = new Cadena(dtoCadena);
+	        return cadena;
 	        
 	    }
 	    
@@ -212,9 +214,8 @@ public class Tabla {
 	public void eliminarRegistro(LinkedHashMap<String, DTOAtributo> registro) {
 		
 		LinkedHashMap<String, Atributo> registroConvertido = this.convertirMapa(registro);
-		
 		registros.remove(registroConvertido);
-		   
+		 
 	}
 	
 	/**
@@ -622,7 +623,7 @@ public class Tabla {
 				Entero atributoE = (Entero) atriGuia.getValue();
 				DTOEntero atrE =  new DTOEntero(atributoE);
 				
-				if(!(atributos.get(i).equals("NULL"))) {
+				if(!(atributos.get(i).equalsIgnoreCase("NULL"))) {
 					
 					atrE.setValor(Integer.parseInt(atributos.get(i)));
 					
@@ -635,7 +636,7 @@ public class Tabla {
 				Cadena atributoC = (Cadena) atriGuia.getValue();
 				DTOCadena atrC = new DTOCadena(atributoC);
 				
-				if(!(atributos.get(i).equals("NULL"))) {
+				if(!(atributos.get(i).equalsIgnoreCase("NULL"))) {
 					
 					atrC.setDato(atributos.get(i));
 					
