@@ -468,10 +468,9 @@ public class Tabla {
 	 */
 	public boolean validaCantidadAtributos( ArrayList<String> atributos) {
 		
-<<<<<<< HEAD
+
 	//	Tabla tablita = obtenerTabla(getNombreTabla);
-=======
->>>>>>> 398dc14f0c5dad96eb1a6863833fb2b33869894f
+
 		int cantidadAtributos = this.getRegistros().get(0).size();
 
 		if(atributos.size() != cantidadAtributos) {
@@ -485,6 +484,36 @@ public class Tabla {
 		}
 		
 	}
+	/**
+	 * Metodo publico que recibe como parametro el nombre de la tabla y una lista de atributos. El metodo valida si los atributos que no sean nulos encajan con la definicion de la tabla y retorna true si todos los atributos cumplen con la restriccion, false si al menos uno no lo hace
+	 * @param nombreTabla-> nombre de la tabla
+	 * @param atributos-> lista de atributos
+	 * @return valida si los atributos de la tabla pueden ser notnull
+	 */
+	public boolean validaNotNull( ArrayList<String> atributos) {
+		
+		//Tabla tablita = this.obtenerTabla(nombreTabla);
+		
+		LinkedHashMap<String, Atributo> guia = this.getRegistros().get(0);
+		
+		int i=0;
+		
+		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
+			
+			if((atributos.get(i).equalsIgnoreCase("NULL")) && (atriGuia.getValue().getNulo()==true)) {
+			
+				return false;
+			
+			}
+			
+			i++;
+				
+		}
+		
+		return true;
+		
+	}
+	
 	
 	/**
 	 * Metodo publico que recibe como parametro el nombre de una tabla y retorna una lista de cadenas que describen las caracteristicas de los atributos de la tabla

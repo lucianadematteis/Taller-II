@@ -803,35 +803,6 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	
 
-	/**
-	 * Metodo publico que recibe como parametro el nombre de la tabla y una lista de atributos. El metodo valida si los atributos que no sean nulos encajan con la definicion de la tabla y retorna true si todos los atributos cumplen con la restriccion, false si al menos uno no lo hace
-	 * @param nombreTabla-> nombre de la tabla
-	 * @param atributos-> lista de atributos
-	 * @return valida si los atributos de la tabla pueden ser notnull
-	 */
-	public boolean validaNotNull(String nombreTabla, ArrayList<String> atributos) {
-		
-		Tabla tablita = this.obtenerTabla(nombreTabla);
-		
-		LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
-		
-		int i=0;
-		
-		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
-			
-			if((atributos.get(i).equalsIgnoreCase("NULL")) && (atriGuia.getValue().getNulo()==true)) {
-			
-				return false;
-			
-			}
-			
-			i++;
-				
-		}
-		
-		return true;
-		
-	}
 	
 	/**
 	 * Metodo publico que recibe como parametros el nombre de una tabla y una lista de atributos. El metodo verifica si la tabla tiene una clave primaria definida; si no la tiene, se considera valida y retorna true. Si tiene una clave primaria, el metodo comprueba que ninguno de los atributos de la clave sea 'NULL' y que no se repitan en otros registros. Si alguna de estas condiciones no se cumple, retorna false
@@ -1046,4 +1017,12 @@ public class FachadaLogica implements IFachadaLogica {
 		return this.obtenerTabla(nombreTabla).validaCantidadAtributos(nombreTabla, atributos);
 	}
 
+	
+	 
+	public boolean validaNotNull(String nombreTabla, ArrayList<String> atributos) {
+		return this.obtenerTabla(nombreTabla). validaNotNull(atributos);
+	
+		
+	}
+	
 }
