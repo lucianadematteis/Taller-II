@@ -302,7 +302,7 @@ public class Comandos {
 
 		if (!(validaCantidadLineas(sentencia, 2, 2))) {
 
-			insertarDepuracion("Error #02", "La cantidad de l�neas ingresada es incorrecta");
+			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
 
 		} else {
 
@@ -543,7 +543,7 @@ public class Comandos {
 		
 		if(!(validaCantidadLineas(sentencia, 2, 2))) {
 			
-        	insertarDepuracion("Error #02", "La cantidad de l�neas ingresada es incorrecta");
+        	insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
         	
 		}else {
 		
