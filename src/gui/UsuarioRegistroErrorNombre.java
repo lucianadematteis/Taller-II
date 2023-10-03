@@ -49,8 +49,8 @@ public class UsuarioRegistroErrorNombre extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("<HTML> <CENTER> ERROR </CENTER> <BR> <CENTER> EL USUARIO YA SE ENCUENTRA <BR>\r\n REGISTRADO </CENTER> </HTML>");
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
-		lblNewLabel.setBounds(49, 28, 385, 155);
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblNewLabel.setBounds(39, 29, 385, 155);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("C\u00F3digo de error 6");
