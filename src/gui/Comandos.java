@@ -273,7 +273,7 @@ public class Comandos {
 
 		if (!(validaCantidadLineas(sentencia, 1, 1))) {
 
-			insertarDepuracion("Error #02", "La cantidad de l�neas ingresada es incorrecta");
+			insertarDepuracion("<html><font color='red'>Error #02</font></html>", "<html><font color='red'>La cantidad de líneas ingresada es incorrecta</font></html>");
 
 		} else {
 
