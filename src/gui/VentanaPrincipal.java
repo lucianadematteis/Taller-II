@@ -229,7 +229,7 @@ public class VentanaPrincipal extends JFrame {
 		});
 		depuracion.setCellSelectionEnabled(false); // Desactiva la selección de celdas
 		depuracion.getColumnModel().getColumn(0).setPreferredWidth(89);
-		depuracion.getColumnModel().getColumn(1).setPreferredWidth(725);
+		depuracion.getColumnModel().getColumn(1).setPreferredWidth(723);
 		scrollPane_2.setViewportView(depuracion);
 
 		
