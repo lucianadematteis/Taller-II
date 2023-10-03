@@ -71,7 +71,7 @@ public class Login extends JFrame {
 		pass_1.setHorizontalAlignment(JTextField.CENTER);
 		
 		JButton inicioSesion = new JButton("INICIAR SESION");
-		inicioSesion.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		inicioSesion.setFont(new Font("Verdana", Font.BOLD, 14));
 		inicioSesion.setForeground(fuentePrincipal);
 		inicioSesion.setBackground(botones);
 		inicioSesion.addActionListener(new ActionListener() {
@@ -125,7 +125,7 @@ public class Login extends JFrame {
 		panel.add(inicioSesion);
 		
 		JButton btnRegistrarse = new JButton("REGISTRARSE");
-		btnRegistrarse.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		btnRegistrarse.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnRegistrarse.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -184,7 +184,7 @@ public class Login extends JFrame {
 			}
 			
 		});
-		btnIniciarDemo.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		btnIniciarDemo.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnIniciarDemo.setForeground(Color.WHITE);
 		btnIniciarDemo.setFocusPainted(false);
 		btnIniciarDemo.setBackground(new Color(3, 60, 88));

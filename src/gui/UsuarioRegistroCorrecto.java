@@ -36,7 +36,7 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton aceptar = new JButton("ACEPTAR");
-		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		aceptar.setFont(new Font("Verdana", Font.BOLD, 14));
 		aceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {

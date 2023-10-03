@@ -30,7 +30,7 @@ public class UsuarioRegistroErrorCampos extends JFrame {
 		contentPane.setBackground(fondoPrincipal);
 		
 		JButton aceptar = new JButton("ACEPTAR");
-		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		aceptar.setFont(new Font("Verdana", Font.BOLD, 14));
 		aceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {

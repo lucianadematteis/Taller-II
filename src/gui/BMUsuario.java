@@ -106,7 +106,7 @@ public class BMUsuario extends JFrame {
 			}
 			
 		});
-		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		aceptar.setFont(new Font("Verdana", Font.BOLD, 14));
 		aceptar.setBounds(287, 302, 133, 26);
 		aceptar.setFocusPainted(false);
 		panel.add(aceptar);
@@ -176,7 +176,7 @@ public class BMUsuario extends JFrame {
 			}
 		});
 		aceptar_1.setForeground(Color.WHITE);
-		aceptar_1.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		aceptar_1.setFont(new Font("Verdana", Font.BOLD, 14));
 		aceptar_1.setFocusPainted(false);
 		aceptar_1.setBackground(new Color(3, 60, 88));
 		aceptar_1.setBounds(257, 300, 162, 26);
@@ -220,7 +220,7 @@ public class BMUsuario extends JFrame {
 		
 		});
 		btnCancelar.setForeground(Color.WHITE);
-		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		btnCancelar.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
 		btnCancelar.setBounds(853, 587, 116, 28);

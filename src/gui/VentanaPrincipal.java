@@ -133,14 +133,14 @@ public class VentanaPrincipal extends JFrame {
 
 			}
 		});
-		limpiar.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		limpiar.setFont(new Font("Verdana", Font.BOLD, 13));
 		limpiar.setBounds(887, 146, 99, 28);
 		limpiar.setBackground(botones);
 		limpiar.setForeground(fuentePrincipal);
         limpiar.setFocusPainted(false); 
         
 		JButton cerrarSesion = new JButton("CERRAR SESI\u00D3N");
-		cerrarSesion.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		cerrarSesion.setFont(new Font("Verdana", Font.BOLD, 14));
 		cerrarSesion.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -271,7 +271,7 @@ public class VentanaPrincipal extends JFrame {
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
 		JButton ejecutar = new JButton("EJECUTAR");
-		ejecutar.setFont(new Font("Segoe UI", Font.BOLD, 13));
+		ejecutar.setFont(new Font("Verdana", Font.BOLD, 13));
 		ejecutar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -317,7 +317,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnConfigUsuario = new JButton("CONFIGURACI\u00D3N DE USUARIO");
 		btnConfigUsuario.setBackground(botones);
 		btnConfigUsuario.setForeground(fuentePrincipal);
-		btnConfigUsuario.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		btnConfigUsuario.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnConfigUsuario.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent e) {

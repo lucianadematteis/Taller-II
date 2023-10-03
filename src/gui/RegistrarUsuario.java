@@ -69,19 +69,19 @@ public class RegistrarUsuario extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Ingrese documento de usuario");
 		lblNewLabel.setForeground(fuentePrincipal);
-		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblNewLabel.setBounds(10, 82, 291, 28);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nueva contrase\u00F1a");
 		lblNewLabel_1.setForeground(fuentePrincipal);
-		lblNewLabel_1.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblNewLabel_1.setBounds(126, 145, 171, 20);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Confirmar contrase\u00F1a");
 		lblNewLabel_2.setForeground(fuentePrincipal);
-		lblNewLabel_2.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblNewLabel_2.setBounds(92, 201, 209, 20);
 		panel.add(lblNewLabel_2);
 		
@@ -138,7 +138,7 @@ public class RegistrarUsuario extends JFrame {
 			}
 			
 		});
-		aceptar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		aceptar.setFont(new Font("Verdana", Font.BOLD, 14));
 		aceptar.setBounds(386, 285, 130, 28);
 		aceptar.setFocusPainted(false);
 		panel.add(aceptar);
@@ -157,7 +157,7 @@ public class RegistrarUsuario extends JFrame {
 		
 		});
 		btnCancelar.setForeground(Color.WHITE);
-		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		btnCancelar.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
 		btnCancelar.setBounds(244, 285, 130, 28);

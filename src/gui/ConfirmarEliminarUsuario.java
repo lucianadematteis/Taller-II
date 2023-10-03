@@ -37,7 +37,7 @@ public class ConfirmarEliminarUsuario extends JFrame {
 		contentPane.setLayout(null);
 
 		JButton confirmar = new JButton("CONFIRMAR");
-		confirmar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		confirmar.setFont(new Font("Verdana", Font.BOLD, 14));
 		confirmar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -69,7 +69,7 @@ public class ConfirmarEliminarUsuario extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		JButton btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		btnCancelar.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnCancelar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
