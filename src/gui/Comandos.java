@@ -117,7 +117,7 @@ public class Comandos {
     }
     
 	 /**
-	  * Metodo privado que recibe como par�metros una lista de cadenas y el nombre de la columna y los carga en una tabla en la interfaz grafica.
+	  * Metodo privado que recibe como parámetros una lista de cadenas y el nombre de la columna y los carga en una tabla en la interfaz grafica.
 	  * @param datos-> lista de cadenas
 	  * @param nombreColumna-> nombre de la columna a cargar en una tabla
 	  * 
@@ -158,7 +158,7 @@ public class Comandos {
     }
     
 	 /**
-	  * Metodo privado que recibe como par�metros dos cadenas de texto que corresponden a mensajes. El metodo inserta una fila en una tabla de depuracion en la interfaz grafica.
+	  * Metodo privado que recibe como parámetros dos cadenas de texto que corresponden a mensajes. El metodo inserta una fila en una tabla de depuracion en la interfaz grafica.
 	  * @param mensaje1->cadena de texto
 	  * @param mensaje2->cadena de texto
 	  * 
@@ -174,7 +174,7 @@ public class Comandos {
     
     /**
     * 
-    * Metodo privado que recibe como par�metros una lista de matrices de cadenas de texto (la sentencia), dos indices de posicion (inicial y final) y un numero entero que representa la cantidad de argumentos.  El metodo v�lida si la cantidad de argumentos en las l�neas de una sentencia esta dentro de un rango especifico y retorna true si es v�lida o false en caso contrario.
+    * Metodo privado que recibe como parámetros una lista de matrices de cadenas de texto (la sentencia), dos indices de posicion (inicial y final) y un numero entero que representa la cantidad de argumentos.  El metodo v�lida si la cantidad de argumentos en las l�neas de una sentencia esta dentro de un rango especifico y retorna true si es v�lida o false en caso contrario.
     * @param sentencia-> lista de sentencias
     * @param posInicial->indice
     * @param posFinal->indice
@@ -206,7 +206,7 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe como parametro una cadena de texto y retorna true si el tipo de dato es v�lido (cadena o entero) o false en caso contrario.
+	 * Metodo privado que recibe como parametro una cadena de texto y retorna true si el tipo de dato es válido (cadena o entero) o false en caso contrario.
 	 * @param tipo->cadena de texto
 	 * @return v�lida que el tipo de dato sea entero o cadena
 	 * 
@@ -218,7 +218,7 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe como par�metros una lista de matrices de cadenas de texto (sentencia) y dos indices de posicion (inicial y final). El metodo retorna true si los tipos de atributos (entero o cadena) en el rango especificado son v�lidos y false en caso contrario.
+	 * Metodo privado que recibe como parámetros una lista de matrices de cadenas de texto (sentencia) y dos indices de posicion (inicial y final). El metodo retorna true si los tipos de atributos (entero o cadena) en el rango especificado son válidos y false en caso contrario.
 	 * @param sentencia-> lista de sentencias
 	 * @param posInicial->indice
 	 * @param posFinal->indice
@@ -314,7 +314,7 @@ public class Comandos {
 
 				if (!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
 
-					insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es v�lido");
+					insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 
 				} else {
 
@@ -342,19 +342,19 @@ public class Comandos {
 
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 4))) {
 
-			insertarDepuracion("Error #03", "Cantidad de argumentos no v�lida en l�nea 3");
+			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 3");
 
 		} else {
 
 			if (!(sentencia.get(2)[0].equalsIgnoreCase("WHERE"))) {
 
-				insertarDepuracion("Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es v�lido");
+				insertarDepuracion("Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es válido");
 
 			} else {
 
 				if (!(operadores.contains(sentencia.get(2)[2]))) {
 
-					insertarDepuracion("Error #05", "El operador: " + sentencia.get(2)[2] + " no es v�lido");
+					insertarDepuracion("Error #05", "El operador: " + sentencia.get(2)[2] + " no es válido");
 
 				} else {
 
@@ -379,13 +379,13 @@ public class Comandos {
 
 		if (!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 
-			insertarDepuracion("Error #03", "Cantidad de argumentos no v�lida en la l�nea 2");
+			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en la línea 2");
 
 		} else {
 
 			if (!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
 
-				insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es v�lido");
+				insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 
 			} else {
 
@@ -408,7 +408,7 @@ public class Comandos {
 
 		if (!(validaCantidadLineas(sentencia, 3, 3))) {
 
-			insertarDepuracion("Error #02", "La cantidad de l�neas ingresada es incorrecta");
+			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
 
 		} else {
 
@@ -429,7 +429,7 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si los operadores lOgicos en la sentencia son v�lidos.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si los operadores lOgicos en la sentencia son válidos.
 	 * @param sentencia-> lista de sentencias
 	 * @return v�lida los operadores logicos de la sentencia
 	 * 
@@ -446,7 +446,7 @@ public class Comandos {
 
 			if (!(operadores.contains(sentencia.get(2)[2])) || !(operadores.contains(sentencia.get(2)[6]))) {
 
-				insertarDepuracion("Error #05", "Operador/es de igualdad no v�lido en la l�nea 3");
+				insertarDepuracion("Error #05", "Operador/es no válido en la línea 3");
 
 			} else {
 
@@ -469,7 +469,7 @@ public class Comandos {
 		
 		if(!(validaCantidadLineas(sentencia, 2, 5))) {
 			
-			insertarDepuracion("Error #02", "La cantidad de l�neas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla");
+			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla");
         	
 		}else {
 			
@@ -508,7 +508,7 @@ public class Comandos {
 						logica.crearTabla(tabla, atributos);
 						VentanaPrincipal.cargarTablas(logica.obtenerTablasNom());
 						aciertos++;
-						insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con �xito la tabla: " +  sentencia.get(1)[1]);
+						insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con éxito la tabla: " +  sentencia.get(1)[1]);
 			        	
 					}
 				}
@@ -520,7 +520,7 @@ public class Comandos {
 					logica.eliminarTabla(sentencia.get(1)[1]);
 					VentanaPrincipal.cargarTablas(logica.obtenerTablasNom());
 					aciertos++;
-					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con �xito la tabla: " +  sentencia.get(1)[1]);
+					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con éxito la tabla: " +  sentencia.get(1)[1]);
 		        	
 				}else {
 					
@@ -563,7 +563,7 @@ public class Comandos {
 					logica.crearBD(bd);
 					VentanaPrincipal.cargarBasesDatos(logica.obtenerBasesNom());
 					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con �xito la base de datos: " + sentencia.get(1)[1]);
+		        	insertarDepuracion("Acierto #" + aciertos, "Se ha ingresado con éxito la base de datos: " + sentencia.get(1)[1]);
 					
 				}
 			
@@ -581,7 +581,7 @@ public class Comandos {
 					logica.eliminarBD(sentencia.get(1)[1]);
 					VentanaPrincipal.cargarBasesDatos(logica.obtenerBasesNom());
 					VentanaPrincipal.cargarTablas(null);
-					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con �xito la base de datos: " + sentencia.get(1)[1]);
+					insertarDepuracion("Acierto #" + aciertos, "Se ha eliminado con éxito la base de datos: " + sentencia.get(1)[1]);
 					
 				}else {
 					
@@ -605,18 +605,18 @@ public class Comandos {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
-			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //v�lido que el tipo de atributo y condici�n coincidan
+			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condici�n coincidan
 				
-				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //v�lido que hayan registros que mostrar para la condici�n dada
+				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condici�n dada
 					
-					insertarDepuracion("Error #13", "No hay registros que coincidan con los par�metros de la b�squeda");
+					insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 					
 				}else {
 					
 					ArrayList<DTOAtributo> atributos=logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]);
 		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Consulta �xitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+		        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 		        	
 				}
 				
@@ -644,18 +644,18 @@ public class Comandos {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
-			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //v�lido que el tipo de atributo y condici�n coincidan
+			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condici�n coincidan
 				
-				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //v�lido que hayan registros que mostrar para la condici�n dada
+				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condici�n dada
 						
-					insertarDepuracion("Error #13", "No hay registros que coincidan con los par�metros de la b�squeda");
+					insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 					
 				}else {
 					
 					ArrayList<DTOAtributo> atributos=logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]);
 		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Consulta �xitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+		        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 		        	
 				}
 				
@@ -686,14 +686,14 @@ public class Comandos {
         	
     		if(!(sentencia.get(0)[1].equalsIgnoreCase("TABLES"))) {
             			
-	        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(0)[1].toUpperCase() + " no es v�lido");
+	        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(0)[1].toUpperCase() + " no es válido");
 	        	
             }else {
             	
             	ArrayList<String> tablas = logica.obtenerTablasNom();
             	cargarTablaString(tablas, "tablas");
             	aciertos++;
-            	insertarDepuracion("Acierto #" + aciertos, "Consulta �xitosa, se muestran las tablas para la base de datos seleccionada");
+            	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, se muestran las tablas para la base de datos seleccionada");
             	
             }
         	
@@ -711,13 +711,13 @@ public class Comandos {
 		
 		if(!(sentencia.size()>1)){
 			
-    		insertarDepuracion("Error #02", "La cantidad de l�neas ingresada es incorrecta");
+    		insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
         	
 		}else {
 			
         	if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { //no tiene mas nada alado del create
         		
-        		insertarDepuracion("Error #03", "Demasiados argumentos en l�nea 1");
+        		insertarDepuracion("Error #03", "Demasiados argumentos en línea 1");
 	        
         	}else {
     			
@@ -741,7 +741,7 @@ public class Comandos {
 	        			
 	        		}else {
 	        			
-	        			insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es v�lido");
+	        			insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 			        	
 	        		}
 	        	
@@ -790,7 +790,7 @@ public class Comandos {
 			    					ArrayList<DTOAtributo> atributos=logica.realizarConsultaSinWhere(sentencia.get(1)[1], sentencia.get(0)[1]);
 						        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 						        	aciertos++;
-						        	insertarDepuracion("Acierto #" + aciertos, "Consulta �xitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+						        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 		            			
 	            				}else {
 		    	        			
@@ -820,9 +820,9 @@ public class Comandos {
 			            			
 			            			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
 			                			
-					            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //v�lido que el tipo de atributo y condici�n coincidan
+					            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condici�n coincidan
 					            			
-					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]).isEmpty()) { //v�lido que hayan registros que mostrar para la condici�n dada
+					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condici�n dada
 					            				
 					            				insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
 					            				
@@ -831,7 +831,7 @@ public class Comandos {
 					            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 									        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					            				aciertos++;
-									        	insertarDepuracion("Acierto #" + aciertos, "Consulta �xitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+									        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
 									        	
 					            			}
 					            			
@@ -869,7 +869,7 @@ public class Comandos {
 			            			
 			            		}else {
 			            			
-			            			insertarDepuracion("Error #5", "El operador " + sentencia.get(2)[4] + " no es v�lido");
+			            			insertarDepuracion("Error #5", "El operador " + sentencia.get(2)[4] + " no es válido");
 			                    	
 			            		}
 			            		
@@ -913,7 +913,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "INSERT" para agregar datos a una tabla.  El metodo verifica la validez de la sentencia, los argumentos y los datos a insertar. Luego, agrega los datos si son v�lidos.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "INSERT" para agregar datos a una tabla.  El metodo verifica la validez de la sentencia, los argumentos y los datos a insertar. Luego, agrega los datos si son válidos.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -965,7 +965,7 @@ public class Comandos {
 	            						
 		            						logica.ingresarRegistro(sentencia.get(0)[1], registro);
 		            			        	aciertos++;
-		            			        	insertarDepuracion("Acierto #" + aciertos, "Se ingresaron los datos con �xito, en la tabla: " + sentencia.get(0)[1]);
+		            			        	insertarDepuracion("Acierto #" + aciertos, "Se ingresaron los datos con éxito, en la tabla: " + sentencia.get(0)[1]);
 		            			        	
 	            						}
 	            					}else {
@@ -1021,23 +1021,23 @@ public class Comandos {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
-	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //v�lido que el tipo de atributo y condici�n coincidan
+	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condici�n coincidan
 	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //v�lido que hayan registros que mostrar para la condici�n dada
+	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condici�n dada
 	        				
 	        				logica.borrarRegistro(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 	        				aciertos++;
-	        	        	insertarDepuracion("Acierto #" + aciertos, "Se eliminaron los datos con �xito, en la tabla: " + sentencia.get(1)[1]);
+	        	        	insertarDepuracion("Acierto #" + aciertos, "Se eliminaron los datos con éxito, en la tabla: " + sentencia.get(1)[1]);
 	        	        	
 	        			}else {
 	        				
-	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los par�metros de la b�squeda");
+	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 	        				
 	        			}
 	        			
 	        		}else {
 	        			
-	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condici�n no coinciden");
+	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
 	    				
 	        		}
 	        		
@@ -1061,25 +1061,25 @@ public class Comandos {
 		
 		if(!(validaCantidadLineas(sentencia, 3, 3))) {
     		
-        	insertarDepuracion("Error #02", "La cantidad de l�neas ingresada es incorrecta");
+        	insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
         	
     	}else {
     	
         	if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
         		
-	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en l�nea 1");
+	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
 	        	
         	}else {
         	
             	if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 4))) {
             		
-		        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las l�neas 2 y 3");
+		        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las líneas 2 y 3");
 		        	
             	}else {
             		
             		if(!(sentencia.get(1)[0].equalsIgnoreCase("SET"))) {
             			
-			        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es v�lido");
+			        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 			        	
             		}else {
             			
@@ -1087,7 +1087,7 @@ public class Comandos {
 	            			
 	            			if(!(sentencia.get(1)[2].equals("="))){
 	            				
-					        	insertarDepuracion("Error #05", "El operador: " + sentencia.get(1)[2] + " no es v�lido");
+					        	insertarDepuracion("Error #05", "El operador: " + sentencia.get(1)[2] + " no es válido");
 					        	
 	            			}else {
 	            		
@@ -1115,7 +1115,7 @@ public class Comandos {
 				            				
 			            				}else {
 			            					
-			            					insertarDepuracion("Error #13", "No hay registros que coincidan con los par�metros de la b�squeda");
+			            					insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 			            					
 			            				}
 			            				
@@ -1167,7 +1167,7 @@ public class Comandos {
 						
 							logica.hacerNotNull(sentencia.get(1)[1], sentencia.get(0)[1]);
 							aciertos++;
-				        	insertarDepuracion("Acierto #" + aciertos, "Se indico como no nulo con �xito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+				        	insertarDepuracion("Acierto #" + aciertos, "Se indico como no nulo con éxito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
 				        	
 						}
 			        	
@@ -1198,7 +1198,7 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
-        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en l�nea 1");
+        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
         	
     	}else {
     	
@@ -1206,9 +1206,9 @@ public class Comandos {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
-	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //v�lido que el tipo de atributo y condici�n coincidan
+	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condici�n coincidan
 	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //v�lido que hayan registros que mostrar para la condici�n dada
+	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condici�n dada
 	        				
 	        				aciertos++;
 	        	        	insertarDepuracion("Acierto #" + aciertos, "La cantidad de registros que cumplen con la consulta es: " + logica.contarRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]));
@@ -1216,13 +1216,13 @@ public class Comandos {
 	        				
 	        			}else {
 	        				
-	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los par�metros de la b�squeda");
+	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 	        				
 	        			}
 	        			
 	        		}else {
 	        			
-	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condici�n no coinciden");
+	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
 	    				
 	        		}
 	        		
@@ -1257,9 +1257,9 @@ public class Comandos {
         		
         			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
         			
-		        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //v�lido que el tipo de atributo y condici�n coincidan
+		        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condici�n coincidan
 		        			
-		        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //v�lido que hayan registros que mostrar para la condici�n dada
+		        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condici�n dada
 		        				
 		        				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
 		                					
@@ -1268,13 +1268,13 @@ public class Comandos {
 		                            
 	            				}else {
 	            					
-	            					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operaci�n");
+	            					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operación");
 	            					
 	            				}
 		                				
 	            			}else {
 	            				
-	            				insertarDepuracion("Error #13", "No hay registros que coincidan con los par�metros de la b�squeda");
+	            				insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
 	            				
 	            			}
 	            		
@@ -1322,13 +1322,13 @@ public class Comandos {
 		    			}else {
 		    				
 	    					aciertos++; 
-	        				insertarDepuracion("Acierto #" + aciertos, "El valor m�ximo de los registros consultados es: " + maximo);
+	        				insertarDepuracion("Acierto #" + aciertos, "El valor máximo de los registros consultados es: " + maximo);
 	        			
 		    			}
 						
 					}else {
 						
-						insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operaci�n");
+						insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operación");
 						
 					}
 				
@@ -1369,7 +1369,7 @@ public class Comandos {
 	    			}else {
 				
 	    				aciertos++;
-	    				insertarDepuracion("Acierto #" + aciertos, "El valor m�nimo de los registros consultados es: " + minimo);
+	    				insertarDepuracion("Acierto #" + aciertos, "El valor mínimo de los registros consultados es: " + minimo);
 	    		        
 	        				
 	        		}
@@ -1415,7 +1415,7 @@ public class Comandos {
 						
 						logica.hacerClave(sentencia.get(1)[1], sentencia.get(0)[1]);
 						aciertos++;
-			        	insertarDepuracion("Acierto #" + aciertos, "Se hizo clave primaria con �xito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+			        	insertarDepuracion("Acierto #" + aciertos, "Se hizo clave primaria con éxito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
 						
 					}else {
 	        			
@@ -1505,19 +1505,19 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
-        	insertarDepuracion("Error #03", "Cantidad de argumentos no v�lida en l�nea 1");
+        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 1");
         	
     	}else {
     		
     		if(!(validaCantidadLineas(sentencia, 2, 2))) {
     			
-	        	insertarDepuracion("Error #02", "Cantidad de l�neas no v�lida");
+	        	insertarDepuracion("Error #02", "Cantidad de l�neas no válida");
 	        	
     		}else {
     			
     			if(!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
     				
-		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es v�lido");
+		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 		        	
     			}else {
     			
@@ -1541,13 +1541,13 @@ public class Comandos {
         						
 		        						cargarTablaAtributos(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]), sentencia.get(0)[1]);
 		            					aciertos++;
-		            					insertarDepuracion("Acierto #" + aciertos, "Consulta �xitosa, mostrando resultados del join natural entre las tablas: " + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
+		            					insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados del join natural entre las tablas: " + sentencia.get(1)[1] + " y " + sentencia.get(1)[2]);
 		    			        	
 	        						}
         						
         						}else {
         							
-        							insertarDepuracion("Error #23", "Las tablas ingresadas no poseen ning�n atributo en com�n");
+        							insertarDepuracion("Error #23", "Las tablas ingresadas no poseen ningún atributo en común");
                 	        		
         						}
         						
@@ -1570,7 +1570,7 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo publico que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El metodo ejecuta el comando especificado y las operaciones asociadas, verificando si se selecciono una base de datos y si el comando es v�lido. Tambien muestra resultados o mensajes de error en la tabla de depuracion.
+	 * Metodo publico que recibe una cadena de texto que representa el comando a ejecutar y una lista de matrices de cadenas de texto (sentencia).  El metodo ejecuta el comando especificado y las operaciones asociadas, verificando si se selecciono una base de datos y si el comando es válido. Tambien muestra resultados o mensajes de error en la tabla de depuracion.
 	 * @param comando-> comando que se ejeuctura
 	 * @param sentencia->lista de sentencia
 	 */
@@ -1604,7 +1604,7 @@ public class Comandos {
 	    	
 	    } else {
 	    	
-	        insertarDepuracion("Error #01", "El comando " + comando + " no es v�lido");
+	        insertarDepuracion("Error #01", "El comando " + comando + " no es válido");
 	        
 	    }
 	    
