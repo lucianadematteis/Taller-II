@@ -156,7 +156,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 			
 		});
-		cerrarSesion.setBounds(801, 619, 185, 31);
+		cerrarSesion.setBounds(801, 606, 185, 44);
 		cerrarSesion.setBackground(botones);
 		cerrarSesion.setForeground(fuentePrincipal);
         cerrarSesion.setFocusPainted(false); 
@@ -330,7 +330,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 			
 		});
-		btnConfigUsuario.setBounds(24, 620, 284, 30);
+		btnConfigUsuario.setBounds(24, 613, 284, 37);
 		btnConfigUsuario.setFocusPainted(false);
 		contentPane.add(btnConfigUsuario);
 
