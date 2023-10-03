@@ -386,7 +386,8 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public String obtenerTipoAtributo(String nombreTabla, String nombreAtributo) {
 		
-		return this.obtenerTabla(nombreTabla).obtenerTipo(nombreAtributo);
+		String nombre = this.obtenerAtributo(nombreAtributo, nombreTabla).getNombreAtributo();
+		return this.obtenerTabla(nombreTabla).obtenerTipo(nombre);
 		
 	}
 	
