@@ -121,5 +121,7 @@ public interface IFachadaLogica {
 	public int getDemoHabilitada();
 	
 	public void setDemoHabilitada(int demoHabilitada);
+	
+	public boolean esNotNull (String nombreTabla, String nombreAtributo);
 
 }

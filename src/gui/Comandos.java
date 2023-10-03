@@ -1143,9 +1143,17 @@ public class Comandos {
 					
 					}else {
 						
-						logica.hacerNotNull(sentencia.get(1)[1], sentencia.get(0)[1]);
-						aciertos++;
-			        	insertarDepuracion("Acierto #" + aciertos, "Se indico como no nulo con éxito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+						if(logica.esNotNull(sentencia.get(1)[1], sentencia.get(0)[1])) {
+							
+							insertarDepuracion("Error #23", "El atributo ya esta indicado como no nulo");
+							
+						}else {
+						
+							logica.hacerNotNull(sentencia.get(1)[1], sentencia.get(0)[1]);
+							aciertos++;
+				        	insertarDepuracion("Acierto #" + aciertos, "Se indico como no nulo con éxito el atributo: " + sentencia.get(0)[1] + " de la tabla: " + sentencia.get(1)[1]);
+				        	
+						}
 			        	
 					}
 		        	

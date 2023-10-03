@@ -5,11 +5,8 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import logica.Atributo;
 import logica.BaseDatos;
-import logica.Cadena;
-import logica.Entero;
 import logica.Tabla;
 import logica.Usuario;
 import persistencia.Persistencia;
@@ -498,6 +495,18 @@ public class FachadaLogica implements IFachadaLogica {
 	public void hacerNotNull (String nombreTabla, String nombreAtributo) {
 		
 		this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombreAtributo).setNulo(true);
+					
+	}
+	
+	/**
+	 * Comprueba si un atributo de una tabla especifica no es nulo en su primera fila de registros.
+	 * @param nombreTabla -> El nombre de la tabla a verificar.
+	 * @param nombreAtributo -> El nombre del atributo a comprobar.
+	 * @return true si el atributo no es nulo en la primera fila de registros, false de lo contrario.
+	 */
+	public boolean esNotNull (String nombreTabla, String nombreAtributo) {
+		System.out.println(this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombreAtributo).getNulo());
+		return this.obtenerTabla(nombreTabla).getRegistros().get(0).get(nombreAtributo).getNulo();
 					
 	}
 	

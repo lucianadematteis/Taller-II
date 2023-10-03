@@ -588,7 +588,7 @@ public class Tabla {
 			
 			if(entry.getValue().getNulo()==true) {
 			
-				notNull="No es nulo";
+				notNull="No nulo";
 			
 			}else {
 			
