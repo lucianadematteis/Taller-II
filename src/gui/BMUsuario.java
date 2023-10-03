@@ -122,13 +122,13 @@ public class BMUsuario extends JFrame {
 		panel.add(separator);
 		
 		pass = new JPasswordField();
-		pass.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 17));
+		pass.setFont(new Font("Verdana", Font.PLAIN, 17));
 		pass.setBounds(92, 152, 250, 26);
 		panel.add(pass);
 		pass.setColumns(10);
 		
 		pass2 = new JPasswordField();
-		pass2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 17));
+		pass2.setFont(new Font("Verdana", Font.PLAIN, 17));
 		pass2.setBounds(92, 240, 250, 26);
 		panel.add(pass2);
 		pass2.setColumns(10);
@@ -193,7 +193,7 @@ public class BMUsuario extends JFrame {
 		panel_1.add(separator_2);
 		
 		passActual = new JPasswordField();
-		passActual.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 17));
+		passActual.setFont(new Font("Verdana", Font.PLAIN, 17));
 		passActual.setColumns(10);
 		passActual.setBounds(104, 238, 274, 26);
 		panel_1.add(passActual);

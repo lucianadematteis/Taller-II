@@ -50,19 +50,19 @@ public class RegistrarUsuario extends JFrame {
 		panel.setLayout(null);
 		
 		usuario = new JTextField();
-		usuario.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 14));
+		usuario.setFont(new Font("Verdana", Font.PLAIN, 14));
 		usuario.setBounds(307, 90, 209, 20);
 		panel.add(usuario);
 		usuario.setColumns(10);
 		
 		pass = new JPasswordField();
-		pass.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 14));
+		pass.setFont(new Font("Verdana", Font.PLAIN, 14));
 		pass.setBounds(307, 145, 209, 20);
 		panel.add(pass);
 		pass.setColumns(10);
 		
 		pass2 = new JPasswordField();
-		pass2.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 14));
+		pass2.setFont(new Font("Verdana", Font.PLAIN, 14));
 		pass2.setBounds(307, 201, 209, 20);
 		panel.add(pass2);
 		pass2.setColumns(10);

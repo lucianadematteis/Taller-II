@@ -62,7 +62,7 @@ public class Login extends JFrame {
 		panel.setLayout(null);
 		
 		JPasswordField pass_1 = new JPasswordField();
-		pass_1.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 17));
+		pass_1.setFont(new Font("Verdana", Font.PLAIN, 17));
 		pass_1.setBounds(64, 196, 340, 26);
 		panel.add(pass_1);
 		pass_1.setForeground(escritura);
@@ -145,7 +145,7 @@ public class Login extends JFrame {
 		panel.add(btnRegistrarse);
 		
 		user = new JTextField();
-		user.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 17));
+		user.setFont(new Font("Verdana", Font.PLAIN, 17));
 		user.setBounds(64, 92, 340, 26);
 		panel.add(user);
 		user.setForeground(escritura);
