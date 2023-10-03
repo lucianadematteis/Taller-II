@@ -13,7 +13,7 @@ import comunicacion.DTOEntero;
 
 public class Entero extends Atributo {
 	
-	private int valor;
+	private Integer valor;
 	
 	/**
 	 * Constructor que recibe un objeto DTOEntero que  inicializa la instancia de Entero con los valores proporcionados por el objeto, incluyendo el nombre del atributo, si puede ser nulo, si es una clave y el valor de tipo entero.
@@ -33,7 +33,7 @@ public class Entero extends Atributo {
 	 * @param clave-> si es clave o no
 	 * @param valor->  valor del atributo
 	 */
-	public Entero(String nombreAtributo, boolean nulo, boolean clave, int valor) {
+	public Entero(String nombreAtributo, boolean nulo, boolean clave, Integer valor) {
 		
 		super(nombreAtributo, nulo, clave);
 		this.valor = valor;
@@ -55,7 +55,7 @@ public class Entero extends Atributo {
 	 * Metodo publico que retorna un entero.  Permite recuperar el valor del atributo valor. Su proposito es proporcionar acceso controlado a los datos encapsulados dentro de un objeto.
 	 * @return-> el valor del atributo
 	 */
-	public int getValor() {
+	public Integer getValor() {
 		
 		return valor;
 		
@@ -65,7 +65,7 @@ public class Entero extends Atributo {
 	 * Metodo publico que recibe como parametro un entero y permite establecer o modificar el valor del atributo privado valor. Su objetivo principal es permitir la asignacion controlada de valores a los atributos encapsulados dentro de un objeto.
 	 * @param valor-> valor del atributo a establecer o modificar
 	 */
-	public void setValor(int valor) {
+	public void setValor(Integer valor) {
 		
 		this.valor = valor;
 		

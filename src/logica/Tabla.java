@@ -343,26 +343,30 @@ public class Tabla {
 				    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
 				    		DTOEntero entradaEntera = (DTOEntero) entrada.getValue();
 				    		
-				    		if (operador.equals("=") && entradaEntera.getValor() == valorCondicionEntera) {
-			                   
-				    			registrosObtenidos.add(misRegistros);
-			                
-				    		}else if (operador.equals("<") && entradaEntera.getValor() < valorCondicionEntera) {
-			                
-				    			registrosObtenidos.add(misRegistros);
-			                
-				    		}else if (operador.equals(">") && entradaEntera.getValor() > valorCondicionEntera) {
-			                
-				    			registrosObtenidos.add(misRegistros);
-			                
-				    		}else if (operador.equals(">=") && entradaEntera.getValor() >= valorCondicionEntera) {
-			                    
-				    			registrosObtenidos.add(misRegistros);
-			                
-				    		}else if (operador.equals("<=") && entradaEntera.getValor() <= valorCondicionEntera) {
-			                
-				    			registrosObtenidos.add(misRegistros);
-			                
+				    		if(entradaEntera.getValor() != null) {
+				    		
+					    		if (operador.equals("=") && entradaEntera.getValor() == valorCondicionEntera) {
+				                   
+					    			registrosObtenidos.add(misRegistros);
+				                
+					    		}else if (operador.equals("<") && entradaEntera.getValor() < valorCondicionEntera) {
+				                
+					    			registrosObtenidos.add(misRegistros);
+				                
+					    		}else if (operador.equals(">") && entradaEntera.getValor() > valorCondicionEntera) {
+				                
+					    			registrosObtenidos.add(misRegistros);
+				                
+					    		}else if (operador.equals(">=") && entradaEntera.getValor() >= valorCondicionEntera) {
+				                    
+					    			registrosObtenidos.add(misRegistros);
+				                
+					    		}else if (operador.equals("<=") && entradaEntera.getValor() <= valorCondicionEntera) {
+				                
+					    			registrosObtenidos.add(misRegistros);
+				                
+					    		}
+				    		
 				    		}
 				    		
 				    	}else if(atributo instanceof DTOCadena){
@@ -624,6 +628,10 @@ public class Tabla {
 				if(!(atributos.get(i).equalsIgnoreCase("NULL"))) {
 					
 					atrE.setValor(Integer.parseInt(atributos.get(i)));
+					
+				}else {
+					
+					atrE.setValor(null);
 					
 				}
 				

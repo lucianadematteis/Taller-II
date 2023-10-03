@@ -4,16 +4,15 @@ import logica.Entero;
 
 public class DTOEntero extends DTOAtributo{
 
-	private int valor;
+	private Integer valor;
 
-	public DTOEntero(String nombreAtributo, boolean nulo, boolean clave, int valor) {
+	public DTOEntero(String nombreAtributo, boolean nulo, boolean clave, Integer valor) {
 		
 		super(nombreAtributo, nulo, clave);
 		this.valor = valor;
 		
 	}
 	
-	@SuppressWarnings("null")
 	public DTOEntero() {
 		
 		super();
@@ -29,14 +28,13 @@ public class DTOEntero extends DTOAtributo{
 	    
 	}
 
-
-	public int getValor() {
+	public Integer getValor() {
 		
 		return valor;
 		
 	}
 
-	public void setValor(int valor) {
+	public void setValor(Integer valor) {
 		
 		this.valor = valor;
 		

@@ -540,8 +540,17 @@ public class Persistencia {
 		            } else if (atributo instanceof Entero) {
 		            	
 		                Entero entero = (Entero) atributo;
-		                int valor = entero.getValor();
-		                registroFinal += Integer.toString(valor);
+		                Integer valor = entero.getValor();
+		                
+		                if(valor==null) {
+		                	
+		                	registroFinal += "";
+		                	
+		                }else {
+		                	
+		                	registroFinal += Integer.toString(valor);
+		                	
+		                }
 		                
 		            }
 	
@@ -887,8 +896,17 @@ public class Persistencia {
 	                    } else if (guiaa.getValue() instanceof Entero) {
 	                    	
 	                        // Crear y agregar un atributo de tipo Entero al registro
-	                        Entero atri = new Entero(guiaa.getKey(), guiaa.getValue().getNulo(), guiaa.getValue().getClave(), Integer.parseInt(palabra));
-	                        registro.put(guiaa.getKey(), atri);
+	                    	if(palabra!="") {
+	                    		
+	                    		Entero atri = new Entero(guiaa.getKey(), guiaa.getValue().getNulo(), guiaa.getValue().getClave(), Integer.parseInt(palabra));
+	                    		registro.put(guiaa.getKey(), atri);
+	                    	
+	                    	}else {
+	                    		
+	                    		Entero atri = new Entero(guiaa.getKey(), guiaa.getValue().getNulo(), guiaa.getValue().getClave(), null);
+	                    		registro.put(guiaa.getKey(), atri);
+	                    	
+	                    	}
 	                        
 	                    }
 	                    

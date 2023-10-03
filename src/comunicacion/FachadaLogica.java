@@ -437,12 +437,16 @@ public class FachadaLogica implements IFachadaLogica {
 	        }else {
 	    	
 		    	DTOEntero atributo = (DTOEntero) reg;
-		        int valor = atributo.getValor();
+		        Integer valor = atributo.getValor();
 	
-		        if (minimo == null || valor < minimo)
+		        if(valor != null) {
 		        
-		        	minimo = valor;
-	        
+			        if (minimo == null || valor < minimo) {
+			        
+			        	minimo = valor;
+			        }
+		        
+		        }
 		   }
 	    
 	    }
@@ -473,14 +477,20 @@ public class FachadaLogica implements IFachadaLogica {
 	        } else {
 	        
 	        	DTOEntero atributo = (DTOEntero) reg;
-	            int valor = atributo.getValor();
+	            Integer valor = atributo.getValor();
 
-	            if (maximo == null || valor > maximo) {
+	            if(valor != null) {
+	            
+	            	if (maximo == null || valor > maximo) {
 	              
-	            	maximo = valor;
+	            		maximo = valor;
+	            
+	            	}
 	            
 	            }
+	            
 	        }
+	        
 	    }
 
 	    return maximo;
@@ -555,8 +565,13 @@ public class FachadaLogica implements IFachadaLogica {
             if (dato instanceof DTOEntero) {
             
             	DTOEntero atributo = (DTOEntero) dato;
-                int valor = atributo.getValor();
-                suma += valor;
+                Integer valor = atributo.getValor();
+                
+                if(valor != null) {
+                
+                	suma += valor;
+                
+                }
             
             }
             
