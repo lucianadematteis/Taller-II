@@ -107,7 +107,7 @@ public class Comandos {
     		} else if (atr instanceof DTOEntero) {
 
     			DTOEntero entero = (DTOEntero) atr;
-    			int valor = entero.getValor();
+    			Integer valor = entero.getValor();
     			model.addRow(new Object [] {valor});
 
     		}
