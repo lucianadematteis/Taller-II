@@ -123,5 +123,7 @@ public interface IFachadaLogica {
 	public void setDemoHabilitada(int demoHabilitada);
 	
 	public boolean esNotNull (String nombreTabla, String nombreAtributo);
+	
+	public boolean validaRegistroVacio(ArrayList<String> atributos);
 
 }

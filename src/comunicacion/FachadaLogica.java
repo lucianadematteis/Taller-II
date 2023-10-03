@@ -1017,7 +1017,33 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @return  validacion de la clave
 	 */
 	public boolean validaClave(String nombreTabla, ArrayList<String> atributos) {
-	return this.obtenerTabla(nombreTabla).validaClave(atributos);
+		
+		return this.obtenerTabla(nombreTabla).validaClave(atributos);
 	
-}
+	}
+	
+	/**
+	 * Verifica si una lista de atributos contiene unicamente valores nulos.
+	 *
+	 * @param atributos -> La lista de atributos a verificar.
+	 * @return true si todos los atributos son nulos, false si al menos uno de ellos no es nulo.
+	 */
+	public boolean validaRegistroVacio(ArrayList<String> atributos) {
+		
+		int i=0;
+		
+		for (String dato : atributos) {
+			
+			if(dato.equalsIgnoreCase("NULL")) {
+				
+				i++;
+				
+			}
+			
+		}
+		
+		return (i==atributos.size());
+		
+	}
+	
 }

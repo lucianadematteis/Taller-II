@@ -956,10 +956,18 @@ public class Comandos {
 	            					if(logica.validaClave(sentencia.get(0)[1], atributos)) {
 	            						
 	            						LinkedHashMap<String, DTOAtributo> registro=logica.generarArrayListRegistro(sentencia.get(0)[1], atributos);
-	            			        	logica.ingresarRegistro(sentencia.get(0)[1], registro);
-	            			        	aciertos++;
-	            			        	insertarDepuracion("Acierto #" + aciertos, "Se ingresaron los datos con éxito, en la tabla: " + sentencia.get(0)[1]);
 	            			        	
+	            						if(logica.validaRegistroVacio(atributos)) {
+	            							
+	            							insertarDepuracion("Error #19", "No es posible ingresar un registro vacío");
+	    	                				
+	            						}else {
+	            						
+		            						logica.ingresarRegistro(sentencia.get(0)[1], registro);
+		            			        	aciertos++;
+		            			        	insertarDepuracion("Acierto #" + aciertos, "Se ingresaron los datos con éxito, en la tabla: " + sentencia.get(0)[1]);
+		            			        	
+	            						}
 	            					}else {
 	            						
 	            						insertarDepuracion("Error #18", "La clave primaria no puede quedar vacia ni repetirse");
