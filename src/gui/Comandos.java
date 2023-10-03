@@ -899,7 +899,7 @@ public class Comandos {
 				logica.seleccionarBaseDatos(sentencia.get(0)[1]);
 				VentanaPrincipal.bdActual.setText("Base de datos: " + logica.getBaseDatos());
 	    		aciertos++;
-	        	insertarDepuracion("Acierto #" + aciertos, "Se selecciono la base de datos: " + logica.getBaseDatos());
+	        	insertarDepuracion("Acierto #" + aciertos, "Se seleccionó la base de datos: " + logica.getBaseDatos());
 	        	
 			}else {
 				
@@ -921,19 +921,19 @@ public class Comandos {
 		
 		if (!(validaCantidadLineas(sentencia, 2, 2))){
 			
-        	insertarDepuracion("Error #02", "Cantidad de l�neas no v�lida");
+        	insertarDepuracion("Error #02", "Cantidad de líneas no válida");
     		
     	}else {
     		
     		if ((!(sentencia.get(1).length>1)) || (!(validaCantidadArgumentos(sentencia, 0, 0, 2)))) {
         		
-	        	insertarDepuracion("Error #03", "Cantidad de argumentos no v�lida");
+	        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida");
 	        	
         	}else { 
         		
         		if(!(sentencia.get(1)[0].equalsIgnoreCase("VALUES"))) {
             			
-		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es v�lido");
+		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 		        	
             	}else {
             		
@@ -959,7 +959,7 @@ public class Comandos {
 	            			        	
 	            						if(logica.validaRegistroVacio(atributos)) {
 	            							
-	            							insertarDepuracion("Error #19", "No es posible ingresar un registro vac�o");
+	            							insertarDepuracion("Error #19", "No es posible ingresar un registro vacío");
 	    	                				
 	            						}else {
 	            						
