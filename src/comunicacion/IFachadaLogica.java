@@ -50,9 +50,9 @@ public interface IFachadaLogica {
 	
 	public double calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion, String operador);
 	
-	public int obtenerMinimo (String nombreTabla, String nombreAtributo);
+	public Integer obtenerMinimo (String nombreTabla, String nombreAtributo);
 	
-	public int obtenerMaximo (String nombreTabla, String nombreAtributo);
+	public Integer obtenerMaximo (String nombreTabla, String nombreAtributo);
 		
 	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador);
 	    

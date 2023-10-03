@@ -1305,15 +1305,17 @@ public class Comandos {
         			
 					if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
 					
-						if(logica.esVacia(sentencia.get(1)[1])) { 
+						Integer maximo=logica.obtenerMaximo(sentencia.get(1)[1], sentencia.get(0)[1]);
+	    				
+						if(logica.esVacia(sentencia.get(1)[1]) || (maximo == null)) { 
 							
-		    				insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla");
+		    				insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla o en el campo indicado");
 		    				
 		    			}else {
-						
+		    				
 	    					aciertos++; 
-	        				insertarDepuracion("Acierto #" + aciertos, "El valor m�ximo de los registros consultados es: " + logica.obtenerMaximo(sentencia.get(1)[1], sentencia.get(0)[1]));
-	        				
+	        				insertarDepuracion("Acierto #" + aciertos, "El valor m�ximo de los registros consultados es: " + maximo);
+	        			
 		    			}
 						
 					}else {
@@ -1350,14 +1352,16 @@ public class Comandos {
     		
 				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equals("entero")) {
 					
-					if(logica.esVacia(sentencia.get(1)[1])) { 
+					Integer minimo=logica.obtenerMinimo(sentencia.get(1)[1], sentencia.get(0)[1]);
+    				
+					if(logica.esVacia(sentencia.get(1)[1]) || (minimo == null)) { 
 						
-						insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla");
-						
-					}else {
+	    				insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla o en el campo indicado");
+	    				
+	    			}else {
 				
 	    				aciertos++;
-	    				insertarDepuracion("Acierto #" + aciertos, "El valor m�nimo de los registros consultados es: " + logica.obtenerMinimo(sentencia.get(1)[1], sentencia.get(0)[1]));
+	    				insertarDepuracion("Acierto #" + aciertos, "El valor m�nimo de los registros consultados es: " + minimo);
 	    		        
 	        				
 	        		}

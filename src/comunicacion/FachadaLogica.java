@@ -421,7 +421,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @param nombreAtributo -> nombre del atributo
 	 * @return el valor minimo del atributo
 	 */
-	public int obtenerMinimo(String nombreTabla, String nombreAtributo) {
+	public Integer obtenerMinimo(String nombreTabla, String nombreAtributo) {
 		
 	    Integer minimo = null;
 	    boolean primero=true;
@@ -461,7 +461,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @param nombreAtributo -> nombre del atributo
 	 * @return el valor maximo del atributo
 	 */
-	public int obtenerMaximo(String nombreTabla, String nombreAtributo) {
+	public Integer obtenerMaximo(String nombreTabla, String nombreAtributo) {
 		
 	    Integer maximo = null;
 	    boolean primero = true; 
