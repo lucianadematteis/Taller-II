@@ -236,17 +236,30 @@ public class Tabla {
 			if(registro.getKey().equalsIgnoreCase(nombreAtributo)) {
 			
 				if (atributo instanceof Entero) {
-		        
-					int valorEntero = Integer.parseInt(valorNuevo);
-		            ((Entero) atributo).setValor(valorEntero);
-		        
+					
+				    Integer valorEntero = null;
+				    if (!valorNuevo.equalsIgnoreCase("NULL")) {
+				    	
+				        valorEntero = Integer.parseInt(valorNuevo);
+				        
+				    }
+				    
+				    ((Entero) atributo).setValor(valorEntero);
+				    
 				} else if (atributo instanceof Cadena) {
-		        
-					((Cadena) atributo).setDato(valorNuevo);
-		        
+					
+				    String valorCadena = null;
+				    if (!valorNuevo.equalsIgnoreCase("NULL")) {
+				    	
+				        valorCadena = valorNuevo;
+				        
+				    }
+				    ((Cadena) atributo).setDato(valorCadena);
+				    
 				}
 				
 				this.registros.add(registroCambiar);
+				
 			}
 		}
     }
@@ -341,11 +354,12 @@ public class Tabla {
 		    		
 			    		if(atributo instanceof DTOEntero) { //como la condicion es un string debo de evaluar esto para convertirla
 				    		
-				    		int valorCondicionEntera = Integer.parseInt(valorCondicion); 
 				    		DTOEntero entradaEntera = (DTOEntero) entrada.getValue();
 				    		
-				    		if(entradaEntera.getValor() != null) {
+				    		if((entradaEntera.getValor() != null) && (!valorCondicion.equalsIgnoreCase("NULL"))) {
 				    		
+				    			int valorCondicionEntera = Integer.parseInt(valorCondicion);
+				    			
 					    		if (operador.equals("=") && entradaEntera.getValor() == valorCondicionEntera) {
 				                   
 					    			registrosObtenidos.add(misRegistros);
@@ -368,12 +382,25 @@ public class Tabla {
 				                
 					    		}
 				    		
+				    		}else if((valorCondicion.equalsIgnoreCase("NULL")) &&  (entradaEntera.getValor() == null)){
+				    			
+				    			registrosObtenidos.add(misRegistros);
+				    			
 				    		}
 				    		
 				    	}else if(atributo instanceof DTOCadena){
 				    		
 				    		DTOCadena entradaCadena = (DTOCadena) entrada.getValue();
-				    		if(entradaCadena.getDato().equalsIgnoreCase(valorCondicion)) { //si cumple con la condicion
+				    		
+				    		if(entradaCadena.getDato() != null) {
+				    		
+					    		if(entradaCadena.getDato().equalsIgnoreCase(valorCondicion)) { //si cumple con la condicion
+					    			
+					    			registrosObtenidos.add(misRegistros);
+					    			
+					    		}
+					    	
+				    		}else if((valorCondicion.equalsIgnoreCase("NULL")) &&  (entradaCadena.getDato() == null)){
 				    			
 				    			registrosObtenidos.add(misRegistros);
 				    			
@@ -733,20 +760,24 @@ public class Tabla {
 	public boolean validaCondicion(String nombreAtributo, String valorCondicion) {
 		
 	    String tipoAtributo = this.obtenerTipo(nombreAtributo);
-
-	    if ("entero".equals(tipoAtributo)) {
-	    	
-	        try {
-	        	
-	            Integer.parseInt(valorCondicion); // Si esto tiene éxito es porque es numérico
-	            return true;
-	            
-	        } catch (NumberFormatException e) {
-	        	
-	            return false;
-	            
-	        }
-	        
+	    
+	    if(!valorCondicion.equalsIgnoreCase("NULL")) {
+	    
+		    if ("entero".equals(tipoAtributo)) {
+		    	
+		        try {
+		        	
+		            Integer.parseInt(valorCondicion); // Si esto tiene éxito es porque es numérico
+		            return true;
+		            
+		        } catch (NumberFormatException e) {
+		        	
+		            return false;
+		            
+		        }
+		        
+		    }
+	    
 	    }
 
 	    return true; 

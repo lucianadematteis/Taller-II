@@ -1103,7 +1103,7 @@ public class Comandos {
 				            				
 			            					logica.cambiarRegistro(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(1)[3], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 				            				aciertos++;
-				            				insertarDepuracion("Acierto #" + aciertos, "Se modificaron los datos con �xito, en la tabla: " + sentencia.get(0)[1]);
+				            				insertarDepuracion("Acierto #" + aciertos, "Se modificaron los datos con éxito, en la tabla: " + sentencia.get(0)[1]);
 				            				
 			            				}else {
 			            					
