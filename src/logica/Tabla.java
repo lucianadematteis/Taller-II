@@ -393,19 +393,13 @@ public class Tabla {
 				    		
 				    		DTOCadena entradaCadena = (DTOCadena) entrada.getValue();
 				    		
-				    		if(entradaCadena.getDato() != null) {
-				    		
-					    		if(entradaCadena.getDato().equalsIgnoreCase(valorCondicion)) { //si cumple con la condicion
-					    			
-					    			registrosObtenidos.add(misRegistros);
-					    			
-					    		}
-					    	
-				    		}else if((valorCondicion.equalsIgnoreCase("NULL")) &&  (entradaCadena.getDato() == null)){
-				    			
+				    		if ((entradaCadena.getDato() == "" && valorCondicion.equalsIgnoreCase("null")) ||
+				    		    (entradaCadena.getDato() != "" && entradaCadena.getDato().equalsIgnoreCase(valorCondicion))) {
+				    		    
 				    			registrosObtenidos.add(misRegistros);
-				    			
+				    		
 				    		}
+
 				    		
 				    	}
 		    		
