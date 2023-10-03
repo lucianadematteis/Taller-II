@@ -490,9 +490,7 @@ public class Tabla {
 	 * @param atributos-> lista de atributos
 	 * @return valida si los atributos de la tabla pueden ser notnull
 	 */
-	public boolean validaNotNull( ArrayList<String> atributos) {
-		
-		//Tabla tablita = this.obtenerTabla(nombreTabla);
+	public boolean validaNotNull(ArrayList<String> atributos) {
 		
 		LinkedHashMap<String, Atributo> guia = this.getRegistros().get(0);
 		

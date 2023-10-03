@@ -793,7 +793,7 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
 			
-			if(!(atributos.get(i).equals("NULL"))) {
+			if(!(atributos.get(i).equalsIgnoreCase("NULL"))) {
 			
 				if((!(validaCondicion(nombreTabla, atriGuia.getKey(), atributos.get(i))))) {
 					
@@ -1004,8 +1004,8 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @param atributos -> lista de atributos
 	 * @return  validacion not null
 	 */
-	 
 	public boolean validaNotNull(String nombreTabla, ArrayList<String> atributos) {
+		
 		return this.obtenerTabla(nombreTabla).validaNotNull(atributos);
 	
 	}
