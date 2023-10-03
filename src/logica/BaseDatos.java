@@ -247,15 +247,20 @@ public class BaseDatos {
 				Cadena cadena1 = (Cadena) atr1;
 				Cadena cadena2 = (Cadena) atr2;
 				
-				return (cadena1.getDato().equals(cadena2.getDato()) && cadena1.getDato()=="");
+				 if (cadena1.getDato().equals(cadena2.getDato()) && cadena1.getDato()!="")
+					 return true;
+				 else 
+					 return false;
 				
 			}else if (atr1 instanceof Entero && atr2 instanceof Entero) {
 			
 				Entero entero1 = (Entero) atr1;
 				Entero entero2 = (Entero) atr2;
 				
-				return (entero1.getValor()==entero2.getValor() && entero1.getValor()!=null);
-				
+				if (entero1.getValor()==entero2.getValor() && entero1.getValor()!=null)
+					return true;
+				 else 
+					return false;
 			}
 			
 		}
