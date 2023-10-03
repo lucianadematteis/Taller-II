@@ -357,24 +357,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public boolean validaCondicion(String nombreTabla, String nombreAtributo, String valorCondicion) {
 		
-	    String tipoAtributo = this.obtenerTabla(nombreTabla).obtenerTipo(nombreAtributo);
-
-	    if ("entero".equals(tipoAtributo)) {
-	    	
-	        try {
-	        	
-	            Integer.parseInt(valorCondicion); // Si esto tiene éxito es porque es numérico
-	            return true;
-	            
-	        } catch (NumberFormatException e) {
-	        	
-	            return false;
-	            
-	        }
-	        
-	    }
-
-	    return true; 
+	    return this.obtenerTabla(nombreTabla).validaCondicion(nombreAtributo, valorCondicion);
 	    
 	}
 	
@@ -598,28 +581,9 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @param valorCondicion2 ->  valor de la condicion del atributo 2
 	 * @return lista de registros que cumplan con al menos una  condicion
 	 */
-	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondcion2, String valorCondicion2, String operador) {
+	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2, String valorCondicion2, String operador) {
 		
-		ArrayList <DTOAtributo> resultado1 = new ArrayList <DTOAtributo>();
-		ArrayList <DTOAtributo> resultado2 = new ArrayList <DTOAtributo>();
-	
-		resultado1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1, operador);
-		resultado2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondcion2, valorCondicion2, operador);
-	
-        HashSet<DTOAtributo> elementosUnicos = new HashSet<>(resultado1);
-
-        for (DTOAtributo elemento : resultado2) {
-        	
-            if (!elementosUnicos.contains(elemento)) {
-            	
-                resultado1.add(elemento);
-                elementosUnicos.add(elemento);
-                
-            }
-            
-        }
-        
-		return resultado1;
+		return obtenerTabla(nombreTabla).consultaOr(nombreAtributo, nombreAtributoCondicion1, valorCondicion1, nombreAtributoCondicion2, valorCondicion2, operador);
 		
 	}
 	
@@ -750,18 +714,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @return lista de registros que cumplan ambas condiciones
 	 */
 	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador) {
-    	
-    	ArrayList <DTOAtributo>  res1= new ArrayList<DTOAtributo>();
-    	ArrayList <DTOAtributo> res2 = new ArrayList<DTOAtributo>();
-    	res1 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion1, valorCondicion1, operador);
-		res2 = realizarConsultaClasica(nombreTabla, nombreAtributo, nombreAtributoCondicion2, valorCondicion2, operador);
-    	res1.retainAll(res2);
-    	
-    	HashSet<DTOAtributo> noHayRepetidos = new HashSet<>(res1);
-
-        ArrayList<DTOAtributo> sinRepetidos = new ArrayList<>(noHayRepetidos);
-		
-		return sinRepetidos;
+    	return obtenerTabla(nombreTabla).consultaAnd(nombreAtributo, nombreAtributoCondicion1, valorCondicion1, nombreAtributoCondicion2, valorCondicion2, operador);
 		
     }
 	
@@ -794,6 +747,7 @@ public class FachadaLogica implements IFachadaLogica {
 
 	}
 
+
 	/**
 	 * Metodo publico que recibe como parametro el nombre de la tabla y una lista de atributos. El metodo valida si los atributos proporcionados son validos en la tabla especificada segun su tipo y condiciones y retorna true en caso afirmativo, o false si al menos uno de ellos no lo es
 	 * @param nombreTabla-> nombre de la tabla
@@ -802,36 +756,8 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public boolean validaAtributos(String nombreTabla, ArrayList<String> atributos) {
 		
-		Tabla tablita = this.obtenerTabla(nombreTabla);
-		LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
-		
-		int i=0;
-		
-		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
-			
-			if(!(atributos.get(i).equalsIgnoreCase("NULL"))) {
-			
-				if((!(validaCondicion(nombreTabla, atriGuia.getKey(), atributos.get(i))))) {
-					
-					return false;
-				}
-				
-			}
-			
-			i++;
-				
-		}
-		
-		return true;
-		
+		return this.obtenerTabla(nombreTabla).validaAtributos(atributos);
 	}
-	
-	
-
-	
-	
-	
-	
 	
 	/**
 	 * Metodo publico que recibe como parametro el nombre de un comando. El metodo verifica si el comando especificado existe en el mapa de ayuda y retorna true en caso afirmativo y false en caso contrario.

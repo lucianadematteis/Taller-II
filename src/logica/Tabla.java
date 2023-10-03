@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 import java.util.Map;
@@ -657,6 +658,129 @@ public class Tabla {
 		}
 		
 		return registro;
+		
+	}
+	
+
+	/**
+	 * Metodo publico que recibe como parametros la tabla, el nombre del atributo a consultar, dos nombres de atributos de condicion y dos valores de condicion. El metodo retorna una lista de objetos DTOAtributo que contiene solo aquellos que cumplen simultaneamente ambas condiciones.
+	 * @param nombreAtributo -> nombre del atributo
+	 * @param nombreAtributoCondicion1 -> nombre de la condion del atributo 1
+	 * @param valorCondicion1 ->  valor de la condicion del atributo 1
+	 * @param nombreAtributoCondicion2 -> nombre de la condion del atributo 2
+	 * @param valorCondicion2 ->  valor de la condicion del atributo 2
+	 * @return lista de registros que cumplan ambas condiciones
+	 */
+	public ArrayList<DTOAtributo> consultaAnd (String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador) {
+    	
+    	ArrayList <DTOAtributo>  res1= new ArrayList<DTOAtributo>();
+    	ArrayList <DTOAtributo> res2 = new ArrayList<DTOAtributo>();
+    	
+    	
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registros1 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion1, valorCondicion1, operador));
+		res1= this.seleccionarAtributo(registros1, nombreAtributo);
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registros2 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion2, valorCondicion2, operador));
+		res2 = this.seleccionarAtributo(registros2, nombreAtributo);
+		
+    	res1.retainAll(res2);
+		
+		return res1;
+		
+    }
+	
+	/**
+	 * Metodo publico que recibe como parametros la tabla, el nombre del atributo de consulta, dos conjuntos de nombre de atributo y valor de condicion. El metodo realiza una consulta OR en la tabla especificada, buscando registros que cumplan cualquiera de las dos condiciones y retorna una lista de objetos DTOAtributo que representan los registros encontrados despues de aplicar la consulta OR, la que no incluye elementos duplicados.
+	 * @param nombreAtributo -> nombre del atributo
+	 * @param nombreAtributoCondicion1 -> nombre de la condion del atributo 1
+	 * @param valorCondicion1 ->  valor de la condicion del atributo 1
+	 * @param nombreAtributoCondicion2 -> nombre de la condion del atributo 2
+	 * @param valorCondicion2 ->  valor de la condicion del atributo 2
+	 * @return lista de registros que cumplan con al menos una  condicion
+	 */
+	public ArrayList<DTOAtributo> consultaOr(String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2, String valorCondicion2, String operador) {
+		
+		ArrayList <DTOAtributo> resultado1 = new ArrayList <DTOAtributo>();
+		ArrayList <DTOAtributo> resultado2 = new ArrayList <DTOAtributo>();
+		
+		
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registros1 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion1, valorCondicion1, operador));
+		resultado1= this.seleccionarAtributo(registros1, nombreAtributo);
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registros2 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion2, valorCondicion2, operador));
+		resultado2 = this.seleccionarAtributo(registros2, nombreAtributo);
+
+        HashSet<DTOAtributo> elementosUnicos = new HashSet<>(resultado1);
+
+        for (DTOAtributo elemento : resultado2) {
+        	
+            if (!elementosUnicos.contains(elemento)) {
+            	
+                resultado1.add(elemento);
+                elementosUnicos.add(elemento);
+                
+            }
+            
+        }
+        
+		return resultado1;
+		
+	}
+	
+	/**
+	 * Metodo publico que recibe como parametro una tabla, el nombre de un atributo y un valor de condicion. Valida si el valor de condicion proporcionado es valido para el tipo de atributo especificado en la tabla. Si el atributo es de tipo entero, verifica si puede ser convertido a un numero entero. Retorna: true si la condicion es valida, false si no lo es
+	 * @param nombreAtributo-> nombre del atributo
+	 * @param valorCondicion-> valor de la condicion
+	 * @return verifica si la condicion es valida o no
+	 */
+	public boolean validaCondicion(String nombreAtributo, String valorCondicion) {
+		
+	    String tipoAtributo = this.obtenerTipo(nombreAtributo);
+
+	    if ("entero".equals(tipoAtributo)) {
+	    	
+	        try {
+	        	
+	            Integer.parseInt(valorCondicion); // Si esto tiene éxito es porque es numérico
+	            return true;
+	            
+	        } catch (NumberFormatException e) {
+	        	
+	            return false;
+	            
+	        }
+	        
+	    }
+
+	    return true; 
+	    
+	}
+	
+	/**
+	 * Metodo publico que recibe como parametro la tabla y una lista de atributos. El metodo valida si los atributos proporcionados son validos en la tabla especificada segun su tipo y condiciones y retorna true en caso afirmativo, o false si al menos uno de ellos no lo es
+	 * @param atributos-> lista de atributos
+	 * @return valida los atributos son los correctos en la tabla
+	 */
+	public boolean validaAtributos(ArrayList<String> atributos) {
+		
+		LinkedHashMap<String, Atributo> guia = this.getRegistros().get(0);
+		
+		int i=0;
+		
+		for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
+			
+			if(!(atributos.get(i).equalsIgnoreCase("NULL"))) {
+			
+				if((!(validaCondicion(atriGuia.getKey(), atributos.get(i))))) {
+					
+					return false;
+				}
+				
+			}
+			
+			i++;
+				
+		}
+		
+		return true;
 		
 	}
 	
