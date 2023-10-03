@@ -11,12 +11,12 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
-public class LoginError extends JFrame {
+public class LoginErrorNombre extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public LoginError() {
+	public LoginErrorNombre() {
 		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fuentePrincipal = new Color (255,255,255);

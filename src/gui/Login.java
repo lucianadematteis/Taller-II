@@ -105,7 +105,7 @@ public class Login extends JFrame {
 
 					}else {
 
-						LoginError frame = new LoginError();
+						LoginErrorNombre frame = new LoginErrorNombre();
 						frame.setVisible(true);
 						frame.setLocationRelativeTo(null);
 
