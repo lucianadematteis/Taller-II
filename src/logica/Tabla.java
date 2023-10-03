@@ -518,7 +518,7 @@ public class Tabla {
 	 * @param atributos -> lista de atributos
 	 * @return valida si los atributos de la tabla pueden ser clave
 	 */
-	public boolean validaClave(String nombreTabla, ArrayList<String> atributos) {
+	public boolean validaClave (ArrayList<String> atributos) {
 		
 		//Tabla tablita = this.obtenerTabla(nombreTabla);
 		LinkedHashMap<String, Atributo> guia = this.getRegistros().get(0);
