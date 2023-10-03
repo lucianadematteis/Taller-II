@@ -100,19 +100,19 @@ public class VentanaPrincipal extends JFrame {
 		
 		JLabel saludo = new JLabel("Bienvenido " + fa.getUsuario());
 		saludo.setForeground(fuentePrincipal);
-		saludo.setBounds(29, 25, 223, 23);
+		saludo.setBounds(29, 25, 447, 23);
 		saludo.setFont(new Font("Verdana", Font.BOLD, 20));
 		
 		bdActual = new JLabel("Base de datos: ");
 		bdActual.setForeground(fuentePrincipal);
 		bdActual.setBounds(564, 26, 429, 23);
-		bdActual.setFont(new Font("Verdana", Font.PLAIN, 18));
+		bdActual.setFont(new Font("Verdana", Font.PLAIN, 20));
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(15, 55, 978, 10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(170, 71, 707, 103);
+		scrollPane.setBounds(170, 71, 691, 103);
 		
 		JTextArea entrada = new JTextArea();
 		entrada.setForeground(escritura);
@@ -134,7 +134,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		limpiar.setFont(new Font("Verdana", Font.BOLD, 13));
-		limpiar.setBounds(887, 146, 99, 28);
+		limpiar.setBounds(871, 146, 115, 28);
 		limpiar.setBackground(botones);
 		limpiar.setForeground(fuentePrincipal);
         limpiar.setFocusPainted(false); 
@@ -156,7 +156,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 			
 		});
-		cerrarSesion.setBounds(843, 619, 143, 31);
+		cerrarSesion.setBounds(801, 619, 185, 31);
 		cerrarSesion.setBackground(botones);
 		cerrarSesion.setForeground(fuentePrincipal);
         cerrarSesion.setFocusPainted(false); 
@@ -271,7 +271,7 @@ public class VentanaPrincipal extends JFrame {
 		salida.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
 		JButton ejecutar = new JButton("EJECUTAR");
-		ejecutar.setFont(new Font("Verdana", Font.BOLD, 13));
+		ejecutar.setFont(new Font("Verdana", Font.BOLD, 12));
 		ejecutar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -303,7 +303,7 @@ public class VentanaPrincipal extends JFrame {
 			} 
 			
 		});
-		ejecutar.setBounds(887, 104, 99, 28);
+		ejecutar.setBounds(871, 104, 115, 28);
 		ejecutar.setBackground(botones);
 		ejecutar.setForeground(fuentePrincipal);
         ejecutar.setFocusPainted(false); 
@@ -330,7 +330,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 			
 		});
-		btnConfigUsuario.setBounds(24, 620, 248, 30);
+		btnConfigUsuario.setBounds(24, 620, 284, 30);
 		btnConfigUsuario.setFocusPainted(false);
 		contentPane.add(btnConfigUsuario);
 
