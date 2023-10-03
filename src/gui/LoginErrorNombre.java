@@ -43,14 +43,14 @@ public class LoginErrorNombre extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(164, 202, 114, 36);
+		aceptar.setBounds(139, 202, 151, 36);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
 		JLabel lblNewLabel = new JLabel("<html> <center>EL USUARIO NO SE ENCUENTRA <br> REGISTRADO </center> </html>");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 17));
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblNewLabel.setBounds(21, 36, 403, 155);
 		contentPane.add(lblNewLabel);
 		
