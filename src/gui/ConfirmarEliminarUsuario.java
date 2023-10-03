@@ -57,7 +57,7 @@ public class ConfirmarEliminarUsuario extends JFrame {
 		});
 		confirmar.setForeground(fuentePrincipal);
 		confirmar.setBackground(botones);
-		confirmar.setBounds(55, 203, 144, 35);
+		confirmar.setBounds(55, 198, 144, 40);
 		confirmar.setFocusPainted(false);
 		contentPane.add(confirmar);
 
@@ -85,7 +85,7 @@ public class ConfirmarEliminarUsuario extends JFrame {
 		btnCancelar.setForeground(Color.WHITE);
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
-		btnCancelar.setBounds(242, 203, 144, 35);
+		btnCancelar.setBounds(242, 198, 144, 40);
 		contentPane.add(btnCancelar);
 		
 	}
