@@ -410,7 +410,7 @@ public class VentanaPrincipal extends JFrame {
 		if(nTablas != null) {
 
 			for (int i = 0; i < nTablas.size(); i++) {
-	
+				
 				model.addRow(new Object [] {nTablas.get(i)});
 	
 			}
