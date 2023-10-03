@@ -156,7 +156,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 			
 		});
-		cerrarSesion.setBounds(801, 619, 185, 31);
+		cerrarSesion.setBounds(801, 606, 185, 44);
 		cerrarSesion.setBackground(botones);
 		cerrarSesion.setForeground(fuentePrincipal);
         cerrarSesion.setFocusPainted(false); 
@@ -229,7 +229,7 @@ public class VentanaPrincipal extends JFrame {
 		});
 		depuracion.setCellSelectionEnabled(false); // Desactiva la selección de celdas
 		depuracion.getColumnModel().getColumn(0).setPreferredWidth(89);
-		depuracion.getColumnModel().getColumn(1).setPreferredWidth(725);
+		depuracion.getColumnModel().getColumn(1).setPreferredWidth(723);
 		scrollPane_2.setViewportView(depuracion);
 
 		
@@ -330,7 +330,7 @@ public class VentanaPrincipal extends JFrame {
 			}
 			
 		});
-		btnConfigUsuario.setBounds(24, 620, 284, 30);
+		btnConfigUsuario.setBounds(24, 613, 284, 37);
 		btnConfigUsuario.setFocusPainted(false);
 		contentPane.add(btnConfigUsuario);
 
