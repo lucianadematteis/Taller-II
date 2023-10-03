@@ -979,17 +979,34 @@ public class FachadaLogica implements IFachadaLogica {
 		
 	}
 	
+	/**
+	 * Metodo publico que recibe el nombre de una tabla y una lista de atributos. El metodo hace uso de valida cantidad de atributos de Tabla
+	 * @param nombreTabla -> nombre de la tabla
+	 * @param atributos -> lista de atributos
+	 * @return  validacion de la cantidad de atributos
+	 */
 	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos) {
 		return this.obtenerTabla(nombreTabla).validaCantidadAtributos(atributos);
 	}
 
-	
+	/**
+	 * Metodo publico que recibe el nombre de una tabla y una lista de atributos. El metodo hace uso de valida not null  de Tabla
+	 * @param nombreTabla -> nombre de la tabla
+	 * @param atributos -> lista de atributos
+	 * @return  validacion not null
+	 */
 	 
 	public boolean validaNotNull(String nombreTabla, ArrayList<String> atributos) {
 		return this.obtenerTabla(nombreTabla).validaNotNull(atributos);
 	
 	}
 	
+	/**
+	 * Metodo publico que recibe el nombre de una tabla y una lista de atributos. El metodo hace uso de valida clave de Tabla
+	 * @param nombreTabla -> nombre de la tabla
+	 * @param atributos -> lista de atributos
+	 * @return  validacion de la clave
+	 */
 	public boolean validaClave(String nombreTabla, ArrayList<String> atributos) {
 	return this.obtenerTabla(nombreTabla).validaClave(atributos);
 	
