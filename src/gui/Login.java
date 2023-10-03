@@ -63,7 +63,7 @@ public class Login extends JFrame {
 		
 		JPasswordField pass_1 = new JPasswordField();
 		pass_1.setFont(new Font("Verdana", Font.PLAIN, 17));
-		pass_1.setBounds(31, 196, 406, 26);
+		pass_1.setBounds(71, 196, 322, 26);
 		panel.add(pass_1);
 		pass_1.setForeground(escritura);
 		pass_1.setBackground(Color.WHITE);
@@ -120,7 +120,7 @@ public class Login extends JFrame {
 			
 		
 		});
-		inicioSesion.setBounds(252, 269, 185, 30);
+		inicioSesion.setBounds(252, 263, 185, 36);
 		inicioSesion.setFocusPainted(false);
 		panel.add(inicioSesion);
 		
@@ -141,12 +141,12 @@ public class Login extends JFrame {
 		btnRegistrarse.setForeground(Color.WHITE);
 		btnRegistrarse.setFocusPainted(false);
 		btnRegistrarse.setBackground(new Color(3, 60, 88));
-		btnRegistrarse.setBounds(31, 269, 185, 30);
+		btnRegistrarse.setBounds(31, 263, 185, 36);
 		panel.add(btnRegistrarse);
 		
 		user = new JTextField();
 		user.setFont(new Font("Verdana", Font.PLAIN, 17));
-		user.setBounds(31, 92, 406, 26);
+		user.setBounds(71, 92, 322, 26);
 		panel.add(user);
 		user.setForeground(escritura);
 		user.setBackground(Color.WHITE);
