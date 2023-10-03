@@ -174,12 +174,12 @@ public class Comandos {
     
     /**
     * 
-    * Metodo privado que recibe como parámetros una lista de matrices de cadenas de texto (la sentencia), dos indices de posicion (inicial y final) y un numero entero que representa la cantidad de argumentos.  El metodo v�lida si la cantidad de argumentos en las l�neas de una sentencia esta dentro de un rango especifico y retorna true si es v�lida o false en caso contrario.
+    * Metodo privado que recibe como parámetros una lista de matrices de cadenas de texto (la sentencia), dos indices de posicion (inicial y final) y un numero entero que representa la cantidad de argumentos.  El metodo válida si la cantidad de argumentos en las l�neas de una sentencia esta dentro de un rango especifico y retorna true si es válida o false en caso contrario.
     * @param sentencia-> lista de sentencias
     * @param posInicial->indice
     * @param posFinal->indice
     * @param cantArgumentos->cantidad de argumentos
-    * @return v�lida la cantidad de argumentos v�lidas para realizar la sentencia
+    * @return válida la cantidad de argumentos v�lidas para realizar la sentencia
     * 
     */
 	private boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
@@ -208,7 +208,7 @@ public class Comandos {
 	/**
 	 * Metodo privado que recibe como parametro una cadena de texto y retorna true si el tipo de dato es válido (cadena o entero) o false en caso contrario.
 	 * @param tipo->cadena de texto
-	 * @return v�lida que el tipo de dato sea entero o cadena
+	 * @return válida que el tipo de dato sea entero o cadena
 	 * 
 	 */
 	private boolean validaTipoDato(String tipo) {
@@ -222,7 +222,7 @@ public class Comandos {
 	 * @param sentencia-> lista de sentencias
 	 * @param posInicial->indice
 	 * @param posFinal->indice
-	 * @return v�lida el tipo de atributo en el rango de indice.
+	 * @return válida el tipo de atributo en el rango de indice.
 	 * 
 	 */
 	private boolean validaTiposAtributos(ArrayList<String[]> sentencia, int posInicial, int posFinal) {
@@ -246,7 +246,7 @@ public class Comandos {
 	 * @param sentencia->lista de sentencia
 	 * @param min-> limite m�nimo de cantidad de l�neas
 	 * @param max-> limite m�ximo de cantidad de l�neas
-	 * @return v�lida la cantidad de l�neas se encuentra dentro del rango especificado
+	 * @return válida la cantidad de l�neas se encuentra dentro del rango especificado
 	 * 
 	 */
 	private boolean validaCantidadLineas(ArrayList<String[]> sentencia, int min, int max) {
@@ -264,9 +264,9 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de una sola l�nea es v�lida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de una sola l�nea es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return v�lida si la sentencia es v�lida
+	 * @return válida si la sentencia es v�lida
 	 * 
 	 */
 	private boolean validaSentenciasUnaLinea(ArrayList<String[]> sentencia) {
@@ -294,9 +294,9 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de dos l�neas es v�lida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de dos l�neas es válida o false en caso contrario.
 	 * @param sentencia-> lista de sentencias
-	 * @return v�lida si la sentencia es v�lida
+	 * @return válida si la sentencia es v�lida
 	 */
 	private boolean validaSentenciasDosLineas(ArrayList<String[]> sentencia) {
 
@@ -331,9 +331,9 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "WHERE" es v�lida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "WHERE" es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return v�lida la sentencia de WHERE
+	 * @return válida la sentencia de WHERE
 	 * 
 	 */
 	private boolean  validaSentenciasWhereComun(ArrayList<String[]> sentencia) {
@@ -370,9 +370,9 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" es v�lida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return v�lida la sentencia FROM
+	 * @return válida la sentencia FROM
 	 * 
 	 */
 	private boolean  validaSentenciasFrom(ArrayList<String[]> sentencia) {
@@ -399,9 +399,9 @@ public class Comandos {
 	}
 
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" y "WHERE" es v�lida o false en caso contrario.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia con "FROM" y "WHERE" es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return v�lida la sentencia del FROM con WHERE
+	 * @return válida la sentencia del FROM con WHERE
 	 * 
 	 */
 	private boolean  validaSentenciasFromWhere(ArrayList<String[]> sentencia) {
@@ -431,7 +431,7 @@ public class Comandos {
 	/**
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si los operadores lOgicos en la sentencia son válidos.
 	 * @param sentencia-> lista de sentencias
-	 * @return v�lida los operadores logicos de la sentencia
+	 * @return válida los operadores logicos de la sentencia
 	 * 
 	 */
 	private boolean validaOperadoresLogicos(ArrayList<String[]> sentencia) {
@@ -440,7 +440,7 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 8))) {
 
-			insertarDepuracion("Error #03", "Cantidad de argumentos no v�lida en la l�nea 3");
+			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en la l�nea 3");
 
 		} else {
 
@@ -461,7 +461,7 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y v�lida la estructura de la misma: cantidad de l�neas, cantidad de argumentos,  tipos de datos y si existe la tabla en la base de datos para luego crearla con los atributos especificados.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y válida la estructura de la misma: cantidad de l�neas, cantidad de argumentos,  tipos de datos y si existe la tabla en la base de datos para luego crearla con los atributos especificados.
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
@@ -759,7 +759,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto llamada (sentencia) y procesa el comando "SELECT" para realizar una consulta en una tabla. El metodo v�lida la sentencia, el tipo de atributo y la condici�n. Luego, muestra los resultados de la consulta si es v�lida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto llamada (sentencia) y procesa el comando "SELECT" para realizar una consulta en una tabla. El metodo válida la sentencia, el tipo de atributo y la condici�n. Luego, muestra los resultados de la consulta si es v�lida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1005,7 +1005,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DELETE" para eliminar registros de una tabla.  El metodo v�lida la sentencia, el tipo de atributo y la condici�n antes de realizar la eliminacion.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DELETE" para eliminar registros de una tabla.  El metodo válida la sentencia, el tipo de atributo y la condici�n antes de realizar la eliminacion.
 	 * @param sentencia->lista de sentencia
 	 * 
 	 */
@@ -1053,7 +1053,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "UPDATE" para modificar registros en una tabla.  El metodo v�lida la sentencia, los argumentos y los datos a actualizar antes de realizar la modificacion.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "UPDATE" para modificar registros en una tabla.  El metodo válida la sentencia, los argumentos y los datos a actualizar antes de realizar la modificacion.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1141,7 +1141,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "NOT NULL" para especificar que un atributo en una tabla no puede ser nulo.  El metodo v�lida la sentencia y realiza la operaci�n si es v�lida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "NOT NULL" para especificar que un atributo en una tabla no puede ser nulo.  El metodo válida la sentencia y realiza la operaci�n si es v�lida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1452,9 +1452,9 @@ public class Comandos {
 			
 			if(logica.existeTabla(nombreTabla)) {
 			
-				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "informaci�n de la tabla " + nombreTabla);
+				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "información de la tabla " + nombreTabla);
 				aciertos++;
-				insertarDepuracion("Acierto #" + aciertos, "Se muestra la informaci�n de la tabla: " + nombreTabla);
+				insertarDepuracion("Acierto #" + aciertos, "Se muestra la información de la tabla: " + nombreTabla);
         	
 			}else {
 				
@@ -1511,7 +1511,7 @@ public class Comandos {
     		
     		if(!(validaCantidadLineas(sentencia, 2, 2))) {
     			
-	        	insertarDepuracion("Error #02", "Cantidad de l�neas no válida");
+	        	insertarDepuracion("Error #02", "Cantidad de líneas no válida");
 	        	
     		}else {
     			
@@ -1523,7 +1523,7 @@ public class Comandos {
     			
         			if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 3))) {
         				
-			        	insertarDepuracion("Error #03", "Cantidad de argumentos no v�lida en l�nea 2, recuerde que el join natural se realiza entre dos tablas");
+			        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 2, recuerde que el join natural se realiza entre dos tablas");
 			        	
         			}else {
         				
