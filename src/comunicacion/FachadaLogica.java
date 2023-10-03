@@ -804,43 +804,9 @@ public class FachadaLogica implements IFachadaLogica {
 	
 
 	
-	/**
-	 * Metodo publico que recibe como parametros el nombre de una tabla y una lista de atributos. El metodo verifica si la tabla tiene una clave primaria definida; si no la tiene, se considera valida y retorna true. Si tiene una clave primaria, el metodo comprueba que ninguno de los atributos de la clave sea 'NULL' y que no se repitan en otros registros. Si alguna de estas condiciones no se cumple, retorna false
-	 *  @param nombreTabla -> nombre de la tabla
-	 * @param atributos -> lista de atributos
-	 * @return valida si los atributos de la tabla pueden ser clave
-	 */
-	public boolean validaClave(String nombreTabla, ArrayList<String> atributos) {
-		
-		Tabla tablita = this.obtenerTabla(nombreTabla);
-		LinkedHashMap<String, Atributo> guia = tablita.getRegistros().get(0);
-		
-		if(tablita.tieneClave()) {
-		
-			String clave = tablita.obtenerClave();
-			int posClave = 0;
-			
-			for (Entry<String, Atributo> atriGuia : guia.entrySet()) {
-			
-				if(atriGuia.getKey().equals(clave)) { //Si la clave es nula o se repite
-					
-					if((atributos.get(posClave).equals("NULL")) || (!(tablita.obtenerRegistros(clave, atributos.get(posClave), "=").isEmpty()))) {
-						
-						return false;
-					
-					}
-					
-				}
-				
-				posClave++;
-				
-			}
-			
-		}
 	
-		return true;
-		
-	}
+	
+	
 	
 	/**
 	 * Metodo publico que recibe como parametro el nombre de un comando. El metodo verifica si el comando especificado existe en el mapa de ayuda y retorna true en caso afirmativo y false en caso contrario.
@@ -1014,15 +980,18 @@ public class FachadaLogica implements IFachadaLogica {
 	}
 	
 	public boolean validaCantidadAtributos(String nombreTabla, ArrayList<String> atributos) {
-		return this.obtenerTabla(nombreTabla).validaCantidadAtributos(nombreTabla, atributos);
+		return this.obtenerTabla(nombreTabla).validaCantidadAtributos(atributos);
 	}
 
 	
 	 
 	public boolean validaNotNull(String nombreTabla, ArrayList<String> atributos) {
-		return this.obtenerTabla(nombreTabla). validaNotNull(atributos);
+		return this.obtenerTabla(nombreTabla).validaNotNull(atributos);
 	
-		
 	}
 	
+	public boolean validaClave(String nombreTabla, ArrayList<String> atributos) {
+	return this.obtenerTabla(nombreTabla).validaClave(atributos);
+	
+}
 }
