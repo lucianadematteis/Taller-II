@@ -809,7 +809,7 @@ public class Tabla {
 	}
 	
 	/**
-	 * Metodo publico que recibe como parametros la tabla, el nombre del atributo en los que se buscara el valor maximo. El metodo retorna el valor maximo encontrado como un entero
+	 * Metodo publico que recibe como parametros el nombre del atributo en los que se buscara el valor maximo. El metodo retorna el valor maximo encontrado como un entero
 	 * @param nombreAtributo -> nombre del atributo
 	 * @return el valor maximo del atributo
 	 */
@@ -849,7 +849,7 @@ public class Tabla {
 	}
 	
 	/** 
-	 * Metodo publico que recibe como parametros la tabla y el nombre del atributo en los que se buscara el valor minimo. El metodo retorna un entero que es el valor minimo encontrado como entero.
+	 * Metodo publico que recibe como parametro el nombre del atributo en los que se buscara el valor minimo. El metodo retorna un entero que es el valor minimo encontrado como entero.
 	 * @param nombreAtributo -> nombre del atributo
 	 * @return el valor minimo del atributo
 	 */

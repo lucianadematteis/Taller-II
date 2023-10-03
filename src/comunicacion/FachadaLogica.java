@@ -406,7 +406,8 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public Integer obtenerMinimo(String nombreTabla, String nombreAtributo) {
 		
-	return this.obtenerTabla(nombreTabla).obtenerMinimo(nombreAtributo);
+		return this.obtenerTabla(nombreTabla).obtenerMinimo(nombreAtributo);
+	
 	}
 
 	/**
@@ -481,7 +482,7 @@ public class FachadaLogica implements IFachadaLogica {
 	 */
 	public double calcularPromedioRegistros(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion, String valorCondicion, String operador) {
 	    
-	return this.obtenerTabla(nombreTabla).calcularPromedioRegistros(nombreAtributo, nombreAtributoCondicion, valorCondicion, operador);
+		return this.obtenerTabla(nombreTabla).calcularPromedioRegistros(nombreAtributo, nombreAtributoCondicion, valorCondicion, operador);
 	    
 	}
 	
