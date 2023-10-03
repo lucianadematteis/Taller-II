@@ -45,7 +45,7 @@ public class UsuarioCambioContraseniaCorrecto extends JFrame {
 		
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(166, 193, 129, 45);
+		aceptar.setBounds(155, 191, 129, 45);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
