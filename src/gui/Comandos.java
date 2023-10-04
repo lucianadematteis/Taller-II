@@ -628,7 +628,7 @@ public class Comandos {
 		
 		}else {
 			
-			insertarDepuracion("<html><font color='red'>Error #11</font></html>", "<html><font color='red'>La tabla ingresada no existe para la base de datos seleccionada</font></html>");
+			insertarDepuracion("<html><font color='red'>Error #16</font></html>", "<html><font color='red'>La tabla ingresada no existe para la base de datos seleccionada</font></html>");
         	
 		}
 		
@@ -1448,10 +1448,10 @@ public class Comandos {
 		
 		if(validaSentenciasUnaLinea(sentencia)){
 			
-			String nombreTabla = logica.obtenerNomTabla(sentencia.get(0)[1]);
+			if(logica.existeTabla(sentencia.get(0)[1])) {
 			
-			if(logica.existeTabla(nombreTabla)) {
-			
+				String nombreTabla = logica.obtenerNomTabla(sentencia.get(0)[1]);
+				
 				cargarTablaString(logica.describeTabla(sentencia.get(0)[1]), "información de la tabla " + nombreTabla);
 				aciertos++;
 				insertarDepuracion("Acierto #" + aciertos, "Se muestra la información de la tabla: " + nombreTabla);
@@ -1461,6 +1461,7 @@ public class Comandos {
 				insertarDepuracion("<html><font color='red'>Error #16</font></html>", "<html><font color='red'>La tabla ingresada no existe para la base de datos seleccionada</font></html>");
 	        	
 			}
+			
     	}
 		
 	}
