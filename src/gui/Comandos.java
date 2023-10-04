@@ -179,7 +179,7 @@ public class Comandos {
     * @param posInicial->indice
     * @param posFinal->indice
     * @param cantArgumentos->cantidad de argumentos
-    * @return válida la cantidad de argumentos v�lidas para realizar la sentencia
+    * @return válida la cantidad de argumentos válidas para realizar la sentencia
     * 
     */
 	private boolean validaCantidadArgumentos(ArrayList<String[]> sentencia, int posInicial, int posFinal, int cantArgumentos) {
@@ -266,7 +266,7 @@ public class Comandos {
 	/**
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de una sola l�nea es válida o false en caso contrario.
 	 * @param sentencia->lista de sentencias
-	 * @return válida si la sentencia es v�lida
+	 * @return válida si la sentencia es válida
 	 * 
 	 */
 	private boolean validaSentenciasUnaLinea(ArrayList<String[]> sentencia) {
@@ -296,7 +296,7 @@ public class Comandos {
 	/**
 	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y retorna true si la sentencia de dos l�neas es válida o false en caso contrario.
 	 * @param sentencia-> lista de sentencias
-	 * @return válida si la sentencia es v�lida
+	 * @return válida si la sentencia es válida
 	 */
 	private boolean validaSentenciasDosLineas(ArrayList<String[]> sentencia) {
 
@@ -597,7 +597,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT AND", que realiza una consulta en una tabla con una condici�n "AND".  El metodo verifica la validez de la sentencia, el tipo de atributo y condici�n, y muestra los resultados de la consulta si es v�lida. 
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT AND", que realiza una consulta en una tabla con una condición "AND".  El metodo verifica la validez de la sentencia, el tipo de atributo y condición, y muestra los resultados de la consulta si es válida. 
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
@@ -605,9 +605,9 @@ public class Comandos {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
-			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condici�n coincidan
+			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condición coincidan
 				
-				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condici�n dada
+				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 					
 					insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que coincidan con los parámetros de la búsqueda</font></html>");
 					
@@ -622,7 +622,7 @@ public class Comandos {
 				
 			}else {
 				
-				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condici�n no coinciden</font></html>");
+				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condición no coinciden</font></html>");
 				
 			}
 		
@@ -636,7 +636,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT OR", que realiza una consulta en una tabla con una condici�n "OR". Verifica la validez de la sentencia, el tipo de atributo y condici�n, y muestra los resultados de la consulta si es v�lida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SELECT OR", que realiza una consulta en una tabla con una condición "OR". Verifica la validez de la sentencia, el tipo de atributo y condición, y muestra los resultados de la consulta si es válida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -644,9 +644,9 @@ public class Comandos {
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
-			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condici�n coincidan
+			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condición coincidan
 				
-				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condici�n dada
+				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 						
 					insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que coincidan con los parámetros de la búsqueda</font></html>");
 					
@@ -661,7 +661,7 @@ public class Comandos {
 				
 			}else {
 				
-				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condici�n no coinciden</font></html>");
+				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condición no coinciden</font></html>");
 				
 			}
 		
@@ -676,7 +676,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SHOW", que verifica la validez de la sentencia y muestra las tablas si es v�lida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "SHOW", que verifica la validez de la sentencia y muestra las tablas si es válida.
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
@@ -759,7 +759,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto llamada (sentencia) y procesa el comando "SELECT" para realizar una consulta en una tabla. El metodo válida la sentencia, el tipo de atributo y la condici�n. Luego, muestra los resultados de la consulta si es v�lida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto llamada (sentencia) y procesa el comando "SELECT" para realizar una consulta en una tabla. El metodo válida la sentencia, el tipo de atributo y la condición. Luego, muestra los resultados de la consulta si es válida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -820,9 +820,9 @@ public class Comandos {
 			            			
 			            			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
 			                			
-					            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condici�n coincidan
+					            		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condición coincidan
 					            			
-					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condici�n dada
+					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 					            				
 					            				insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que mostrar para la consulta realizada</font></html>");
 					            				
@@ -837,7 +837,7 @@ public class Comandos {
 					            			
 					            		}else {
 					            			
-					            			insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condici�n no coinciden</font></html>");
+					            			insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condición no coinciden</font></html>");
 				            				
 					            		}
 					            		
@@ -886,7 +886,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "USE" para seleccionar una base de datos. El metodo verifica si la base de datos especificada existe y la selecciona si es v�lida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "USE" para seleccionar una base de datos. El metodo verifica si la base de datos especificada existe y la selecciona si es válida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1005,7 +1005,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DELETE" para eliminar registros de una tabla.  El metodo válida la sentencia, el tipo de atributo y la condici�n antes de realizar la eliminacion.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "DELETE" para eliminar registros de una tabla.  El metodo válida la sentencia, el tipo de atributo y la condición antes de realizar la eliminacion.
 	 * @param sentencia->lista de sentencia
 	 * 
 	 */
@@ -1021,9 +1021,9 @@ public class Comandos {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
-	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condici�n coincidan
+	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condición coincidan
 	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condici�n dada
+	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condición dada
 	        				
 	        				logica.borrarRegistro(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 	        				aciertos++;
@@ -1121,7 +1121,7 @@ public class Comandos {
 			            				
 			            			}else {
 			            				
-			            				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condici�n no coinciden</font></html>");
+			            				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condición no coinciden</font></html>");
 			            				
 			            			}
 		            				
@@ -1141,7 +1141,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "NOT NULL" para especificar que un atributo en una tabla no puede ser nulo.  El metodo válida la sentencia y realiza la operaci�n si es v�lida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "NOT NULL" para especificar que un atributo en una tabla no puede ser nulo.  El metodo válida la sentencia y realiza la operación si es válida.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1175,7 +1175,7 @@ public class Comandos {
 		        	
 				}else {
 				
-					insertarDepuracion("<html><font color='red'>Error #24</font></html>", "<html><font color='red'>La tabla no debe de tener registros para la operaci�n a realizar</font></html>");
+					insertarDepuracion("<html><font color='red'>Error #24</font></html>", "<html><font color='red'>La tabla no debe de tener registros para la operación a realizar</font></html>");
 					
 				}
 			
@@ -1191,7 +1191,7 @@ public class Comandos {
 	
 	/**
 	 * 
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "COUNT" para contar la cantidad de registros que cumplen con una consulta en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condici�n antes de realizar el conteo.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "COUNT" para contar la cantidad de registros que cumplen con una consulta en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condición antes de realizar el conteo.
 	 * @param sentencia-> lista de sentencias
 	 */
 	private void comandoCount(ArrayList<String[]> sentencia) {
@@ -1206,9 +1206,9 @@ public class Comandos {
         		
         		if(logica.existeTabla(sentencia.get(1)[1])) {
         		
-	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condici�n coincidan
+	        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condición coincidan
 	        			
-	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condici�n dada
+	        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condición dada
 	        				
 	        				aciertos++;
 	        	        	insertarDepuracion("Acierto #" + aciertos, "La cantidad de registros que cumplen con la consulta es: " + logica.contarRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]));
@@ -1239,7 +1239,7 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "AVG" para calcular el promedio de los valores de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condici�n antes de realizar el calculo.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "AVG" para calcular el promedio de los valores de un atributo en una tabla.  El metodo verifica la validez de la sentencia, el tipo de atributo y la condición antes de realizar el calculo.
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
@@ -1257,9 +1257,9 @@ public class Comandos {
         		
         			if(logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])!=null) {
         			
-		        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condici�n coincidan
+		        		if(logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3])) { //válido que el tipo de atributo y condición coincidan
 		        			
-		        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condici�n dada
+		        			if(logica.hayRegistros(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2])) { //válido que hayan registros que mostrar para la condición dada
 		        				
 		        				if(logica.obtenerTipoAtributo(sentencia.get(1)[1], sentencia.get(0)[1]).equalsIgnoreCase("entero")) {
 		                					
@@ -1280,7 +1280,7 @@ public class Comandos {
 	            		
 	        			}else {
 		        			
-		        			insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condici�n no coinciden</font></html>");
+		        			insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condición no coinciden</font></html>");
 		    				
 		        		}
 		        		
@@ -1394,7 +1394,7 @@ public class Comandos {
 	}
 	
 	/**
-	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "PRIMARY KEY" para especificar un atributo como clave primaria en una tabla. . El metodo verifica la validez de la sentencia y realiza la operaci�n si es v�lida.
+	 * Metodo privado que recibe una lista de matrices de cadenas de texto (sentencia) y procesa el comando "PRIMARY KEY" para especificar un atributo como clave primaria en una tabla. . El metodo verifica la validez de la sentencia y realiza la operación si es válida.
 	 * @param sentencia->lista de sentencias
 	 */
 	private void comandoPrimaryKey(ArrayList<String[]> sentencia) {
@@ -1424,7 +1424,7 @@ public class Comandos {
 						
 				}else {
 				
-					insertarDepuracion("<html><font color='red'>Error #24</font></html>", "<html><font color='red'>La tabla no debe de tener registros para la operaci�n a realizar</font></html>");
+					insertarDepuracion("<html><font color='red'>Error #24</font></html>", "<html><font color='red'>La tabla no debe de tener registros para la operación a realizar</font></html>");
 					
 				}
 				
