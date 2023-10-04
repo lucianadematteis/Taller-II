@@ -54,7 +54,7 @@ public class LimiteAlcanzado extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(166, 202, 110, 37);
+		aceptar.setBounds(142, 199, 147, 40);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
