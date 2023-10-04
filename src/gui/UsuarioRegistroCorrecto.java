@@ -36,7 +36,7 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton aceptar = new JButton("ACEPTAR");
-		aceptar.setFont(new Font("Verdana", Font.BOLD, 14));
+		aceptar.setFont(new Font("Verdana", Font.BOLD, 18));
 		aceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -51,13 +51,13 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		});
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(165, 197, 108, 40);
+		aceptar.setBounds(135, 183, 168, 54);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
-		JLabel lblNewLabel = new JLabel("El usuario se ha registrado correctamente");
-		lblNewLabel.setForeground(Color.YELLOW);
-		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
+		JLabel lblNewLabel = new JLabel("<HTML> <CENTER> EL USUARIO SE HA REGISTRADO <BR> CORRECTAMENTE </CENTER> </HTML>");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblNewLabel.setBounds(32, 31, 392, 155);
 		contentPane.add(lblNewLabel);
 		
