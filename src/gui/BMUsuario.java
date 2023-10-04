@@ -15,6 +15,7 @@ import javax.swing.border.LineBorder;
 import comunicacion.DTOUsuario;
 import comunicacion.IFachadaLogica;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 public class BMUsuario extends JFrame {
 
@@ -45,20 +46,22 @@ public class BMUsuario extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel.setBackground(recuadro);
-		panel.setBounds(35, 156, 456, 353);
+		panel.setBounds(35, 156, 456, 388);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("Ingrese nueva contrase\u00F1a");
+		JLabel lblNewLabel_1 = new JLabel("INGRESE NUEVA CONTRASEÑA");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1.setForeground(fuentePrincipal);
-		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblNewLabel_1.setBounds(92, 115, 250, 26);
+		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(59, 124, 387, 26);
 		panel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Repita la contrase\u00F1a");
+		JLabel lblNewLabel_2 = new JLabel("REPITA LA CONTRASEÑA");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2.setForeground(fuentePrincipal);
-		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblNewLabel_2.setBounds(92, 203, 205, 26);
+		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblNewLabel_2.setBounds(59, 225, 328, 26);
 		panel.add(lblNewLabel_2);
 		
 		JButton aceptar = new JButton("CONFIRMAR");
@@ -106,15 +109,15 @@ public class BMUsuario extends JFrame {
 			}
 			
 		});
-		aceptar.setFont(new Font("Verdana", Font.BOLD, 14));
-		aceptar.setBounds(287, 302, 133, 26);
+		aceptar.setFont(new Font("Verdana", Font.BOLD, 16));
+		aceptar.setBounds(133, 324, 176, 38);
 		aceptar.setFocusPainted(false);
 		panel.add(aceptar);
 		
 		JLabel lblNewLabel = new JLabel("CAMBIAR CONTRASE\u00D1A");
 		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 24));
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(70, 11, 328, 55);
+		lblNewLabel.setBounds(59, 24, 328, 55);
 		panel.add(lblNewLabel);
 		
 		JSeparator separator = new JSeparator();
@@ -123,20 +126,21 @@ public class BMUsuario extends JFrame {
 		
 		pass = new JPasswordField();
 		pass.setFont(new Font("Verdana", Font.PLAIN, 17));
-		pass.setBounds(92, 152, 250, 26);
+		pass.setBounds(59, 161, 328, 26);
 		panel.add(pass);
 		pass.setColumns(10);
 		
 		pass2 = new JPasswordField();
 		pass2.setFont(new Font("Verdana", Font.PLAIN, 17));
-		pass2.setBounds(92, 240, 250, 26);
+		pass2.setBounds(59, 260, 328, 26);
 		panel.add(pass2);
 		pass2.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("MODIFICACI\u00D3N DE USUARIO");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("Verdana", Font.BOLD, 36));
-		lblNewLabel_3.setBounds(276, 11, 545, 99);
+		lblNewLabel_3.setBounds(10, 11, 988, 99);
 		contentPane.add(lblNewLabel_3);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -147,13 +151,13 @@ public class BMUsuario extends JFrame {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel_1.setBackground(new Color(3, 90, 88));
-		panel_1.setBounds(513, 156, 456, 353);
+		panel_1.setBounds(513, 156, 456, 388);
 		contentPane.add(panel_1);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Ingrese su contrase\u00F1a actual");
+		JLabel lblNewLabel_2_1 = new JLabel("INGRESE SU CONTRASEÑA ACTUAL");
 		lblNewLabel_2_1.setForeground(Color.WHITE);
-		lblNewLabel_2_1.setFont(new Font("Verdana", Font.BOLD, 20));
-		lblNewLabel_2_1.setBounds(104, 188, 289, 26);
+		lblNewLabel_2_1.setFont(new Font("Verdana", Font.BOLD, 18));
+		lblNewLabel_2_1.setBounds(42, 234, 392, 26);
 		panel_1.add(lblNewLabel_2_1);
 		
 		JButton aceptar_1 = new JButton("ELIMINAR CUENTA");
@@ -176,16 +180,17 @@ public class BMUsuario extends JFrame {
 			}
 		});
 		aceptar_1.setForeground(Color.WHITE);
-		aceptar_1.setFont(new Font("Verdana", Font.BOLD, 14));
+		aceptar_1.setFont(new Font("Verdana", Font.BOLD, 16));
 		aceptar_1.setFocusPainted(false);
 		aceptar_1.setBackground(new Color(3, 60, 88));
-		aceptar_1.setBounds(257, 300, 162, 26);
+		aceptar_1.setBounds(88, 321, 274, 38);
 		panel_1.add(aceptar_1);
 		
 		JLabel lblEliminarUsuario = new JLabel("ELIMINAR USUARIO");
+		lblEliminarUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEliminarUsuario.setForeground(Color.WHITE);
 		lblEliminarUsuario.setFont(new Font("Verdana", Font.BOLD, 24));
-		lblEliminarUsuario.setBounds(102, 11, 328, 55);
+		lblEliminarUsuario.setBounds(10, 24, 436, 55);
 		panel_1.add(lblEliminarUsuario);
 		
 		JSeparator separator_2 = new JSeparator();
@@ -195,15 +200,15 @@ public class BMUsuario extends JFrame {
 		passActual = new JPasswordField();
 		passActual.setFont(new Font("Verdana", Font.PLAIN, 17));
 		passActual.setColumns(10);
-		passActual.setBounds(104, 238, 274, 26);
+		passActual.setBounds(41, 271, 373, 26);
 		panel_1.add(passActual);
 		
 		JTextArea txtrAtencinElSiguiente = new JTextArea();
 		txtrAtencinElSiguiente.setForeground(Color.YELLOW);
-		txtrAtencinElSiguiente.setFont(new Font("Verdana", Font.BOLD, 13));
+		txtrAtencinElSiguiente.setFont(new Font("Verdana", Font.BOLD, 15));
 		txtrAtencinElSiguiente.setBackground(recuadro);
-		txtrAtencinElSiguiente.setText("ATENCI\u00D3N: El siguiente cambio dar\u00E1 de baja el usuario pero\r\nno realizar\u00E1 la eliminaci\u00F3n total del mismo. La cuenta podr\u00E1 \r\nser reactivada registr\u00E1ndose nuevamente.");
-		txtrAtencinElSiguiente.setBounds(22, 99, 398, 92);
+		txtrAtencinElSiguiente.setText("EL SIGUIENTE CAMBIO DARÁ DE BAJA\r\nEL USUARIO DE MANERA PERMANENTE\r\nELIMINANDO LOS CAMBIOS Y REGISTROS\r\nREALIZADOS EN EL SISTEMA.");
+		txtrAtencinElSiguiente.setBounds(54, 122, 392, 92);
 		panel_1.add(txtrAtencinElSiguiente);
 		
 		JButton btnCancelar = new JButton("CANCELAR");
@@ -223,7 +228,7 @@ public class BMUsuario extends JFrame {
 		btnCancelar.setFont(new Font("Verdana", Font.BOLD, 14));
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
-		btnCancelar.setBounds(853, 587, 116, 28);
+		btnCancelar.setBounds(810, 576, 159, 39);
 		contentPane.add(btnCancelar);
 		
 	}
