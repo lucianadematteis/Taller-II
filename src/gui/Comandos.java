@@ -609,7 +609,7 @@ public class Comandos {
 				
 				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 					
-					insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que coincidan con los parámetros de la búsqueda</font></html>");
+					insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
 					
 				}else {
 					
@@ -648,7 +648,7 @@ public class Comandos {
 				
 				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 						
-					insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que coincidan con los parámetros de la búsqueda</font></html>");
+					insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
 					
 				}else {
 					
@@ -794,9 +794,9 @@ public class Comandos {
 		            			
 	            				}else {
 		    	        			
-	            					insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que mostrar para la consulta realizada</font></html>");
-		            				
-		            			}
+	            					insertarDepuracion("Acierto #" + aciertos, "No hay registros para la consulta realizada");
+		            			
+	            				}
 	            				
 	            			}else {
 	    	        			
@@ -824,8 +824,8 @@ public class Comandos {
 					            			
 					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 					            				
-					            				insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que mostrar para la consulta realizada</font></html>");
-					            				
+					            				insertarDepuracion("Acierto #" + aciertos, "No hay registros que mostrar para la consulta realizada");
+					            			
 					            			}else {
 					            				
 					            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
@@ -1031,7 +1031,7 @@ public class Comandos {
 	        	        	
 	        			}else {
 	        				
-	        				insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que coincidan con los parámetros de la búsqueda</font></html>");
+	        				insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
 	        				
 	        			}
 	        			
@@ -1115,7 +1115,7 @@ public class Comandos {
 				            				
 			            				}else {
 			            					
-			            					insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que coincidan con los parámetros de la búsqueda</font></html>");
+			            					insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
 			            					
 			            				}
 			            				
@@ -1216,7 +1216,7 @@ public class Comandos {
 	        				
 	        			}else {
 	        				
-	        				insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que coincidan con los parámetros de la búsqueda</font></html>");
+	        				insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
 	        				
 	        			}
 	        			
@@ -1274,7 +1274,7 @@ public class Comandos {
 		                				
 	            			}else {
 	            				
-	            				insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que coincidan con los parámetros de la búsqueda</font></html>");
+	            				insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
 	            				
 	            			}
 	            		
@@ -1536,8 +1536,8 @@ public class Comandos {
         						
 	        						if(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]).isEmpty()){
 	        							
-	        							insertarDepuracion("<html><font color='red'>Error #13</font></html>", "<html><font color='red'>No hay registros que mostrar para la consulta realizada</font></html>");
-			            			
+	        							insertarDepuracion("Acierto #" + aciertos, "No hay registros que mostrar para la consulta realizada");
+	        							
 	        						}else {
         						
 		        						cargarTablaAtributos(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]), sentencia.get(0)[1]);
