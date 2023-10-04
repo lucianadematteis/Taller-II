@@ -151,6 +151,7 @@ public class VentanaPrincipal extends JFrame {
 				fa.persistirDatos();
 				fa.liberarMemoriaBaseDatos();
 				fa.liberarMemoriaUsuario();
+				Login.demo = false;
 				dispose();
 			
 			}
