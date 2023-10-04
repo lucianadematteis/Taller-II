@@ -139,7 +139,7 @@ public class BMUsuario extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("MODIFICACI\u00D3N DE USUARIO");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setFont(new Font("Verdana", Font.BOLD, 36));
+		lblNewLabel_3.setFont(new Font("Verdana", Font.BOLD, 40));
 		lblNewLabel_3.setBounds(10, 11, 988, 99);
 		contentPane.add(lblNewLabel_3);
 		
@@ -225,10 +225,10 @@ public class BMUsuario extends JFrame {
 		
 		});
 		btnCancelar.setForeground(Color.WHITE);
-		btnCancelar.setFont(new Font("Verdana", Font.BOLD, 14));
+		btnCancelar.setFont(new Font("Verdana", Font.BOLD, 18));
 		btnCancelar.setFocusPainted(false);
 		btnCancelar.setBackground(new Color(3, 60, 88));
-		btnCancelar.setBounds(810, 576, 159, 39);
+		btnCancelar.setBounds(773, 576, 196, 39);
 		contentPane.add(btnCancelar);
 		
 	}
