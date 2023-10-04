@@ -31,7 +31,7 @@ public class UsuarioCambioContraseniaCorrecto extends JFrame {
 		contentPane.setBackground(fondoPrincipal);
 		
 		JButton aceptar = new JButton("ACEPTAR");
-		aceptar.setFont(new Font("Verdana", Font.BOLD, 14));
+		aceptar.setFont(new Font("Verdana", Font.BOLD, 16));
 		aceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -45,13 +45,13 @@ public class UsuarioCambioContraseniaCorrecto extends JFrame {
 		
 		aceptar.setForeground(fuentePrincipal);
 		aceptar.setBackground(botones);
-		aceptar.setBounds(155, 191, 129, 45);
+		aceptar.setBounds(134, 189, 163, 47);
 		aceptar.setFocusPainted(false);
 		contentPane.add(aceptar);
 		
 		JLabel lblNewLabel = new JLabel("<HTML> <CENTER> LA CONTRASEÑA HA SIDO <BR> CAMBIADA CON ÉXITO </CENTER> </HTML>");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(Color.YELLOW);
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblNewLabel.setBounds(10, 40, 414, 155);
 		contentPane.add(lblNewLabel);
