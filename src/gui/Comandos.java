@@ -1577,35 +1577,43 @@ public class Comandos {
 	 */
 	public void ejecutarComando(String comando, ArrayList<String[]> sentencia) {
 		
-	    if (acciones.containsKey(comando)) {
-	    	
-	    	if ((comando.equals("USE")) || (comando.equals("HELP") || (comando.equals("CREATE") || (comando.equals("DROP"))))) {
+		if(comando != null) {
+		
+		    if (acciones.containsKey(comando)) {
 		    	
-		        acciones.get(comando).accept(sentencia);
-		        
+		    	if ((comando.equals("USE")) || (comando.equals("HELP") || (comando.equals("CREATE") || (comando.equals("DROP"))))) {
+			    	
+			        acciones.get(comando).accept(sentencia);
+			        
+			    } else {
+			    	
+			        if (logica.bdSeleccionada()) {
+			        	
+			            acciones.get(comando).accept(sentencia);
+			            
+			        } else {
+			        	
+			            insertarDepuracion("<html><font color='red'>Error #15</font></html>", "<html><font color='red'>Debe seleccionar la base de datos sobre la cual operar</font></html>");
+			            
+			        }
+			        
+			    }
+		       
+		    	if(Login.demo) {
+		    		
+			        usos++;
+			    
+		    	}
+		    	
 		    } else {
 		    	
-		        if (logica.bdSeleccionada()) {
-		        	
-		            acciones.get(comando).accept(sentencia);
-		            
-		        } else {
-		        	
-		            insertarDepuracion("<html><font color='red'>Error #15</font></html>", "<html><font color='red'>Debe seleccionar la base de datos sobre la cual operar</font></html>");
-		            
-		        }
+		        insertarDepuracion("<html><font color='red'>Error #01</font></html>", "<html><font color='red'>El comando " + comando + " no es válido</font></html>");
 		        
 		    }
-	       
-	    	if(Login.demo) {
-	    		
-		        usos++;
-		    
-	    	}
+	    
+		} else {
 	    	
-	    } else {
-	    	
-	        insertarDepuracion("<html><font color='red'>Error #01</font></html>", "<html><font color='red'>El comando " + comando + " no es válido</font></html>");
+	        insertarDepuracion("<html><font color='red'>Error #01</font></html>", "<html><font color='red'>No ha ingresado sentencias que ejecutar</font></html>");
 	        
 	    }
 	    

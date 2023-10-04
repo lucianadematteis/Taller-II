@@ -279,27 +279,36 @@ public class VentanaPrincipal extends JFrame {
 				
 				Comandos comandos = new Comandos(fa);
 				ArrayList<String[]> arregloLinea = administraSentencia(entrada.getText());
-		        String comando=arregloLinea.get(0)[0].toUpperCase();
-		        comandos.ejecutarComando(comando, arregloLinea);
-		       
-		        if (Login.demo && Comandos.usos == 4 ){
-		        	
-		        	fa.liberarMemoriaBaseDatos();
-		        	fa.liberarMemoriaUsuario();
-		        	LimiteAlcanzado li = new LimiteAlcanzado(fa);
-		        	li.setVisible(true);
-		        	dispose();
-		        	fa.setDemoHabilitada(0);
-		        
-		        }
-		        
-		        if(fa.bdSeleccionada()) {
 				
-		        	cargarTablas(fa.obtenerTablasNom());
+				if(arregloLinea.get(0).length != 0) {
 				
-		        }
+			        String comando=arregloLinea.get(0)[0].toUpperCase();
+			        comandos.ejecutarComando(comando, arregloLinea);
+			       
+			        if (Login.demo && Comandos.usos == 4 ){
+			        	
+			        	fa.liberarMemoriaBaseDatos();
+			        	fa.liberarMemoriaUsuario();
+			        	LimiteAlcanzado li = new LimiteAlcanzado(fa);
+			        	li.setVisible(true);
+			        	dispose();
+			        	fa.setDemoHabilitada(0);
+			        
+			        }
+			        
+			        if(fa.bdSeleccionada()) {
+					
+			        	cargarTablas(fa.obtenerTablasNom());
+					
+			        }
+			        
+			        fa.persistirDatos();
 		        
-		        fa.persistirDatos();
+				}else {
+					
+					comandos.ejecutarComando(null, arregloLinea);
+					
+				}
 		        
 			} 
 			
