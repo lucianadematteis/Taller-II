@@ -279,7 +279,7 @@ public class Comandos {
 
 			if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
 
-				insertarDepuracion("Error #03", "Cantidad de argumentos no v�lida");
+				insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos no v�lida");
 
 			} else {
 
@@ -302,19 +302,19 @@ public class Comandos {
 
 		if (!(validaCantidadLineas(sentencia, 2, 2))) {
 
-			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
+			insertarDepuracion("<html><font color='red'>Error #02</font></html>", "La cantidad de líneas ingresada es incorrecta");
 
 		} else {
 
 			if (!(validaCantidadArgumentos(sentencia, 0, sentencia.size(), 2))) {
 
-				insertarDepuracion("Error #03", "Cantidad de argumentos no v�lida");
+				insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos no v�lida");
 
 			} else {
 
 				if (!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
 
-					insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
+					insertarDepuracion("<html><font color='red'>Error #01</font></html>", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 
 				} else {
 
@@ -342,19 +342,19 @@ public class Comandos {
 
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 4))) {
 
-			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 3");
+			insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos no válida en línea 3");
 
 		} else {
 
 			if (!(sentencia.get(2)[0].equalsIgnoreCase("WHERE"))) {
 
-				insertarDepuracion("Error #01", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es válido");
+				insertarDepuracion("<html><font color='red'>Error #01</font></html>", "El comando: " + sentencia.get(2)[0].toUpperCase() + " no es válido");
 
 			} else {
 
 				if (!(operadores.contains(sentencia.get(2)[2]))) {
 
-					insertarDepuracion("Error #05", "El operador: " + sentencia.get(2)[2] + " no es válido");
+					insertarDepuracion("<html><font color='red'>Error #05</font></html>", "El operador: " + sentencia.get(2)[2] + " no es válido");
 
 				} else {
 
@@ -379,13 +379,13 @@ public class Comandos {
 
 		if (!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 
-			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en la línea 2");
+			insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos no válida en la línea 2");
 
 		} else {
 
 			if (!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
 
-				insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
+				insertarDepuracion("<html><font color='red'>Error #01</font></html>", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 
 			} else {
 
@@ -408,7 +408,7 @@ public class Comandos {
 
 		if (!(validaCantidadLineas(sentencia, 3, 3))) {
 
-			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
+			insertarDepuracion("<html><font color='red'>Error #02</font></html>", "La cantidad de líneas ingresada es incorrecta");
 
 		} else {
 
@@ -440,13 +440,13 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 2, 2, 8))) {
 
-			insertarDepuracion("Error #03", "Cantidad de argumentos no válida en la l�nea 3");
+			insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos no válida en la l�nea 3");
 
 		} else {
 
 			if (!(operadores.contains(sentencia.get(2)[2])) || !(operadores.contains(sentencia.get(2)[6]))) {
 
-				insertarDepuracion("Error #05", "Operador/es no válido en la línea 3");
+				insertarDepuracion("<html><font color='red'>Error #05</font></html>", "Operador/es no válido en la línea 3");
 
 			} else {
 
@@ -469,25 +469,25 @@ public class Comandos {
 		
 		if(!(validaCantidadLineas(sentencia, 2, 5))) {
 			
-			insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla");
+			insertarDepuracion("<html><font color='red'>Error #02</font></html>", "La cantidad de líneas ingresada es incorrecta, recuerde que se permiten de uno a tres atributos por tabla");
         	
 		}else {
 			
 		    if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 2))) {
 			
-		    	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las l�neas 2 y " + sentencia.size());
+		    	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos incorrecta entre las l�neas 2 y " + sentencia.size());
 	        	
 			}else if(sentencia.get(0)[0].equalsIgnoreCase("CREATE")){ //SI QUIERE CREAR UNA TABLA
 				
 				if(!(validaTiposAtributos(sentencia, 2, sentencia.size()))) {
 					
-					insertarDepuracion("Error #04", "Tipos de datos incorrectos, recuerde que solo se admiten datos de tipo entero o cadena");
+					insertarDepuracion("<html><font color='red'>Error #04</font></html>", "Tipos de datos incorrectos, recuerde que solo se admiten datos de tipo entero o cadena");
 		        	
 				}else {
 					
 					if(logica.existeTabla(sentencia.get(1)[1])) {
 						
-						insertarDepuracion("Error #11", "La tabla ingresada ya existe para la base de datos seleccionada");
+						insertarDepuracion("<html><font color='red'>Error #11</font></html>", "La tabla ingresada ya existe para la base de datos seleccionada");
 			        	
 					}else {
 						
@@ -524,7 +524,7 @@ public class Comandos {
 		        	
 				}else {
 					
-					insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+					insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
                 	
 				}
 				
@@ -543,19 +543,19 @@ public class Comandos {
 		
 		if(!(validaCantidadLineas(sentencia, 2, 2))) {
 			
-        	insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
+        	insertarDepuracion("<html><font color='red'>Error #02</font></html>", "La cantidad de líneas ingresada es incorrecta");
         	
 		}else {
 		
 			if(!(validaCantidadArgumentos(sentencia, 1, 1, 2))) {
 				
-	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en la l�nea 2");
+	        	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos incorrecta en la l�nea 2");
 	        	
 			}else if(sentencia.get(0)[0].equalsIgnoreCase("CREATE")){ //SI QUIERE CREAR UNA BD
 				
 				if(logica.existeBD(sentencia.get(1)[1])){
 					
-					insertarDepuracion("Error #12", "La base de datos ingresada ya existe para el usuario seleccionado");
+					insertarDepuracion("<html><font color='red'>Error #12</font></html>", "La base de datos ingresada ya existe para el usuario seleccionado");
 		        	
 				}else {
 					
@@ -585,7 +585,7 @@ public class Comandos {
 					
 				}else {
 					
-					insertarDepuracion("Error #17", "La base de datos ingresada no existe para el usuario logueado");
+					insertarDepuracion("<html><font color='red'>Error #17</font></html>", "La base de datos ingresada no existe para el usuario logueado");
 		        	
 				}
 				
@@ -609,7 +609,7 @@ public class Comandos {
 				
 				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condici�n dada
 					
-					insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
+					insertarDepuracion("<html><font color='red'>Error #13</font></html>", "No hay registros que coincidan con los parámetros de la búsqueda");
 					
 				}else {
 					
@@ -622,13 +622,13 @@ public class Comandos {
 				
 			}else {
 				
-				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condici�n no coinciden");
+				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "El tipo de atributo y el tipo de condici�n no coinciden");
 				
 			}
 		
 		}else {
 			
-			insertarDepuracion("Error #11", "La tabla ingresada no existe para la base de datos seleccionada");
+			insertarDepuracion("<html><font color='red'>Error #11</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
         	
 		}
 		
@@ -648,7 +648,7 @@ public class Comandos {
 				
 				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condici�n dada
 						
-					insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
+					insertarDepuracion("<html><font color='red'>Error #13</font></html>", "No hay registros que coincidan con los parámetros de la búsqueda");
 					
 				}else {
 					
@@ -661,13 +661,13 @@ public class Comandos {
 				
 			}else {
 				
-				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condici�n no coinciden");
+				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "El tipo de atributo y el tipo de condici�n no coinciden");
 				
 			}
 		
 		}else {
 			
-			insertarDepuracion("Error #11", "La tabla ingresada no existe para la base de datos seleccionada");
+			insertarDepuracion("<html><font color='red'>Error #11</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
 	    	
 		}
 		
@@ -686,7 +686,7 @@ public class Comandos {
         	
     		if(!(sentencia.get(0)[1].equalsIgnoreCase("TABLES"))) {
             			
-	        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(0)[1].toUpperCase() + " no es válido");
+	        	insertarDepuracion("<html><font color='red'>Error #01</font></html>", "El comando: " + sentencia.get(0)[1].toUpperCase() + " no es válido");
 	        	
             }else {
             	
@@ -711,13 +711,13 @@ public class Comandos {
 		
 		if(!(sentencia.size()>1)){
 			
-    		insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
+    		insertarDepuracion("<html><font color='red'>Error #02</font></html>", "La cantidad de líneas ingresada es incorrecta");
         	
 		}else {
 			
         	if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { //no tiene mas nada alado del create
         		
-        		insertarDepuracion("Error #03", "Demasiados argumentos en línea 1");
+        		insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Demasiados argumentos en línea 1");
 	        
         	}else {
     			
@@ -731,7 +731,7 @@ public class Comandos {
 	        			
 	        			}else {
 	        				
-	        				insertarDepuracion("Error #15", "Debe seleccionar la base de datos sobre la cual operar");
+	        				insertarDepuracion("<html><font color='red'>Error #15</font></html>", "Debe seleccionar la base de datos sobre la cual operar");
 	        				
 	        			}
 	        			
@@ -741,13 +741,13 @@ public class Comandos {
 	        			
 	        		}else {
 	        			
-	        			insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
+	        			insertarDepuracion("<html><font color='red'>Error #01</font></html>", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 			        	
 	        		}
 	        	
 				}else {
 					
-					insertarDepuracion("Error #28", "Se han ingresado caracteres no permitidos");
+					insertarDepuracion("<html><font color='red'>Error #28</font></html>", "Se han ingresado caracteres no permitidos");
 		        	
 				}
         		
@@ -767,13 +767,13 @@ public class Comandos {
 		
 		if(!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
     		
-        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en l�nea 1");
+        	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos incorrecta en l�nea 1");
         	
     	}else {
     		
     		if(!(validaCantidadLineas(sentencia, 2, 3))) {
     			
-	        	insertarDepuracion("Error #02", "Cantidad de l�neas incorrecta");
+	        	insertarDepuracion("<html><font color='red'>Error #02</font></html>", "Cantidad de l�neas incorrecta");
 	        	
     		}else {
     		
@@ -794,19 +794,19 @@ public class Comandos {
 		            			
 	            				}else {
 		    	        			
-	            					insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
+	            					insertarDepuracion("<html><font color='red'>Error #13</font></html>", "No hay registros que mostrar para la consulta realizada");
 		            				
 		            			}
 	            				
 	            			}else {
 	    	        			
-	            				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+	            				insertarDepuracion("<html><font color='red'>Error #23</font></html>", "El atributo no existe para tabla ingresada");
 	    	        		
 	            			}
 		            		
 	            		}else {
 	            			
-	            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+	            			insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
 	                    	
 	            		}	
     					
@@ -824,7 +824,7 @@ public class Comandos {
 					            			
 					            			if(logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]).isEmpty()) { //válido que hayan registros que mostrar para la condici�n dada
 					            				
-					            				insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
+					            				insertarDepuracion("<html><font color='red'>Error #13</font></html>", "No hay registros que mostrar para la consulta realizada");
 					            				
 					            			}else {
 					            				
@@ -837,19 +837,19 @@ public class Comandos {
 					            			
 					            		}else {
 					            			
-					            			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condici�n no coinciden");
+					            			insertarDepuracion("<html><font color='red'>Error #14</font></html>", "El tipo de atributo y el tipo de condici�n no coinciden");
 				            				
 					            		}
 					            		
 			            			}else {
 			    	        			
-			            				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+			            				insertarDepuracion("<html><font color='red'>Error #23</font></html>", "El atributo no existe para tabla ingresada");
 			    	        		
 			            			}
 				            		
 			            		}else {
 			            			
-			            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+			            			insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
 			                    	
 			            		}
 			            		
@@ -903,7 +903,7 @@ public class Comandos {
 	        	
 			}else {
 				
-				insertarDepuracion("Error #17", "La base de datos ingresada no existe para el usuario logueado");
+				insertarDepuracion("<html><font color='red'>Error #17</font></html>", "La base de datos ingresada no existe para el usuario logueado");
 	        	
 			}
         	
@@ -921,19 +921,19 @@ public class Comandos {
 		
 		if (!(validaCantidadLineas(sentencia, 2, 2))){
 			
-        	insertarDepuracion("Error #02", "Cantidad de líneas no válida");
+        	insertarDepuracion("<html><font color='red'>Error #02</font></html>", "Cantidad de líneas no válida");
     		
     	}else {
     		
     		if ((!(sentencia.get(1).length>1)) || (!(validaCantidadArgumentos(sentencia, 0, 0, 2)))) {
         		
-	        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida");
+	        	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos no válida");
 	        	
         	}else { 
         		
         		if(!(sentencia.get(1)[0].equalsIgnoreCase("VALUES"))) {
             			
-		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
+		        	insertarDepuracion("<html><font color='red'>Error #01</font></html>", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 		        	
             	}else {
             		
@@ -959,7 +959,7 @@ public class Comandos {
 	            			        	
 	            						if(logica.validaRegistroVacio(atributos)) {
 	            							
-	            							insertarDepuracion("Error #19", "No es posible ingresar un registro vacío");
+	            							insertarDepuracion("<html><font color='red'>Error #19</font></html>", "No es posible ingresar un registro vacío");
 	    	                				
 	            						}else {
 	            						
@@ -970,31 +970,31 @@ public class Comandos {
 	            						}
 	            					}else {
 	            						
-	            						insertarDepuracion("Error #18", "La clave primaria no puede quedar vacia ni repetirse");
+	            						insertarDepuracion("<html><font color='red'>Error #18</font></html>", "La clave primaria no puede quedar vacia ni repetirse");
 	            						
 	            					}
 	            					
 	            				}else {
 	            					
-	            					insertarDepuracion("Error #19", "Ingreso como nulos atributos no permitidos");
+	            					insertarDepuracion("<html><font color='red'>Error #19</font></html>", "Ingreso como nulos atributos no permitidos");
 	                				
 	            				}
 	            				
 	            			}else {
 	            				
-	            				insertarDepuracion("Error #20", "Los datos a ingresar son incorrectos para los atributos de la tabla");
+	            				insertarDepuracion("<html><font color='red'>Error #20</font></html>", "Los datos a ingresar son incorrectos para los atributos de la tabla");
 	            				
 	            			}
 	            			
 	            		}else {
 	            			
-	            			insertarDepuracion("Error #21", "Cantidad de atributos incorrecta, en caso de nulos use NULL");
+	            			insertarDepuracion("<html><font color='red'>Error #21</font></html>", "Cantidad de atributos incorrecta, en caso de nulos use NULL");
 	        				
 	            		}
 	            		
             		}else {
             			
-            			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+            			insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
                     	
             		}
             	}
@@ -1013,7 +1013,7 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
-        	insertarDepuracion("Error #03", "Demasiados argumentos en l�nea 1");
+        	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Demasiados argumentos en l�nea 1");
         	
     	}else {
     	
@@ -1031,19 +1031,19 @@ public class Comandos {
 	        	        	
 	        			}else {
 	        				
-	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
+	        				insertarDepuracion("<html><font color='red'>Error #13</font></html>", "No hay registros que coincidan con los parámetros de la búsqueda");
 	        				
 	        			}
 	        			
 	        		}else {
 	        			
-	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
+	        			insertarDepuracion("<html><font color='red'>Error #14</font></html>", "El tipo de atributo y el tipo de condición no coinciden");
 	    				
 	        		}
 	        		
         		}else {
         			
-        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+        			insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
                 	
         		}
         	}
@@ -1061,25 +1061,25 @@ public class Comandos {
 		
 		if(!(validaCantidadLineas(sentencia, 3, 3))) {
     		
-        	insertarDepuracion("Error #02", "La cantidad de líneas ingresada es incorrecta");
+        	insertarDepuracion("<html><font color='red'>Error #02</font></html>", "La cantidad de líneas ingresada es incorrecta");
         	
     	}else {
     	
         	if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
         		
-	        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
+	        	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos incorrecta en línea 1");
 	        	
         	}else {
         	
             	if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 4))) {
             		
-		        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta entre las líneas 2 y 3");
+		        	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos incorrecta entre las líneas 2 y 3");
 		        	
             	}else {
             		
             		if(!(sentencia.get(1)[0].equalsIgnoreCase("SET"))) {
             			
-			        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
+			        	insertarDepuracion("<html><font color='red'>Error #01</font></html>", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 			        	
             		}else {
             			
@@ -1087,7 +1087,7 @@ public class Comandos {
 	            			
 	            			if(!(sentencia.get(1)[2].equals("="))){
 	            				
-					        	insertarDepuracion("Error #05", "El operador: " + sentencia.get(1)[2] + " no es válido");
+					        	insertarDepuracion("<html><font color='red'>Error #05</font></html>", "El operador: " + sentencia.get(1)[2] + " no es válido");
 					        	
 	            			}else {
 	            		
@@ -1095,7 +1095,7 @@ public class Comandos {
 		            				
 		            				if((logica.tieneClave(sentencia.get(0)[1])) && (logica.obtenerClave(sentencia.get(0)[1]).equalsIgnoreCase((sentencia.get(1)[1])))) {
 		            					
-			            				insertarDepuracion("Error #22", "No es posible cambiar la clave primaria de un registro");
+			            				insertarDepuracion("<html><font color='red'>Error #22</font></html>", "No es posible cambiar la clave primaria de un registro");
 			            					
 			            			}else if((logica.validaCondicion(sentencia.get(0)[1], sentencia.get(1)[1], sentencia.get(1)[3]) && (logica.validaCondicion(sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3])))){
 			            				
@@ -1103,7 +1103,7 @@ public class Comandos {
 				            				
 			            					if(sentencia.get(1)[3].equalsIgnoreCase("NULL") && logica.esNotNull(sentencia.get(0)[1],sentencia.get(1)[1])) {
 			            						
-			            						insertarDepuracion("Error #19", "Ingresó como nulos atributos no permitidos");
+			            						insertarDepuracion("<html><font color='red'>Error #19</font></html>", "Ingresó como nulos atributos no permitidos");
 				                				
 			            					}else {
 			            						
@@ -1115,19 +1115,19 @@ public class Comandos {
 				            				
 			            				}else {
 			            					
-			            					insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
+			            					insertarDepuracion("<html><font color='red'>Error #13</font></html>", "No hay registros que coincidan con los parámetros de la búsqueda");
 			            					
 			            				}
 			            				
 			            			}else {
 			            				
-			            				insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condici�n no coinciden");
+			            				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "El tipo de atributo y el tipo de condici�n no coinciden");
 			            				
 			            			}
 		            				
 	            				}else {
 	            					
-	            					insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+	            					insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
 	            		        	
 	            				}
 	            			}
@@ -1155,13 +1155,13 @@ public class Comandos {
 					
 					if((logica.obtenerAtributo(sentencia.get(0)[1], sentencia.get(1)[1])==null)) {
 						
-						insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+						insertarDepuracion("<html><font color='red'>Error #23</font></html>", "El atributo no existe para tabla ingresada");
 					
 					}else {
 						
 						if(logica.esNotNull(sentencia.get(1)[1], sentencia.get(0)[1])) {
 							
-							insertarDepuracion("Error #23", "El atributo ya esta indicado como no nulo");
+							insertarDepuracion("<html><font color='red'>Error #23</font></html>", "El atributo ya esta indicado como no nulo");
 							
 						}else {
 						
@@ -1175,13 +1175,13 @@ public class Comandos {
 		        	
 				}else {
 				
-					insertarDepuracion("Error #24", "La tabla no debe de tener registros para la operaci�n a realizar");
+					insertarDepuracion("<html><font color='red'>Error #24</font></html>", "La tabla no debe de tener registros para la operaci�n a realizar");
 					
 				}
 			
 			}else {
 				
-				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+				insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
 	        	
 			}
 			
@@ -1198,7 +1198,7 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 1))) { 
     		
-        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en línea 1");
+        	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos incorrecta en línea 1");
         	
     	}else {
     	
@@ -1216,19 +1216,19 @@ public class Comandos {
 	        				
 	        			}else {
 	        				
-	        				insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
+	        				insertarDepuracion("<html><font color='red'>Error #13</font></html>", "No hay registros que coincidan con los parámetros de la búsqueda");
 	        				
 	        			}
 	        			
 	        		}else {
 	        			
-	        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condición no coinciden");
+	        			insertarDepuracion("<html><font color='red'>Error #14</font></html>", "El tipo de atributo y el tipo de condición no coinciden");
 	    				
 	        		}
 	        		
         		}else {
         			
-        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+        			insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
                 	
         		}
         		
@@ -1247,7 +1247,7 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
-        	insertarDepuracion("Error #03", "Cantidad de argumentos incorrecta en l�nea 1");
+        	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos incorrecta en l�nea 1");
         	
     	}else {
     	
@@ -1268,30 +1268,30 @@ public class Comandos {
 		                            
 	            				}else {
 	            					
-	            					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operación");
+	            					insertarDepuracion("<html><font color='red'>Error #25</font></html>", "El atributo debe de ser de tipo entero para esta operación");
 	            					
 	            				}
 		                				
 	            			}else {
 	            				
-	            				insertarDepuracion("Error #13", "No hay registros que coincidan con los parámetros de la búsqueda");
+	            				insertarDepuracion("<html><font color='red'>Error #13</font></html>", "No hay registros que coincidan con los parámetros de la búsqueda");
 	            				
 	            			}
 	            		
 	        			}else {
 		        			
-		        			insertarDepuracion("Error #14", "El tipo de atributo y el tipo de condici�n no coinciden");
+		        			insertarDepuracion("<html><font color='red'>Error #14</font></html>", "El tipo de atributo y el tipo de condici�n no coinciden");
 		    				
 		        		}
 		        		
         			}else {
 	        			
-        				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+        				insertarDepuracion("<html><font color='red'>Error #23</font></html>", "El atributo no existe para tabla ingresada");
 	        		}
 	        			
         		}else {
         			
-        			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+        			insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
                 	
         		}
         	}
@@ -1317,7 +1317,7 @@ public class Comandos {
 	    				
 						if(logica.esVacia(sentencia.get(1)[1]) || (maximo == null)) { 
 							
-		    				insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla o en el campo indicado");
+		    				insertarDepuracion("<html><font color='red'>Error #26</font></html>", "No hay registros ingresados aun en la tabla o en el campo indicado");
 		    				
 		    			}else {
 		    				
@@ -1328,19 +1328,19 @@ public class Comandos {
 						
 					}else {
 						
-						insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operación");
+						insertarDepuracion("<html><font color='red'>Error #25</font></html>", "El atributo debe de ser de tipo entero para esta operación");
 						
 					}
 				
 				}else {
         			
-    				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+    				insertarDepuracion("<html><font color='red'>Error #23</font></html>", "El atributo no existe para tabla ingresada");
         		
 				}
 				
 			}else {
 				
-				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+				insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
 	        	
 			}
         	
@@ -1364,7 +1364,7 @@ public class Comandos {
     				
 					if(logica.esVacia(sentencia.get(1)[1]) || (minimo == null)) { 
 						
-	    				insertarDepuracion("Error #26", "No hay registros ingresados aun en la tabla o en el campo indicado");
+	    				insertarDepuracion("<html><font color='red'>Error #26</font></html>", "No hay registros ingresados aun en la tabla o en el campo indicado");
 	    				
 	    			}else {
 				
@@ -1376,18 +1376,18 @@ public class Comandos {
 		        	
 				}else {
 					
-					insertarDepuracion("Error #25", "El atributo debe de ser de tipo entero para esta operaci�n");
+					insertarDepuracion("<html><font color='red'>Error #25</font></html>", "El atributo debe de ser de tipo entero para esta operaci�n");
 					
 				}
 				
 			}else {
     			
-				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+				insertarDepuracion("<html><font color='red'>Error #23</font></html>", "El atributo no existe para tabla ingresada");
     		}
 			
 		}else {
 			
-			insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+			insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
         	
 		}
 		
@@ -1419,18 +1419,18 @@ public class Comandos {
 						
 					}else {
 	        			
-        				insertarDepuracion("Error #23", "El atributo no existe para tabla ingresada");
+        				insertarDepuracion("<html><font color='red'>Error #23</font></html>", "El atributo no existe para tabla ingresada");
 	        		}
 						
 				}else {
 				
-					insertarDepuracion("Error #24", "La tabla no debe de tener registros para la operaci�n a realizar");
+					insertarDepuracion("<html><font color='red'>Error #24</font></html>", "La tabla no debe de tener registros para la operaci�n a realizar");
 					
 				}
 				
 			}else {
 				
-				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+				insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
 	        	
 			}
 			
@@ -1458,7 +1458,7 @@ public class Comandos {
         	
 			}else {
 				
-				insertarDepuracion("Error #16", "La tabla ingresada no existe para la base de datos seleccionada");
+				insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La tabla ingresada no existe para la base de datos seleccionada");
 	        	
 			}
     	}
@@ -1486,7 +1486,7 @@ public class Comandos {
         	
 			}else {
 				
-				insertarDepuracion("Error #27", "El comando ingresado no existe o no tiene ayuda asociada");
+				insertarDepuracion("<html><font color='red'>Error #27</font></html>", "El comando ingresado no existe o no tiene ayuda asociada");
 				
 			}
     	}
@@ -1505,25 +1505,25 @@ public class Comandos {
 		
 		if (!(validaCantidadArgumentos(sentencia, 0, 0, 2))) { 
     		
-        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 1");
+        	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos no válida en línea 1");
         	
     	}else {
     		
     		if(!(validaCantidadLineas(sentencia, 2, 2))) {
     			
-	        	insertarDepuracion("Error #02", "Cantidad de líneas no válida");
+	        	insertarDepuracion("<html><font color='red'>Error #02</font></html>", "Cantidad de líneas no válida");
 	        	
     		}else {
     			
     			if(!(sentencia.get(1)[0].equalsIgnoreCase("FROM"))) {
     				
-		        	insertarDepuracion("Error #01", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
+		        	insertarDepuracion("<html><font color='red'>Error #01</font></html>", "El comando: " + sentencia.get(1)[0].toUpperCase() + " no es válido");
 		        	
     			}else {
     			
         			if(!(validaCantidadArgumentos(sentencia, 1, sentencia.size(), 3))) {
         				
-			        	insertarDepuracion("Error #03", "Cantidad de argumentos no válida en línea 2, recuerde que el join natural se realiza entre dos tablas");
+			        	insertarDepuracion("<html><font color='red'>Error #03</font></html>", "Cantidad de argumentos no válida en línea 2, recuerde que el join natural se realiza entre dos tablas");
 			        	
         			}else {
         				
@@ -1535,7 +1535,7 @@ public class Comandos {
         						
 	        						if(logica.joinNatural(sentencia.get(1)[1], sentencia.get(1)[2], sentencia.get(0)[1]).isEmpty()){
 	        							
-	        							insertarDepuracion("Error #13", "No hay registros que mostrar para la consulta realizada");
+	        							insertarDepuracion("<html><font color='red'>Error #13</font></html>", "No hay registros que mostrar para la consulta realizada");
 			            			
 	        						}else {
         						
@@ -1547,19 +1547,19 @@ public class Comandos {
         						
         						}else {
         							
-        							insertarDepuracion("Error #23", "Las tablas ingresadas no poseen ningún atributo en común");
+        							insertarDepuracion("<html><font color='red'>Error #23</font></html>", "Las tablas ingresadas no poseen ningún atributo en común");
                 	        		
         						}
         						
         					}else {
         	        			
-                				insertarDepuracion("Error #23", "El atributo no existe en ninguna de las tablas ingresadas");
+                				insertarDepuracion("<html><font color='red'>Error #23</font></html>", "El atributo no existe en ninguna de las tablas ingresadas");
         	        		
         					}
         					
         				}else {
         					
-        					insertarDepuracion("Error #16", "La/s tabla/s ingresada/s no existe/n para la base de datos seleccionada");
+        					insertarDepuracion("<html><font color='red'>Error #16</font></html>", "La/s tabla/s ingresada/s no existe/n para la base de datos seleccionada");
         		        	
         				}
         			}
@@ -1590,7 +1590,7 @@ public class Comandos {
 		            
 		        } else {
 		        	
-		            insertarDepuracion("Error #15", "Debe seleccionar la base de datos sobre la cual operar");
+		            insertarDepuracion("<html><font color='red'>Error #15</font></html>", "Debe seleccionar la base de datos sobre la cual operar");
 		            
 		        }
 		        
@@ -1604,7 +1604,7 @@ public class Comandos {
 	    	
 	    } else {
 	    	
-	        insertarDepuracion("Error #01", "El comando " + comando + " no es válido");
+	        insertarDepuracion("<html><font color='red'>Error #01</font></html>", "El comando " + comando + " no es válido");
 	        
 	    }
 	    
