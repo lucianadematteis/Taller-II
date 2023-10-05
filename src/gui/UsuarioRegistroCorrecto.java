@@ -21,7 +21,6 @@ public class UsuarioRegistroCorrecto extends JFrame {
 	public UsuarioRegistroCorrecto(IFachadaLogica fa) {
 		
 		this.fa = fa;
-		setType(Type.POPUP);
 
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fuentePrincipal = new Color (255,255,255);

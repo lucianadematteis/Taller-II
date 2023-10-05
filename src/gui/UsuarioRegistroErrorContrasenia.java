@@ -19,8 +19,6 @@ public class UsuarioRegistroErrorContrasenia extends JFrame {
 
 	public UsuarioRegistroErrorContrasenia() {
 		
-		setType(Type.POPUP);
-		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fuentePrincipal = new Color (255,255,255);
 		Color botones = new Color (3,60,88);

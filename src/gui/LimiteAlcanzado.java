@@ -22,7 +22,6 @@ public class LimiteAlcanzado extends JFrame {
 	public LimiteAlcanzado(IFachadaLogica fa) {
 		
 		this.fa =fa;
-		setType(Type.POPUP);
 		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fuentePrincipal = new Color (255,255,255);

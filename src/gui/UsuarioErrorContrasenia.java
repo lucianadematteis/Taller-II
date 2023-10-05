@@ -19,7 +19,6 @@ public class UsuarioErrorContrasenia extends JFrame {
 
 
 	public UsuarioErrorContrasenia() {
-	setType(Type.POPUP);
 		
 		Color fondoPrincipal = new Color (66,141,138);
 		Color fuentePrincipal = new Color (255,255,255);
