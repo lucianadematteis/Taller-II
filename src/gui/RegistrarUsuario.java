@@ -109,6 +109,9 @@ public class RegistrarUsuario extends JFrame {
 							fa.insertarUsuario(aux);
 							fa.persistirDatos();
 							fa.seleccionarUsuario(aux.getNombreUser());
+							VentanaPrincipal frame = new VentanaPrincipal(fa);
+							frame.setVisible(true);
+							frame.setLocationRelativeTo(null);
 							ok.setVisible(true);
 							ok.setLocationRelativeTo(null);
 							dispose();

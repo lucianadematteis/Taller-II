@@ -39,10 +39,7 @@ public class UsuarioRegistroCorrecto extends JFrame {
 		aceptar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-			
-				VentanaPrincipal frame = new VentanaPrincipal(fa);
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
+
 				dispose();
 			
 			}
