@@ -175,6 +175,10 @@ public class BMUsuario extends JFrame {
 					frame.setLocationRelativeTo(null);
 					dispose();
 				
+				} else {
+					UsuarioErrorContrasenia frame = new UsuarioErrorContrasenia();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				}
 				
 			}
