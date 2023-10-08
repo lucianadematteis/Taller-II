@@ -496,13 +496,13 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @param valorCondicion2 ->  valor de la condicion del atributo 2
 	 * @return lista de registros que cumplan con al menos una  condicion
 	 */
-	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2, String valorCondicion2, String operador) {
+	public ArrayList<DTOAtributo> consultaOr(String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2, String valorCondicion2, String operador1, String operador2) {
 		
 		String nomTabla = this.obtenerTabla(nombreTabla).getNombreTabla();
 		String nomAtr1 = obtenerAtributo(nombreAtributoCondicion1, nomTabla).getNombreAtributo();
 		String nomAtr2 = obtenerAtributo(nombreAtributoCondicion2, nomTabla).getNombreAtributo();
 		
-		return obtenerTabla(nombreTabla).consultaOr(nombreAtributo, nomAtr1, valorCondicion1, nomAtr2, valorCondicion2, operador);
+		return obtenerTabla(nombreTabla).consultaOr(nombreAtributo, nomAtr1, valorCondicion1, nomAtr2, valorCondicion2, operador1, operador2);
 		
 	}
 	
@@ -631,13 +631,13 @@ public class FachadaLogica implements IFachadaLogica {
 	 * @param valorCondicion2 ->  valor de la condicion del atributo 2
 	 * @return lista de registros que cumplan ambas condiciones
 	 */
-	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador) {
+	public ArrayList<DTOAtributo> consultaAnd (String nombreTabla, String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador1, String operador2) {
     	
 		String nomTabla = this.obtenerTabla(nombreTabla).getNombreTabla();
 		String nomAtr1 = obtenerAtributo(nombreAtributoCondicion1, nomTabla).getNombreAtributo();
 		String nomAtr2 = obtenerAtributo(nombreAtributoCondicion2, nomTabla).getNombreAtributo();
 		
-		return obtenerTabla(nombreTabla).consultaAnd(nombreAtributo, nomAtr1, valorCondicion1, nomAtr2, valorCondicion2, operador);
+		return obtenerTabla(nombreTabla).consultaAnd(nombreAtributo, nomAtr1, valorCondicion1, nomAtr2, valorCondicion2, operador1, operador2);
 		
     }
 	

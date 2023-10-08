@@ -692,15 +692,15 @@ public class Tabla {
 	 * @param valorCondicion2 ->  valor de la condicion del atributo 2
 	 * @return lista de registros que cumplan ambas condiciones
 	 */
-	public ArrayList<DTOAtributo> consultaAnd (String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador) {
+	public ArrayList<DTOAtributo> consultaAnd (String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2,String valorCondicion2, String operador1, String operador2) {
     	
     	ArrayList <DTOAtributo>  res1= new ArrayList<DTOAtributo>();
     	ArrayList <DTOAtributo> res2 = new ArrayList<DTOAtributo>();
     	
     	
-		ArrayList<LinkedHashMap<String, DTOAtributo>> registros1 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion1, valorCondicion1, operador));
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registros1 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion1, valorCondicion1, operador1));
 		res1= this.seleccionarAtributo(registros1, nombreAtributo);
-		ArrayList<LinkedHashMap<String, DTOAtributo>> registros2 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion2, valorCondicion2, operador));
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registros2 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion2, valorCondicion2, operador2));
 		res2 = this.seleccionarAtributo(registros2, nombreAtributo);
 		
     	res1.retainAll(res2);
@@ -718,14 +718,14 @@ public class Tabla {
 	 * @param valorCondicion2 ->  valor de la condicion del atributo 2
 	 * @return lista de registros que cumplan con al menos una  condicion
 	 */
-	public ArrayList<DTOAtributo> consultaOr(String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2, String valorCondicion2, String operador) {
+	public ArrayList<DTOAtributo> consultaOr(String nombreAtributo, String nombreAtributoCondicion1, String valorCondicion1, String nombreAtributoCondicion2, String valorCondicion2, String operador1, String operador2) {
 		
 		ArrayList <DTOAtributo> resultado1 = new ArrayList <DTOAtributo>();
 		ArrayList <DTOAtributo> resultado2 = new ArrayList <DTOAtributo>();
 		
-		ArrayList<LinkedHashMap<String, DTOAtributo>> registros1 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion1, valorCondicion1, operador));
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registros1 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion1, valorCondicion1, operador1));
 		resultado1= this.seleccionarAtributo(registros1, nombreAtributo);
-		ArrayList<LinkedHashMap<String, DTOAtributo>> registros2 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion2, valorCondicion2, operador));
+		ArrayList<LinkedHashMap<String, DTOAtributo>> registros2 = new ArrayList<LinkedHashMap<String, DTOAtributo>> (this.obtenerRegistros(nombreAtributoCondicion2, valorCondicion2, operador2));
 		resultado2 = this.seleccionarAtributo(registros2, nombreAtributo);
 
         HashSet<DTOAtributo> elementosUnicos = new HashSet<>(resultado1);
