@@ -722,8 +722,8 @@ public class Comandos {
         		insertarDepuracion("<html><font color='red'>Error #03</font></html>", "<html><font color='red'>Demasiados argumentos en línea 1</font></html>");
 	        
         	}else {
-    			
-				if(sentencia.get(1)[1].matches("[a-zA-Z\\d\\-_]*")) {
+        		
+				if(sentencia.get(1)[1].matches("[a-zA-Z\\d\\-_ñ]+( [a-zA-Z\\d\\-_ñ]+)*")) { //habilita letras de la A la Z, -, _, espacios y la ñ. Pero evita que la cadena termine en un espacio 
         		
 	        		if(sentencia.get(1)[0].equalsIgnoreCase("TABLE")) { //TABLE
 	        			
@@ -749,7 +749,7 @@ public class Comandos {
 	        	
 				}else {
 					
-					insertarDepuracion("<html><font color='red'>Error #28</font></html>", "<html><font color='red'>Se han ingresado caracteres no permitidos</font></html>");
+					insertarDepuracion("<html><font color='red'>Error #28</font></html>", "<html><font color='red'>Se han ingresado caracteres no permitidos, o último caracter es un espacio</font></html>");
 		        	
 				}
         		
