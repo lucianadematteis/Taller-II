@@ -468,6 +468,7 @@ public class FachadaLogica implements IFachadaLogica {
 		
 		String clave = this.obtenerTabla(nombreTabla).obtenerClave();
 		this.obtenerTabla(nombreTabla).getRegistros().get(0).get(clave).setClave(false);
+		this.obtenerTabla(nombreTabla).getRegistros().get(0).get(clave).setNulo(false);;
 		
 	}
 	
