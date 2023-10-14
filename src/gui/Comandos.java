@@ -55,10 +55,10 @@ public class Comandos {
     private void inicializarAcciones() {
     	
         acciones = new HashMap<>();
-        
+        acciones.put("SELECT", sentencia -> comandoSelect(sentencia));
+       
         if (!(Login.demo)) {
 	    
-        	acciones.put("SELECT", sentencia -> comandoSelect(sentencia));
         	acciones.put("CREATE", sentencia -> comandoCreateDrop(sentencia));
         	acciones.put("DROP", sentencia -> comandoCreateDrop(sentencia));
 	        acciones.put("INSERT", sentencia -> comandoInsert(sentencia));
