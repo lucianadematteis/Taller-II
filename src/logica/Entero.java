@@ -53,7 +53,7 @@ public class Entero extends Atributo {
 	
 	/**
 	 * Metodo publico que retorna un entero.  Permite recuperar el valor del atributo valor. Su proposito es proporcionar acceso controlado a los datos encapsulados dentro de un objeto.
-	 * @return-> el valor del atributo
+	 * @return -> el valor del atributo
 	 */
 	public Integer getValor() {
 		

@@ -67,7 +67,7 @@ public class Usuario {
 	/**
 	 * Establece la contrasenia del usuario.
 	 *
-	 * @param contra -> La nueva contraseña a establecer.
+	 * @param contra -> La nueva contraseniaa a establecer.
 	 */
 	public void setContrasenia(String contra) {
 

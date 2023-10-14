@@ -382,7 +382,7 @@ public class Persistencia {
 	
 	/**
 	 * Metodo privado que recibe como parametros un mapa de usuarios y persiste todas las bases de datos de todos los usuarios.
-	 * @param -> mapa de usuarios
+	 * @param usuarios -> mapa de usuario
 	 */
 	private void persistirBasesDatosTotales(LinkedHashMap<String, Usuario> usuarios) {
 		
@@ -582,7 +582,7 @@ public class Persistencia {
 	}
 	
 	/**
-	 * "Recibe un parametro LinkedHashMap<String, Usuario> usuarios, que es un mapa de usuarios donde cada usuario tiene bases de datos y tablas asociadas. Lo que hace este metodo es iterar a traves de estos usuarios y sus bases de datos, y para cada tabla en cada base de datos, verifica si los nombres de usuario, base de datos, tabla y registros no estan vacios. Si no estan vacios, obtiene una ruta de archivo especifica para ese conjunto de datos y utiliza un objeto FileWriter para escribir los registros en un archivo en esa ubicacion. El metodo no retorna ningun valor ya que es de tipo void, simplemente realiza la tarea de persistir los registros de las tablas de los usuarios en archivos correspondientes en funcion de ciertas condiciones.
+	 * Recibe un parametro LinkedHashMap de String y Usuario usuarios, que es un mapa de usuarios donde cada usuario tiene bases de datos y tablas asociadas. Lo que hace este metodo es iterar a traves de estos usuarios y sus bases de datos, y para cada tabla en cada base de datos, verifica si los nombres de usuario, base de datos, tabla y registros no estan vacios. Si no estan vacios, obtiene una ruta de archivo especifica para ese conjunto de datos y utiliza un objeto FileWriter para escribir los registros en un archivo en esa ubicacion. El metodo no retorna ningun valor ya que es de tipo void, simplemente realiza la tarea de persistir los registros de las tablas de los usuarios en archivos correspondientes en funcion de ciertas condiciones.
 	 * @param usuarios-> mapa de usuarios
 	 */
 	private void persistirRegistrosTotales(LinkedHashMap<String, Usuario> usuarios) {
@@ -856,7 +856,7 @@ public class Persistencia {
 	 * Metodo privado que recibe una cadena que indica la ubicacion del archivo que contiene los registros de la tabla y una coleccion que representa la estructura de la tabla. El metodo lee el archivo de registros, procesa la informacion y crea listas de registros representados por LinkedHashMaps que asocian nombres de atributos con sus valores. Por ultimo retorna una lista de LinkedHashMaps, donde cada LinkedHashMap representa un registro de la tabla, y los nombres de atributos se asocian con sus valores
 	 * @param ruta-> ruta de registros.txt
 	 * @param guia-> estructura de la tabla
-	 * @return-> mapa de atributos recuperado de registros.txt
+	 * @return -> mapa de atributos recuperado de registros.txt
 	 */
 	private ArrayList<LinkedHashMap<String, Atributo>> recuperarRegistros(String ruta, LinkedHashMap<String, Atributo> guia){
 		

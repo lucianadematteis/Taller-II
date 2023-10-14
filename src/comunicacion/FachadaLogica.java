@@ -144,7 +144,7 @@ public class FachadaLogica implements IFachadaLogica {
 	
 	/**
 	 *Crea una nueva instancia de Usuario a partir de los datos proporcionados y reemplaza la instancia anterior del usuario en la colección de usuarios.
-	 *@param user -> Representa los datos del usuario a modificar.
+	 *@param contrasenia -> Representa los datos del usuario a modificar.
 	 */
 	public void modificarUsuario(String contrasenia) {
 
@@ -647,7 +647,6 @@ public class FachadaLogica implements IFachadaLogica {
 	 *  @param nombreTabla -> nombre de la tabla
 	 * @param nombreAtributoCondicion -> nombre de la condion del atributo 1
 	 * @param valorCondicion ->  valor de la condicion del atributo 1
-	 * @param nombreAtributoCondicion2 -> nombre de la condion del atributo 2
 	 * @return  la cantidad de registros que cumplan con la condicion
 	 */
 	public int contarRegistros( String nombreTabla, String nombreAtributoCondicion, String valorCondicion, String operador){
@@ -663,7 +662,7 @@ public class FachadaLogica implements IFachadaLogica {
 	/**
 	 * Metodo publico que recibe como parametro el nombre de un comando y retorna descripcion del mismo como una cadena de caracteres
 	 * @param comando-> comando del cual se requiere la ayuda
-	 * @param la ayuda relacionada con el comando
+	 * 
 	 */
 	public String darAyuda(String comando) {
 	
