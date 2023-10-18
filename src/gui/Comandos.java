@@ -601,30 +601,42 @@ public class Comandos {
 	 * @param sentencia-> lista de sentencias
 	 * 
 	 */
-	private void comandoSelectAnd(ArrayList<String[]> sentencia) {
+	private boolean comandoSelectAnd(ArrayList<String[]> sentencia) {
+		
+		boolean resultado= false;
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
-			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condición coincidan
+			if((logica.obtenerAtributo(sentencia.get(2)[1], sentencia.get(1)[1])!=null) && (logica.obtenerAtributo(sentencia.get(2)[5], sentencia.get(1)[1])!=null)) {
 				
-				if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[7]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
+				if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condición coincidan
 					
-					aciertos++;
-					insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
+					if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[7]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
+						
+						aciertos++;
+						insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
+						resultado = true;
+						
+					}else {
+						
+						ArrayList<DTOAtributo> atributos=logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[6]);
+			        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
+						aciertos++;
+			        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+			        	resultado = true;
+			        	
+					}
 					
 				}else {
 					
-					ArrayList<DTOAtributo> atributos=logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[6]);
-		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
-					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
-		        	
+					insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condición no coinciden</font></html>");
+					
 				}
 				
 			}else {
 				
-				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condición no coinciden</font></html>");
-				
+				insertarDepuracion("<html><font color='red'>Error #23</font></html>", "<html><font color='red'>El/los atributo/s no existe/n para tabla ingresada</font></html>");
+			
 			}
 		
 		}else {
@@ -632,6 +644,8 @@ public class Comandos {
 			insertarDepuracion("<html><font color='red'>Error #16</font></html>", "<html><font color='red'>La tabla ingresada no existe para la base de datos seleccionada</font></html>");
         	
 		}
+		
+		return resultado;
 		
 	}
 	
@@ -641,30 +655,42 @@ public class Comandos {
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
-	private void comandoSelectOr(ArrayList<String[]> sentencia) {
+	private boolean comandoSelectOr(ArrayList<String[]> sentencia) {
+		
+		boolean resultado= false;
 		
 		if(logica.existeTabla(sentencia.get(1)[1])) {
 		
-			if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condición coincidan
-				
-				if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[7]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
+			if((logica.obtenerAtributo(sentencia.get(2)[1], sentencia.get(1)[1])!=null) && (logica.obtenerAtributo(sentencia.get(2)[5], sentencia.get(1)[1])!=null)) {
+			
+				if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condición coincidan
 					
-					aciertos++;
-					insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
+					if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[7]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
+						
+						aciertos++;
+						insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
+						resultado = true;
+						
+					}else {
+						
+						ArrayList<DTOAtributo> atributos=logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[6]);
+			        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
+						aciertos++;
+			        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+			        	resultado = true;
+			        	
+					}
 					
 				}else {
 					
-					ArrayList<DTOAtributo> atributos=logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[6]);
-		        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
-					aciertos++;
-		        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
-		        	
+					insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condición no coinciden</font></html>");
+					
 				}
-				
+			
 			}else {
 				
-				insertarDepuracion("<html><font color='red'>Error #14</font></html>", "<html><font color='red'>El tipo de atributo y el tipo de condición no coinciden</font></html>");
-				
+				insertarDepuracion("<html><font color='red'>Error #23</font></html>", "<html><font color='red'>El/los atributo/s no existe/n para tabla ingresada</font></html>");
+			
 			}
 		
 		}else {
@@ -673,6 +699,7 @@ public class Comandos {
 	    	
 		}
 		
+		return resultado;
 		
 	}
 	
@@ -765,7 +792,9 @@ public class Comandos {
 	 * @param sentencia->lista de sentencias
 	 * 
 	 */
-	private void comandoSelect(ArrayList<String[]> sentencia) {
+	private boolean comandoSelect(ArrayList<String[]> sentencia) {
+		
+		boolean resultado = false;
 		
 		if(!(validaCantidadArgumentos(sentencia, 0, 0, 2))) {
     		
@@ -793,12 +822,14 @@ public class Comandos {
 						        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 						        	aciertos++;
 						        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
-		            			
+						        	resultado = true;
+						        	
 	            				}else {
 	            					
 	            					aciertos++;
 	            					insertarDepuracion("Acierto #" + aciertos, "No hay registros para la consulta realizada");
-		            			
+	            					resultado = true;
+	            					
 	            				}
 	            				
 	            			}else {
@@ -817,7 +848,7 @@ public class Comandos {
     			
 	            		if(sentencia.get(2).length==4) { //SI ES WHERE COMUN
 	            	
-			            	if( validaSentenciasWhereComun(sentencia)) {
+			            	if(validaSentenciasWhereComun(sentencia)) {
 			            		
 			            		if(logica.existeTabla(sentencia.get(1)[1])) {
 			            			
@@ -829,13 +860,15 @@ public class Comandos {
 					            				
 					            				aciertos++;
 					            				insertarDepuracion("Acierto #" + aciertos, "No hay registros que mostrar para la consulta realizada");
-					            			
+					            				resultado = true;
+					            				
 					            			}else {
 					            				
 					            				ArrayList<DTOAtributo> atributos=logica.realizarConsultaClasica(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[2]);
 									        	this.cargarTablaAtributos(atributos, sentencia.get(0)[1]);
 					            				aciertos++;
 									        	insertarDepuracion("Acierto #" + aciertos, "Consulta éxitosa, mostrando resultados para la tabla: " + sentencia.get(1)[1]);
+									        	resultado = true;
 									        	
 					            			}
 					            			
@@ -865,11 +898,19 @@ public class Comandos {
 		            			
 			            		if(sentencia.get(2)[4].equalsIgnoreCase("AND")) {
 			            			
-			            			comandoSelectAnd(sentencia);
+			            			if(comandoSelectAnd(sentencia)) {
+			            				
+			            				resultado=true;
+			            				
+			            			}
 			            			
 			            		} else if(sentencia.get(2)[4].equalsIgnoreCase("OR")) {
 			            			
-			            			comandoSelectOr(sentencia);
+			            			if(comandoSelectOr(sentencia)) {
+			            				
+			            				resultado=true;
+			            				
+			            			}
 			            			
 			            		}else {
 			            			
@@ -885,6 +926,8 @@ public class Comandos {
     			}
     		}
     	}
+		
+		return resultado;
 		
 	}
 	
@@ -1598,7 +1641,19 @@ public class Comandos {
 			    	
 			        if (logica.bdSeleccionada()) {
 			        	
-			            acciones.get(comando).accept(sentencia);
+			        	if(Login.demo){
+			        		
+			        		if(comandoSelect(sentencia)) {
+			        			
+			        			usos++;
+			        			
+			        		}
+			        		
+			        	}else {
+			        		
+			        		acciones.get(comando).accept(sentencia);
+			            
+			        	}
 			            
 			        } else {
 			        	
@@ -1608,12 +1663,6 @@ public class Comandos {
 			        
 			    }
 		       
-		    	if(Login.demo) {
-		    		
-			        usos++;
-			    
-		    	}
-		    	
 		    } else {
 		    	
 		        insertarDepuracion("<html><font color='red'>Error #01</font></html>", "<html><font color='red'>El comando " + comando + " no es válido</font></html>");

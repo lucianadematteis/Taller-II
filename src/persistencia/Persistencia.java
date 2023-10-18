@@ -1,7 +1,6 @@
 package persistencia;
 
 import java.io.BufferedReader;
-import java.io.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -989,16 +988,6 @@ public class Persistencia {
 	    String ruta = obtenerRutaDemo();
 	    StringBuilder contenidoArchivo = new StringBuilder();
 	    
-	    try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ruta), "UTF-8"))) {
-          
-	    	bw.write("1");
-            
-        } catch (IOException ex) {
-        	
-            System.err.println("Error al crear el archivo: " + ex.getMessage());
-      
-        }
-
 	    try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(ruta), "UTF-8"))) {
 	       
 	    	String linea;
