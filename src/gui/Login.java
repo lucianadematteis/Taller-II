@@ -110,13 +110,10 @@ public class Login extends JFrame {
 						frame.setLocationRelativeTo(null);
 
 					}
-					
 				} else {
-					
 					UsuarioRegistroErrorCampos aux = new UsuarioRegistroErrorCampos();
 					aux.setVisible(true);
 					aux.setLocationRelativeTo(null);
-					
 				}
 
 			}
@@ -175,7 +172,6 @@ public class Login extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 			
-				Comandos.usos=fa.getDemoHabilitada();
 				DTOUsuario prueba = new DTOUsuario ("demo","demo");
 				fa.seleccionarUsuario(prueba.getNombreUser());
 				fa.seleccionarBaseDatos("base de prueba");
@@ -195,12 +191,12 @@ public class Login extends JFrame {
 		btnIniciarDemo.setBounds(796, 568, 173, 47);
 		contentPane.add(btnIniciarDemo);
 
-		  if (fa.getDemoHabilitada() == 4) {
+		  if (fa.getDemoHabilitada() == 0 ) {
 			   
 		    	btnIniciarDemo.setEnabled(false);
 		    	demo = false;
 		    	
-		   }
+		    }
 	   
 	}
 	

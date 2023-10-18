@@ -284,8 +284,7 @@ public class VentanaPrincipal extends JFrame {
 				
 			        String comando=arregloLinea.get(0)[0].toUpperCase();
 			        comandos.ejecutarComando(comando, arregloLinea);
-			        fa.setDemoHabilitada(Comandos.usos);
-			        
+			       
 			        if (Login.demo && Comandos.usos == 4 ){
 			        	
 			        	fa.liberarMemoriaBaseDatos();
@@ -293,7 +292,8 @@ public class VentanaPrincipal extends JFrame {
 			        	LimiteAlcanzado li = new LimiteAlcanzado(fa);
 			        	li.setVisible(true);
 			        	dispose();
-			        	
+			        	fa.setDemoHabilitada(0);
+			        
 			        }
 			        
 			        if(fa.bdSeleccionada()) {
