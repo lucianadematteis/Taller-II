@@ -611,7 +611,7 @@ public class Comandos {
 				
 				if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) && (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condición coincidan
 					
-					if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[6]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
+					if(logica.consultaAnd(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[7]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 						
 						aciertos++;
 						insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
@@ -665,7 +665,7 @@ public class Comandos {
 			
 				if((logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[1], sentencia.get(2)[3]) || (logica.validaCondicion(sentencia.get(1)[1], sentencia.get(2)[5], sentencia.get(2)[7])))) { //válido que el tipo de atributo y condición coincidan
 					
-					if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[6]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
+					if(logica.consultaOr(sentencia.get(1)[1], sentencia.get(0)[1], sentencia.get(2)[1], sentencia.get(2)[3], sentencia.get(2)[5], sentencia.get(2)[7], sentencia.get(2)[2], sentencia.get(2)[7]).isEmpty()) { //válido que hayan registros que mostrar para la condición dada
 						
 						aciertos++;
 						insertarDepuracion("Acierto #" + aciertos, "No hay registros que coincidan con los parámetros de la búsqueda");
